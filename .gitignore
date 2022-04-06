@@ -1,0 +1,10 @@
+
+*.md
+
+my_rpg
+
+*.o
+
+*.a
+
+.vscode/
