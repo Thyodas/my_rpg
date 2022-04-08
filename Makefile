@@ -9,9 +9,12 @@ SRC	=	src/main.c \
 	src/display/start_menu.c \
 	src/drawing/cursor.c \
 	src/drawing/button.c \
+	src/drawing/entity.c \
 	src/init/cursor.c \
 	src/init/window.c \
 	src/init/button.c \
+	src/init/entity.c \
+	src/init/time.c \
 	src/init/data.c \
 	src/parser.c \
 	src/utils/reader.c \

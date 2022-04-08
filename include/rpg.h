@@ -15,11 +15,25 @@
     #include <SFML/Audio.h>
     #include <time.h>
 
+    typedef struct my_time_s {
+        sfTime time;
+        float seconds;
+        sfClock *clock;
+        float prev_time;
+    } my_time_t;
+
     typedef struct button_s {
         sfSprite *sprite;
         sfTexture *texture;
         sfIntRect rect;
     } button_t;
+
+    typedef struct entity_s {
+        sfSprite *sprite;
+        sfTexture *texture;
+        sfIntRect rect;
+        int spritesheet_rect; // Décalage d'image sur spritesheet par pixel (spritesheet horizontal)
+    } entity_t;
 
     typedef struct cursor_s {
         sfTexture *texture;
@@ -38,12 +52,12 @@
     typedef struct game_s {
         int current_scene;
         sfRenderWindow *window;
+        my_time_t *clock;
+        entity_t *test;
         cursor_t *cursor;
         start_menu_t *start_menu;
-        // menu_t *menu;
-        // game_menu_t *game_menu;
-        // tutorial_t *tuto_menu;
     } game_t;
 
+    my_time_t *init_clock(void);
 
 #endif /* !RPG_H_ */
