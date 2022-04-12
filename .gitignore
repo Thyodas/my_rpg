@@ -8,3 +8,5 @@ my_rpg
 *.a
 
 .vscode/
+
+.idea/

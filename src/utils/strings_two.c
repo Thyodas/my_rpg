@@ -63,7 +63,7 @@ char **cut_str(char *input, char delimiter)
                 str[index++] = input[i] : i;
             str[index] = '\0';
             is_string_null(str, delimiter) == 1 ? words[count++] =
-                re_malloc(str) : 1;
+                re_malloc(str) : NULL;
             str = malloc(sizeof(char) * (my_strlen(input) + 1));
             index = 0;
             continue;

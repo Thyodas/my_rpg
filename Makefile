@@ -6,13 +6,12 @@
 ##
 
 SRC	=	src/main.c \
-	src/display/start_menu.c \
+	src/display/display_start_menu.c \
+	src/display/display_start_menu_two.c \
 	src/drawing/cursor.c \
-	src/drawing/button.c \
 	src/drawing/entity.c \
 	src/init/cursor.c \
 	src/init/window.c \
-	src/init/button.c \
 	src/init/entity.c \
 	src/init/time.c \
 	src/init/data.c \
@@ -23,6 +22,7 @@ SRC	=	src/main.c \
 	src/utils/strings_tree.c \
 	src/utils/strings_two.c \
 	src/utils/strings.c \
+	src/utils/lists/my_put_in_list.c \
 	src/events/start_menu.c \
 	src/events/mouse_events.c \
 
