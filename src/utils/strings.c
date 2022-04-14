@@ -40,7 +40,7 @@ int scrape_nbr(char *str)
 
     if (result == NULL) {
         my_put_err("Out of memory\n");
-        exit(84);
+        return (84);
     }
 
     for (int i = 0; str[i]; i++)
