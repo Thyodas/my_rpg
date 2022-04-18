@@ -48,7 +48,7 @@
     typedef struct start_menu_s {
         entity_t *new_game;
         entity_t *play;
-        entity_t *quit;
+        entity_t *exit;
         entity_t *help;
         linked_list_t **waves;
     } start_menu_t;
@@ -69,5 +69,9 @@
 
     /* Init */
     entity_t *init_entity(option_t option);
+
+    /* Interactions */
+    int is_hit(entity_t *entity, cursor_t *cursor,
+                                                float width, float height);
 
 #endif /* !RPG_H_ */

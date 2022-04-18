@@ -46,4 +46,11 @@ void start_menu_events_handler(game_t *game, sfEvent event)
 {
     // Replace cursor by custom cursor
     check_mouse_movement(game, event);
+
+    if (event.type == sfEvtMouseButtonReleased) {
+        if (is_hit(game->start_menu->exit, game->cursor, 34.0, 16.0)) {
+            // TODO free data
+            exit(0);
+        }
+    }
 }
