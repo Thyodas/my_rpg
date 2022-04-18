@@ -38,8 +38,7 @@ void start_menu_animate_sprites(game_t *game)
     if (game->clock->seconds >= 0.5) {
         rect_list_animation(game, game->start_menu->waves);
         sfClock_restart(game->clock->clock);
-    } else
-        return;
+    }
 }
 
 void start_menu_events_handler(game_t *game, sfEvent event)
