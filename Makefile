@@ -36,7 +36,9 @@ SRC	=	src/main.c \
 	src/particles-engine/snow/update_snow.c \
 	src/particles-engine/utils_particles/utils_particles.c \
 	src/particles-engine/draw_particles.c \
-	src/particles-engine/particles_engine.c
+	src/particles-engine/particles_engine.c \
+	src/regions/create_region.c \
+	src/regions/loop_region.c
 
 OBJ    =    $(SRC:.c=.o)
 

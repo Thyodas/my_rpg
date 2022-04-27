@@ -13,9 +13,17 @@
     #include "option.h"
     #include "particles.h"
     #include "entity.h"
+    #include "region.h"
+    #include <SFML/Graphics.h>
+    #include <SFML/System.h>
+    #include <SFML/Window.h>
+    #include <SFML/Audio.h>
 
     typedef struct play_s {
         entity_t *player;
+        region_t *region_list[REGION_NB];
+        region_t *start_region;
+        region_t *current_region;
     } play_t;
 
     typedef struct game_s {
@@ -26,5 +34,8 @@
         start_menu_t *start_menu;
         play_t *play;
     } game_t;
+
+    #define SET_SPRITE_IMG(sprite, img) (sfSprite_setTexture(sprite, \
+        sfTexture_createFromFile(img, NULL), sfFalse))
 
 #endif /* !GAME_H_ */

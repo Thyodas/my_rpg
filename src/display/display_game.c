@@ -27,6 +27,7 @@ void init_game(game_t *game)
         24,
     };
     game->play->player = init_player(option);
+    init_all_regions(game);
 }
 
 void game(game_t *game)
@@ -37,6 +38,8 @@ void game(game_t *game)
     while (sfRenderWindow_pollEvent(game->window, &event))
         play_events_handler(game, event);
     sfRenderWindow_clear(game->window, sfBlack);
+
+    draw_region(game, game->play->current_region);
 
     draw_entity(game, game->play->player);
 

@@ -28,8 +28,6 @@ static void move_player(game_t *game, int text_pos, float shift_x, float shift_y
 
 static void play_keyboard_events_handler(game_t *game, sfEvent event)
 {
-    sfVector2f pos = sfSprite_getPosition(game->play->player->sprite);
-
     if (sfKeyboard_isKeyPressed(sfKeyQ)) {
         move_player(game, 0, -10, 0);
     }
@@ -49,6 +47,5 @@ void play_events_handler(game_t *game, sfEvent event)
     // Replace cursor by custom cursor (do not remove)
     check_mouse_movement(game, event);
 
-    if (event.type == sfEvtKeyPressed)
-        play_keyboard_events_handler(game, event);
+    play_keyboard_events_handler(game, event);
 }
