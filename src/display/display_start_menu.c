@@ -12,7 +12,7 @@ void draw_cursor(sfRenderWindow *window, cursor_t *cursor);
 void start_menu_events_handler(game_t *game, sfEvent event);
 void start_menu_animate_sprites(game_t *game);
 void init_waves_start_menu(game_t *game, option_t option);
-void handle_particles(game_t *game, int type, int x, int y);
+particles_emitter_t *init_emitter(void);
 
 void init_start_menu(game_t *game)
 {
@@ -39,6 +39,7 @@ void init_start_menu(game_t *game)
     option.path = "assets/images/help.png";
     option.pos = (sfVector2f){1800.0, 35.0};
     game->start_menu->help = init_entity(option);
+    game->start_menu->emitter = init_emitter();
 }
 
 void start_menu(game_t *game)
@@ -49,7 +50,8 @@ void start_menu(game_t *game)
     while (sfRenderWindow_pollEvent(game->window, &event))
         start_menu_events_handler(game, event);
     sfRenderWindow_clear(game->window, sfBlack);
-    handle_particles(game, SNOW, 0, 0);
+    game->start_menu->emitter->ptr_part(game->start_menu->emitter,
+                                SNOW, (sfVector2f){0.0, 0.0}, game->window);
 
     // draw waves
     //draw_list_entity(game, game->start_menu->waves);
