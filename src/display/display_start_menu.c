@@ -23,6 +23,7 @@ void init_start_menu(game_t *game)
         (sfVector2f){200.0, 900.0},
         (sfIntRect){0, 0, 18, 18},
         18,
+        72,
     };
     init_waves_start_menu(game, option);
     option.path = "assets/images/new_game.png";

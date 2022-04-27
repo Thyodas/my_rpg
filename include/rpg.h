@@ -29,13 +29,18 @@
         sfVector2f pos;
         sfIntRect int_rect;
         int rect;
+        int spritesheet_width;
     } option_t;
 
     typedef struct entity_s {
         sfSprite *sprite;
+        sfTexture **textures;
         sfTexture *texture;
         sfIntRect rect;
+        int health;
+        int textures_amount;
         int spritesheet_rect; // Décalage d'image sur spritesheet par pixel (spritesheet horizontal)
+        int spritesheet_width; // total image width (in pixels)
     } entity_t;
 
     typedef struct cursor_s {
@@ -55,12 +60,17 @@
         entity_t *help_menu; // TODO design help menu;
     } start_menu_t;
 
+    typedef struct play_s {
+        entity_t *player;
+    } play_t;
+
     typedef struct game_s {
         int current_scene;
         sfRenderWindow *window;
         my_time_t *clock;
         cursor_t *cursor;
         start_menu_t *start_menu;
+        play_t *play;
     } game_t;
 
     my_time_t *init_clock(void);
@@ -73,7 +83,16 @@
     entity_t *init_entity(option_t option);
 
     /* Interactions */
-    int is_hit(entity_t *entity, cursor_t *cursor,
-                                                float width, float height);
+    int is_hit(entity_t *entity, cursor_t *cursor, float width, float height);
+
+    /* Manipulation */
+    sfVector2f move_coords(sfVector2f pos, float x, float y);
+    int set_text_from_textures(entity_t *entity, int n);
+
+    /* Animation */
+    void check_mouse_movement(game_t *game, sfEvent event);
+    void play_animate_sprites(game_t *game);
+    void rect_animation(game_t *game, entity_t *entity);
+    void rect_list_animation(game_t *game, linked_list_t **list);
 
 #endif /* !RPG_H_ */
