@@ -25,7 +25,6 @@
         cursor_t *cursor;
         start_menu_t *start_menu;
         play_t *play;
-        particles_emitter_t *emitter;
     } game_t;
 
 #endif /* !GAME_H_ */

@@ -19,25 +19,29 @@ void play_animate_sprites(game_t *game)
     }
 }
 
+static void move_player(game_t *game, int text_pos, float shift_x, float shift_y)
+{
+    set_text_from_textures(game->play->player, text_pos);
+    sfSprite_move(game->play->player->sprite, (sfVector2f){shift_x, shift_y});
+    play_animate_sprites(game);
+}
+
 static void play_keyboard_events_handler(game_t *game, sfEvent event)
 {
     sfVector2f pos = sfSprite_getPosition(game->play->player->sprite);
 
-    if (event.key.code == sfKeyLeft) {
-        set_text_from_textures(game->play->player, 0);
-        sfSprite_setPosition(game->play->player->sprite, move_coords(pos, -10.0, 0.0));
-    } else if (event.key.code == sfKeyUp) {
-        set_text_from_textures(game->play->player, 1);
-        sfSprite_setPosition(game->play->player->sprite, move_coords(pos, 0.0, -10.0));
-    } else if (event.key.code == sfKeyRight) {
-        set_text_from_textures(game->play->player, 2);
-        sfSprite_setPosition(game->play->player->sprite, move_coords(pos, 10.0, 0.0));
-    } else if (event.key.code == sfKeyDown) {
-        set_text_from_textures(game->play->player, 3);
-        sfSprite_setPosition(game->play->player->sprite, move_coords(pos, 0.0, 10.0));
-    } else
-        return;
-    play_animate_sprites(game);
+    if (sfKeyboard_isKeyPressed(sfKeyQ)) {
+        move_player(game, 0, -10, 0);
+    }
+    if (sfKeyboard_isKeyPressed(sfKeyZ)) {
+        move_player(game, 1, 0, -10);
+    }
+    if (sfKeyboard_isKeyPressed(sfKeyD)) {
+        move_player(game, 2, 10, 0);
+    }
+    if (sfKeyboard_isKeyPressed(sfKeyS)) {
+        move_player(game, 3, 0, 10);
+    }
 }
 
 void play_events_handler(game_t *game, sfEvent event)
