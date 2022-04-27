@@ -21,14 +21,14 @@ static void set_primitive_type(sfVertexArray *vertex_array, int type)
     }
 }
 
-void draw_particles(game_t *game, int type)
+void draw_particles(sfRenderWindow *win, particles_emitter_t *emitter,
+                    int type)
 {
     sfVertexArray *vertex_array = sfVertexArray_create();
 
     set_primitive_type(vertex_array, type);
-    for (int i = 0; i < game->emitter[type].nb_particles; ++i)
-        sfVertexArray_append(vertex_array,
-                            game->emitter[type].particles[i].vertex);
-    sfRenderWindow_drawVertexArray(game->window, vertex_array, NULL);
+    for (int i = 0; i < emitter->nb_particles; ++i)
+        sfVertexArray_append(vertex_array, emitter->particles[i].vertex);
+    sfRenderWindow_drawVertexArray(win, vertex_array, NULL);
     sfVertexArray_destroy(vertex_array);
 }

@@ -36,13 +36,13 @@ static void gen_flakes(particles_t *particles, int nb_flakes)
     }
 }
 
-void gen_snow(game_t *game, int nb_flakes)
+void gen_snow(particles_emitter_t *emitter, int nb_flakes)
 {
-    if (game->emitter[SNOW].is_gen)
+    if (emitter->is_gen)
         return;
-    game->emitter[SNOW].nb_particles = nb_flakes;
-    game->emitter[SNOW].particles = malloc(sizeof(particles_t) * nb_flakes);
-    game->emitter->particles_clock = sfClock_create();
-    game->emitter->is_gen = 1;
-    gen_flakes(game->emitter[SNOW].particles, nb_flakes);
+    emitter->nb_particles = nb_flakes;
+    emitter->particles = malloc(sizeof(particles_t) * nb_flakes);
+    emitter->particles_clock = sfClock_create();
+    emitter->is_gen = 1;
+    gen_flakes(emitter->particles, nb_flakes);
 }

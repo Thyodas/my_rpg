@@ -7,38 +7,40 @@
 
 #include "rpg.h"
 
-void gen_snow(game_t *game, int nb_flakes);
+void gen_snow(particles_emitter_t *emitter, int nb_flakes);
 void activate_flakes(particles_emitter_t *emitter);
 void update_flakes(particles_emitter_t *emitter);
-void draw_particles(game_t *game, int type);
+void draw_particles(sfRenderWindow *win, particles_emitter_t *emitter,
+                    int type);
 
-static void handle_snow(game_t *game)
+static void handle_snow(particles_emitter_t *emitter, sfRenderWindow *win)
 {
     sfTime time_elapsed;
 
-    gen_snow(game, 1000);
-    time_elapsed = sfClock_getElapsedTime(game->emitter[SNOW].particles_clock);
+    gen_snow(emitter, 1000);
+    time_elapsed = sfClock_getElapsedTime(emitter->particles_clock);
     if (time_elapsed.microseconds > 1000000) {
-        sfClock_restart(game->emitter[SNOW].particles_clock);
-        activate_flakes(&game->emitter[SNOW]);
+        sfClock_restart(emitter->particles_clock);
+        activate_flakes(emitter);
     }
-    update_flakes(&game->emitter[SNOW]);
-    draw_particles(game, SNOW);
+    update_flakes(emitter);
+    draw_particles(win, emitter, SNOW);
 }
 
-void handle_blood(game_t *game, int x, int y)
+void handle_blood(particles_emitter_t *emitter, float x, float y)
 {
 
 }
 
-void handle_particles(game_t *game, int type, int x, int y)
+void handle_particles(particles_emitter_t *emitter, int type, sfVector2f pos,
+                        sfRenderWindow *win)
 {
     switch (type) {
         case SNOW:
-            handle_snow(game);
+            handle_snow(emitter, win);
             break;
         case BLOOD:
-            handle_blood(game, x, y);
+            handle_blood(emitter, pos.x, pos.y);
             break;
         default:
             break;
