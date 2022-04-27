@@ -25,9 +25,12 @@ SRC	=	src/main.c \
 	src/utils/strings_tree.c \
 	src/utils/strings_two.c \
 	src/utils/strings.c \
+	src/utils/coords.c \
 	src/utils/lists/my_put_in_list.c \
 	src/events/start_menu.c \
 	src/events/mouse_events.c \
+	src/events/animation.c \
+	src/events/play_events.c \
 	src/particles-engine/snow/gen_snow.c \
 	src/particles-engine/snow/update_snow.c \
 	src/particles-engine/utils_particles/utils_particles.c \
