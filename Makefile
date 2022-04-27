@@ -6,10 +6,12 @@
 ##
 
 SRC	=	src/main.c \
+	src/display/display_game.c \
 	src/display/display_start_menu.c \
 	src/display/display_start_menu_two.c \
 	src/drawing/cursor.c \
 	src/drawing/entity.c \
+	src/init/init_player.c \
 	src/init/cursor.c \
 	src/init/window.c \
 	src/init/entity.c \
