@@ -14,6 +14,7 @@ SRC	=	src/main.c \
 	src/init/window.c \
 	src/init/entity.c \
 	src/init/time.c \
+	src/init/emitter.c \
 	src/init/data.c \
 	src/parser.c \
 	src/interactions/is_hit.c \
