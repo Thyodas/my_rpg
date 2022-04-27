@@ -16,7 +16,7 @@ int set_text_from_textures(entity_t *entity, int n)
     }
     if (n < 0 && n < entity->textures_amount)
         return 84;
-    sfSprite_setTexture(entity->sprite, entity->textures[n], NULL);
+    sfSprite_setTexture(entity->sprite, entity->textures[n], sfFalse);
     return 0;
 }
 
@@ -26,10 +26,14 @@ entity_t *init_player(option_t option)
 
     entity->sprite = sfSprite_create();
     entity->textures = malloc(sizeof(sfTexture *) * 5);
-    entity->textures[0] = sfTexture_createFromFile("./assets/spritesheets/player_left.png", NULL);
-    entity->textures[1] = sfTexture_createFromFile("./assets/spritesheets/player_up.png", NULL);
-    entity->textures[2] = sfTexture_createFromFile("./assets/spritesheets/player_right.png", NULL);
-    entity->textures[3] = sfTexture_createFromFile("./assets/spritesheets/player_down.png", NULL);
+    entity->textures[0] =
+    sfTexture_createFromFile("./assets/spritesheets/player_left.png", NULL);
+    entity->textures[1] =
+    sfTexture_createFromFile("./assets/spritesheets/player_up.png", NULL);
+    entity->textures[2] =
+    sfTexture_createFromFile("./assets/spritesheets/player_right.png", NULL);
+    entity->textures[3] =
+    sfTexture_createFromFile("./assets/spritesheets/player_down.png", NULL);
     entity->textures[4] = NULL;
 
     entity->textures_amount = 4;
