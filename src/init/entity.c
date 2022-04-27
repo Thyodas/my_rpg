@@ -13,6 +13,7 @@ entity_t *init_entity(option_t option)
 
     entity->sprite = sfSprite_create();
     entity->texture = sfTexture_createFromFile(option.path, NULL);
+    entity->spritesheet_width = option.spritesheet_width;
     sfSprite_setTexture(entity->sprite, entity->texture, sfTrue);
     sfSprite_setScale(entity->sprite, option.scale);
     sfSprite_setPosition(entity->sprite, option.pos);

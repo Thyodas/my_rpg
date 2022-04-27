@@ -10,16 +10,20 @@
 
 void init_data(game_t *data);
 
+void init_game(game_t *game);
 void init_start_menu(game_t *game);
 void start_menu(game_t *game);
+void game(game_t *game);
 
 void (* const scene[])(game_t *game) = {
-        &start_menu
+        &start_menu,
+        &game,
 };
 
 static void start_game(game_t *game)
 {
     init_start_menu(game);
+    init_game(game);
     while (sfRenderWindow_isOpen(game->window))
         scene[game->current_scene](game);
 }
