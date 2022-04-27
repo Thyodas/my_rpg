@@ -11,6 +11,7 @@
     #include <SFML/Graphics.h>
 
     #include "entity.h"
+    #include "particles.h"
 
     typedef struct cursor_s {
         sfTexture *texture;
@@ -27,6 +28,7 @@
         entity_t *help; // TODO when clicked -> help_clicked = 1;
         int help_clicked; // TODO 1 ? draw help_menu : remove from screen;
         entity_t *help_menu; // TODO design help menu;
+        particles_emitter_t *emitter;
     } start_menu_t;
 
 #endif /* !UI_H_ */

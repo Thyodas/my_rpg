@@ -29,6 +29,8 @@
         sfClock *particles_clock;
         int is_gen;
         int nb_particles;
+        void (*ptr_part)(struct particles_emitter *, int, sfVector2f,
+                        sfRenderWindow *);
     } particles_emitter_t;
 
 #endif /* !PARTICULES_H_ */
