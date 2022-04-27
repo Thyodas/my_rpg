@@ -34,6 +34,8 @@
         sfClock *particles_clock;
         int is_gen;
         int nb_particles;
+        void (*ptr_part)(struct particles_emitter *, int, sfVector2f,
+                        sfRenderWindow *);
     } particles_emitter_t;
 
     typedef struct my_time_s {
@@ -73,6 +75,7 @@
         entity_t *help; // TODO when clicked -> help_clicked = 1;
         int help_clicked; // TODO 1 ? draw help_menu : remove from screen;
         entity_t *help_menu; // TODO design help menu;
+        particles_emitter_t *emitter;
     } start_menu_t;
 
     typedef struct game_s {
@@ -81,7 +84,6 @@
         my_time_t *clock;
         cursor_t *cursor;
         start_menu_t *start_menu;
-        particles_emitter_t *emitter;
     } game_t;
 
     my_time_t *init_clock(void);
