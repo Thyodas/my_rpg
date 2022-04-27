@@ -16,6 +16,26 @@
     #include <time.h>
     #include "mylist.h"
 
+    enum enum_part {
+        SNOW,
+        BLOOD,
+        NB_PART
+    };
+
+    typedef struct particles {
+        sfVertex vertex;
+        sfVector2f direction;
+        int is_alive;
+        int updated;
+    } particles_t;
+
+    typedef struct particles_emitter {
+        particles_t *particles;
+        sfClock *particles_clock;
+        int is_gen;
+        int nb_particles;
+    } particles_emitter_t;
+
     typedef struct my_time_s {
         sfTime time;
         float seconds;
@@ -61,6 +81,7 @@
         my_time_t *clock;
         cursor_t *cursor;
         start_menu_t *start_menu;
+        particles_emitter_t *emitter;
     } game_t;
 
     my_time_t *init_clock(void);
