@@ -26,6 +26,11 @@ SRC	=	src/main.c \
 	src/utils/lists/my_put_in_list.c \
 	src/events/start_menu.c \
 	src/events/mouse_events.c \
+	src/particles-engine/snow/gen_snow.c \
+	src/particles-engine/snow/update_snow.c \
+	src/particles-engine/utils_particles/utils_particles.c \
+	src/particles-engine/draw_particles.c \
+	src/particles-engine/particles_engine.c
 
 OBJ    =    $(SRC:.c=.o)
 
