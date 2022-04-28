@@ -42,7 +42,7 @@ void gen_snow(particles_emitter_t *emitter, int nb_flakes)
         return;
     emitter->nb_particles = nb_flakes;
     emitter->particles = malloc(sizeof(particles_t) * nb_flakes);
-    emitter->particles_clock = sfClock_create();
     emitter->is_gen = 1;
     gen_flakes(emitter->particles, nb_flakes);
+    emitter->particles_clock = sfClock_create();
 }
