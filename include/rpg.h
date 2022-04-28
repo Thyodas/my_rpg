@@ -49,4 +49,7 @@
     void draw_region(game_t *game, region_t *region);
     void init_all_regions(game_t *game);
 
+    // Events
+    void play_keyboard_events_handler(game_t *game);
+
 #endif /* !RPG_H_ */

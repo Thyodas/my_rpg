@@ -31,7 +31,7 @@ float shift_y)
     play_animate_sprites(game);
 }
 
-static void play_keyboard_events_handler(game_t *game, sfEvent event)
+void play_keyboard_events_handler(game_t *game)
 {
     if (sfKeyboard_isKeyPressed(sfKeyQ)) {
         move_player(game, 0, -10, 0);
@@ -51,6 +51,4 @@ void play_events_handler(game_t *game, sfEvent event)
 {
     // Replace cursor by custom cursor (do not remove)
     check_mouse_movement(game, event);
-
-    play_keyboard_events_handler(game, event);
 }

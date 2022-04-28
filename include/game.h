@@ -33,6 +33,7 @@
         cursor_t *cursor;
         start_menu_t *start_menu;
         play_t *play;
+        sfEvent event;
     } game_t;
 
     #define SET_SPRITE_IMG(sprite, img) (sfSprite_setTexture(sprite, \

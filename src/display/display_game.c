@@ -32,11 +32,10 @@ void init_game(game_t *game)
 
 void game(game_t *game)
 {
-    sfEvent event;
-
     // play_animate_sprites(game);
-    while (sfRenderWindow_pollEvent(game->window, &event))
-        play_events_handler(game, event);
+    while (sfRenderWindow_pollEvent(game->window, &game->event))
+        play_events_handler(game, game->event);
+    play_keyboard_events_handler(game);
     sfRenderWindow_clear(game->window, sfBlack);
 
     draw_region(game, game->play->current_region);

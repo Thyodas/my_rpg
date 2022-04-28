@@ -17,7 +17,7 @@ sfRenderWindow *init_window(void)
     video_mode.bitsPerPixel = 32;
     window = sfRenderWindow_create(video_mode, "Worgen", sfClose, NULL);
     sfRenderWindow_setMouseCursorVisible(window, sfFalse);
-    sfRenderWindow_setFramerateLimit(window, 60);
+    sfRenderWindow_setFramerateLimit(window, 24);
     sfRenderWindow_setPosition(window, (sfVector2i){0, 0});
     return (window);
 }
