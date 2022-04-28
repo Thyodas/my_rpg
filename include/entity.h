@@ -15,6 +15,7 @@
         sfTexture **textures;
         sfTexture *texture;
         sfIntRect rect;
+        int speed;
         int health;
         int textures_amount;
         int spritesheet_rect; // Décalage d'image sur spritesheet par pixel (spritesheet horizontal)
