@@ -38,7 +38,7 @@ entity_t *init_player(option_t option)
 
     entity->textures_amount = 4;
     entity->spritesheet_width = 71;
-    entity->speed = 500;
+    entity->speed = 150;
     sfSprite_setTexture(entity->sprite, entity->textures[0], sfTrue);
     sfSprite_setScale(entity->sprite, option.scale);
     sfSprite_setPosition(entity->sprite, option.pos);

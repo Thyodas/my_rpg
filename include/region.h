@@ -17,9 +17,6 @@
 
     typedef struct regions_s {
         int id;
-        sfSprite *background;
-        sfSprite *foreground;
-        sfImage *collision;
         linked_list_t *entities;
         struct regions_s *left;
         struct regions_s *right;
@@ -34,8 +31,12 @@
 
     enum {
         START_REGION,
+        MINE_REGION,
         REGION_NB
     };
+
+    #define REGION_SIZE_X 480
+    #define REGION_SIZE_Y 272
 
     #define INIT_REGION(id) (game->play->region_list[id] = create_region(id))
 

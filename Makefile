@@ -41,7 +41,9 @@ SRC	=	src/main.c \
 	src/particles-engine/blood/update_blood.c \
 	src/particles-engine/blood/gen_blood.c \
 	src/regions/create_region.c \
-	src/regions/loop_region.c
+	src/regions/loop_region.c \
+	src/regions/change_region.c \
+	src/scene/set_scene.c
 
 OBJ    	=    	$(SRC:.c=.o)
 

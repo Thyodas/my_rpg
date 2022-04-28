@@ -24,6 +24,11 @@
         region_t *region_list[REGION_NB];
         region_t *start_region;
         region_t *current_region;
+        sfSprite *background;
+        sfSprite *foreground;
+        sfImage *collision;
+        sfVector2i current_region_pos;
+        sfView *view;
     } play_t;
 
     typedef struct game_s {

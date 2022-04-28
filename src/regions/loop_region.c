@@ -12,7 +12,7 @@ void draw_entity(game_t *game, entity_t *entity);
 
 void draw_region(game_t *game, region_t *region)
 {
-    sfRenderWindow_drawSprite(game->window, region->background, NULL);
+    sfRenderWindow_drawSprite(game->window, game->play->background, NULL);
     draw_entity(game, game->play->player);
-    sfRenderWindow_drawSprite(game->window, region->foreground, NULL);
+    sfRenderWindow_drawSprite(game->window, game->play->foreground, NULL);
 }
