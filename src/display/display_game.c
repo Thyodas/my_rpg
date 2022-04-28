@@ -40,8 +40,6 @@ void game(game_t *game)
 
     draw_region(game, game->play->current_region);
 
-    draw_entity(game, game->play->player);
-
     // draw_cursor(game->window, game->cursor);
     sfRenderWindow_display(game->window);
 }

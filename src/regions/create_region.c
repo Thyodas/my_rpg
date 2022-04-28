@@ -45,7 +45,9 @@ region_t *load_region(region_t *region)
     region->foreground = sfSprite_create();
     region->collision = sfImage_createFromFile("assets/images/regions/start_collision.png");
     SET_SPRITE_IMG(region->background, "assets/images/regions/start_background.png");
+    SET_SPRITE_IMG(region->foreground, "assets/images/regions/start_foreground.png");
     sfSprite_setScale(region->background, (sfVector2f){4, 4});
+    sfSprite_setScale(region->foreground, (sfVector2f){4, 4});
 }
 
 void init_all_regions(game_t *game)
