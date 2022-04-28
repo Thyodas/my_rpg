@@ -21,8 +21,8 @@ void init_game(game_t *game)
     game->play = malloc(sizeof(play_t));
     option_t option = {
         NULL,
-        (sfVector2f){5.0, 5.0},
-        (sfVector2f){960.0, 540.0},
+        (sfVector2f){4.0, 4.0},
+        (sfVector2f){960.0, 700.0},
         (sfIntRect){0, 0, 24, 24},
         24,
     };

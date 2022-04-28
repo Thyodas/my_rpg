@@ -43,7 +43,7 @@ region_t *load_region(region_t *region)
     // region parsing
     region->background = sfSprite_create();
     region->foreground = sfSprite_create();
-    region->collision = sfSprite_create();
+    region->collision = sfImage_createFromFile("assets/images/regions/start_collision.png");
     SET_SPRITE_IMG(region->background, "assets/images/regions/start_background.png");
     sfSprite_setScale(region->background, (sfVector2f){4, 4});
 }

@@ -19,7 +19,7 @@
         int id;
         sfSprite *background;
         sfSprite *foreground;
-        sfSprite *collision;
+        sfImage *collision;
         linked_list_t *entities;
         struct regions_s *left;
         struct regions_s *right;
