@@ -36,7 +36,7 @@
         sfEvent event;
     } game_t;
 
-    #define SET_SPRITE_IMG(sprite, img) (sfSprite_setTexture(sprite, \
-        sfTexture_createFromFile(img, NULL), sfFalse))
+    #define SET_SPRITE_IMG(sprite, img, area) (sfSprite_setTexture(sprite, \
+        sfTexture_createFromFile(img, area), sfFalse))
 
 #endif /* !GAME_H_ */
