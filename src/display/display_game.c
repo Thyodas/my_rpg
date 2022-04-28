@@ -21,22 +21,24 @@ void init_game(game_t *game)
     game->play = malloc(sizeof(play_t));
     option_t option = {
         NULL,
-        (sfVector2f){5.0, 5.0},
-        (sfVector2f){960.0, 540.0},
+        (sfVector2f){4.0, 4.0},
+        (sfVector2f){960.0, 700.0},
         (sfIntRect){0, 0, 24, 24},
         24,
     };
     game->play->player = init_player(option);
+    init_all_regions(game);
 }
 
 void game(game_t *game)
 {
-    sfEvent event;
-
     // play_animate_sprites(game);
-    while (sfRenderWindow_pollEvent(game->window, &event))
-        play_events_handler(game, event);
+    while (sfRenderWindow_pollEvent(game->window, &game->event))
+        play_events_handler(game, game->event);
+    play_keyboard_events_handler(game);
     sfRenderWindow_clear(game->window, sfBlack);
+
+    draw_region(game, game->play->current_region);
 
     draw_entity(game, game->play->player);
 

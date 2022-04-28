@@ -8,6 +8,8 @@
 #include "rpg.h"
 #include <stdio.h>
 
+bool check_player_region_collision(game_t *game, float shift_x, float shift_y);
+
 void play_animate_sprites(game_t *game)
 {
     // Sprite animation every 0.25 seconds
@@ -19,17 +21,18 @@ void play_animate_sprites(game_t *game)
     }
 }
 
-static void move_player(game_t *game, int text_pos, float shift_x, float shift_y)
+static void move_player(game_t *game, int text_pos, float shift_x,
+float shift_y)
 {
+    if (check_player_region_collision(game, shift_x, shift_y))
+        return;
     set_text_from_textures(game->play->player, text_pos);
     sfSprite_move(game->play->player->sprite, (sfVector2f){shift_x, shift_y});
     play_animate_sprites(game);
 }
 
-static void play_keyboard_events_handler(game_t *game, sfEvent event)
+void play_keyboard_events_handler(game_t *game)
 {
-    sfVector2f pos = sfSprite_getPosition(game->play->player->sprite);
-
     if (sfKeyboard_isKeyPressed(sfKeyQ)) {
         move_player(game, 0, -10, 0);
     }
@@ -48,7 +51,4 @@ void play_events_handler(game_t *game, sfEvent event)
 {
     // Replace cursor by custom cursor (do not remove)
     check_mouse_movement(game, event);
-
-    if (event.type == sfEvtKeyPressed)
-        play_keyboard_events_handler(game, event);
 }
