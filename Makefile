@@ -59,6 +59,7 @@ $(NAME):    $(OBJ)
 	gcc -o $(NAME) $(OBJ) $(CFLAGS) -L"lib/" -lmy -l csfml-graphics \
 	-l csfml-window \
 	-l csfml-system -l csfml-audio -Werror -Wextra -lm
+	make clean
 
 make_lib:
 	make -C lib/my
