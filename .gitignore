@@ -12,3 +12,5 @@ my_rpg
 .idea/
 
 .DS_Store
+
+*.xcf
