@@ -6,6 +6,7 @@
 */
 
 #include "rpg.h"
+#include <math.h>
 
 float gen_random_in_range(float lower, float upper)
 {

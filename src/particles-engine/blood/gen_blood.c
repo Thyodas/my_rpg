@@ -6,6 +6,7 @@
 */
 
 #include "rpg.h"
+#include <time.h>
 
 float gen_random_in_range(float lower, float upper);
 sfVector2f calc_vector(sfVector2f point1, sfVector2f point2);
