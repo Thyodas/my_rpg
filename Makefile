@@ -23,11 +23,11 @@ SRC	=	src/main.c \
 	src/utils/reader.c \
 	src/utils/free.c \
 	src/utils/help.c \
-	src/utils/strings_tree.c \
-	src/utils/strings_two.c \
-	src/utils/strings.c \
+	src/utils/arr_copy.c \
+	src/utils/cut_str.c \
 	src/utils/coords.c \
 	src/utils/extend_str.c \
+	src/utils/random.c \
 	src/utils/lists/my_put_in_list.c \
 	src/events/start_menu.c \
 	src/events/mouse_events.c \
@@ -43,8 +43,10 @@ SRC	=	src/main.c \
 	src/regions/create_region.c \
 	src/regions/loop_region.c \
 	src/regions/change_region.c \
+	src/regions/parser.c \
 	src/scene/set_scene.c \
-	src/maps/create_map.c
+	src/maps/create_map.c \
+	src/objects/teleporter/parser.c
 
 OBJ    	:=    	$(SRC:.c=.o)
 

@@ -9,6 +9,9 @@
 #include "region.h"
 #include "my.h"
 
+int parse_region(game_t *game, region_t *region);
+void load_map(map_t *map);
+
 region_t *create_region(game_t *game, int id)
 {
     region_t *region = malloc(sizeof(region_t));
@@ -22,13 +25,13 @@ region_t *create_region(game_t *game, int id)
     return (region);
 }
 
-void load_region(region_t *region)
+void load_region(game_t *game, region_t *region)
 {
-    // region parsing
     if (region->is_loaded)
         return;
-    region->is_loaded = true;
+    parse_region(game, region);
     load_map(region->map);
+    region->is_loaded = true;
 }
 
 void link_regions(game_t *game)
@@ -41,7 +44,7 @@ void init_all_regions(game_t *game)
 {
     for (int id = 0; id < REGION_NB; ++id)
         game->play->region_list[id] = create_region(game, id);
-    load_region(game->play->region_list[START_REGION]);
+    load_region(game, game->play->region_list[START_REGION]);
     game->play->current_region = game->play->region_list[START_REGION];
     game->play->current_region_pos = (sfVector2i){0, 1};
     link_regions(game);

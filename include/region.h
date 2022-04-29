@@ -20,13 +20,6 @@
     #include <SFML/Window.h>
     #include <SFML/Audio.h>
     #include "mylist.h"
-
-    typedef enum {
-        SWORD,
-        CRAB,
-        FISH
-    } id_entity_e;
-
     #include "map.h"
 
     typedef struct regions_s {
@@ -41,8 +34,8 @@
     } region_t;
 
     const static char *REGION_PATH[] = {
-        "start",
-        "mine"
+        "data/regions/start.region",
+        "data/regions/mine.region"
     };
 
     enum {
@@ -55,13 +48,5 @@
         0, // Start_region (id 0) is linked to map id 0 (base map)
         0,
     };
-
-    typedef struct {
-        int x1;
-        int y1;
-        int x2;
-        int y2;
-        id_entity_e id;
-    } object_t;
 
 #endif /* !REGION_H_ */

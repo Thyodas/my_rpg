@@ -59,7 +59,6 @@ void start_menu(game_t *game)
 
     // if (game->start_menu->help_clicked == 1)
         // draw_entity(game, game->start_menu->help_menu);
-
     draw_entity(game, game->start_menu->new_game);
     draw_entity(game, game->start_menu->play);
     draw_entity(game, game->start_menu->exit);
