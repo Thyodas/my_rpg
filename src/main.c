@@ -37,6 +37,27 @@ static void error_handler(int argc, char **argv)
     // TODO check si y'a pas d'entré
 }
 
+//      ,-.                ,-.             ,-.  
+//      `-'                `-'             `-'  
+//      /|\                /|\             /|\  
+//       |                  |               |   
+//      / \                / \             / \  
+//   Guillaume            Jean            Mehdy 
+//       |  T'es cringe    |                |   
+//       |<----------------|                |   
+//       |                 |                |   
+//       |       tg        |                |   
+//       |---------------->|                |   
+//       |                 |                |   
+//       |                 | Oui papa sucre |   
+//       |                 | <--------------|   
+//   Guillaume            Jean            Mehdy 
+//      ,-.                ,-.             ,-.  
+//      `-'                `-'             `-'  
+//      /|\                /|\             /|\  
+//       |                  |               |   
+//      / \                / \             / \  
+
 int main(int argc, char **argv)
 {
     game_t game;
