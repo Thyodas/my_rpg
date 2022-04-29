@@ -22,5 +22,6 @@ int get_random_seed(void)
     int seed = 0;
     for (int i = 0; i < 10; ++i)
         seed += buffer[i];
+    close(fd);
     return seed;
 }

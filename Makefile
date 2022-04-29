@@ -20,7 +20,6 @@ SRC	=	src/main.c \
 	src/init/data.c \
 	src/interactions/is_hit.c \
 	src/interactions/player_region_collision.c \
-	src/utils/reader.c \
 	src/utils/free.c \
 	src/utils/help.c \
 	src/utils/arr_copy.c \

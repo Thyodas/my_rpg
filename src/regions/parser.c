@@ -49,4 +49,5 @@ int parse_region(game_t *game, region_t *region)
             continue;
         PARSE_OBJECT[object_id](game, region, &args[1]);
     }
+    fclose(file);
 }
