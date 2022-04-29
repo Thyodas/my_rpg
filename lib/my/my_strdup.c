@@ -19,5 +19,6 @@ char *my_strdup(char const *src)
         result[index] = src[index];
         index++;
     }
+    result[index] = '\0';
     return (result);
 }

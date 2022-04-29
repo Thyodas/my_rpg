@@ -13,7 +13,7 @@ float gen_random_in_range(float lower, float upper);
 static sfVertex gen_random_vertex(void)
 {
     int x_rand = rand() % 1920;
-    int y_rand = rand() % 50 - 50;
+    int y_rand = rand() % 1080;
     sfVertex vertex;
 
     vertex.position.x = x_rand;

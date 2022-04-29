@@ -10,7 +10,7 @@
 #include "my.h"
 
 int parse_region(game_t *game, region_t *region);
-void load_map(map_t *map);
+void load_map(game_t *game, map_t *map);
 
 region_t *create_region(game_t *game, int id)
 {
@@ -30,8 +30,11 @@ void load_region(game_t *game, region_t *region)
 {
     if (region->is_loaded)
         return;
+    if (game->debug_mode)
+        my_fprintf(2, "Loading region ID '%d' '%s'\n", region->id,
+            REGION_PATH[region->id]);
     parse_region(game, region);
-    load_map(region->map);
+    load_map(game, region->map);
     region->is_loaded = true;
 }
 

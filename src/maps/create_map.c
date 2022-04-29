@@ -7,6 +7,7 @@
 
 #include "game.h"
 #include "map.h"
+#include "my.h"
 
 char *extend_string(char *first, char *second);
 
@@ -21,11 +22,13 @@ map_t *create_map(int id)
     return (map);
 }
 
-void load_map(map_t *map)
+void load_map(game_t *game, map_t *map)
 {
     if (map->is_loaded)
         return;
     char *path = (char *)MAP_PATH[map->id];
+    if (game->debug_mode)
+        my_fprintf(2, "Loading map ID '%d' '%s'\n", map->id, path);
     map->background = sfSprite_create();
     map->foreground = sfSprite_create();
     map->collision = sfImage_createFromFile(

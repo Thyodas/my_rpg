@@ -30,6 +30,7 @@ void draw_region(game_t *game, region_t *region)
     sfTexture *texture = sfTexture_createFromImage(region->map->collision,
         NULL);
     sfSprite_setTexture(collision, texture, false);
+    sfSprite_setColor(collision, (sfColor){255, 255, 255, 100});
     sfRenderWindow_drawSprite(game->window, collision, NULL);
     sfTexture_destroy(texture);
 }
