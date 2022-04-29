@@ -19,6 +19,7 @@
     #include <SFML/System.h>
     #include <SFML/Window.h>
     #include <SFML/Audio.h>
+    #include <stdbool.h>
 
     typedef struct play_s {
         entity_t *player;
@@ -38,6 +39,7 @@
         start_menu_t *start_menu;
         play_t *play;
         sfEvent event;
+        bool debug_mode;
     } game_t;
 
     #define SET_SPRITE_IMG(sprite, img, area) (sfSprite_setTexture(sprite, \
