@@ -5,7 +5,7 @@
 ** my_merge
 */
 
-#include "../../../include/mylist.h"
+#include "mylist.h"
 
 void my_concat_list(linked_list_t **begin1 , linked_list_t *begin2);
 

@@ -9,6 +9,8 @@
     #define ENTITY_H_
 
     #include "mylist.h"
+    #include <SFML/Graphics.h>
+    #include <SFML/System.h>
 
     typedef struct entity_s {
         sfSprite *sprite;

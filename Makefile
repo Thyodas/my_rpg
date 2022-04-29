@@ -5,15 +5,15 @@
 ## Makefile
 ##
 
-SRC		=		$(shell find src/ -name "*.c")
+SRC		:=		$(shell find src/ -name "*.c")
 
-OBJ    	=    	$(SRC:.c=.o)
+OBJ    	:=    	$(SRC:.c=.o)
 
-INCDIR 	= 		include
+INCDIR 	:= 		./include
 
-CFLAGS 	= 		-I $(INCDIR) -g
+CFLAGS 	:= 		-I$(INCDIR) -ggdb3 -O1
 
-NAME 	=     	my_rpg
+NAME 	:=     	my_rpg
 
 
 all: $(NAME)
