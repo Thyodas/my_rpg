@@ -18,7 +18,6 @@ SRC	=	src/main.c \
 	src/init/time.c \
 	src/init/emitter.c \
 	src/init/data.c \
-	src/parser.c \
 	src/interactions/is_hit.c \
 	src/interactions/player_region_collision.c \
 	src/utils/reader.c \
@@ -28,6 +27,7 @@ SRC	=	src/main.c \
 	src/utils/strings_two.c \
 	src/utils/strings.c \
 	src/utils/coords.c \
+	src/utils/extend_str.c \
 	src/utils/lists/my_put_in_list.c \
 	src/events/start_menu.c \
 	src/events/mouse_events.c \
@@ -43,7 +43,8 @@ SRC	=	src/main.c \
 	src/regions/create_region.c \
 	src/regions/loop_region.c \
 	src/regions/change_region.c \
-	src/scene/set_scene.c
+	src/scene/set_scene.c \
+	src/maps/create_map.c
 
 OBJ    	:=    	$(SRC:.c=.o)
 

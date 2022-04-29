@@ -20,7 +20,7 @@ static int *new_int_array(int size)
     array[NB_MAX_INFO] = -1;
 }
 
-static void add_enemy(regions_t *region, char *line)
+static void add_enemy(region_t *region, char *line)
 {
     linked_list_t *entity = malloc(sizeof(linked_list_t));
     object_t *new_enemy = malloc(sizeof(object_t));
@@ -36,7 +36,7 @@ static void add_enemy(regions_t *region, char *line)
     return;
 }
 
-static void add_object(regions_t *region, char *line)
+static void add_object(region_t *region, char *line)
 {
     linked_list_t *entity = malloc(sizeof(linked_list_t));
     object_t *object = malloc(sizeof(object_t));
@@ -49,17 +49,17 @@ static void add_object(regions_t *region, char *line)
     region->entities = entity;
 }
 
-static void set_region_id(regions_t *region, char *line)
+static void set_region_id(region_t *region, char *line)
 {
     return;
 }
 
 int read_data(char *region_path)
 {
-    void (*init_region[3])(regions_t *, char *) = {
+    void (*init_region[3])(region_t *, char *) = {
         set_region_id, add_enemy, add_object
     };
-    regions_t *region = malloc(sizeof(regions_t));
+    region_t *region = malloc(sizeof(region_t));
     char *line = NULL;
     size_t size = 0;
     size_t tmp = -1;

@@ -24,7 +24,7 @@ bool is_pixel_colliding(game_t *game, sfFloatRect *player_bounds, int y)
 {
     for (int x = player_bounds->left; x < player_bounds->width
         + player_bounds->left; ++x) {
-        if (is_pixel_red(game->play->collision, x, y)) {
+        if (is_pixel_red(game->play->current_region->map->collision, x, y)) {
             return true;
         }
     }
@@ -56,13 +56,13 @@ bool check_region_bound(game_t *game, sfFloatRect *player_bounds)
     return ((player_bounds->top
         < game->play->current_region_pos.y * REGION_SIZE_Y
         && game->play->current_region->top == NULL)
-        || (player_bounds->top + player_bounds->height / 2
+        || (player_bounds->top + player_bounds->height
         > (game->play->current_region_pos.y + 1) * REGION_SIZE_Y
         && game->play->current_region->bottom == NULL)
         || (player_bounds->left
         < game->play->current_region_pos.x * REGION_SIZE_X
         && game->play->current_region->left == NULL)
-        || (player_bounds->left + player_bounds->width / 2
+        || (player_bounds->left + player_bounds->width
         > (game->play->current_region_pos.x + 1) * REGION_SIZE_X
         && game->play->current_region->right == NULL));
 }

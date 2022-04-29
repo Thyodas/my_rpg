@@ -1,0 +1,37 @@
+/*
+** EPITECH PROJECT, 2022
+** myrpg
+** File description:
+** map
+*/
+
+#ifndef MAP_H_
+    #define MAP_H_
+
+    #include "mylist.h"
+    #include <stdbool.h>
+    #include <SFML/Graphics.h>
+    #include <SFML/System.h>
+    #include <SFML/Window.h>
+    #include <SFML/Audio.h>
+
+    typedef struct map_s {
+        int id;
+        bool is_loaded;
+        sfSprite *background;
+        sfSprite *foreground;
+        sfImage *collision;
+    } map_t;
+
+    const static char *MAP_PATH[] = {
+        "assets/images/maps/base/",
+        "assets/images/maps/start_house_interior/"
+    };
+
+    enum {
+        BASE_MAP,
+        START_HOUSE_MAP,
+        MAP_NB
+    };
+
+#endif /* !MAP_H_ */

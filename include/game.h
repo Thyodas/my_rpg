@@ -14,6 +14,7 @@
     #include "particles.h"
     #include "entity.h"
     #include "region.h"
+    #include "map.h"
     #include <SFML/Graphics.h>
     #include <SFML/System.h>
     #include <SFML/Window.h>
@@ -24,9 +25,7 @@
         region_t *region_list[REGION_NB];
         region_t *start_region;
         region_t *current_region;
-        sfSprite *background;
-        sfSprite *foreground;
-        sfImage *collision;
+        map_t *map_list[MAP_NB];
         sfVector2i current_region_pos;
         sfView *view;
     } play_t;

@@ -14,12 +14,14 @@ void start_menu_animate_sprites(game_t *game);
 void init_waves_start_menu(game_t *game, option_t option);
 entity_t *init_player(option_t option);
 void play_events_handler(game_t *game, sfEvent event);
+void init_all_maps(game_t *game);
 
 void init_game(game_t *game)
 {
     // game->clock = init_clock(); TODO start 60 secs clocks
     game->play = malloc(sizeof(play_t));
     game->play->view = NULL;
+    init_all_maps(game);
     init_all_regions(game);
 
     option_t option = {

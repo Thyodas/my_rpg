@@ -16,3 +16,7 @@ my_rpg
 *.xcf
 
 assets/images/regions/sources/
+
+*.tmx
+
+assets/images/maps/sources/
