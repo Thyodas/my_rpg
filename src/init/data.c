@@ -10,9 +10,9 @@
 cursor_t *init_cursor(sfRenderWindow *window);
 sfRenderWindow *init_window(void);
 
-void init_data(game_t *data)
+void init_data(game_t *game)
 {
-    data->current_scene = 0;
-    data->window = init_window();
-    data->cursor = init_cursor(data->window);
+    game->current_scene = 0;
+    game->window = init_window();
+    game->cursor = init_cursor(game->window);
 }

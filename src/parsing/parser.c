@@ -20,34 +20,46 @@ static int *new_int_array(int size)
     array[4] = -1;
 }
 
-static void add_enemy(region_t *region, char *line)
+static void add_enemy(regions_t *region, char *line)
 {
-    l_enemy_t *new_enemy = malloc(sizeof(l_enemy_t));
-    new_enemy->data = new_int_array(5);
+    linked_list_t *entity = malloc(sizeof(linked_list_t));
+    object_t *new_enemy = malloc(sizeof(object_t));
+
+    new_enemy->id = line[0] >= '0' && line[0] <= '9'? line[0] - '0': NULL;
+    new_enemy->x1 = line[1];
+    new_enemy->y1 = line[2];
+    new_enemy->x2 = line[3];
+    new_enemy->y2 = line[4];
+    entity->next = region->entities;
+    entity->data = new_enemy;
+    region->entities = entity;
     return;
 }
 
-static void add_object(region_t *region, char *line)
+static void add_object(regions_t *region, char *line)
 {
+    linked_list_t *entity = malloc(sizeof(linked_list_t));
     object_t *object = malloc(sizeof(object_t));
 
     object->id = line[0];
     object->x1 = line[1];
     object->y1 = line[2];
+    entity->next = region->entities;
+    entity->data = object;
+    region->entities = entity;
 }
 
-static void set_region_pos(region_t *region, char *line)
+static void set_region_id(regions_t *region, char *line)
 {
-    region->x = my_getnbr(&line[0]);
-    region->y = my_getnbr(&line[2]);
+    return;
 }
 
 int read_data(char *region_path)
 {
-    void (*init_region[3])(region_t *, char *) = {
-        set_region_pos, add_enemy, add_object
+    void (*init_region[3])(regions_t *, char *) = {
+        set_region_id, add_enemy, add_object
     };
-    region_t *region = malloc(sizeof(region_t));
+    regions_t *region = malloc(sizeof(regions_t));
     char *line = NULL;
     size_t size = 0;
     size_t tmp = -1;

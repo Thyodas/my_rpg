@@ -14,6 +14,8 @@ void init_game(game_t *game);
 void init_start_menu(game_t *game);
 void start_menu(game_t *game);
 void game(game_t *game);
+void set_menu_scene(game_t *game);
+void set_game_scene(game_t *game);
 
 void (* const scene[])(game_t *game) = {
         &start_menu,
@@ -24,8 +26,10 @@ static void start_game(game_t *game)
 {
     init_start_menu(game);
     init_game(game);
-    while (sfRenderWindow_isOpen(game->window))
+    set_menu_scene(game);
+    while (sfRenderWindow_isOpen(game->window)) {
         scene[game->current_scene](game);
+    }
 }
 
 static void error_handler(int argc, char **argv)

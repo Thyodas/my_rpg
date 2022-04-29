@@ -7,6 +7,8 @@
 
 #include "rpg.h"
 
+void set_game_scene(game_t *game);
+
 void start_menu_animate_sprites(game_t *game)
 {
     // Sprite animation every 0.25 seconds
@@ -26,10 +28,10 @@ void start_menu_events_handler(game_t *game, sfEvent event)
     if (event.type == sfEvtMouseButtonReleased) {
         if (is_hit(game->start_menu->exit, game->cursor, 34.0, 16.0)) {
             // TODO free data
-            exit(0);
+            return;
         }
         if (is_hit(game->start_menu->new_game, game->cursor, 60.0, 16.0)) {
-            game->current_scene = 1;
+            set_game_scene(game);
         }
     }
 }
