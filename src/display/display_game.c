@@ -15,6 +15,7 @@ void init_waves_start_menu(game_t *game, option_t option);
 entity_t *init_player(option_t option);
 void play_events_handler(game_t *game, sfEvent event);
 void init_all_maps(game_t *game);
+void handle_region(game_t *game);
 
 void init_game(game_t *game)
 {
@@ -42,7 +43,7 @@ void game(game_t *game)
         play_events_handler(game, game->event);
     play_keyboard_events_handler(game);
     sfRenderWindow_clear(game->window, sfBlack);
-
+    handle_region(game);
     draw_region(game, game->play->current_region);
 
     // draw_cursor(game->window, game->cursor);

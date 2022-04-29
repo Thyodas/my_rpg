@@ -42,11 +42,11 @@ int parse_region(game_t *game, region_t *region)
         line[my_strlen(line) - 1] = line[my_strlen(line) - 1] == '\n' ?
             '\0' : line[my_strlen(line) - 1];
         args = cut_str(line, " ");
-        if (args == NULL || args[0] == NULL)
+        if (args == NULL || args[0] == NULL || !my_str_isnum(args[0]))
             continue;
         object_id = my_getnbr(args[0]);
         if (object_id < 0 || object_id >= OBJECT_NB)
-            return -1;
+            continue;
         PARSE_OBJECT[object_id](game, region, &args[1]);
     }
 }

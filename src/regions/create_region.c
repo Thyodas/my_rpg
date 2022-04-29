@@ -21,6 +21,7 @@ region_t *create_region(game_t *game, int id)
     region->right = NULL;
     region->left = NULL;
     region->bottom = NULL;
+    region->objects = NULL;
     region->map = game->play->map_list[REGION_MAP_JMP_TABLE[id]];
     return (region);
 }
