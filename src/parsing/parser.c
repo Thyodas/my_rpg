@@ -15,9 +15,9 @@ static int *new_int_array(int size)
 {
     int *array = malloc(sizeof(int) * (NB_MAX_INFO + 1));
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i <= NB_MAX_INFO; i++)
         array[i] = 0;
-    array[4] = -1;
+    array[NB_MAX_INFO] = -1;
 }
 
 static void add_enemy(regions_t *region, char *line)
@@ -26,10 +26,10 @@ static void add_enemy(regions_t *region, char *line)
     object_t *new_enemy = malloc(sizeof(object_t));
 
     new_enemy->id = line[0] >= '0' && line[0] <= '9'? line[0] - '0': NULL;
-    new_enemy->x1 = line[1];
-    new_enemy->y1 = line[2];
-    new_enemy->x2 = line[3];
-    new_enemy->y2 = line[4];
+    new_enemy->x1 = my_getnbr(line[1]);
+    new_enemy->y1 = my_getnbr(line[2]);
+    new_enemy->x2 = my_getnbr(line[3]);
+    new_enemy->y2 = my_getnbr(line[4]);
     entity->next = region->entities;
     entity->data = new_enemy;
     region->entities = entity;
@@ -41,9 +41,9 @@ static void add_object(regions_t *region, char *line)
     linked_list_t *entity = malloc(sizeof(linked_list_t));
     object_t *object = malloc(sizeof(object_t));
 
-    object->id = line[0];
-    object->x1 = line[1];
-    object->y1 = line[2];
+    object->id = my_getnbr(line[0]);
+    object->x1 = my_getnbr(line[1]);
+    object->y1 = my_getnbr(line[2]);
     entity->next = region->entities;
     entity->data = object;
     region->entities = entity;
