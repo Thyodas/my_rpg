@@ -6,6 +6,7 @@
 */
 
 #include <stdlib.h>
+#include "my.h"
 
 char *extend_string(char *first, char *second)
 {
