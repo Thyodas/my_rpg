@@ -25,12 +25,14 @@
 
     const static char *MAP_PATH[] = {
         "assets/images/maps/base/",
-        "assets/images/maps/start_house_interior/"
+        "assets/images/maps/start_house_interior/",
+        "assets/images/maps/mine_interior/"
     };
 
     enum {
         BASE_MAP,
         START_HOUSE_MAP,
+        MINE_INTERIOR_MAP,
         MAP_NB
     };
 

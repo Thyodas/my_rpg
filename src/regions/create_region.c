@@ -37,8 +37,14 @@ void load_region(game_t *game, region_t *region)
 
 void link_regions(game_t *game)
 {
-    game->play->region_list[START_REGION]->top = game->play->region_list[MINE_REGION];
-    game->play->region_list[MINE_REGION]->bottom = game->play->region_list[START_REGION];
+    game->play->region_list[START_REGION]->top =
+        game->play->region_list[MINE_REGION];
+    game->play->region_list[MINE_REGION]->bottom =
+        game->play->region_list[START_REGION];
+    game->play->region_list[MINE_INTERIOR_TOP]->bottom =
+        game->play->region_list[MINE_INTERIOR_BOTTOM];
+    game->play->region_list[MINE_INTERIOR_BOTTOM]->top =
+        game->play->region_list[MINE_INTERIOR_TOP];
 }
 
 void init_all_regions(game_t *game)
