@@ -46,7 +46,11 @@ SRC	=	src/main.c \
 	src/regions/parser.c \
 	src/scene/set_scene.c \
 	src/maps/create_map.c \
-	src/objects/teleporter/parser.c
+	src/objects/create_object.c \
+	src/objects/teleporter/parser.c \
+	src/objects/teleporter/draw.c \
+	src/objects/teleporter/create.c \
+	src/objects/teleporter/handler.c
 
 OBJ    	:=    	$(SRC:.c=.o)
 

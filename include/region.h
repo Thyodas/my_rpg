@@ -24,7 +24,7 @@
 
     typedef struct regions_s {
         int id;
-        linked_list_t *entities;
+        linked_list_t *objects;
         struct regions_s *left;
         struct regions_s *right;
         struct regions_s *top;
@@ -35,18 +35,21 @@
 
     const static char *REGION_PATH[] = {
         "data/regions/start.region",
-        "data/regions/mine.region"
+        "data/regions/mine.region",
+        "data/regions/start_house_interior.region"
     };
 
     enum {
         START_REGION,
         MINE_REGION,
+        START_HOUSE_INTERIOR,
         REGION_NB
     };
 
     const static int REGION_MAP_JMP_TABLE[REGION_NB] = {
         0, // Start_region (id 0) is linked to map id 0 (base map)
         0,
+        1,
     };
 
 #endif /* !REGION_H_ */
