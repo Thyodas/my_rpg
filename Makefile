@@ -5,9 +5,6 @@
 ## Makefile
 ##
 
-<<<<<<< HEAD
-SRC		:=		$(shell find src/ -name "*.c")
-=======
 SRC	=	src/main.c \
 	src/display/display_game.c \
 	src/display/display_start_menu.c \
@@ -47,7 +44,6 @@ SRC	=	src/main.c \
 	src/regions/loop_region.c \
 	src/regions/change_region.c \
 	src/scene/set_scene.c
->>>>>>> 4d633ed3faba0f26a8388c66ed0832f984d78479
 
 OBJ    	:=    	$(SRC:.c=.o)
 
