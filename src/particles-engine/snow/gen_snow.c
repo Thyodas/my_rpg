@@ -6,8 +6,8 @@
 */
 
 #include "rpg.h"
-#include <time.h>
 
+int get_random_seed(void);
 float gen_random_in_range(float lower, float upper);
 
 static sfVertex gen_random_vertex(void)
@@ -26,7 +26,7 @@ static sfVertex gen_random_vertex(void)
 
 static void gen_flakes(particles_t *particles, int nb_flakes)
 {
-    srand(time(NULL));
+    srand(get_random_seed());
     for (int i = 0; i < nb_flakes; ++i) {
         particles_t part;
         part.vertex = gen_random_vertex();

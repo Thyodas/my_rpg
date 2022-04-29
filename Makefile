@@ -28,6 +28,7 @@ SRC	=	src/main.c \
 	src/utils/strings.c \
 	src/utils/coords.c \
 	src/utils/extend_str.c \
+	src/utils/random.c \
 	src/utils/lists/my_put_in_list.c \
 	src/events/start_menu.c \
 	src/events/mouse_events.c \

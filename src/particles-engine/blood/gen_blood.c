@@ -6,8 +6,8 @@
 */
 
 #include "rpg.h"
-#include <time.h>
 
+int get_random_seed(void);
 float gen_random_in_range(float lower, float upper);
 sfVector2f calc_vector(sfVector2f point1, sfVector2f point2);
 
@@ -44,7 +44,7 @@ static particles_t init_blood_part(sfVertex center)
 
 static void gen_splatter(particles_t *particles, int nb_splat, sfVector2f pos)
 {
-    srand(time(NULL));
+    srand(get_random_seed());
     particles[0] = init_center(pos.x, pos.y);
     for (int i = 1; i < nb_splat; ++i)
         particles[i] = init_blood_part(particles[0].vertex);
