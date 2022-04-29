@@ -25,7 +25,7 @@ void load_map(map_t *map)
 {
     if (map->is_loaded)
         return;
-    char *path = MAP_PATH[map->id];
+    char *path = (char *)MAP_PATH[map->id];
     map->background = sfSprite_create();
     map->foreground = sfSprite_create();
     map->collision = sfImage_createFromFile(

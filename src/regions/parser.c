@@ -13,7 +13,7 @@
 #include "object.h"
 #include "my.h"
 
-char **cut_str(char *input, char delimiter);
+char **cut_str(char *input, char *delimiter);
 void parse_teleporter(game_t *game, region_t *region, char **args);
 
 void (* const PARSE_OBJECT[])(game_t *, region_t *, char **) = {
@@ -39,7 +39,9 @@ int parse_region(game_t *game, region_t *region)
     if (file == NULL)
         return -1;
     while (getline(&line, &size, file) != -1) {
-        args = cut_str(line, ' ');
+        line[my_strlen(line) - 1] = line[my_strlen(line) - 1] == '\n' ?
+            '\0' : line[my_strlen(line) - 1];
+        args = cut_str(line, " ");
         if (args == NULL || args[0] == NULL)
             continue;
         object_id = my_getnbr(args[0]);

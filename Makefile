@@ -23,9 +23,8 @@ SRC	=	src/main.c \
 	src/utils/reader.c \
 	src/utils/free.c \
 	src/utils/help.c \
-	src/utils/strings_tree.c \
-	src/utils/strings_two.c \
-	src/utils/strings.c \
+	src/utils/arr_copy.c \
+	src/utils/cut_str.c \
 	src/utils/coords.c \
 	src/utils/extend_str.c \
 	src/utils/random.c \
