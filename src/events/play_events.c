@@ -53,4 +53,6 @@ void play_events_handler(game_t *game, sfEvent event)
 {
     // Replace cursor by custom cursor (do not remove)
     check_mouse_movement(game, event);
+    if (event.type == sfEvtClosed)
+        sfRenderWindow_close(game->window);
 }
