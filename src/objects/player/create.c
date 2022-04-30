@@ -15,8 +15,7 @@ object_t *create_player_object(option_t option)
     object_t *object = malloc(sizeof(object_t));
     entity_t entity;
     entity.sprite = sfSprite_create();
-    entity.texture =
-        sfTexture_createFromFile(option.path, NULL);
+    entity.texture = sfTexture_createFromFile(option.path, NULL);
     entity.spritesheet_width = option.spritesheet_width;
     entity.spritesheet_height = option.spritesheet_height;
     player->speed = 150;
