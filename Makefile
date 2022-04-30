@@ -55,6 +55,9 @@ OBJ    	:=    	$(SRC:.c=.o)
 
 INCDIR 	:= 		./include
 
+LIB		:=		-l csfml-graphics -l csfml-window\
+				-l csfml-system -l csfml-audio
+
 CFLAGS 	:= 		-I$(INCDIR) -ggdb3 -O1
 
 NAME 	:=     	my_rpg
@@ -64,9 +67,7 @@ all: $(NAME)
 
 $(NAME):    $(OBJ)
 	make -C lib/my
-	gcc -o $(NAME) $(OBJ) $(CFLAGS) -L"lib/" -lmy -l csfml-graphics \
-	-l csfml-window \
-	-l csfml-system -l csfml-audio -Werror -Wextra -lm
+	gcc -o $(NAME) $(OBJ) $(CFLAGS) -L"lib/" -lmy $(LIB) -Werror -Wextra -lm
 	make clean
 
 make_lib:
