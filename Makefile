@@ -8,9 +8,9 @@
 SRC	=	src/main.c \
 	src/display/display_game.c \
 	src/display/display_start_menu.c \
-	src/display/display_start_menu_two.c \
 	src/drawing/cursor.c \
 	src/drawing/entity.c \
+	src/drawing/draw_buttons.c \
 	src/init/init_player.c \
 	src/init/cursor.c \
 	src/init/window.c \
@@ -18,6 +18,8 @@ SRC	=	src/main.c \
 	src/init/time.c \
 	src/init/emitter.c \
 	src/init/data.c \
+	src/init/start_menu.c \
+	src/init/button.c \
 	src/interactions/is_hit.c \
 	src/interactions/player_region_collision.c \
 	src/utils/free.c \
@@ -28,8 +30,9 @@ SRC	=	src/main.c \
 	src/utils/extend_str.c \
 	src/utils/random.c \
 	src/utils/lists/my_put_in_list.c \
-	src/events/start_menu.c \
 	src/events/mouse_events.c \
+	src/events/buttons_event.c \
+	src/events/exit.c \
 	src/events/animation.c \
 	src/events/play_events.c \
 	src/particles-engine/snow/gen_snow.c \
