@@ -9,18 +9,6 @@
 
 float gen_random_in_range(float lower, float upper);
 
-void activate_flakes(particles_emitter_t *emitter)
-{
-    int activated = 0;
-
-    for (int i = 0; i < emitter->nb_particles && activated < 50; ++i) {
-        if (!emitter->particles[i].is_alive) {
-            emitter->particles[i].is_alive = 1;
-            activated++;
-        }
-    }
-}
-
 void update_flakes(particles_emitter_t *emitter)
 {
     float direction_x = 0;
@@ -29,11 +17,9 @@ void update_flakes(particles_emitter_t *emitter)
     for (int i = 0; i < emitter->nb_particles; ++i) {
         direction_x = emitter->particles[i].direction.x;
         direction_y = emitter->particles[i].direction.y;
-        if (emitter->particles[i].is_alive) {
-            emitter->particles[i].vertex.position.x += direction_x;
-            emitter->particles[i].vertex.position.y += direction_y;
-            emitter->particles[i].direction.x = gen_random_in_range(-0.3, 0.3);
-        }
+        emitter->particles[i].vertex.position.x += direction_x;
+        emitter->particles[i].vertex.position.y += direction_y;
+        emitter->particles[i].direction.x = gen_random_in_range(-0.3, 0.3);
         if (emitter->particles[i].vertex.position.y > 1000) {
             emitter->particles[i].is_alive = 0;
             emitter->particles[i].vertex.position.x = rand() % 1920;
