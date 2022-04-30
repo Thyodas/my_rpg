@@ -16,6 +16,8 @@ void init_all_maps(game_t *game);
 void handle_region(game_t *game);
 object_t *create_player_object(option_t option);
 
+void player_idle_animation(game_t *game);
+
 void init_game(game_t *game)
 {
     // game->clock = init_clock(); TODO start 60 secs clocks
@@ -40,7 +42,7 @@ void init_game(game_t *game)
 
 void game(game_t *game)
 {
-    // play_animate_sprites(game);
+    // player_idle_animation(game);
     while (sfRenderWindow_pollEvent(game->window, &game->event))
         play_events_handler(game, game->event);
     play_keyboard_events_handler(game);

@@ -24,13 +24,12 @@ object_t *create_player_object(option_t option)
     sfSprite_setTexture(entity.sprite, entity.texture, sfTrue);
     sfSprite_setScale(entity.sprite, option.scale);
     sfSprite_setPosition(entity.sprite, option.pos);
-    if (option.int_rect.width != -1) {
-        entity.rect = option.int_rect;
-        sfSprite_setTextureRect(entity.sprite, option.int_rect);
-    }
+    entity.rect = option.int_rect;
+    sfSprite_setTextureRect(entity.sprite, entity.rect);
     entity.spritesheet_rect_x = 16;
     entity.spritesheet_rect_y = 16;
     player->entity = entity;
     object->data = player;
+    player->entity.animation_state = IDLE_STATE;
     return (object);
 }

@@ -34,4 +34,6 @@
         void (*draw)();
     } object_t;
 
+    #define CAST_PLAYER(arg) ((player_t *)(arg))
+
 #endif /* !OBJECTS_H_ */
