@@ -5,7 +5,7 @@
 ## Makefile
 ##
 
-SRC	=	src/main.c \
+SRC	:=	src/main.c \
 	src/display/display_game.c \
 	src/display/display_start_menu.c \
 	src/drawing/cursor.c \
@@ -51,6 +51,10 @@ SRC	=	src/main.c \
 	src/objects/teleporter/create.c \
 	src/objects/teleporter/parser.c \
 	src/objects/teleporter/handler.c \
+	src/objects/enemy/draw.c \
+	src/objects/enemy/create.c \
+	src/objects/enemy/parser.c \
+	src/objects/enemy/handler.c
 	src/objects/buttons/create.c \
 	src/objects/buttons/draw_start.c \
 	src/objects/buttons/handler_start.c \
