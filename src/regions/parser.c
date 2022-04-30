@@ -29,6 +29,14 @@ static int *new_int_array(int size)
     array[NB_MAX_INFO] = -1;
 }
 
+static void execute_create_function(game_t *game, region_t *region,
+int object_id, char **args)
+{
+    if (game->debug_mode)
+         my_fprintf(1, "\tCreating object ID '%d'\n", object_id);
+    PARSE_OBJECT[object_id](game, region, &args[1]);
+}
+
 int parse_region(game_t *game, region_t *region)
 {
     char *line = NULL;
@@ -47,7 +55,7 @@ int parse_region(game_t *game, region_t *region)
         object_id = my_getnbr(args[0]);
         if (object_id < 0 || object_id >= OBJECT_NB)
             continue;
-        PARSE_OBJECT[object_id](game, region, &args[1]);
+        execute_create_function(game, region, object_id, args);
     }
     fclose(file);
 }

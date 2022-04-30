@@ -31,10 +31,10 @@ void load_region(game_t *game, region_t *region)
     if (region->is_loaded)
         return;
     if (game->debug_mode)
-        my_fprintf(2, "Loading region ID '%d' '%s'\n", region->id,
+        my_fprintf(2, "\nLoading region ID '%d' '%s'\n", region->id,
             REGION_PATH[region->id]);
-    parse_region(game, region);
     load_map(game, region->map);
+    parse_region(game, region);
     region->is_loaded = true;
 }
 

@@ -28,7 +28,7 @@ void load_map(game_t *game, map_t *map)
         return;
     char *path = (char *)MAP_PATH[map->id];
     if (game->debug_mode)
-        my_fprintf(2, "Loading map ID '%d' '%s'\n", map->id, path);
+        my_fprintf(2, "\tLoading map ID '%d' '%s'\n", map->id, path);
     map->background = sfSprite_create();
     map->foreground = sfSprite_create();
     map->collision = sfImage_createFromFile(
