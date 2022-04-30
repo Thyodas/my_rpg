@@ -29,13 +29,13 @@ void play_keyboard_events_handler(game_t *game)
         * diff;
 
     if (sfKeyboard_isKeyPressed(sfKeyQ))
-        move_player(game, 0, -new_speed, 0);
+        move_player(game, game->play->player->data, -new_speed, 0);
     if (sfKeyboard_isKeyPressed(sfKeyZ))
-        move_player(game, 1, 0, -new_speed);
+        move_player(game, game->play->player->data, 0, -new_speed);
     if (sfKeyboard_isKeyPressed(sfKeyD))
-        move_player(game, 2, new_speed, 0);
+        move_player(game, game->play->player->data, new_speed, 0);
     if (sfKeyboard_isKeyPressed(sfKeyS))
-        move_player(game, 3, 0, new_speed);
+        move_player(game, game->play->player->data, 0, new_speed);
     last_clock_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
 }
 

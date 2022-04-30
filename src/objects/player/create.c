@@ -9,11 +9,11 @@
 #include "object.h"
 #include "my.h"
 
-player_t *create_player(option_t option)
+object_t *create_player_object(option_t option)
 {
     player_t *player = malloc(sizeof(player_t));
+    object_t *object = malloc(sizeof(object_t));
     entity_t entity;
-
     entity.sprite = sfSprite_create();
     entity.texture =
         sfTexture_createFromFile(option.path, NULL);
@@ -31,5 +31,6 @@ player_t *create_player(option_t option)
     entity.spritesheet_rect_x = 16;
     entity.spritesheet_rect_y = 16;
     player->entity = entity;
-    return (player);
+    object->data = player;
+    return (object);
 }
