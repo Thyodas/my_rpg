@@ -10,6 +10,7 @@
 
     #include "region.h"
     #include "entity.h"
+    #include "inventory.h"
 
     enum id_object_type {
         TELEPORTER_OBJ,
@@ -25,6 +26,7 @@
         entity_t entity;
         int speed;
         int health;
+        inventory_t inventory;
     } player_t;
 
     typedef struct object_s {
