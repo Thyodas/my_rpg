@@ -8,10 +8,8 @@
 SRC	=	src/main.c \
 	src/display/display_game.c \
 	src/display/display_start_menu.c \
-	src/display/display_start_menu_two.c \
 	src/drawing/cursor.c \
 	src/drawing/entity.c \
-	src/init/init_player.c \
 	src/init/cursor.c \
 	src/init/window.c \
 	src/init/entity.c \
@@ -45,11 +43,13 @@ SRC	=	src/main.c \
 	src/regions/parser.c \
 	src/scene/set_scene.c \
 	src/maps/create_map.c \
+	src/objects/player/create.c \
+	src/objects/player/handler.c \
 	src/objects/create_object.c \
-	src/objects/teleporter/parser.c \
 	src/objects/teleporter/draw.c \
 	src/objects/teleporter/create.c \
-	src/objects/teleporter/handler.c
+	src/objects/teleporter/parser.c \
+	src/objects/teleporter/handler.c \
 
 OBJ    	:=    	$(SRC:.c=.o)
 

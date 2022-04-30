@@ -5,25 +5,23 @@
 ** animation
 */
 
+#include <stdio.h>
 #include "rpg.h"
 
-void rect_animation(game_t *game, entity_t *entity)
+void rect_animation_vertical(game_t *game, entity_t *entity)
 {
-    if (entity->spritesheet_rect != 0)
-        entity->rect.left += entity->spritesheet_rect;
-    if (entity->rect.left >= entity->spritesheet_width)
-        entity->rect.left = 0;
+    if (entity->spritesheet_rect_y != 0)
+        entity->rect.top += entity->spritesheet_rect_y;
+    if (entity->rect.top >= entity->spritesheet_height)
+        entity->rect.top = 0;
     sfSprite_setTextureRect(entity->sprite, entity->rect);
 }
 
-void rect_list_animation(game_t *game, linked_list_t **list)
+void rect_animation_horizontal(game_t *game, entity_t *entity)
 {
-    linked_list_t *element = *list;
-
-    while (element) {
-        rect_animation(game, element->data);
-        if (element->next == NULL)
-            break;
-        element = element->next;
-    }
+    if (entity->spritesheet_rect_x != 0)
+        entity->rect.left += entity->spritesheet_rect_x;
+    if (entity->rect.left >= entity->spritesheet_width)
+        entity->rect.left = 0;
+    sfSprite_setTextureRect(entity->sprite, entity->rect);
 }

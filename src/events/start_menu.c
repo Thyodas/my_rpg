@@ -15,7 +15,6 @@ void start_menu_animate_sprites(game_t *game)
     game->clock->time = sfClock_getElapsedTime(game->clock->clock);
     game->clock->seconds = game->clock->time.microseconds / 1000000.0;
     if (game->clock->seconds >= 0.5) {
-        rect_list_animation(game, game->start_menu->waves);
         sfClock_restart(game->clock->clock);
     }
 }

@@ -11,11 +11,12 @@
 void draw_cursor(sfRenderWindow *window, cursor_t *cursor);
 void start_menu_events_handler(game_t *game, sfEvent event);
 void start_menu_animate_sprites(game_t *game);
-void init_waves_start_menu(game_t *game, option_t option);
-entity_t *init_player(option_t option);
 void play_events_handler(game_t *game, sfEvent event);
 void init_all_maps(game_t *game);
 void handle_region(game_t *game);
+object_t *create_player_object(option_t option);
+
+void player_idle_animation(game_t *game);
 
 void init_game(game_t *game)
 {
@@ -26,19 +27,22 @@ void init_game(game_t *game)
     init_all_regions(game);
 
     option_t option = {
-        NULL,
+        "./assets/spritesheets/character.png",
         (sfVector2f){1.0, 1.0},
         (sfVector2f){REGION_SIZE_X * game->play->current_region_pos.x + 200,
             REGION_SIZE_Y * game->play->current_region_pos.y + 170},
-        (sfIntRect){0, 0, 24, 24},
-        24,
+        (sfIntRect){0, 0, 16, 16},
+        16,
+        16,
+        96,
+        96,
     };
-    game->play->player = init_player(option);
+    game->play->player = create_player_object(option);
 }
 
 void game(game_t *game)
 {
-    // play_animate_sprites(game);
+    // player_idle_animation(game);
     while (sfRenderWindow_pollEvent(game->window, &game->event))
         play_events_handler(game, game->event);
     play_keyboard_events_handler(game);
