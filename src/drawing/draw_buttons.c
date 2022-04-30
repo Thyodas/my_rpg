@@ -16,7 +16,7 @@ static sfRenderStates create_state_button(float translate, object_t *obj)
 {
     sfRenderStates state;
     state.texture = NULL;
-    state.blendMode = sfBlendAdd;
+    state.blendMode = sfBlendNone;
     state.transform = sfTransform_Identity;
     if (CAST_BUTTON(obj->data)->id_btn < 2)
         sfTransform_translate(&state.transform, translate, 0);
