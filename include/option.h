@@ -15,8 +15,10 @@
         sfVector2f scale;
         sfVector2f pos;
         sfIntRect int_rect;
-        int rect;
+        int rect_x;
+        int rect_y;
         int spritesheet_width;
+        int spritesheet_height;
     } option_t;
 
 #endif /* !OPTION_H_ */

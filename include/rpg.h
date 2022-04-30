@@ -30,19 +30,19 @@
     void draw_entity(game_t *game, entity_t *entity);
 
     /* Init */
-    entity_t *init_entity(option_t option);
+    entity_t init_entity(option_t option);
 
     /* Interactions */
-    int is_hit(entity_t *entity, cursor_t *cursor, float width, float height);
+    int is_hit(entity_t entity, cursor_t *cursor, float width, float height);
 
     /* Manipulation */
     sfVector2f move_coords(sfVector2f pos, float x, float y);
-    int set_text_from_textures(entity_t *entity, int n);
+    int set_text_from_textures(entity_t entity, int n);
 
     /* Animation */
     void check_mouse_movement(game_t *game, sfEvent event);
     void play_animate_sprites(game_t *game);
-    void rect_animation(game_t *game, entity_t *entity);
+    void rect_animation(game_t *game, entity_t entity);
     void rect_list_animation(game_t *game, linked_list_t **list);
 
     /* Regions */
@@ -51,5 +51,7 @@
 
     // Events
     void play_keyboard_events_handler(game_t *game);
+    void move_player(game_t *game, player_t *player,
+        float shift_x, float shift_y);
 
 #endif /* !RPG_H_ */

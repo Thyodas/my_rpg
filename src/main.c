@@ -9,7 +9,6 @@
 #include "rpg.h"
 
 void init_data(game_t *data);
-
 void init_game(game_t *game);
 void init_start_menu(game_t *game);
 void start_menu(game_t *game);
@@ -60,10 +59,9 @@ static void error_handler(int argc, char **argv)
 
 void arg_handler(int argc, char **argv, game_t *game)
 {
-    for (int i = 1; i < argc; ++i) {
+    for (int i = 1; i < argc; ++i)
         if (my_strcmp(argv[i], "-d") == 0 || my_strcmp(argv[i], "--debug"))
             game->debug_mode = true;
-    }
 }
 
 int main(int argc, char **argv)

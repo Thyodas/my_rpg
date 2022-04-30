@@ -22,10 +22,10 @@
 
     typedef struct start_menu_s {
         linked_list_t **waves;
-        entity_t *new_game;
-        entity_t *play;
-        entity_t *exit;
-        entity_t *help; // TODO when clicked -> help_clicked = 1;
+        entity_t new_game;
+        entity_t play;
+        entity_t exit;
+        entity_t help; // TODO when clicked -> help_clicked = 1;
         int help_clicked; // TODO 1 ? draw help_menu : remove from screen;
         entity_t *help_menu; // TODO design help menu;
         particles_emitter_t *emitter;

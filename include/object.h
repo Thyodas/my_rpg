@@ -8,7 +8,6 @@
 #ifndef OBJECTS_H_
     #define OBJECTS_H_
 
-    #include "game.h"
     #include "region.h"
     #include "entity.h"
 
@@ -22,11 +21,17 @@
         region_t *dest_region;
     } teleporter_t;
 
+    typedef struct {
+        entity_t entity;
+        int speed;
+        int health;
+    } player_t;
+
     typedef struct object_s {
         enum id_object_type id;
         void *data;
-        void (*handler)(game_t *game, struct object_s *self);
-        void (*draw)(game_t *game, struct object_s *self);
+        void (*handler)(); // TODO @Guillaume
+        void (*draw)();
     } object_t;
 
 #endif /* !OBJECTS_H_ */

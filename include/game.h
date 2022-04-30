@@ -15,6 +15,7 @@
     #include "entity.h"
     #include "region.h"
     #include "map.h"
+    #include "object.h"
     #include <SFML/Graphics.h>
     #include <SFML/System.h>
     #include <SFML/Window.h>
@@ -22,7 +23,7 @@
     #include <stdbool.h>
 
     typedef struct play_s {
-        entity_t *player;
+        object_t *player;
         region_t *region_list[REGION_NB];
         region_t *start_region;
         region_t *current_region;
