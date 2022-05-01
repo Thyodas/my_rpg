@@ -24,3 +24,10 @@ void set_menu_scene(game_t *game)
     sfRenderWindow_setView(game->window,
         sfRenderWindow_getDefaultView(game->window));
 }
+
+void set_settings_scene(game_t *game)
+{
+    game->current_scene = 2;
+    sfRenderWindow_setView(game->window,
+        sfRenderWindow_getDefaultView(game->window));
+}

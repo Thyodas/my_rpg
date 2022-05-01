@@ -8,12 +8,14 @@
 SRC	=	src/main.c \
 	src/display/display_game.c \
 	src/display/display_start_menu.c \
+	src/display/display_settings_menu.c \
 	src/drawing/cursor.c \
 	src/drawing/entity.c \
 	src/init/cursor.c \
 	src/init/window.c \
 	src/init/entity.c \
 	src/init/time.c \
+	src/init/settings_menu.c \
 	src/init/emitter.c \
 	src/init/data.c \
 	src/init/start_menu.c \
