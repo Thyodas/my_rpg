@@ -17,7 +17,8 @@ static void draw_hovering(float translate, object_t *obj, game_t *game)
     sfRenderStates state;
 
     sfSprite *sprite = sfSprite_copy(CAST_BUTTON(obj->data)->sprite);
-    sfSprite_setColor(sprite, sfWhite);
+    sfTexture *text = sfTexture_createFromImage(sfImage_createFromColor(100, 100, sfWhite), NULL);
+    sfSprite_setTexture(sprite, text, false);
     state.texture = NULL;
     state.blendMode = (sfBlendMode){sfBlendFactorOneMinusDstColor,
                         sfBlendFactorOneMinusSrcColor, sfBlendEquationAdd};
