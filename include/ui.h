@@ -21,7 +21,12 @@
         BTN_EXIT,
         BTN_HELP,
         BTN_CONTINUE,
-        NB_BUTTONS_START
+        NB_BUTTONS_START,
+        BTN_VOLUME_MUSIC,
+        BTN_VOLUME_GENERAL,
+        BTN_RESET,
+        BTN_RETURN,
+        NB_BUTTONS
     };
 
     enum button_state {

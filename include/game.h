@@ -16,6 +16,7 @@
     #include "region.h"
     #include "map.h"
     #include "object.h"
+    #include "settings.h"
     #include <SFML/Graphics.h>
     #include <SFML/System.h>
     #include <SFML/Window.h>
@@ -38,6 +39,8 @@
         my_time_t *clock;
         cursor_t *cursor;
         start_menu_t *start_menu;
+        settings_scene_t *settings_menu;
+        settings_t *settings;
         play_t *play;
         sfEvent event;
         bool debug_mode;
