@@ -9,16 +9,7 @@
 #include "object.h"
 #include "region.h"
 
-stats_t slime_stats(void) //TODO To move
-{
-    stats_t stats;
-
-    stats.damage = 1;
-    stats.life_points = 1;
-    return stats;
-}
-
-static entity_t slime_entity(option_t option)
+static entity_t init_slime_entity(option_t option)
 {
     entity_t entity;
 
@@ -37,6 +28,7 @@ static entity_t slime_entity(option_t option)
     entity.spritesheet_rect_y = 16;
     return entity;
 }
+
 enemy_t create_enemy(sfVector2i *pos, option_t option, stats_t stats)
 {
     enemy_t enemy;
