@@ -52,7 +52,11 @@ SRC	=	src/main.c \
 	src/objects/teleporter/parser.c \
 	src/objects/teleporter/draw.c \
 	src/objects/teleporter/create.c \
-	src/objects/teleporter/handler.c
+	src/objects/teleporter/handler.c \
+	src/objects/buttons/create.c \
+	src/objects/buttons/draw_start.c \
+	src/objects/buttons/handler_start.c \
+	src/objects/buttons/parser.c
 
 OBJ    	:=    	$(SRC:.c=.o)
 
