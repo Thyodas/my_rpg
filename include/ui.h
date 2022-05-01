@@ -20,6 +20,7 @@
         BTN_NEW,
         BTN_EXIT,
         BTN_HELP,
+        BTN_CONTINUE,
         NB_BUTTONS_START
     };
 
