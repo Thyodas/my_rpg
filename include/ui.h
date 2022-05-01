@@ -13,6 +13,22 @@
     #include "entity.h"
     #include "particles.h"
 
+    #define CAST_BUTTON(arg) ((button_t *)(arg))
+    #define NB_ARGS_BUTTON 6
+
+    enum buttons_start {
+        BTN_NEW,
+        BTN_EXIT,
+        BTN_HELP,
+        NB_BUTTONS_START
+    };
+
+    enum button_state {
+        IDLE,
+        HOVERED,
+        CLICKED
+    };
+
     typedef struct cursor_s {
         sfTexture *texture;
         sfSprite *sprite;
@@ -20,14 +36,15 @@
         sfVector2f pos;
     } cursor_t;
 
+    typedef struct button {
+        int id_btn;
+        sfSprite *sprite;
+        int state;
+        void (*on_click)();
+    } button_t;
+
     typedef struct start_menu_s {
-        linked_list_t **waves;
-        entity_t new_game;
-        entity_t play;
-        entity_t exit;
-        entity_t help; // TODO when clicked -> help_clicked = 1;
-        int help_clicked; // TODO 1 ? draw help_menu : remove from screen;
-        entity_t *help_menu; // TODO design help menu;
+        linked_list_t *objects;
         particles_emitter_t *emitter;
     } start_menu_t;
 
