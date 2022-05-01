@@ -14,6 +14,7 @@
     #include "particles.h"
 
     #define CAST_BUTTON(arg) ((button_t *)(arg))
+    #define NB_ARGS_BUTTON 6
 
     enum buttons_start {
         BTN_NEW,
