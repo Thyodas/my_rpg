@@ -13,11 +13,14 @@
     #include "inventory.h"
 
     #define SLIME_PATH "assets/spritesheets/slime.png"
+    #define SKELETON_PATH "assets/spritesheets/skeleton.png"
+    #define ENEMY_NB 2
 
     enum id_object_type {
         TELEPORTER_OBJ,
+        OBJECT_NB,
+        ENEMY_OBJ
         BUTTON_OBJ,
-        OBJECT_NB
     };
 
     typedef struct {
@@ -40,7 +43,7 @@
         sfVector2i pos1;
         sfVector2i pos2;
         entity_t entity;
-        stats_t *stats;
+        stats_t stats;
     } enemy_t;
 
     typedef struct {
@@ -50,7 +53,7 @@
         inventory_t inventory;
     } player_t;
 
-    typedef struct object_s {
+    typedef struct {
         enum id_object_type id;
         void *data;
         void (*handler)(); //TODO @Guillaume
