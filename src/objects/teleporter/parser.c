@@ -15,8 +15,8 @@
 teleporter_t *create_teleporter_data(region_t *dest_region, sfFloatRect area);
 object_t *create_object(enum id_object_type id, void *data, void (*handler)(),
 void (*draw)());
-void teleporter_handler(game_t *game, struct object_s *self);
-void draw_teleporter(game_t *game, struct object_s *self);
+void teleporter_handler(game_t *game, object_t *self);
+void draw_teleporter(game_t *game, object_t *self);
 
 void parse_teleporter(game_t *game, region_t *region, char **argv)
 {

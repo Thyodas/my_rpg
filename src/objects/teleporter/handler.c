@@ -12,7 +12,7 @@
 void change_region(game_t *game, region_t *current_region,
 int dir_x, int dir_y);
 
-void teleporter_handler(game_t *game, struct object_s *self)
+void teleporter_handler(game_t *game, object_t *self)
 {
     teleporter_t *teleporter = self->data;
     sfFloatRect rect = sfSprite_getGlobalBounds(

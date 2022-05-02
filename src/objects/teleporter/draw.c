@@ -8,7 +8,7 @@
 #include "game.h"
 #include "object.h"
 
-void draw_teleporter(game_t *game, struct object_s *self)
+void draw_teleporter(game_t *game, object_t *self)
 {
     if (!game->debug_mode)
         return;
