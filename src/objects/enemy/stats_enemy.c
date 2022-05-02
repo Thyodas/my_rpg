@@ -7,20 +7,20 @@
 
 #include "object.h"
 
-stats_t skeleton_stats(void)
+stats_t *skeleton_stats(void)
 {
-    stats_t stats;
+    stats_t *stats;
 
-    stats.damage = 2;
-    stats.life_points = 2;
+    stats->damage = 2;
+    stats->life_points = 2;
     return stats;
 }
 
-stats_t slime_stats(void)
+stats_t *slime_stats(void)
 {
-    stats_t stats;
+    stats_t *stats;
 
-    stats.damage = 1;
-    stats.life_points = 1;
+    stats->damage = 1;
+    stats->life_points = 1;
     return stats;
 }

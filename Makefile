@@ -5,93 +5,93 @@
 ## Makefile
 ##
 
-SRC	:=	src/main.c 														\
-	src/display/display_game.c 											\
-	src/display/display_start_menu.c 									\
-	src/drawing/cursor.c 												\
-	src/drawing/entity.c 												\
-	src/init/cursor.c 													\
-	src/init/window.c 													\
-	src/init/entity.c 													\
-	src/init/time.c 													\
-	src/init/emitter.c 													\
-	src/init/data.c 													\
-	src/interactions/is_hit.c 											\
-	src/interactions/player_region_collision.c 							\
-	src/utils/free.c 													\
-	src/utils/help.c 													\
-	src/utils/arr_copy.c 												\
-	src/utils/cut_str.c 												\
-	src/utils/coords.c 													\
-	src/utils/extend_str.c 												\
-	src/utils/random.c 													\
-	src/utils/lists/my_put_in_list.c 									\
-	src/events/start_menu.c 											\
-	src/events/mouse_events.c 											\
-	src/events/animation.c 												\
-	src/events/play_events.c 											\
-	src/particles-engine/snow/gen_snow.c 								\
-	src/particles-engine/snow/update_snow.c 							\
-	src/particles-engine/utils_particles/utils_particles.c 				\
-	src/particles-engine/draw_particles.c 								\
-	src/particles-engine/particles_engine.c 							\
-	src/particles-engine/blood/update_blood.c 							\
-	src/particles-engine/blood/gen_blood.c 								\
-	src/regions/create_region.c 										\
-	src/regions/loop_region.c 											\
-	src/regions/change_region.c 										\
-	src/regions/parser.c 												\
-	src/scene/set_scene.c 												\
-	src/maps/create_map.c 												\
-	src/objects/player/create.c 										\
-	src/objects/player/handler.c 										\
-	src/objects/create_object.c 										\
-	src/objects/teleporter/draw.c 										\
-	src/objects/teleporter/create.c 									\
-	src/objects/teleporter/parser.c 									\
-	src/objects/teleporter/handler.c 									\
-	src/objects/enemy/draw.c 											\
-	src/objects/enemy/create.c 											\
-	src/objects/enemy/parser.c 											\
-	src/objects/enemy/handler.c 										\
-	src/objects/enemy/stats_enemy.c
-	src/objects/buttons/create.c \
-	src/objects/buttons/draw_start.c \
-	src/objects/buttons/handler_start.c \
+FILE	:=	main.c 														\
+			display/display_game.c 										\
+			display/display_start_menu.c 								\
+			drawing/cursor.c 											\
+			drawing/entity.c 											\
+			init/cursor.c 												\
+			init/window.c 												\
+			init/entity.c 												\
+			init/time.c 												\
+			init/emitter.c 												\
+			init/data.c 												\
+			interactions/is_hit.c 										\
+			interactions/player_region_collision.c 						\
+			utils/free.c 												\
+			utils/help.c 												\
+			utils/arr_copy.c 											\
+			utils/cut_str.c 											\
+			utils/coords.c 												\
+			utils/extend_str.c 											\
+			utils/random.c 												\
+			utils/lists/my_put_in_list.c 								\
+			events/start_menu.c 										\
+			events/mouse_events.c 										\
+			events/animation.c 											\
+			events/play_events.c 										\
+			particles-engine/snow/gen_snow.c 							\
+			particles-engine/snow/update_snow.c 						\
+			particles-engine/utils_particles/utils_particles.c 			\
+			particles-engine/draw_particles.c 							\
+			particles-engine/particles_engine.c 						\
+			particles-engine/blood/update_blood.c 						\
+			particles-engine/blood/gen_blood.c 							\
+			regions/create_region.c 									\
+			regions/loop_region.c 										\
+			regions/change_region.c 									\
+			regions/parser.c 											\
+			scene/set_scene.c 											\
+			maps/create_map.c 											\
+			objects/player/create.c 									\
+			objects/player/handler.c 									\
+			objects/create_object.c 									\
+			objects/teleporter/draw.c 									\
+			objects/teleporter/create.c 								\
+			objects/teleporter/parser.c 								\
+			objects/teleporter/handler.c 								\
+			objects/enemy/draw.c 										\
+			objects/enemy/create.c 										\
+			objects/enemy/parser.c 										\
+			objects/enemy/handler.c 									\
+			objects/enemy/stats_enemy.c
 	src/objects/buttons/parser.c
+	src/objects/buttons/handler_start.c \
+	src/objects/buttons/draw_start.c \
+	src/objects/buttons/create.c \
 
-BUILD_DIR 	:=		build
+BUILD_DIR 	:=		build/
 
-OBJ    		:=    	$(SRC:.c=.o)
+SRC_DIR		:=		src/
 
-INCDIR 		:= 		./include
+SRC         :=      $(addprefix $(SRC_DIR), $(FILE))
 
-LIB			:=		-l csfml-graphics -l csfml-window\
-					-l csfml-system -l csfml-audio
+INC_DIR 	:= 		include/
 
-CFLAGS 		:= 		-I$(INCDIR) -ggdb3 -O1
+LIB			:=		-l csfml-graphics -l csfml-window
+LIB			+=		-l csfml-system -l csfml-audio -lm
+
+OBJECTS    	:=    	$(addprefix $(BUILD_DIR), $(SRC:$(SRC_DIR)%.c=%.o))
 
 NAME 		:=     	my_rpg
+
+CFLAGS 		:= 		$(LIB) -ggdb3 -O1
 
 
 all: $(NAME)
 
-$(NAME):    $(OBJ)
-	make -C lib/my
-	gcc -o $(NAME) $(OBJ) $(CFLAGS) -L"lib/" -lmy $(LIB) -Werror -Wextra -lm
-	make clean
+$(BUILD_DIR)%.o: $(SRC_DIR)%.c
+	@mkdir -p $(dir $@)
+	@gcc $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 
-make_lib:
-	make -C lib/my
+$(NAME): $(OBJECTS)
+	@gcc $(OBJECTS)  -L ./lib/my -lmy $(CFLAGS) -o $(NAME)
 
 clean:
-	make clean -C lib/my
-	rm -rf $(OBJ)
+	@rm -rf $(OBJECTS)
 
-fclean:        clean
-	make clean -C lib/my
-	rm -rf $(NAME)
+fclean: clean
+	@rm -rf $(NAME)
+	@rm -rf $(BUILD_DIR)
 
-re:		fclean all
-
-.PHONY:		all clean fclean re
+re: fclean all
