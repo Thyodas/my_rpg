@@ -12,36 +12,44 @@
 #include "object.h"
 #include "mylist.h"
 
-static stats_t skeleton_stats(void)
-{
-    stats_t stats;
+enemy_t create_enemy(sfVector2i *pos, option_t option, stats_t stats);
+void enemy_handler(game_t *game, object_t *self);
+void draw_enemy(game_t *game, object_t *self);
+stats_t skeleton_stats(void);
+stats_t slime_stats(void);
 
-    stats.damage = 2;
-    stats.life_points = 2;
-    return stats;
+
+static option_t get_option(char **argv, int id)
+{
+    option_t option;
+    char *paths[2] = {SLIME_PATH, SKELETON_PATH};
+    option.path = paths[id];
+    return option;
 }
 
-static stats_t slime_stats(void)
+static sfVector2i *get_pos(char **arg)
 {
-    stats_t stats;
+    sfVector2i *pos = malloc(sizeof(sfVector2i) * 2);
 
-    stats.damage = 1;
-    stats.life_points = 1;
-    return stats;
+    pos[0] = (sfVector2i){my_getnbr(arg[1]), my_getnbr(arg[2])};
+    pos[1] = (sfVector2i){my_getnbr(arg[3]), my_getnbr(arg[4])};
+    return pos;
 }
+
 //[ID], [POSX1], [POSY1], [POSX2], [POSY2]
-void parse_enemy(game_t *game, char **argv)
+void parse_enemy(game_t *game, region_t *region, char **argv)
 {
-    stats_t (*stats_enemy[2]) = {&slime_stats, &skeleton_stats};
+    stats_t (stats_enemy[2]) = {&slime_stats, &skeleton_stats};
     int argc = 0;
     for (; argv[argc] != NULL; ++argc);
-    if (argc != 6)
+    if (argc != 5)
         return;
-    int region_id = my_getnbr(argv[0]);
-    if (region_id < 0 || region_id >= REGION_NB)
+    int id = my_getnbr(argv[0]);
+    if (id < 0 || id >= ENEMY_NB)
         return;
-    enemy_t *enemy = create_enemy((sfVector2i *){(sfVector2i){my_getnbr(argv[1]), my_getnbr(argv[2])}, (sfVector2i){my_getnbr(argv[3]), my_getnbr(argv[4])}}, (stats_enemy)(my_getnbr(argv[0])));
+    enemy_t enemy = create_enemy(get_pos(argv), get_option(argv, id),
+                                                        stats_enemy[id]);
     object_t *object = create_object(ENEMY_OBJ, enemy,
-        &enemy_handler, &draw_enemy);
+                                                &enemy_handler, &draw_enemy);
     my_put_in_list(&region->objects, object);
 }
