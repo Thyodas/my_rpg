@@ -12,12 +12,11 @@
 #include "object.h"
 #include "mylist.h"
 
-enemy_t create_enemy(sfVector2i *pos, option_t option, stats_t stats);
+enemy_t create_enemy(sfVector2i *pos, option_t option, stats_t *stats);
 void enemy_handler(game_t *game, object_t *self);
 void draw_enemy(game_t *game, object_t *self);
-stats_t skeleton_stats(void);
-stats_t slime_stats(void);
-
+stats_t *skeleton_stats(void);
+stats_t *slime_stats(void);
 
 static option_t get_option(char **argv, int id)
 {
@@ -35,11 +34,11 @@ static sfVector2i *get_pos(char **arg)
     pos[1] = (sfVector2i){my_getnbr(arg[3]), my_getnbr(arg[4])};
     return pos;
 }
+static stats_t *(*stats_enemy[2])(void) = {&slime_stats, &skeleton_stats};
 
 //[ID], [POSX1], [POSY1], [POSX2], [POSY2]
 void parse_enemy(game_t *game, region_t *region, char **argv)
 {
-    stats_t (stats_enemy[2]) = {&slime_stats, &skeleton_stats};
     int argc = 0;
     for (; argv[argc] != NULL; ++argc);
     if (argc != 5)

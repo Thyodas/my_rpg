@@ -29,7 +29,7 @@ static entity_t init_slime_entity(option_t option)
     return entity;
 }
 
-enemy_t create_enemy(sfVector2i *pos, option_t option, stats_t stats)
+enemy_t create_enemy(sfVector2i *pos, option_t option, stats_t *stats)
 {
     enemy_t enemy;
     enemy.pos1 = pos[0];

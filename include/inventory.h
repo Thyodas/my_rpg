@@ -13,7 +13,7 @@
 
     typedef struct {
         linked_list_t *object_list;
-        object_t *held_object;
+        // object_t *held_object;
     } inventory_t;
 
 #endif /* !INVENTORY_H_ */

@@ -33,7 +33,7 @@
         sfIntRect *rect;
     } graphics_t;
 
-    typedef struct {
+    typedef struct stats_s {
         int damage;
         int life_points;
     } stats_t;
@@ -42,7 +42,7 @@
         sfVector2i pos1;
         sfVector2i pos2;
         entity_t entity;
-        stats_t stats;
+        stats_t *stats;
     } enemy_t;
 
     typedef struct {
