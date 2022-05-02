@@ -12,6 +12,8 @@
 #include "object.h"
 #include "mylist.h"
 
+object_t *create_object(enum id_object_type id, void *data, void (*handler)(),
+void (*draw)());
 enemy_t create_enemy(sfVector2i *pos, option_t option, stats_t *stats);
 void enemy_handler(game_t *game, object_t *self);
 void draw_enemy(game_t *game, object_t *self);
@@ -47,8 +49,8 @@ void parse_enemy(game_t *game, region_t *region, char **argv)
     if (id < 0 || id >= ENEMY_NB)
         return;
     enemy_t enemy = create_enemy(get_pos(argv), get_option(argv, id),
-                                                        stats_enemy[id]);
-    object_t *object = create_object(ENEMY_OBJ, enemy,
+                                                        stats_enemy[id]());
+    object_t *object = create_object(ENEMY_OBJ, &enemy,
                                                 &enemy_handler, &draw_enemy);
     my_put_in_list(&region->objects, object);
 }

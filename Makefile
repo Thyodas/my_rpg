@@ -85,6 +85,7 @@ $(BUILD_DIR)%.o: $(SRC_DIR)%.c
 	@gcc $(CFLAGS) -I$(INC_DIR) -c $< -o $@
 
 $(NAME): $(OBJECTS)
+	make -C lib/my/
 	@gcc $(OBJECTS)  -L ./lib/my -lmy $(CFLAGS) -o $(NAME)
 
 clean:
