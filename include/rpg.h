@@ -54,4 +54,8 @@
     void move_player(game_t *game, player_t *player,
         float shift_x, float shift_y);
 
+    // Inventory
+    void set_inventory_data(game_t *game, void *data, int n);
+    void *get_inventory_data(game_t *game, int n);
+
 #endif /* !RPG_H_ */

@@ -11,11 +11,10 @@
 
 object_t **create_inventory_object(void)
 {
-    int i = 0;
-    object_t **object = malloc(sizeof(object_t *) * (10 + 1));;
+    int nbr = 11;
+    object_t **object = malloc(sizeof(object_t *) * nbr);
 
-    for (; i < 10; i++)
+    for (int i = 0; i < nbr; i++)
         object[i] = malloc(sizeof(object_t));
-    object[i] = NULL;
     return (object);
 }
