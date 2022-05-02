@@ -9,12 +9,12 @@
 #include "object.h"
 #include <stdio.h>
 
-void enemy_handler(game_t *game, struct object_s *self)
+void enemy_handler(game_t *game, object_t *self)
 {
     enemy_t *enemy = self->data;
     sfFloatRect rect = sfSprite_getGlobalBounds(
         ((player_t *)(game->play->player->data))->entity.sprite);
-    if (sfFloatRect_intersects(&rect, &enemy->area, NULL)) {
+    if (sfFloatRect_intersects(&rect, &enemy->entity.rect, NULL)) {
         //player.life--;
     }
     return;
