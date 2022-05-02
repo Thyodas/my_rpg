@@ -15,6 +15,7 @@ void play_events_handler(game_t *game, sfEvent event);
 void init_all_maps(game_t *game);
 void handle_region(game_t *game);
 object_t *create_player_object(option_t option);
+object_t **create_inventory_object(void);
 
 void player_idle_animation(game_t *game);
 
@@ -38,6 +39,7 @@ void init_game(game_t *game)
         96,
     };
     game->play->player = create_player_object(option);
+    game->play->inventory = create_inventory_object();
 }
 
 void game(game_t *game)

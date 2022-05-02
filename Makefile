@@ -46,6 +46,8 @@ SRC	=	src/main.c \
 	src/maps/create_map.c \
 	src/objects/player/create.c \
 	src/objects/player/handler.c \
+	src/objects/inventory/create.c \
+	src/objects/inventory/handler.c \
 	src/objects/create_object.c \
 	src/objects/teleporter/draw.c \
 	src/objects/teleporter/create.c \
