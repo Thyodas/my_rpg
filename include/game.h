@@ -17,6 +17,7 @@
     #include "map.h"
     #include "object.h"
     #include "settings.h"
+    #include "scene.h"
     #include <SFML/Graphics.h>
     #include <SFML/System.h>
     #include <SFML/Window.h>
@@ -38,8 +39,8 @@
         sfRenderWindow *window;
         my_time_t *clock;
         cursor_t *cursor;
-        start_menu_t *start_menu;
-        settings_scene_t *settings_menu;
+        scene_t *scene[3];
+        scene_t *prev_scene;
         settings_t *settings;
         play_t *play;
         sfEvent event;
