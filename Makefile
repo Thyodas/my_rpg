@@ -56,7 +56,8 @@ FILE_NAME	:=	main 													\
 			objects/buttons/create 										\
 			objects/buttons/draw_start 									\
 			objects/buttons/handler_start 								\
-			objects/buttons/parser
+			objects/buttons/parser										\
+			clock/restart_clock											\
 
 
 BUILD_DIR 	:=		build/
