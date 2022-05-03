@@ -50,7 +50,7 @@ static void error_handler(int argc, char **argv)
 //       |  T'es cringe    |                |
 //       |<----------------|                |
 //       |                 |                |
-//       |       tg        |                |
+//       |       tg        |                | choqué je suis pas dedans :(
 //       |---------------->|                |
 //       |                 |                |
 //       |                 | Oui papa sucre |
