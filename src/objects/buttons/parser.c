@@ -52,7 +52,7 @@ static void choose_list(game_t *game, object_t *obj, int start_btn)
         my_put_in_list(&game->settings_menu->obj, obj);
 }
 
-void parse_button(game_t *game, char **args, int start_btn, int end_btn)
+void parse_button(game_t *game, char **args, int nb_btn, int id_scene)
 {
     int argc = 0;
     int btn_id = -1;
