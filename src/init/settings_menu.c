@@ -49,5 +49,4 @@ void init_settings_menu(game_t *game)
     game->settings_menu->obj = NULL;
     game->settings_menu->emitter = init_emitter();
     parse_objects_settings_menu(game);
-    game->settings_menu->loaded = 1;
 }
