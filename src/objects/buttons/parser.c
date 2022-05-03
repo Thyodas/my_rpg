@@ -20,7 +20,7 @@ void handle_button_event_start(game_t *game, object_t *button);
 object_t *create_object(enum id_object_type id, void *data, void (*handler)(),
 void (*draw)());
 
-static void (*ptr_btn[NB_BUTTONS])(game_t *) = {
+static void (*ptr_btn[])(game_t *) = {
     &set_game_scene,
     &exit_game,
     &exit_game,
@@ -44,15 +44,7 @@ static void (*ptr_draw[])(game_t *, object_t *) = {
     &draw_buttons_start
 };
 
-static void choose_list(game_t *game, object_t *obj, int start_btn)
-{
-    if (start_btn == 0)
-        my_put_in_list(&game->start_menu->objects, obj);
-    else if (start_btn == 5)
-        my_put_in_list(&game->settings_menu->obj, obj);
-}
-
-void parse_button(game_t *game, char **args, int start_btn, int end_btn)
+void parse_button(game_t *game, char **args, int id, int scene)
 {
     int argc = 0;
     int btn_id = -1;
@@ -63,7 +55,8 @@ void parse_button(game_t *game, char **args, int start_btn, int end_btn)
         return;
     btn_id = my_getnbr(args[1]);
     ptr = my_getnbr(args[5]);
-    if (btn_id < start_btn || btn_id >= end_btn || ptr < 0 || ptr >= end_btn)
+    if (btn_id < 0 || btn_id >= game->scene[scene]->nb_buttons || ptr < 0 ||
+        ptr > NB_BUTTONS)
         return;
     button_t *button = init_button(args[2],
                                     (sfVector2f){(float)my_getnbr(args[3]),
@@ -72,6 +65,6 @@ void parse_button(game_t *game, char **args, int start_btn, int end_btn)
     if (button == NULL)
         return;
     object_t *object = create_object(BUTTON_OBJ, button,
-            ptr_handler[game->current_scene], ptr_draw[game->current_scene]);
-    choose_list(game, object, start_btn);
+            ptr_handler[scene], ptr_draw[scene]);
+    my_put_in_list(&game->scene[scene]->obj, object);
 }
