@@ -6,20 +6,14 @@
 ##
 
 SRC	=	src/main.c \
-	src/display/display_game.c \
-	src/display/display_start_menu.c \
-	src/display/display_settings_menu.c \
 	src/drawing/cursor.c \
 	src/drawing/entity.c \
 	src/init/cursor.c \
 	src/init/window.c \
 	src/init/entity.c \
 	src/init/time.c \
-	src/init/settings_menu.c \
 	src/init/emitter.c \
 	src/init/data.c \
-	src/init/start_menu.c \
-	src/interactions/is_hit.c \
 	src/interactions/player_region_collision.c \
 	src/utils/free.c \
 	src/utils/help.c \
@@ -31,7 +25,6 @@ SRC	=	src/main.c \
 	src/utils/lists/my_put_in_list.c \
 	src/events/mouse_events.c \
 	src/events/exit.c \
-	src/events/animation.c \
 	src/events/play_events.c \
 	src/particles-engine/snow/gen_snow.c \
 	src/particles-engine/snow/update_snow.c \
@@ -48,6 +41,7 @@ SRC	=	src/main.c \
 	src/maps/create_map.c \
 	src/objects/player/create.c \
 	src/objects/player/handler.c \
+	src/objects/player/draw.c \
 	src/objects/create_object.c \
 	src/objects/teleporter/draw.c \
 	src/objects/teleporter/create.c \
@@ -56,7 +50,19 @@ SRC	=	src/main.c \
 	src/objects/buttons/create.c \
 	src/objects/buttons/draw_start.c \
 	src/objects/buttons/handler_start.c \
-	src/objects/buttons/parser.c
+	src/objects/buttons/parser.c \
+	src/scene/game/display.c \
+	src/scene/game/events_handler.c \
+	src/scene/game/init.c \
+	src/scene/settings/init.c \
+	src/scene/settings/display.c \
+	src/scene/settings/events_handler.c \
+	src/scene/start_menu/display.c \
+	src/scene/start_menu/event_handler.c \
+	src/scene/start_menu/init.c \
+	src/scene/draw_object.c \
+	src/scene/handle_object.c \
+	src/scene/parse_object.c
 
 OBJ    	:=    	$(SRC:.c=.o)
 
