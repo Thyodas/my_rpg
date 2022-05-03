@@ -17,4 +17,9 @@ void check_mouse_movement(game_t *game, sfEvent event)
         game->cursor->pos.y = pos.y;
         sfSprite_setPosition(game->cursor->sprite, game->cursor->pos);
     }
+    if (event.type == sfEvtMouseButtonReleased &&
+        event.mouseButton.button == sfMouseLeft)
+        game->cursor->mouse_pressed = 1;
+    else
+        game->cursor->mouse_pressed = 0;
 }

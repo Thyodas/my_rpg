@@ -40,6 +40,7 @@
         sfSprite *sprite;
         sfIntRect rect;
         sfVector2f pos;
+        int mouse_pressed;
     } cursor_t;
 
     typedef struct button {
