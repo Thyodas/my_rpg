@@ -2,30 +2,31 @@
 ** EPITECH PROJECT, 2021
 ** B-MUL-200-STG-2-1-myrpg-guillaume.hein
 ** File description:
-** start_menu.c
+** settings_menu.c
 */
 
 #include "rpg.h"
-#include "object.h"
+#include "settings.h"
 #include <stdio.h>
 #include "my.h"
 
 particles_emitter_t *init_emitter(void);
-char **cut_str(char *str, char *delim);
 void parse_button(game_t *game, char **args, int start_btn, int end_btn);
+char **cut_str(char *str, char *delim);
 
 static void (* const PARSE_OBJ_SCENE[])(game_t *, char **, int, int) = {
     NULL,
     &parse_button
 };
 
-static void parse_objects_start_menu(game_t *game)
+
+static void parse_objects_settings_menu(game_t *game)
 {
     char *line = NULL;
     char **args = NULL;
     size_t size = 0;
     int object_id = -1;
-    FILE *fp = fopen("data/scene/start_menu.scene", "r");
+    FILE *fp = fopen("data/scene/settings.scene", "r");
 
     if (fp == NULL)
         return;
@@ -36,17 +37,16 @@ static void parse_objects_start_menu(game_t *game)
         object_id = my_getnbr(args[0]);
         if (object_id < 0 || object_id >= OBJECT_NB)
             continue;
-        PARSE_OBJ_SCENE[object_id](game, args, BTN_NEW, NB_BUTTONS_START);
+        PARSE_OBJ_SCENE[object_id](game, args, BTN_VOLUME_MUSIC, NB_BUTTONS);
     }
     fclose(fp);
     free(line);
 }
 
-void init_start_menu(game_t *game)
+void init_settings_menu(game_t *game)
 {
-    game->clock = init_clock();
-    game->start_menu = malloc(sizeof(start_menu_t));
-    game->start_menu->objects = NULL;
-    game->start_menu->emitter = init_emitter();
-    parse_objects_start_menu(game);
+    game->settings_menu = malloc(sizeof(settings_scene_t));
+    game->settings_menu->obj = NULL;
+    game->settings_menu->emitter = init_emitter();
+    parse_objects_settings_menu(game);
 }

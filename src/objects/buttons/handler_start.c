@@ -15,7 +15,8 @@ void handle_button_event_start(game_t *game, object_t *button)
         sfSprite_getGlobalBounds(CAST_BUTTON(button->data)->sprite);
     sfBool contained = sfFloatRect_contains(&rect_text, mouse_pos.x, mouse_pos.y);
 
-    if (contained == sfTrue && sfMouse_isButtonPressed(sfMouseLeft)) {
+    if (contained == sfTrue && game->cursor->mouse_pressed == 1) {
+        game->cursor->mouse_pressed = 0;
         CAST_BUTTON(button->data)->state = CLICKED;
         CAST_BUTTON(button->data)->on_click(game);
     } else if (contained == sfTrue)

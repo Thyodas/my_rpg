@@ -18,5 +18,6 @@ cursor_t *init_cursor(sfRenderWindow *window)
     cursor->rect = (sfIntRect){88, 154, 22, 22};
     cursor->pos.x = pos.x;
     cursor->pos.y = pos.y;
+    cursor->mouse_pressed = 0;
     return (cursor);
 }
