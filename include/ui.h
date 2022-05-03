@@ -21,13 +21,18 @@
         BTN_EXIT,
         BTN_HELP,
         BTN_CONTINUE,
-        NB_BUTTONS_START,
+        NB_BUTTONS_START
+    };
+
+    enum buttons_settings {
         BTN_VOLUME_MUSIC,
         BTN_VOLUME_GENERAL,
         BTN_RESET,
         BTN_RETURN,
-        NB_BUTTONS
+        NB_BUTTONS_SETTINGS
     };
+
+    #define NB_BUTTONS (NB_BUTTONS_START + NB_BUTTONS_SETTINGS)
 
     enum button_state {
         IDLE,
@@ -49,10 +54,5 @@
         int state;
         void (*on_click)();
     } button_t;
-
-    typedef struct start_menu_s {
-        linked_list_t *objects;
-        particles_emitter_t *emitter;
-    } start_menu_t;
 
 #endif /* !UI_H_ */
