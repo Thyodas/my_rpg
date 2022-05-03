@@ -11,6 +11,7 @@
 void rect_set_y(game_t *game, entity_t *entity, int status);
 void rect_animation_movement(game_t *game, entity_t *entity);
 void rect_animation_idle(game_t *game, entity_t *entity);
+void interact_player(game_t *game, player_t *player);
 
 void player_idle_animation(game_t *game)
 {
@@ -69,6 +70,8 @@ void play_keyboard_events_handler(game_t *game)
         rect_set_y(game, &player->entity, 2);
         move_player(game, game->play->player->data, 0, new_speed);
     }
+    if (sfKeyboard_isKeyPressed(sfKeyE))
+        interact_player(game, game->play->player->data);
     if (CAST_PLAYER(game->play->player->data)->entity.animation_state
         == IDLE_STATE)
         player_idle_animation(game);
