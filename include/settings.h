@@ -16,7 +16,6 @@
     } settings_t;
 
     typedef struct settings_scene {
-        int loaded;
         linked_list_t *obj;
         particles_emitter_t *emitter;
     } settings_scene_t;
