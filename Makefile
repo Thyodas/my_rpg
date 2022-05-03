@@ -6,20 +6,14 @@
 ##
 
 FILE_NAME	:=	main 													\
-			display/display_game 										\
-			display/display_start_menu 									\
-			display/display_settings_menu 								\
 			drawing/cursor 												\
 			drawing/entity 												\
 			init/cursor 												\
 			init/window 												\
 			init/entity 												\
 			init/time 													\
-			init/settings_menu 											\
 			init/emitter 												\
 			init/data 													\
-			init/start_menu 											\
-			interactions/is_hit 										\
 			interactions/player_region_collision 						\
 			utils/free 													\
 			utils/help 													\
@@ -31,7 +25,6 @@ FILE_NAME	:=	main 													\
 			utils/lists/my_put_in_list 									\
 			events/mouse_events 										\
 			events/exit 												\
-			events/animation 											\
 			events/play_events 											\
 			particles-engine/snow/gen_snow 								\
 			particles-engine/snow/update_snow 							\
@@ -45,9 +38,22 @@ FILE_NAME	:=	main 													\
 			regions/change_region 										\
 			regions/parser 												\
 			scene/set_scene 											\
+			scene/game/display 											\
+			scene/game/events_handler 									\
+			scene/game/init 											\
+			scene/settings/display 										\
+			scene/settings/events_handler 								\
+			scene/settings/init 										\
+			scene/start_menu/display 									\
+			scene/start_menu/event_handler 								\
+			scene/start_menu/init 										\
+			scene/draw_object 											\
+			scene/handle_object 										\
+			scene/parse_object											\
 			maps/create_map 											\
 			objects/player/create 										\
 			objects/player/handler 										\
+			objects/player/draw 										\
 			objects/create_object 										\
 			objects/teleporter/draw 									\
 			objects/teleporter/create 									\
