@@ -63,9 +63,6 @@ void parse_button(game_t *game, char **args, int start_btn, int end_btn)
         return;
     btn_id = my_getnbr(args[1]);
     ptr = my_getnbr(args[5]);
-    printf("Valeur de ptr : %d\n", ptr);
-    printf("Valeur de btn id : %d\n", btn_id);
-    printf("Valeur de current scene : %d\n", game->current_scene);
     if (btn_id < start_btn || btn_id >= end_btn || ptr < 0 || ptr >= end_btn)
         return;
     button_t *button = init_button(args[2],
