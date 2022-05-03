@@ -71,7 +71,7 @@ void parse_button(game_t *game, char **args, int start_btn, int end_btn)
                                     ptr_btn[ptr], btn_id);
     if (button == NULL)
         return;
-    object_t *object = create_object(BUTTON_OBJ, button,
+    object_t *object = create_object(0, button,
             ptr_handler[game->current_scene], ptr_draw[game->current_scene]);
     choose_list(game, object, start_btn);
 }

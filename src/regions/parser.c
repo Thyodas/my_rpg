@@ -15,9 +15,11 @@
 
 char **cut_str(char *input, char *delimiter);
 void parse_teleporter(game_t *game, region_t *region, char **args);
+void parse_dialogue_box(game_t *game, region_t *region, char **argv);
 
 void (* const PARSE_OBJECT[])(game_t *, region_t *, char **) = {
     &parse_teleporter,
+    &parse_dialogue_box
 };
 
 static int *new_int_array(int size)

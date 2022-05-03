@@ -56,7 +56,11 @@ FILE_NAME	:=	main 													\
 			objects/buttons/create 										\
 			objects/buttons/draw_start 									\
 			objects/buttons/handler_start 								\
-			objects/buttons/parser
+			objects/buttons/parser										\
+			objects/dialogue/create 									\
+			objects/dialogue/draw 										\
+			objects/dialogue/handler	 								\
+			objects/dialogue/parser										\
 
 
 BUILD_DIR 	:=		build/
