@@ -16,11 +16,18 @@
     #include "region.h"
     #include "map.h"
     #include "object.h"
+    #include "entity.h"
     #include <SFML/Graphics.h>
     #include <SFML/System.h>
     #include <SFML/Window.h>
     #include <SFML/Audio.h>
     #include <stdbool.h>
+
+    typedef struct {
+        char *name;
+        entity_t *entity;
+        int nb_usage;
+    } item_t;
 
     typedef struct play_s {
         object_t *player;
