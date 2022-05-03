@@ -16,8 +16,6 @@ void update_blood(particles_t *particles, int nb_particles);
 
 static void handle_snow(particles_emitter_t *emitter, sfRenderWindow *win)
 {
-    sfTime time_elapsed;
-
     gen_snow(emitter, 1000);
     update_flakes(emitter);
     draw_particles(win, emitter, SNOW);
@@ -26,7 +24,6 @@ static void handle_snow(particles_emitter_t *emitter, sfRenderWindow *win)
 void handle_blood(particles_emitter_t *emitter, sfVector2f pos,
                 sfRenderWindow *win)
 {
-
     gen_blood(emitter, pos);
     update_blood(emitter->particles, emitter->nb_particles);
     draw_particles(win, emitter, BLOOD);

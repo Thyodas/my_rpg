@@ -9,12 +9,13 @@
 #include "game.h"
 #include "object.h"
 
-void draw_entity(game_t *game, entity_t *entity);
+void draw_object(game_t *game);
+void handle_object(game_t *game);
 
 void draw_region(game_t *game, region_t *region)
 {
     sfRenderWindow_drawSprite(game->window, region->map->background, NULL);
-    draw_entity(game, &((player_t *)(game->play->player->data))->entity);
+    draw_object(game);
     object_t *obj;
     for (linked_list_t *head = game->play->current_region->objects; head;
         head = head->next) {
@@ -37,6 +38,7 @@ void draw_region(game_t *game, region_t *region)
 
 void handle_region(game_t *game)
 {
+    handle_object(game);
     object_t *obj;
     for (linked_list_t *head = game->play->current_region->objects; head;
         head = head->next) {

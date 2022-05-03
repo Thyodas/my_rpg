@@ -15,9 +15,4 @@
         int general_volume;
     } settings_t;
 
-    typedef struct settings_scene {
-        linked_list_t *obj;
-        particles_emitter_t *emitter;
-    } settings_scene_t;
-
 #endif
