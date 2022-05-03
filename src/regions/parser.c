@@ -20,15 +20,6 @@ void (* const PARSE_OBJECT[])(game_t *, region_t *, char **) = {
     &parse_teleporter,
 };
 
-static int *new_int_array(int size)
-{
-    int *array = malloc(sizeof(int) * (NB_MAX_INFO + 1));
-
-    for (int i = 0; i <= NB_MAX_INFO; i++)
-        array[i] = 0;
-    array[NB_MAX_INFO] = -1;
-}
-
 static void execute_create_function(game_t *game, region_t *region,
 int object_id, char **args)
 {
@@ -58,4 +49,5 @@ int parse_region(game_t *game, region_t *region)
         execute_create_function(game, region, object_id, args);
     }
     fclose(file);
+    return 0;
 }

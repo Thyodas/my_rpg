@@ -10,9 +10,7 @@
 #include "object.h"
 
 void draw_cursor(sfRenderWindow *window, cursor_t *cursor);
-void init_waves_start_menu(game_t *game, option_t option);
 particles_emitter_t *init_emitter(void);
-void check_mouse_movement(game_t *game, sfEvent event);
 
 static void handle_object_list_start_menu(game_t *game)
 {

@@ -8,7 +8,6 @@
 #include "rpg.h"
 #include "settings.h"
 
-void check_mouse_movement(game_t *game, sfEvent event);
 void draw_cursor(sfRenderWindow *window, cursor_t *cursor);
 void init_settings_menu(game_t *game);
 

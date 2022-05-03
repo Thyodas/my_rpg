@@ -11,7 +11,7 @@
 bool check_player_region_collision(game_t *game, float shift_x, float shift_y);
 void player_movement_animation(game_t *game);
 
-void rect_animation_movement(game_t *game, entity_t *entity)
+void rect_animation_movement(entity_t *entity)
 {
     if (entity->rect.left < 32)
         entity->rect.left = 32;
@@ -33,7 +33,7 @@ void rect_animation_interaction(game_t *game, entity_t *entity)
     sfSprite_setTextureRect(entity->sprite, entity->rect);
 }
 
-void rect_animation_idle(game_t *game, entity_t *entity)
+void rect_animation_idle(entity_t *entity)
 {
     if (entity->spritesheet_rect_x != 0)
         entity->rect.left += entity->spritesheet_rect_x;
@@ -50,7 +50,7 @@ void move_player(game_t *game, player_t *player, float shift_x, float shift_y)
     player_movement_animation(game);
 }
 
-void interact_player(game_t *game, player_t *player)
+void interact_player(game_t *game)
 {
     static long last_clock_us = 0;
     long current_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
@@ -65,7 +65,7 @@ void interact_player(game_t *game, player_t *player)
     }
 }
 
-void rect_set_y(game_t *game, entity_t *entity, int status)
+void rect_set_y(entity_t *entity, int status)
 {
     if (entity->spritesheet_rect_y != 0)
         entity->rect.top = entity->spritesheet_rect_y * status;

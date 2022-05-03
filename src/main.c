@@ -18,6 +18,7 @@ void settings_menu(game_t *game);
 void init_settings_menu(game_t *game);
 void set_menu_scene(game_t *game);
 void set_game_scene(game_t *game);
+void print_help(void);
 
 void (* const scene[])(game_t *game) = {
         &start_menu,
@@ -73,6 +74,8 @@ int main(int argc, char **argv)
 {
     game_t game;
 
+    if (argc >= 2 && !my_strcmp(argv[1], "-h"))
+        print_help();
     init_data(&game);
     arg_handler(argc, argv, &game);
     start_game(&game);

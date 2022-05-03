@@ -21,7 +21,7 @@ static void extend_array(char ***array, char *new_line)
     *array = new_array;
 }
 
-static int char_in_str(char c, char *str)
+static int char_in_str(char c, const char *str)
 {
     for (int i = 0; str[i] != '\0'; ++i)
         if (str[i] == c)
