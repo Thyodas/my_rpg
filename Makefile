@@ -7,55 +7,55 @@
 
 FILE_NAME	:=	main 													\
 			display/display_game 										\
-			display/display_start_menu 								\
-			display/display_settings_menu 							\
-			drawing/cursor 											\
-			drawing/entity 											\
+			display/display_start_menu 									\
+			display/display_settings_menu 								\
+			drawing/cursor 												\
+			drawing/entity 												\
 			init/cursor 												\
 			init/window 												\
 			init/entity 												\
-			init/time 												\
-			init/settings_menu 										\
+			init/time 													\
+			init/settings_menu 											\
 			init/emitter 												\
-			init/data 												\
+			init/data 													\
 			init/start_menu 											\
 			interactions/is_hit 										\
 			interactions/player_region_collision 						\
-			utils/free 												\
-			utils/help 												\
-			utils/arr_copy 											\
-			utils/cut_str 											\
+			utils/free 													\
+			utils/help 													\
+			utils/arr_copy 												\
+			utils/cut_str 												\
 			utils/coords 												\
 			utils/extend_str 											\
 			utils/random 												\
-			utils/lists/my_put_in_list 								\
+			utils/lists/my_put_in_list 									\
 			events/mouse_events 										\
 			events/exit 												\
 			events/animation 											\
-			events/play_events 										\
-			particles-engine/snow/gen_snow 							\
-			particles-engine/snow/update_snow 						\
+			events/play_events 											\
+			particles-engine/snow/gen_snow 								\
+			particles-engine/snow/update_snow 							\
 			particles-engine/utils_particles/utils_particles 			\
 			particles-engine/draw_particles 							\
-			particles-engine/particles_engine 						\
+			particles-engine/particles_engine 							\
 			particles-engine/blood/update_blood 						\
 			particles-engine/blood/gen_blood 							\
-			regions/create_region 									\
+			regions/create_region 										\
 			regions/loop_region 										\
-			regions/change_region 									\
-			regions/parser 											\
+			regions/change_region 										\
+			regions/parser 												\
 			scene/set_scene 											\
 			maps/create_map 											\
-			objects/player/create 									\
-			objects/player/handler 									\
-			objects/create_object 									\
+			objects/player/create 										\
+			objects/player/handler 										\
+			objects/create_object 										\
 			objects/teleporter/draw 									\
-			objects/teleporter/create 								\
-			objects/teleporter/parser 								\
-			objects/teleporter/handler 								\
-			objects/buttons/create 									\
-			objects/buttons/draw_start 								\
-			objects/buttons/handler_start 							\
+			objects/teleporter/create 									\
+			objects/teleporter/parser 									\
+			objects/teleporter/handler 									\
+			objects/buttons/create 										\
+			objects/buttons/draw_start 									\
+			objects/buttons/handler_start 								\
 			objects/buttons/parser
 
 
