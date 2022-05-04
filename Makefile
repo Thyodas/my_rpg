@@ -29,6 +29,7 @@ FILE_NAME	:=	main 													\
 			utils/extend_str 											\
 			utils/random 												\
 			utils/lists/my_put_in_list 									\
+			utils/atof													\
 			events/mouse_events 										\
 			events/exit 												\
 			events/animation 											\

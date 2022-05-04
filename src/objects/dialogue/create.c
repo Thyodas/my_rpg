@@ -34,5 +34,6 @@ dialogue_box_t *create_dialogue_data(game_t *game)
     sfText_setFont(dialogue->text, game->data.retro_font);
     sfText_setScale(dialogue->text, (sfVector2f){0.2, 0.2});
     sfText_setFillColor(dialogue->text, sfBlack);
+    dialogue->index = 0;
     return dialogue;
 }
