@@ -14,40 +14,21 @@
 
 object_t *create_object(enum id_object_type id, void *data, void (*handler)(),
 void (*draw)());
-enemy_t create_enemy(sfVector2i *pos, option_t option, stats_t *stats);
-void enemy_handler(game_t *game, object_t *self);
+enemy_t create_enemy(sfVector2i *pos, option_t *option, stats_t *stats);
 void draw_enemy(game_t *game, object_t *self);
-stats_t *skeleton_stats(void);
+stats_t *blob_stats(void);
 stats_t *slime_stats(void);
+stats_t *ghost_stats(void);
+stats_t *skeleton_stats(void);
+option_t *blob_option(void);
+option_t *slime_option(void);
+option_t *ghost_option(void);
+option_t *skeleton_option(void);
 
-static stats_t *(*stats_enemy[2])(void) = {&slime_stats, &skeleton_stats};
-static option_t *(*option_enemy[2])(void) = {&slime_option, &skeleton_option};
-
-static option_t *option_skeleton(char **argv, int id)
-{
-    option_t *option;
-    option->path = SLIME_PATH;
-    option->scale = (sfVector2f){1, 1};
-    option->int_rect = (sfIntRect){0, 0, 32, 32};
-    option->rect_x = 15;
-    option->rect_y = 15;
-    option->spritesheet_width = 30;
-    option->spritesheet_height = 30;
-    return option;
-}
-
-static option_t *option_slime(char **argv, int id)
-{
-    option_t *option;
-    option->path = SLIME_PATH;
-    option->scale = (sfVector2f){1, 1};
-    option->int_rect = (sfIntRect){0, 0, 32, 32};
-    option->rect_x = 15;
-    option->rect_y = 15;
-    option->spritesheet_width = 30;
-    option->spritesheet_height = 30;
-    return option;
-}
+static stats_t *(*stats_enemy[4])(void) = {&blob_stats, &slime_stats,
+                                            &ghost_stats, &skeleton_stats};
+static option_t *(*option_enemy[4])(void) = {&blob_option, &slime_option,
+                                            &ghost_option, &skeleton_option};
 
 static sfVector2i *get_pos(char **arg)
 {
@@ -56,6 +37,20 @@ static sfVector2i *get_pos(char **arg)
     pos[0] = (sfVector2i){my_getnbr(arg[1]), my_getnbr(arg[2])};
     pos[1] = (sfVector2i){my_getnbr(arg[3]), my_getnbr(arg[4])};
     return pos;
+}
+
+sfVector2f get_vector(sfVector2i self_pos, sfVector2i *pos, int where_to_go)
+{
+    return (sfVector2f){pos[where_to_go].x - self_pos.x,
+                            pos[where_to_go].y - self_pos.y};
+}
+
+void enemy_handler(game_t *game, object_t *self)
+{
+    enemy_t *enemy = (enemy_t *)self->data;
+
+    sfSprite_move(enemy->entity.sprite, get_vector(enemy->self_pos,
+                            enemy->pos, enemy->where_to_go));
 }
 
 //[ID], [POSX1], [POSY1], [POSX2], [POSY2]

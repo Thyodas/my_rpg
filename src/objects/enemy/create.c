@@ -32,8 +32,9 @@ static entity_t init_enemy_entity(option_t *option)
 enemy_t create_enemy(sfVector2i *pos, option_t *option, stats_t *stats)
 {
     enemy_t enemy;
-    enemy.pos1 = pos[0];
-    enemy.pos2 = pos[1];
+    enemy.self_pos = pos[0];
+    enemy.pos = pos;
+    enemy.where_to_go = 1;
     enemy.entity = init_enemy_entity(option);
     enemy.stats = stats;
     return enemy;

@@ -16,6 +16,7 @@ FILE	:=	main.c 														\
 			init/time.c 												\
 			init/emitter.c 												\
 			init/data.c 												\
+			init/start_menu.c 												\
 			interactions/is_hit.c 										\
 			interactions/player_region_collision.c 						\
 			utils/free.c 												\
@@ -54,7 +55,8 @@ FILE	:=	main.c 														\
 			objects/enemy/create.c 										\
 			objects/enemy/parser.c 										\
 			objects/enemy/handler.c 									\
-			objects/enemy/stats_enemy.c
+			objects/enemy/props_enemy/stats_enemy.c						\
+			objects/enemy/props_enemy/option_enemy.c					\
 
 BUILD_DIR 	:=		build/
 

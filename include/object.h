@@ -39,8 +39,9 @@
     } stats_t;
 
     typedef struct {
-        sfVector2i pos1;
-        sfVector2i pos2;
+        sfVector2i self_pos;
+        sfVector2i *pos;
+        int where_to_go;
         entity_t entity;
         stats_t *stats;
     } enemy_t;
