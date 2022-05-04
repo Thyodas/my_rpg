@@ -71,10 +71,9 @@ FILE_NAME	:=	main 													\
 			objects/buttons/create 										\
 			objects/buttons/draw_start 									\
 			objects/buttons/handler_start 								\
-			objects/buttons/parser										\
 			settings/reset_settings 									\
 			settings/set_general_volume 								\
-			settings/set_music_volume
+			settings/set_music_volume									\
 			objects/buttons/parser										\
 			objects/dialogue/create 									\
 			objects/dialogue/draw 										\
