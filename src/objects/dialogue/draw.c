@@ -14,20 +14,66 @@ float rotation)
 {
     sfSprite_setScale(part, scale);
     sfSprite_setPosition(part, pos);
-    sfFloatRect rect = sfSprite_getLocalBounds(part);
-    sfSprite_setOrigin(part, (sfVector2f){rect.width / 2, rect.height / 2});
     sfSprite_setRotation(part, rotation);
-    //sfSprite_setOrigin(part, (sfVector2f){0, 0});
     return part;
+}
+
+static void draw_top_and_right(game_t *game, dialogue_box_t *dlg,
+sfFloatRect *rect)
+{
+    sfVector2f one = {1, 1};
+    sfRenderWindow_drawSprite(game->window, modify_part(dlg->box_parts
+        [DLG_BOX_CORNER], (sfVector2f){rect->left - 2, rect->top - 2}, one, 0),
+        NULL);
+    sfRenderWindow_drawSprite(game->window, modify_part(dlg->box_parts
+        [DLG_BOX_BORDER], (sfVector2f){rect->left, rect->top - 2},
+        (sfVector2f){rect->width, 1}, 0), NULL);
+    sfRenderWindow_drawSprite(game->window, modify_part(dlg->box_parts
+        [DLG_BOX_CORNER], (sfVector2f){rect->left + rect->width + 2,
+        rect->top - 2}, one, 90), NULL);
+    sfRenderWindow_drawSprite(game->window, modify_part(dlg->box_parts
+        [DLG_BOX_BORDER], (sfVector2f){rect->left + rect->width + 2,
+        rect->top}, (sfVector2f){rect->height, 1}, 90), NULL);
+}
+
+static void draw_bottom_and_left(game_t *game, dialogue_box_t *dlg,
+sfFloatRect *rect)
+{
+    sfVector2f one = {1, 1};
+    sfRenderWindow_drawSprite(game->window, modify_part(dlg->box_parts
+        [DLG_BOX_CORNER], (sfVector2f){rect->left + rect->width + 2,
+        rect->top + rect->height + 2}, one, 180), NULL);
+    sfRenderWindow_drawSprite(game->window, modify_part(dlg->box_parts
+        [DLG_BOX_BORDER], (sfVector2f){rect->left + rect->width, rect->top
+        + rect->height + 2}, (sfVector2f){rect->width, 1}, 180), NULL);
+    sfRenderWindow_drawSprite(game->window, modify_part(dlg->box_parts
+        [DLG_BOX_CORNER], (sfVector2f){rect->left - 2,
+        rect->top + rect->height + 2}, one, 270), NULL);
+    sfRenderWindow_drawSprite(game->window, modify_part(dlg->box_parts
+        [DLG_BOX_BORDER], (sfVector2f){rect->left - 2,
+        rect->top + rect->height}, (sfVector2f){rect->height, 1}, 270), NULL);
+}
+
+static void draw_text_and_background_and_indicator(game_t *game,
+dialogue_box_t *dlg, sfFloatRect *rect)
+{
+    sfRenderWindow_drawSprite(game->window, modify_part(
+        dlg->box_parts[DLG_BOX_INDICATOR], dlg->pos, (sfVector2f){1, 1}, 0),
+        NULL);
+    sfRenderWindow_drawSprite(game->window, modify_part(
+        dlg->box_parts[DLG_BOX_BACKGROUND], (sfVector2f){rect->left, rect->top},
+        (sfVector2f){rect->width, rect->height}, 0), NULL);
+    sfRenderWindow_drawText(game->window, dlg->text, NULL);
 }
 
 void draw_dialogue(game_t *game, struct object_s *self)
 {
     dialogue_box_t *dlg = self->data;
-    sfVector2f null_vector = {0, 0};
-    sfRenderWindow_drawSprite(game->window, modify_part(
-        dlg->box_parts[DLG_BOX_INDICATOR], dlg->pos, (sfVector2f){1, 1}, 90),
-        NULL);
-    sfText_setPosition(dlg->text, dlg->pos);
-    sfRenderWindow_drawText(game->window, dlg->text, NULL);
+    sfFloatRect rect = sfText_getGlobalBounds(dlg->text);
+    sfText_setPosition(dlg->text, (sfVector2f){dlg->pos.x - rect.width / 2,
+        dlg->pos.y - rect.height - 6});
+    rect = sfText_getGlobalBounds(dlg->text);
+    draw_top_and_right(game, dlg, &rect);
+    draw_bottom_and_left(game, dlg, &rect);
+    draw_text_and_background_and_indicator(game, dlg, &rect);
 }

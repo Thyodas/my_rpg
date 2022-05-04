@@ -12,7 +12,7 @@
 
 const static sfIntRect BOX_RECT[DLG_BOX_PART_NB] = {
     {0, 0, 4, 4}, // corner
-    {0, 3, 4, 1}, // border
+    {3, 0, 1, 4}, // border
     {1, 3, 1, 1}, // background
     {4, 0, 8, 4} // indicator (arrow)
 };
@@ -27,10 +27,12 @@ dialogue_box_t *create_dialogue_data(game_t *game)
         dialogue->box_parts[i] = sfSprite_create();
         sfSprite_setTexture(dialogue->box_parts[i], dialogue_texture, sfFalse);
         sfSprite_setTextureRect(dialogue->box_parts[i], BOX_RECT[i]);
+        sfSprite_setOrigin(dialogue->box_parts[i], (sfVector2f){
+            BOX_RECT[i].width / 2, BOX_RECT[i].height / 2});
     }
     dialogue->text = sfText_create();
     sfText_setFont(dialogue->text, game->data.retro_font);
-    sfText_setCharacterSize(dialogue->text, 10);
+    sfText_setScale(dialogue->text, (sfVector2f){0.2, 0.2});
     sfText_setFillColor(dialogue->text, sfBlack);
     return dialogue;
 }

@@ -28,6 +28,6 @@ void parse_dialogue_box(game_t *game, region_t *region, char **argv)
     dialogue->content = my_strdup(argv[2]);
     object_t *object = create_object(DIALOGUE_OBJ, dialogue,
         &dialogue_handler, &draw_dialogue);
-    sfText_setString(dialogue->text, dialogue->content);
+    sfText_setString(dialogue->text, "Nique bien ta race Mehdy\nZyzz pour la win");
     my_put_in_list(&region->objects, object);
 }
