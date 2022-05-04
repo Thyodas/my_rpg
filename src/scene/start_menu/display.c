@@ -18,6 +18,8 @@ void start_menu(game_t *game)
     sfRenderWindow_clear(game->window, sfBlack);
     events_handler_start_scene(game);
     handle_object(game);
+    if (game->current_scene != START_SCENE)
+        return;
     game->scene[START_SCENE]
     ->emitter->ptr_part(game->scene[START_SCENE]->emitter, SNOW,
                         (sfVector2f){0.0, 0.0}, game->window);
