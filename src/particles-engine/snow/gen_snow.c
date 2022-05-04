@@ -31,7 +31,7 @@ static void gen_flakes(particles_t *particles, int nb_flakes)
         particles_t part;
         part.vertex = gen_random_vertex();
         part.direction.x = gen_random_in_range(-0.3, 0.3);
-        part.direction.y = 1;
+        part.direction.y = rand() % 4 + 1;
         part.is_alive = 0;
         particles[i] = part;
     }

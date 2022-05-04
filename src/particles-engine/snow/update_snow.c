@@ -25,7 +25,6 @@ void update_flakes(particles_emitter_t *emitter)
             emitter->particles[i].vertex.position.x = rand() % 1920;
             emitter->particles[i].vertex.position.y = rand() % 50 - 50;
             emitter->particles[i].direction.x = gen_random_in_range(-0.3, 0.3);
-            emitter->particles[i].direction.y = 1;
         }
     }
 }
