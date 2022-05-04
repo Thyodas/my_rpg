@@ -47,3 +47,11 @@ void set_pause_scene(game_t *game)
     sfRenderWindow_setView(game->window,
         sfRenderWindow_getDefaultView(game->window));
 }
+
+void set_help_scene(game_t *game)
+{
+    game->previous_scene = game->current_scene;
+    game->current_scene = HELP_SCENE;
+    sfRenderWindow_setView(game->window,
+        sfRenderWindow_getDefaultView(game->window));
+}

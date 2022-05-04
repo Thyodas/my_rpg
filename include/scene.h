@@ -17,6 +17,7 @@
         GAME_SCENE,
         SETTINGS_SCENE,
         PAUSE_SCENE,
+        HELP_SCENE,
         NB_SCENE
     };
 
