@@ -13,8 +13,7 @@ void parse_button(game_t *game, char **args, int id, int scene);
 char **cut_str(char *str, char *delim);
 
 static void (* const PARSE_OBJ_SCENE[])(game_t *, char **, int, int) = {
-    NULL,
-    &parse_button
+    &parse_button,
 };
 
 void parse_objects_scene(game_t *game, int scene, char *path)

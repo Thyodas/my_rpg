@@ -8,8 +8,8 @@
 #include "rpg.h"
 #include "object.h"
 
-static float offset[NB_BUTTONS_START] = {
-    0.0, 0.0, 0.0, 0.0
+static float offset[NB_BUTTONS] = {
+    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
 };
 
 static void draw_hovering(float translate, object_t *obj, game_t *game)
@@ -24,10 +24,11 @@ static void draw_hovering(float translate, object_t *obj, game_t *game)
     state.blendMode = (sfBlendMode){sfBlendFactorOneMinusDstColor,
                         sfBlendFactorOneMinusSrcColor, sfBlendEquationAdd};
     state.transform = sfTransform_Identity;
-    if (CAST_BUTTON(obj->data)->id_btn != 2)
+    int id_btn = CAST_BUTTON(obj->data)->id_btn;
+    if (id_btn >= 7)
+        sfTransform_translate(&state.transform, 0, -translate);
+    else
         sfTransform_translate(&state.transform, translate, 0);
-    if (CAST_BUTTON(obj->data)->id_btn == 2)
-        sfTransform_translate(&state.transform, 0, translate);
     state.shader = NULL;
     sfRenderWindow_drawSprite(game->window, sprite, &state);
 }
@@ -38,10 +39,11 @@ static sfRenderStates create_state_button(float translate, object_t *obj)
     state.texture = NULL;
     state.blendMode = sfBlendNone;
     state.transform = sfTransform_Identity;
-    if (CAST_BUTTON(obj->data)->id_btn != 2)
+    int id_btn = CAST_BUTTON(obj->data)->id_btn;
+    if (id_btn >= 7)
+        sfTransform_translate(&state.transform, 0, -translate);
+    else
         sfTransform_translate(&state.transform, translate, 0);
-    if (CAST_BUTTON(obj->data)->id_btn == 2)
-        sfTransform_translate(&state.transform, 0, translate);
     state.shader = NULL;
     return state;
 }

@@ -1,3 +1,6 @@
-1 0 assets/images/continue.png 800 350 8
-1 1 assets/images/continue.png 800 450 9
-1 2 assets/images/exit.png 800 550 10
+//Resume game
+0 0 800 350 0
+//Settings
+0 3 800 450 1
+//Quit game
+0 4 800 550 8

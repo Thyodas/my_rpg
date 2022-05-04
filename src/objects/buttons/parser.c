@@ -13,7 +13,7 @@ void exit_game(game_t *game);
 void set_game_scene(game_t *game);
 void set_settings_scene(game_t *game);
 void set_menu_scene(game_t *game);
-button_t *init_button(char *path_sprite, sfVector2f pos_btn,
+button_t *init_button(sfIntRect rect, sfVector2f pos_btn,
                     void (*ptr_btn)(game_t *), int id);
 void draw_buttons_start(game_t *game, object_t *button);
 void handle_button_event_start(game_t *game, object_t *button);
@@ -21,22 +21,38 @@ object_t *create_object(enum id_object_type id, void *data, void (*handler)(),
                         void (*draw)());
 void set_pause_scene(game_t *game);
 void return_to_previous_scene(game_t *game);
+void set_help_scene(game_t *game);
+void set_music_volume(game_t *game);
+void set_general_volume(game_t *game);
+void reset_settings(game_t *game);
+
+static sfIntRect (rect_sprite[]) = {
+    {0, 0, 86, 25}, //continue 0
+    {86, 0, 86, 25}, //start 1
+    {172, 0, 86, 25}, //exit 2
+    {258, 0, 86, 25}, //settings 3
+    {344, 0, 86, 25}, //quit 4
+    {0, 25, 60, 25}, //reset 5
+    {60, 25, 60, 25}, //back 6
+    {0, 50, 20, 25}, //? 7
+    {20, 50, 20, 25}, //+ 8
+    {40, 50, 20, 25} //- 9
+};
 
 static void (*ptr_btn[])(game_t *) = {
-    &set_game_scene, //new game start
-    &set_settings_scene, //settings start
-    &exit_game, //exit start
-    &exit_game, //help start
-    &return_to_previous_scene, //settings 1
-    &return_to_previous_scene, //settings 2
-    &return_to_previous_scene, //settings 3
-    &return_to_previous_scene, //settings 4
-    &set_game_scene, //continue game
-    &set_settings_scene, //settings game
-    &set_menu_scene //exit game
+    &set_game_scene, //0
+    &set_settings_scene, //1
+    &exit_game, //2
+    &set_help_scene, //3
+    &set_music_volume, //4
+    &set_general_volume, //5
+    &reset_settings, //6
+    &return_to_previous_scene, //7
+    &set_menu_scene, //8
 };
 
 static void (*ptr_handler[])(game_t *, object_t *) = {
+    &handle_button_event_start,
     &handle_button_event_start,
     &handle_button_event_start,
     &handle_button_event_start,
@@ -44,6 +60,7 @@ static void (*ptr_handler[])(game_t *, object_t *) = {
 };
 
 static void (*ptr_draw[])(game_t *, object_t *) = {
+    &draw_buttons_start,
     &draw_buttons_start,
     &draw_buttons_start,
     &draw_buttons_start,
@@ -60,13 +77,13 @@ void parse_button(game_t *game, char **args, int id, int scene)
     if (argc != NB_ARGS_BUTTON)
         return;
     btn_id = my_getnbr(args[1]);
-    ptr = my_getnbr(args[5]);
-    if (btn_id < 0 || btn_id >= game->scene[scene]->nb_buttons || ptr < 0 ||
-        ptr > NB_BUTTONS)
+    ptr = my_getnbr(args[4]);
+    if (btn_id < 0 || btn_id > NB_BUTTONS || ptr < 0 ||
+        ptr >= NB_PTR_ID)
         return;
-    button_t *button = init_button(args[2],
-                                    (sfVector2f){(float)my_getnbr(args[3]),
-                                    (float)my_getnbr(args[4])},
+    button_t *button = init_button(rect_sprite[btn_id],
+                                    (sfVector2f){(float)my_getnbr(args[2]),
+                                    (float)my_getnbr(args[3])},
                                     ptr_btn[ptr], btn_id);
     if (button == NULL)
         return;

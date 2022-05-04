@@ -19,7 +19,7 @@ void init_start_menu(game_t *game)
     game->scene[START_SCENE] = malloc(sizeof(scene_t));
     game->scene[START_SCENE]->obj = NULL;
     game->scene[START_SCENE]->emitter = init_emitter();
-    game->scene[START_SCENE]->nb_buttons = NB_BUTTONS_START;
+    game->scene[START_SCENE]->nb_buttons = 4;
     game->scene[START_SCENE]->texture_background_saved = NULL;
     parse_objects_scene(game, START_SCENE, "data/scene/start_menu.scene");
 }

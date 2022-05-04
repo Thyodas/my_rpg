@@ -14,33 +14,21 @@
     #include "particles.h"
 
     #define CAST_BUTTON(arg) ((button_t *)(arg))
-    #define NB_ARGS_BUTTON 6
+    #define NB_ARGS_BUTTON 5
+    #define NB_PTR_ID 9
 
-    enum buttons_start {
-        BTN_NEW,
+    enum buttons {
+        BTN_NEW_GAME,
+        BTN_SETTINGS,
         BTN_EXIT,
         BTN_HELP,
-        BTN_CONTINUE,
-        NB_BUTTONS_START
-    };
-
-    enum buttons_settings {
         BTN_VOLUME_MUSIC,
         BTN_VOLUME_GENERAL,
-        BTN_RESET,
+        BTN_RESET_SETTINGS,
         BTN_RETURN,
-        NB_BUTTONS_SETTINGS
+        BTN_CONTINUE,
+        NB_BUTTONS
     };
-
-    enum buttons_pause {
-        BTN_CONTINUE_GAME,
-        BTN_SETTINGS,
-        BTN_QUIT,
-        NB_BUTTONS_PAUSE
-    };
-
-    #define NB_BUTTONS (NB_BUTTONS_START + NB_BUTTONS_SETTINGS + \
-                        NB_BUTTONS_PAUSE)
 
     enum button_state {
         IDLE,
