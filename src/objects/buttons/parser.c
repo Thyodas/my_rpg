@@ -20,16 +20,17 @@ void handle_button_event_start(game_t *game, object_t *button);
 object_t *create_object(enum id_object_type id, void *data, void (*handler)(),
                         void (*draw)());
 void set_pause_scene(game_t *game);
+void return_to_previous_scene(game_t *game);
 
 static void (*ptr_btn[])(game_t *) = {
     &set_game_scene, //new game start
     &set_settings_scene, //settings start
     &exit_game, //exit start
     &exit_game, //help start
-    &set_menu_scene, //settings 1
-    &set_menu_scene, //settings 2
-    &set_menu_scene, //settings 3
-    &set_menu_scene, //settings 4
+    &return_to_previous_scene, //settings 1
+    &return_to_previous_scene, //settings 2
+    &return_to_previous_scene, //settings 3
+    &return_to_previous_scene, //settings 4
     &set_game_scene, //continue game
     &set_settings_scene, //settings game
     &set_menu_scene //exit game

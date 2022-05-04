@@ -28,6 +28,8 @@ void pause_menu(game_t *game)
     sfRenderWindow_clear(game->window, sfBlack);
     events_handler_pause_scene(game);
     handle_object(game);
+    if (game->current_scene != PAUSE_SCENE)
+        return;
     draw_background(game);
     draw_object(game);
     draw_cursor(game->window, game->cursor);

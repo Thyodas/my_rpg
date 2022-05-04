@@ -10,7 +10,6 @@
 
 void set_game_scene(game_t *game)
 {
-    //game->prev_scene = game->scene[game->current_scene];
     game->previous_scene = game->current_scene;
     game->current_scene = GAME_SCENE;
     if (game->play->view == NULL)
@@ -22,7 +21,6 @@ void set_game_scene(game_t *game)
 
 void set_menu_scene(game_t *game)
 {
-    //game->prev_scene = game->scene[game->current_scene];
     game->previous_scene = game->current_scene;
     game->current_scene = START_SCENE;
     sfRenderWindow_setView(game->window,
@@ -31,7 +29,6 @@ void set_menu_scene(game_t *game)
 
 void set_settings_scene(game_t *game)
 {
-    //game->prev_scene = game->scene[game->current_scene];
     game->previous_scene = game->current_scene;
     game->current_scene = SETTINGS_SCENE;
     sfRenderWindow_setView(game->window,
@@ -40,12 +37,13 @@ void set_settings_scene(game_t *game)
 
 void set_pause_scene(game_t *game)
 {
-    sfTexture *texture = sfTexture_create(1920, 1080);
-    sfTexture_updateFromRenderWindow(texture, game->window, 0, 0);
     game->previous_scene = game->current_scene;
-    //game->prev_scene = game->scene[game->current_scene];
+    if (game->previous_scene == GAME_SCENE) {
+        sfTexture *texture = sfTexture_create(1920, 1080);
+        sfTexture_updateFromRenderWindow(texture, game->window, 0, 0);
+        game->scene[PAUSE_SCENE]->texture_background_saved = texture;
+    }
     game->current_scene = PAUSE_SCENE;
-    game->scene[PAUSE_SCENE]->texture_background_saved = texture;
     sfRenderWindow_setView(game->window,
         sfRenderWindow_getDefaultView(game->window));
 }

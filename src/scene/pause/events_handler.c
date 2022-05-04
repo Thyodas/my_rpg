@@ -9,6 +9,7 @@
 #include "my.h"
 
 void check_mouse_movement(game_t *game);
+void set_game_scene(game_t *game);
 
 void events_handler_pause_scene(game_t *game)
 {
@@ -16,5 +17,8 @@ void events_handler_pause_scene(game_t *game)
         if (game->event.type == sfEvtClosed)
             sfRenderWindow_close(game->window);
         check_mouse_movement(game);
+        if (game->event.type == sfEvtKeyReleased &&
+            game->event.key.code == sfKeyEscape)
+            set_game_scene(game);
     }
 }
