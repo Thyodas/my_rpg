@@ -13,7 +13,6 @@ sfRenderWindow *init_window(void);
 static void init_all_data_structure(game_t *game)
 {
     game->data.retro_font = sfFont_createFromFile("assets/fonts/retro.ttf");
-    sfTexture_setSmooth(sfFont_getTexture(game->data.retro_font, 10), sfFalse);
 }
 
 void init_data(game_t *game)
