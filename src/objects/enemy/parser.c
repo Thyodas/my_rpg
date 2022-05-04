@@ -20,11 +20,32 @@ void draw_enemy(game_t *game, object_t *self);
 stats_t *skeleton_stats(void);
 stats_t *slime_stats(void);
 
-static option_t get_option(char **argv, int id)
+static stats_t *(*stats_enemy[2])(void) = {&slime_stats, &skeleton_stats};
+static option_t *(*option_enemy[2])(void) = {&slime_option, &skeleton_option};
+
+static option_t *option_skeleton(char **argv, int id)
 {
-    option_t option;
-    char *paths[2] = {SLIME_PATH, SKELETON_PATH};
-    option.path = paths[id];
+    option_t *option;
+    option->path = SLIME_PATH;
+    option->scale = (sfVector2f){1, 1};
+    option->int_rect = (sfIntRect){0, 0, 32, 32};
+    option->rect_x = 15;
+    option->rect_y = 15;
+    option->spritesheet_width = 30;
+    option->spritesheet_height = 30;
+    return option;
+}
+
+static option_t *option_slime(char **argv, int id)
+{
+    option_t *option;
+    option->path = SLIME_PATH;
+    option->scale = (sfVector2f){1, 1};
+    option->int_rect = (sfIntRect){0, 0, 32, 32};
+    option->rect_x = 15;
+    option->rect_y = 15;
+    option->spritesheet_width = 30;
+    option->spritesheet_height = 30;
     return option;
 }
 
@@ -36,7 +57,6 @@ static sfVector2i *get_pos(char **arg)
     pos[1] = (sfVector2i){my_getnbr(arg[3]), my_getnbr(arg[4])};
     return pos;
 }
-static stats_t *(*stats_enemy[2])(void) = {&slime_stats, &skeleton_stats};
 
 //[ID], [POSX1], [POSY1], [POSX2], [POSY2]
 void parse_enemy(game_t *game, region_t *region, char **argv)
@@ -48,7 +68,7 @@ void parse_enemy(game_t *game, region_t *region, char **argv)
     int id = my_getnbr(argv[0]);
     if (id < 0 || id >= ENEMY_NB)
         return;
-    enemy_t enemy = create_enemy(get_pos(argv), get_option(argv, id),
+    enemy_t enemy = create_enemy(get_pos(argv), option_enemy[id](),
                                                         stats_enemy[id]());
     object_t *object = create_object(ENEMY_OBJ, &enemy,
                                                 &enemy_handler, &draw_enemy);

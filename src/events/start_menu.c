@@ -19,18 +19,18 @@ void start_menu_animate_sprites(game_t *game)
     }
 }
 
-void start_menu_events_handler(game_t *game, sfEvent event)
-{
-    // Replace cursor by custom cursor
-    check_mouse_movement(game, event);
+// void start_menu_events_handler(game_t *game, sfEvent event)
+// {
+//     // Replace cursor by custom cursor
+//     check_mouse_movement(game, event);
 
-    if (event.type == sfEvtMouseButtonReleased) {
-        if (is_hit(game->start_menu->exit, game->cursor, 34.0, 16.0)) {
-            // TODO free data
-            return;
-        }
-        if (is_hit(game->start_menu->new_game, game->cursor, 60.0, 16.0)) {
-            set_game_scene(game);
-        }
-    }
-}
+//     if (event.type == sfEvtMouseButtonReleased) {
+//         if (is_hit(game->start_menu->exit, game->cursor, 34.0, 16.0)) {
+//             // TODO free data
+//             return;
+//         }
+//         if (is_hit(game->start_menu->new_game, game->cursor, 60.0, 16.0)) {
+//             set_game_scene(game);
+//         }
+//     }
+// }
