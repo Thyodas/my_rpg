@@ -23,6 +23,7 @@ FILE_NAME	:=	main 													\
 			utils/extend_str 											\
 			utils/random 												\
 			utils/lists/my_put_in_list 									\
+			utils/lists/my_list_size 									\
 			events/mouse_events 										\
 			events/exit 												\
 			events/play_events 											\
@@ -47,9 +48,13 @@ FILE_NAME	:=	main 													\
 			scene/start_menu/display 									\
 			scene/start_menu/event_handler 								\
 			scene/start_menu/init 										\
+			scene/pause/display 										\
+			scene/pause/events_handler 									\
+			scene/pause/init 											\
 			scene/draw_object 											\
 			scene/handle_object 										\
 			scene/parse_object											\
+			scene/return_to_previous_scene 								\
 			maps/create_map 											\
 			objects/player/create 										\
 			objects/player/handler 										\
@@ -84,7 +89,7 @@ OBJECTS    	:=    	$(addprefix $(BUILD_DIR), $(SRC:$(SRC_DIR)%.c=%.o))
 
 NAME 		:=     	my_rpg
 
-CFLAGS 		:= 		$(LIB) -ggdb3 -O1
+CFLAGS 		:= 		$(LIB) -ggdb3 -O1 -g
 
 
 all: $(NAME)

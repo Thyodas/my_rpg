@@ -17,6 +17,8 @@ void settings_menu(game_t *game)
     sfRenderWindow_clear(game->window, sfBlack);
     events_handler_settings_scene(game);
     handle_object(game);
+    if (game->current_scene != SETTINGS_SCENE)
+        return;
     game->scene[SETTINGS_SCENE]->emitter->
                                 ptr_part(game->scene[SETTINGS_SCENE]->emitter,
                                 SNOW, (sfVector2f){0.0, 0.0}, game->window);

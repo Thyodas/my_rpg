@@ -32,7 +32,15 @@
         NB_BUTTONS_SETTINGS
     };
 
-    #define NB_BUTTONS (NB_BUTTONS_START + NB_BUTTONS_SETTINGS)
+    enum buttons_pause {
+        BTN_CONTINUE_GAME,
+        BTN_SETTINGS,
+        BTN_QUIT,
+        NB_BUTTONS_PAUSE
+    };
+
+    #define NB_BUTTONS (NB_BUTTONS_START + NB_BUTTONS_SETTINGS + \
+                        NB_BUTTONS_PAUSE)
 
     enum button_state {
         IDLE,

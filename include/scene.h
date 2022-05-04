@@ -16,12 +16,14 @@
         START_SCENE,
         GAME_SCENE,
         SETTINGS_SCENE,
+        PAUSE_SCENE,
         NB_SCENE
     };
 
     typedef struct scene {
         linked_list_t *obj;
         int nb_buttons;
+        sfTexture *texture_background_saved;
         particles_emitter_t *emitter;
     } scene_t;
 

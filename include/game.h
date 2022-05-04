@@ -39,8 +39,8 @@
         sfRenderWindow *window;
         my_time_t *clock;
         cursor_t *cursor;
-        scene_t *scene[3];
-        scene_t *prev_scene;
+        scene_t *scene[NB_SCENE];
+        int previous_scene;
         settings_t *settings;
         play_t *play;
         sfEvent event;

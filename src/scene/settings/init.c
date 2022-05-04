@@ -19,5 +19,6 @@ void init_settings_menu(game_t *game)
     game->scene[SETTINGS_SCENE]->obj = NULL;
     game->scene[SETTINGS_SCENE]->emitter = init_emitter();
     game->scene[SETTINGS_SCENE]->nb_buttons = NB_BUTTONS_SETTINGS;
+    game->scene[SETTINGS_SCENE]->texture_background_saved = NULL;
     parse_objects_scene(game, SETTINGS_SCENE, "data/scene/settings.scene");
 }
