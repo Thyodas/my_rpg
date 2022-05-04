@@ -11,9 +11,15 @@
     #include "region.h"
     #include "entity.h"
 
+    #define NB_ARGS_SMOKE 3
+    #define CAST_SMOKE(arg) ((smoke_t *)(arg))
+    #define NB_ARGS_WAVES 3
+
     enum id_object_type {
         TELEPORTER_OBJ,
         DIALOGUE_OBJ,
+        SMOKE_OBJ,
+        WAVES_OBJ,
         OBJECT_NB
     };
 
@@ -21,6 +27,21 @@
         sfFloatRect area;
         region_t *dest_region;
     } teleporter_t;
+
+    typedef struct smoke {
+        int offset_x;
+        int offset_pos_x;
+        int offset_pos_y;
+        sfSprite *sprite;
+        sfVector2f pos;
+    } smoke_t;
+
+    typedef struct waves {
+        long last_clock;
+        sfSprite *sprite;
+        int offset_x;
+        sfVector2f pos;
+    } waves_t;
 
     typedef struct {
         entity_t entity;

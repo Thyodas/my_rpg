@@ -71,6 +71,14 @@ FILE_NAME	:=	main 													\
 			objects/buttons/create 										\
 			objects/buttons/draw_start 									\
 			objects/buttons/handler_start 								\
+			objects/smoke/create 										\
+			objects/smoke/draw 											\
+			objects/smoke/handler 										\
+			objects/smoke/parser 										\
+			objects/waves/create 										\
+			objects/waves/draw 											\
+			objects/waves/handler 										\
+			objects/waves/parser 										\
 			settings/reset_settings 									\
 			settings/set_general_volume 								\
 			settings/set_music_volume									\
