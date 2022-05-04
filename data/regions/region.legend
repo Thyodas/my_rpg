@@ -1,4 +1,0 @@
-OBJ_ID arg1 arg2 ... argN
-
-Teleporter:
-0 destination_region_id posx posy width height
