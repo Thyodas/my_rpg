@@ -11,10 +11,11 @@
     #include <SFML/System.h>
 
     typedef struct my_time_s {
-        sfTime time;
-        float seconds;
-        sfClock *clock;
         float prev_time;
+        float seconds;
+        sfTime time;
+        sfClock *clock;
+        sfText *clock_txt;
     } my_time_t;
 
 #endif /* !TIME_H_ */
