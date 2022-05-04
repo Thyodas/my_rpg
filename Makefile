@@ -55,10 +55,6 @@ FILE	:=	main.c 														\
 			objects/enemy/parser.c 										\
 			objects/enemy/handler.c 									\
 			objects/enemy/stats_enemy.c
-	src/objects/buttons/parser.c
-	src/objects/buttons/handler_start.c \
-	src/objects/buttons/draw_start.c \
-	src/objects/buttons/create.c \
 
 BUILD_DIR 	:=		build/
 

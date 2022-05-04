@@ -20,7 +20,6 @@
         TELEPORTER_OBJ,
         OBJECT_NB,
         ENEMY_OBJ
-        BUTTON_OBJ,
     };
 
     typedef struct {
