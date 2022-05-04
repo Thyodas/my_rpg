@@ -24,6 +24,7 @@ FILE_NAME	:=	main 													\
 			utils/random 												\
 			utils/lists/my_put_in_list 									\
 			utils/lists/my_list_size 									\
+			utils/atof													\
 			events/mouse_events 										\
 			events/exit 												\
 			events/play_events 											\
@@ -74,6 +75,11 @@ FILE_NAME	:=	main 													\
 			settings/reset_settings 									\
 			settings/set_general_volume 								\
 			settings/set_music_volume
+			objects/buttons/parser										\
+			objects/dialogue/create 									\
+			objects/dialogue/draw 										\
+			objects/dialogue/handler	 								\
+			objects/dialogue/parser										\
 
 
 BUILD_DIR 	:=		build/

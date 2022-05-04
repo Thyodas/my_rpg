@@ -24,6 +24,10 @@
     #include <SFML/Audio.h>
     #include <stdbool.h>
 
+    typedef struct {
+        sfFont *retro_font;
+    } all_data_t;
+
     typedef struct play_s {
         object_t *player;
         region_t *region_list[REGION_NB];
@@ -45,6 +49,7 @@
         play_t *play;
         sfEvent event;
         bool debug_mode;
+        all_data_t data;
     } game_t;
 
     #define SET_SPRITE_IMG(sprite, img, area) (sfSprite_setTexture(sprite, \

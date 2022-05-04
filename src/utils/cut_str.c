@@ -8,6 +8,9 @@
 #include "my.h"
 #include <stdlib.h>
 
+int is_quote(int c);
+char *remove_quote(char *str);
+
 static void extend_array(char ***array, char *new_line)
 {
     int size = 0;
@@ -29,8 +32,27 @@ static int char_in_str(char c, char *str)
     return 0;
 }
 
+int quote_handling(char ***array, const char *str)
+{
+    char quote = str[0];
+    int size = 1;
+
+    for (; str[size] != quote; ++size)
+        if (str[size] == '\0') {
+            return (size);
+        }
+    size++;
+    char *new_str = malloc(sizeof(char) * (size + 1));
+    my_strncpy(new_str, str, size);
+    new_str[size] = '\0';
+    extend_array(array, remove_quote(new_str));
+    return (size);
+}
+
 int handle_char(char ***array, char *str, char *delim)
 {
+    if (is_quote(str[0]))
+        return (quote_handling(array, str));
     if (char_in_str(str[0], delim))
         return 1;
     int size = 0;

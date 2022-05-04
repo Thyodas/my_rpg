@@ -13,7 +13,7 @@
 
     enum id_object_type {
         TELEPORTER_OBJ,
-        BUTTON_OBJ,
+        DIALOGUE_OBJ,
         OBJECT_NB
     };
 
