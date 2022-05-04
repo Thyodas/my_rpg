@@ -51,6 +51,9 @@ FILE_NAME	:=	main 													\
 			scene/pause/display 										\
 			scene/pause/events_handler 									\
 			scene/pause/init 											\
+			scene/help/display 											\
+			scene/help/events_handler 									\
+			scene/help/init 											\
 			scene/draw_object 											\
 			scene/handle_object 										\
 			scene/parse_object											\
@@ -67,7 +70,10 @@ FILE_NAME	:=	main 													\
 			objects/buttons/create 										\
 			objects/buttons/draw_start 									\
 			objects/buttons/handler_start 								\
-			objects/buttons/parser
+			objects/buttons/parser										\
+			settings/reset_settings 									\
+			settings/set_general_volume 								\
+			settings/set_music_volume
 
 
 BUILD_DIR 	:=		build/
