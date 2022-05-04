@@ -15,7 +15,7 @@
 
     #define CAST_BUTTON(arg) ((button_t *)(arg))
     #define NB_ARGS_BUTTON 5
-    #define NB_PTR_ID 9
+    #define NB_PTR_ID 11
 
     enum buttons {
         BTN_NEW_GAME,

@@ -7,7 +7,18 @@
 
 #include "rpg.h"
 
-void set_music_volume(game_t *game)
+void increase_music_volume(game_t *game)
 {
-    return;
+    if (game->settings.volume_music >= 100)
+        return;
+    game->settings.volume_music += 10;
+}
+
+void decrease_music_volume(game_t *game)
+{
+    if (game->settings.volume_music <= 0) {
+        game->settings.volume_music = 0;
+        return;
+    }
+    game->settings.volume_music -= 10;
 }

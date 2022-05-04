@@ -9,5 +9,6 @@
 
 void reset_settings(game_t *game)
 {
-    return;
+    game->settings.general_volume = 100;
+    game->settings.volume_music = 100;
 }

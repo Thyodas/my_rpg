@@ -22,9 +22,11 @@ object_t *create_object(enum id_object_type id, void *data, void (*handler)(),
 void set_pause_scene(game_t *game);
 void return_to_previous_scene(game_t *game);
 void set_help_scene(game_t *game);
-void set_music_volume(game_t *game);
-void set_general_volume(game_t *game);
 void reset_settings(game_t *game);
+void increase_general_volume(game_t *game);
+void decrease_general_volume(game_t *game);
+void increase_music_volume(game_t *game);
+void decrease_music_volume(game_t *game);
 
 static sfIntRect (rect_sprite[]) = {
     {0, 0, 86, 25}, //continue 0
@@ -44,11 +46,13 @@ static void (*ptr_btn[])(game_t *) = {
     &set_settings_scene, //1
     &exit_game, //2
     &set_help_scene, //3
-    &set_music_volume, //4
-    &set_general_volume, //5
+    &increase_general_volume, //4
+    &increase_music_volume, //5
     &reset_settings, //6
     &return_to_previous_scene, //7
     &set_menu_scene, //8
+    &decrease_general_volume, //9
+    &decrease_music_volume //10
 };
 
 static void (*ptr_handler[])(game_t *, object_t *) = {

@@ -45,7 +45,7 @@
         cursor_t *cursor;
         scene_t *scene[NB_SCENE];
         int previous_scene;
-        settings_t *settings;
+        settings_t settings;
         play_t *play;
         sfEvent event;
         bool debug_mode;

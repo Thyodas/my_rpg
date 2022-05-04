@@ -7,7 +7,18 @@
 
 #include "rpg.h"
 
-void set_general_volume(game_t *game)
+void increase_general_volume(game_t *game)
 {
-    return;
+    if (game->settings.general_volume >= 100)
+        return;
+    game->settings.general_volume += 10;
+}
+
+void decrease_general_volume(game_t *game)
+{
+    if (game->settings.general_volume <= 0) {
+        game->settings.general_volume = 0;
+        return;
+    }
+    game->settings.general_volume -= 10;
 }

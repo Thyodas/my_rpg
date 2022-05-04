@@ -15,6 +15,14 @@ static void init_all_data_structure(game_t *game)
     game->data.retro_font = sfFont_createFromFile("assets/fonts/retro.ttf");
 }
 
+static void init_settings(game_t *game)
+{
+    game->settings.general_volume = 100;
+    game->settings.volume_music = 100;
+    game->settings.music_text = NULL;
+    game->settings.general_text = NULL;
+}
+
 void init_data(game_t *game)
 {
     game->current_scene = 0;
@@ -23,4 +31,5 @@ void init_data(game_t *game)
     game->cursor = init_cursor(game->window);
     game->debug_mode = false;
     init_all_data_structure(game);
+    init_settings(game);
 }
