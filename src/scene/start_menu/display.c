@@ -15,7 +15,7 @@ void draw_cursor(sfRenderWindow *window, cursor_t *cursor);
 
 void start_menu(game_t *game)
 {
-    sfRenderWindow_clear(game->window, sfBlack);
+    sfRenderWindow_clear(game->window, (sfColor){28, 28, 28, 255});
     events_handler_start_scene(game);
     handle_object(game);
     if (game->current_scene != START_SCENE)
