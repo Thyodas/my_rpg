@@ -31,7 +31,7 @@
     typedef struct object_s {
         enum id_object_type id;
         void *data;
-        void (*handler)(); // TODO @Guillaume
+        void (*handler)();
         void (*draw)();
     } object_t;
 
