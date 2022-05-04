@@ -24,11 +24,7 @@ void init_game(game_t *game)
         (sfVector2f){1.0, 1.0},
         (sfVector2f){REGION_SIZE_X * game->play->current_region_pos.x + 200,
             REGION_SIZE_Y * game->play->current_region_pos.y + 170},
-        (sfIntRect){0, 0, 16, 16},
-        16,
-        16,
-        96,
-        96,
+        (sfIntRect){0, 0, 16, 16}, 16, 16, 96, 96,
     };
     game->scene[GAME_SCENE] = malloc(sizeof(scene_t));
     game->scene[GAME_SCENE]->nb_buttons = 0;
