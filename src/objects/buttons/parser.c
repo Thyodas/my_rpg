@@ -18,29 +18,34 @@ button_t *init_button(char *path_sprite, sfVector2f pos_btn,
 void draw_buttons_start(game_t *game, object_t *button);
 void handle_button_event_start(game_t *game, object_t *button);
 object_t *create_object(enum id_object_type id, void *data, void (*handler)(),
-void (*draw)());
+                        void (*draw)());
+void set_pause_scene(game_t *game);
 
 static void (*ptr_btn[])(game_t *) = {
-    &set_game_scene,
-    &exit_game,
-    &exit_game,
-    &set_settings_scene,
-    &exit_game,
-    &exit_game,
-    &exit_game,
-    &set_menu_scene,
-    &exit_game,
+    &set_game_scene, //new game start
+    &set_settings_scene, //settings start
+    &exit_game, //exit start
+    &exit_game, //help start
+    &set_menu_scene, //settings 1
+    &set_menu_scene, //settings 2
+    &set_menu_scene, //settings 3
+    &set_menu_scene, //settings 4
+    &set_game_scene, //continue game
+    &set_settings_scene, //settings game
+    &set_menu_scene //exit game
 };
 
 static void (*ptr_handler[])(game_t *, object_t *) = {
     &handle_button_event_start,
-    NULL,
+    &handle_button_event_start,
+    &handle_button_event_start,
     &handle_button_event_start
 };
 
 static void (*ptr_draw[])(game_t *, object_t *) = {
     &draw_buttons_start,
-    NULL,
+    &draw_buttons_start,
+    &draw_buttons_start,
     &draw_buttons_start
 };
 

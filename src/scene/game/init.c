@@ -34,6 +34,7 @@ void init_game(game_t *game)
     game->scene[GAME_SCENE]->nb_buttons = 0;
     game->scene[GAME_SCENE]->obj = NULL;
     game->scene[GAME_SCENE]->emitter = init_emitter();
+    game->scene[GAME_SCENE]->texture_background_saved = NULL;
     game->play->player = create_player_object(option);
     my_put_in_list(&game->scene[GAME_SCENE]->obj, game->play->player);
 }

@@ -16,6 +16,8 @@ void game(game_t *game)
 {
     while (sfRenderWindow_pollEvent(game->window, &game->event))
         game_events_handler(game);
+    if (game->current_scene != GAME_SCENE)
+        return;
     sfRenderWindow_clear(game->window, sfBlack);
     handle_region(game);
     draw_region(game, game->play->current_region);

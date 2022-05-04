@@ -40,7 +40,7 @@
         my_time_t *clock;
         cursor_t *cursor;
         scene_t *scene[3];
-        scene_t *prev_scene;
+        int previous_scene;
         settings_t *settings;
         play_t *play;
         sfEvent event;
