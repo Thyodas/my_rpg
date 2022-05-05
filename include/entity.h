@@ -15,7 +15,8 @@
     typedef enum object_animation_state {
         IDLE_STATE,
         MOVEMENT_STATE,
-    }object_animation_state_e;
+        INTERACTION_STATE,
+    };
 
     typedef enum direction {
         LEFT,
@@ -26,7 +27,7 @@
         sfSprite *sprite;
         sfTexture *texture;
         sfIntRect rect;
-        object_animation_state_e animation_state;
+        enum object_animation_state animation_state;
         int spritesheet_rect_x; // Décalage d'image sur spritesheet par pixel (spritesheet horizontal)
         int spritesheet_rect_y; // Décalage d'image sur spritesheet par pixel (spritesheet vertical)
         int spritesheet_width; // total image width (in pixels)
