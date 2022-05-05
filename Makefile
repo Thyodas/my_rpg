@@ -92,7 +92,9 @@ FILE_NAME	:=	main 													\
 			objects/enemy/handler    									\
 			objects/enemy/create   										\
 			objects/enemy/parser 										\
-			objects/enemy/draw   										\
+			objects/enemy/draw											\
+
+
 BUILD_DIR 	:=		build/
 
 SRC_DIR		:=		src/

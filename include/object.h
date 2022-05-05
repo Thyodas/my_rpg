@@ -20,9 +20,13 @@
         DIALOGUE_OBJ,
         SMOKE_OBJ,
         WAVES_OBJ,
-        ENEMY_OBJ
+        ENEMY_OBJ,
         OBJECT_NB,
     };
+
+    #define SLIME_PATH "assets/spritesheets/slime.png"
+    #define SKELETON_PATH "assets/spritesheets/skeleton.png"
+    #define ENEMY_NB 4
 
     typedef struct {
         sfFloatRect area;
@@ -49,6 +53,11 @@
         int speed;
         int health;
     } player_t;
+
+    typedef struct stats_s {
+        int damage;
+        int life_points;
+    } stats_t;
 
     typedef struct {
         sfVector2i self_pos;
