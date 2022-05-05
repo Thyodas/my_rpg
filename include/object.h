@@ -59,12 +59,6 @@
         long last_clock;
     } waves_border_t;
 
-    typedef struct {
-        entity_t entity;
-        int speed;
-        int health;
-    } player_t;
-
     typedef struct stats_s {
         int damage;
         int life_points;
@@ -84,6 +78,19 @@
         void (*handler)();
         void (*draw)();
     } object_t;
+
+    typedef struct {
+        object_t **items;
+        int selected_item;
+        int nb_items;
+    } inventory_t;
+
+    typedef struct {
+        inventory_t inventory;
+        entity_t entity;
+        int speed;
+        int health;
+    } player_t;
 
     #define CAST_PLAYER(arg) ((player_t *)(arg))
 

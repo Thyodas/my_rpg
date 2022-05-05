@@ -5,6 +5,7 @@
 ** loop_region
 */
 
+#include "rpg.h"
 #include "region.h"
 #include "game.h"
 #include "object.h"

@@ -25,6 +25,13 @@
     #include <stdbool.h>
 
     typedef struct {
+        char *name;
+        entity_t *entity;
+        int nb_usage;
+        int unlocked;
+    } item_t;
+    
+    typedef struct {   
         sfFont *retro_font;
     } all_data_t;
 

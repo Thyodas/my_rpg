@@ -37,7 +37,7 @@ void rect_animation_interaction(game_t *game, entity_t *entity)
     if (entity->rect.left >= entity->spritesheet_width - entity->spritesheet_rect_x) {
         entity->rect.left = 0;
         CAST_PLAYER(game->play->player->data)->entity.animation_state
-                = IDLE_STATE;
+            = IDLE_STATE;
     }
     entity->rect.left = entity->spritesheet_width - entity->spritesheet_rect_x;
     sfSprite_setTextureRect(entity->sprite, entity->rect);
@@ -105,7 +105,7 @@ void handler_player(game_t *game)
 
 void rect_set_y(game_t *game, int status)
 {
-    entity_t *entity = game->play->player->data;
+    entity_t *entity = &CAST_PLAYER(game->play->player->data)->entity;
 
     if (entity->spritesheet_rect_y != 0)
         entity->rect.top = entity->spritesheet_rect_y * status;

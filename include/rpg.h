@@ -9,6 +9,7 @@
     #define RPG_H_
 
     #include <stdlib.h>
+    #include <stdio.h>
     #include <SFML/Graphics.h>
     #include <SFML/System.h>
     #include <SFML/Window.h>
@@ -30,7 +31,7 @@
     void draw_entity(game_t *game, entity_t *entity);
 
     /* Init */
-    entity_t init_entity(option_t option);
+    entity_t *init_entity(option_t option);
 
     /* Interactions */
     void check_mouse_movement(game_t *game);
@@ -51,5 +52,11 @@
     // Events
     void move_player(game_t *game, player_t *player,
         float shift_x, float shift_y);
+
+    // Inventory
+    void set_inventory_data(game_t *game, void *data, int n);
+    void append_inventory_data(game_t *game, void *data);
+    item_t *get_inventory_data(game_t *game, int n);
+    item_t *create_items_object(option_t option, int unlocked);
 
 #endif /* !RPG_H_ */
