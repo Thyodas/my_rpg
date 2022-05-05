@@ -12,6 +12,7 @@
 void init_all_maps(game_t *game);
 particles_emitter_t *init_emitter(void);
 object_t *create_player_object(option_t option);
+object_t *init_clock_text(game_t *game);
 
 void init_game(game_t *game)
 {
@@ -33,4 +34,5 @@ void init_game(game_t *game)
     game->scene[GAME_SCENE]->texture_background_saved = NULL;
     game->play->player = create_player_object(option);
     my_put_in_list(&game->scene[GAME_SCENE]->obj, game->play->player);
+    my_put_in_list(&game->scene[GAME_SCENE]->obj, init_clock_text(game));
 }

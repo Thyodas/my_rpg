@@ -5,48 +5,41 @@
 ** restart_clock
 */
 
-#include <SFML/Graphics/Export.h>
-#include <SFML/Graphics/Color.h>
-#include <SFML/Graphics/Rect.h>
-#include <SFML/Graphics/Types.h>
-#include <SFML/Graphics/Transform.h>
-#include <SFML/System/Vector2.h>
-#include <SFML/Graphics/Export.h>
-#include <SFML/Graphics/Color.h>
-#include <SFML/Graphics/Rect.h>
-#include <SFML/Graphics/Types.h>
-#include <SFML/Graphics/PrimitiveType.h>
-#include <SFML/Graphics/RenderStates.h>
-#include <SFML/Graphics/Vertex.h>
-#include <SFML/Window/Event.h>
-#include <SFML/Window/VideoMode.h>
-#include <SFML/Window/WindowHandle.h>
-#include <SFML/Window/Window.h>
-#include <SFML/System/Vector2.h>
 #include <stddef.h>
 #include <stddef.h>
 #include "game.h"
 #include "my.h"
 
 #define FONT_PATH "assets/fonts/retro.ttf"
+int my_put_in_list(struct linked_list **list, void *data);
+object_t *create_object(enum id_object_type id, void *data, void (*handler)(),
+void (*draw)());
 
-sfText *init_clock_text(void)
+void draw_clock_text(game_t *game, object_t *self)
 {
-    sfText *clock_txt = sfText_create();
-
-    sfText_setFont(clock_txt, sfFont_createFromFile(FONT_PATH));
-    sfText_setPosition(clock_txt, (sfVector2f){10, 10});
-    sfText_setScale(clock_txt, (sfVector2f){1, 1});
-    sfText_setColor(clock_txt, sfBlack);
-    sfText_setString(clock_txt, "60");
-    return clock_txt;
+    sfText *clock_txt = self->data;
+    sfRenderWindow_drawText(game->window, clock_txt, NULL);
 }
 
-//TODO call update_clock_text
-void handle_clock_text(game_t *game, my_time_t *clock)
+void handler_clock_text(game_t *game, object_t *self)
 {
-    sfText_setString(clock->clock_txt, my_int_to_strnum((int)clock->seconds));
-    sfRenderWindow_drawText(game->window, clock->clock_txt, NULL);
+    sfText *clock_txt = self->data;
+    sfText_setString(clock_txt, my_int_to_strnum((int)game->clock->seconds));
+}
+
+object_t *init_clock_text(game_t *game)
+{
+    sfText *clock_txt = sfText_create();
+    object_t *object = NULL;
+
+    sfText_setFont(clock_txt, game->data.retro_font);
+    sfText_setPosition(clock_txt, (sfVector2f){100, 100});
+    sfText_setScale(clock_txt, (sfVector2f){0.5, 0.5});
+    sfText_setColor(clock_txt, sfRed);
+    sfText_setString(clock_txt, "60");
+    object = create_object(CLOCK_OBJ, clock_txt,
+                                        &handler_clock_text, &draw_clock_text);
+    return object;
 }
 
 int restart_clock(my_time_t *clock)

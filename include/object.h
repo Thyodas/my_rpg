@@ -21,6 +21,7 @@
         SMOKE_OBJ,
         WAVES_OBJ,
         ENEMY_OBJ,
+        CLOCK_OBJ,
         OBJECT_NB,
     };
 
