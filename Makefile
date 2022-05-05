@@ -84,7 +84,6 @@ FILE_NAME	:=	main 													\
 			settings/reset_settings 									\
 			settings/set_general_volume 								\
 			settings/set_music_volume									\
-			objects/buttons/parser										\
 			objects/dialogue/create 									\
 			objects/dialogue/draw 										\
 			objects/dialogue/handler	 								\
