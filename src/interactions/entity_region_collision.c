@@ -67,10 +67,9 @@ bool check_region_bound(game_t *game, sfFloatRect *player_bounds)
         && game->play->current_region->right == NULL));
 }
 
-bool check_player_region_collision(game_t *game, float shift_x, float shift_y)
+bool check_entity_region_collision(game_t *game, float shift_x, float shift_y, entity_t entity)
 {
-    sfFloatRect player_bounds = sfSprite_getGlobalBounds(
-        ((player_t *)(game->play->player->data))->entity.sprite);
+    sfFloatRect player_bounds = sfSprite_getGlobalBounds(entity.sprite);
     player_bounds.left += shift_x;
     player_bounds.top += shift_y;
 

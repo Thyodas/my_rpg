@@ -14,7 +14,7 @@ FILE_NAME	:=	main 													\
 			init/time 													\
 			init/emitter 												\
 			init/data 													\
-			interactions/player_region_collision 						\
+			interactions/entity_region_collision 						\
 			utils/free 													\
 			utils/help 													\
 			utils/arr_copy 												\
