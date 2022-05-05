@@ -67,7 +67,7 @@
         sfVector2f *pos;
         int where_to_go;
         entity_t entity;
-        stats_t *stats;
+        stats_t stats;
         long last_breathing_animation;
         long last_breath_out_animation;
         long last_move_animation;

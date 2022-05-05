@@ -29,7 +29,7 @@ static void init_enemy_entity(enemy_t *enemy, option_t option)
     enemy->entity.spritesheet_rect_y = 16;
 }
 
-enemy_t *create_enemy(sfVector2f *pos, option_t option, stats_t *stats)
+enemy_t *create_enemy(sfVector2f *pos, option_t option, stats_t stats)
 {
     enemy_t *enemy = malloc(sizeof(enemy_t));
     enemy->self_pos = pos[0];

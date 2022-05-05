@@ -14,19 +14,19 @@
 
 object_t *create_object(enum id_object_type id, void *data, void (*handler)(),
 void (*draw)());
-enemy_t *create_enemy(sfVector2f *pos, option_t option, stats_t *stats);
+enemy_t *create_enemy(sfVector2f *pos, option_t option, stats_t stats);
 void draw_enemy(game_t *game, object_t *self);
-stats_t *blob_stats(void);
-stats_t *slime_stats(void);
-stats_t *ghost_stats(void);
-stats_t *skeleton_stats(void);
+stats_t blob_stats(void);
+stats_t slime_stats(void);
+stats_t ghost_stats(void);
+stats_t skeleton_stats(void);
 option_t blob_option(void);
 option_t slime_option(void);
 option_t ghost_option(void);
 option_t skeleton_option(void);
 void enemy_handler(game_t *game, object_t *self);
 
-static stats_t *(*stats_enemy[4])(void) = {&blob_stats, &slime_stats,
+static stats_t (*stats_enemy[4])(void) = {&blob_stats, &slime_stats,
                                             &ghost_stats, &skeleton_stats};
 static option_t (*option_enemy[4])(void) = {&blob_option, &slime_option,
                                             &ghost_option, &skeleton_option};
