@@ -45,8 +45,8 @@ void enemy_handler(game_t *game, object_t *self)
     game->clock->seconds = elapse.microseconds / 1000000.0;
     rect_animation_idle_enemy(game, &enemy->entity);
     //TODO move_enemy
-    /* if (move) {
-        if (move == RIGHT) {
+    /* if (enemy_move != IDLE) {
+        if (enemy_move == RIGHT) {
             rect_animation_movement_enemy(game, &enemy->entity, RIGHT);
         } else
             rect_animation_movement_enemy(game, &enemy->entity, LEFT);

@@ -18,6 +18,7 @@
     };
 
     typedef enum direction {
+        IDLE,
         LEFT,
         RIGHT
     } direction_e;
