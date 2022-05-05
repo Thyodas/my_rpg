@@ -15,6 +15,7 @@
     #define CAST_SMOKE(arg) ((smoke_t *)(arg))
     #define NB_ARGS_WAVES 3
     #define SPRITE_ENEMY ((enemy_t *)(self->data))->entity.sprite
+    #define ENEMY_NB 4
 
     enum id_object_type {
         TELEPORTER_OBJ,
@@ -67,6 +68,10 @@
         int where_to_go;
         entity_t entity;
         stats_t *stats;
+        long last_breathing_animation;
+        long last_breath_out_animation;
+        long last_move_animation;
+        int breath_state;
     } enemy_t;
 
     typedef struct object_s {

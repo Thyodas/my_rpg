@@ -17,12 +17,6 @@
         MOVEMENT_STATE,
     };
 
-    typedef enum direction {
-        IDLE,
-        LEFT,
-        RIGHT
-    } direction_e;
-
     typedef struct entity_s {
         sfSprite *sprite;
         sfTexture *texture;

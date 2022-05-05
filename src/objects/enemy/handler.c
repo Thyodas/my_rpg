@@ -9,32 +9,25 @@
 #include "object.h"
 #include <stdio.h>
 
-void rect_animation_movement_enemy(game_t *game, entity_t *entity, direction_e dir)
+void rect_animation_enemy_breathing(game_t *game, entity_t *entity,
+enemy_t *enemy)
 {
-    if (entity->spritesheet_rect_x == 0) {
-        sfSprite_setTextureRect(entity->sprite, entity->rect);
-        return;
-    }
-    if (entity->rect.top != entity->spritesheet_rect_y * dir)
-        entity->rect.top = entity->spritesheet_rect_y * dir;
-    entity->rect.left += entity->spritesheet_rect_x;
-    if (entity->rect.left >= entity->spritesheet_width)
-        entity->rect.left = 0;
-    sfSprite_setTextureRect(entity->sprite, entity->rect);
-}
+    long current_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
+    static int multiplier = 1;
 
-void rect_animation_idle_enemy(game_t *game, entity_t *entity)
-{
     sfVector2f scale = sfSprite_getScale(entity->sprite);
 
-    if ((int)game->clock->seconds % 2 == 0) {
-        scale.x += 0.0004;
-        scale.y += 0.0002;
+    if ((current_us - enemy->last_breathing_animation) / 1000000.0 >= 0.3) {
+        scale.x += 0.03 * enemy->breath_state;
+        scale.y += 0.01 * enemy->breath_state;
         sfSprite_setScale(entity->sprite, scale);
-    } else {
-        scale.x -= 0.0004;
-        scale.y -= 0.0002;
-        sfSprite_setScale(entity->sprite, scale);
+        enemy->last_breathing_animation =
+            sfClock_getElapsedTime(game->clock->clock).microseconds;
+    }
+    if ((current_us - enemy->last_breath_out_animation) / 1000000.0 >= 1) {
+        enemy->breath_state = enemy->breath_state == 1 ? -1 : 1;
+        enemy->last_breath_out_animation =
+            sfClock_getElapsedTime(game->clock->clock).microseconds;
     }
 }
 
@@ -43,7 +36,8 @@ void enemy_handler(game_t *game, object_t *self)
     enemy_t *enemy = (enemy_t *)self->data;
     sfTime elapse = sfClock_getElapsedTime(game->clock->clock);
     game->clock->seconds = elapse.microseconds / 1000000.0;
-    rect_animation_idle_enemy(game, &enemy->entity);
+    rect_animation_enemy_breathing(game, &enemy->entity, self->data);
+    
     //TODO move_enemy
     /* if (enemy_move != IDLE) {
         if (enemy_move == RIGHT) {
