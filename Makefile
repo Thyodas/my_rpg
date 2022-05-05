@@ -87,8 +87,12 @@ FILE_NAME	:=	main 													\
 			objects/dialogue/draw 										\
 			objects/dialogue/handler	 								\
 			objects/dialogue/parser										\
-
-
+			objects/enemy/props_enemy/option_enemy  					\
+			objects/enemy/props_enemy/stats_enemy  						\
+			objects/enemy/handler    									\
+			objects/enemy/create   										\
+			objects/enemy/parser 										\
+			objects/enemy/draw   										\
 BUILD_DIR 	:=		build/
 
 SRC_DIR		:=		src/

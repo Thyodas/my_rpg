@@ -2,7 +2,7 @@
 ** EPITECH PROJECT, 2022
 ** my_rpg
 ** File description:
-** handler
+** player_handler
 */
 
 #include "rpg.h"

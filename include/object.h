@@ -20,7 +20,8 @@
         DIALOGUE_OBJ,
         SMOKE_OBJ,
         WAVES_OBJ,
-        OBJECT_NB
+        ENEMY_OBJ
+        OBJECT_NB,
     };
 
     typedef struct {
@@ -48,6 +49,14 @@
         int speed;
         int health;
     } player_t;
+
+    typedef struct {
+        sfVector2i self_pos;
+        sfVector2i *pos;
+        int where_to_go;
+        entity_t entity;
+        stats_t *stats;
+    } enemy_t;
 
     typedef struct object_s {
         enum id_object_type id;
