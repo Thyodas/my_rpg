@@ -12,7 +12,7 @@
     #include <SFML/Graphics.h>
     #include <SFML/System.h>
 
-    typedef enum object_animation_state {
+    enum object_animation_state {
         IDLE_STATE,
         MOVEMENT_STATE,
         INTERACTION_STATE,

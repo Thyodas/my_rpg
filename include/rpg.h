@@ -33,14 +33,13 @@
     entity_t init_entity(option_t option);
 
     /* Interactions */
-    void check_mouse_movement(game_t *game, sfEvent event);
+    void check_mouse_movement(game_t *game);
 
     /* Manipulation */
     sfVector2f move_coords(sfVector2f pos, float x, float y);
     int set_text_from_textures(entity_t entity, int n);
 
     /* Animation */
-    void check_mouse_movement(game_t *game, sfEvent event);
     void play_animate_sprites(game_t *game, int status);
     void rect_animation_horizontal(game_t *game, entity_t *entity);
     void rect_list_animation(game_t *game, linked_list_t **list);
