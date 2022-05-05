@@ -25,6 +25,7 @@ FILE_NAME	:=	main 													\
 			utils/lists/my_put_in_list 									\
 			utils/lists/my_list_size 									\
 			utils/atof													\
+			utils/normalize												\
 			events/mouse_events 										\
 			events/exit 												\
 			events/play_events 											\

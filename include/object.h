@@ -27,7 +27,8 @@
 
     #define SLIME_PATH "assets/spritesheets/slime.png"
     #define SKELETON_PATH "assets/spritesheets/skeleton.png"
-    #define ENEMY_NB 4
+    #define BLOB_PATH "assets/spritesheets/blob.png"
+    #define GHOST_PATH "assets/spritesheets/ghost.png"
 
     typedef struct {
         sfFloatRect area;

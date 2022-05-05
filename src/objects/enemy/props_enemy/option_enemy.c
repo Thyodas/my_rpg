@@ -11,9 +11,9 @@
 option_t blob_option(void)
 {
     option_t option;
-    option.path = SLIME_PATH;
+    option.path = BLOB_PATH;
     option.scale = (sfVector2f){1, 1};
-    option.int_rect = (sfIntRect){0, 0, 32, 32};
+    option.int_rect = (sfIntRect){0, 0, 28, 20};
     option.rect_x = 28;
     option.rect_y = 20;
     option.spritesheet_width = 84;
@@ -26,7 +26,7 @@ option_t slime_option(void)
     option_t option;
     option.path = SLIME_PATH;
     option.scale = (sfVector2f){1, 1};
-    option.int_rect = (sfIntRect){0, 0, 32, 32};
+    option.int_rect = (sfIntRect){0, 0, 12, 12};
     option.rect_x = 12;
     option.rect_y = 12;
     option.spritesheet_width = 36;
@@ -37,9 +37,9 @@ option_t slime_option(void)
 option_t ghost_option(void)
 {
     option_t option;
-    option.path = SLIME_PATH;
+    option.path = GHOST_PATH;
     option.scale = (sfVector2f){1, 1};
-    option.int_rect = (sfIntRect){0, 0, 32, 32};
+    option.int_rect = (sfIntRect){0, 0, 20, 18};
     option.rect_x = 20;
     option.rect_y = 18;
     option.spritesheet_width = 80;
@@ -50,9 +50,9 @@ option_t ghost_option(void)
 option_t skeleton_option(void)
 {
     option_t option;
-    option.path = SLIME_PATH;
+    option.path = SKELETON_PATH;
     option.scale = (sfVector2f){1, 1};
-    option.int_rect = (sfIntRect){0, 0, 32, 32};
+    option.int_rect = (sfIntRect){0, 0, 15, 15};
     option.rect_x = 15;
     option.rect_y = 15;
     option.spritesheet_width = 45;
