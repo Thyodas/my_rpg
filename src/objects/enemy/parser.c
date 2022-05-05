@@ -54,7 +54,7 @@ void parse_enemy(game_t *game, region_t *region, char **argv)
     if (argc != 5)
         return;
     int id = my_getnbr(argv[0]);
-    if (id < 0 || id >= ENEMY_NB)
+    if (id < 0 || id >= 4)
         return;
     if (game->debug_mode)
         my_printf("\tParsing enemy ID '%d'\n", id);

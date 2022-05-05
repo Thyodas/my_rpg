@@ -25,10 +25,15 @@ void rect_animation_movement_enemy(game_t *game, entity_t *entity, direction_e d
 
 void rect_animation_idle_enemy(game_t *game, entity_t *entity)
 {
-    if ((int)game->clock->seconds % 1 == 0) {
-        sfVector2f scale = sfSprite_getScale(entity->sprite);
-        scale.x += ((int)game->clock->seconds % 2) / 100;
-        scale.y += ((int)game->clock->seconds % 2) / 100;
+    sfVector2f scale = sfSprite_getScale(entity->sprite);
+
+    if ((int)game->clock->seconds % 2 == 0) {
+        scale.x += 0.0004;
+        scale.y += 0.0002;
+        sfSprite_setScale(entity->sprite, scale);
+    } else {
+        scale.x -= 0.0004;
+        scale.y -= 0.0002;
         sfSprite_setScale(entity->sprite, scale);
     }
 }
@@ -36,9 +41,16 @@ void rect_animation_idle_enemy(game_t *game, entity_t *entity)
 void enemy_handler(game_t *game, object_t *self)
 {
     enemy_t *enemy = (enemy_t *)self->data;
-
-    /*sfSprite_move(enemy->entity.sprite, get_vector(enemy->self_pos,
-                            enemy->pos, enemy->where_to_go));*/
-    sfVector2f pos = sfSprite_getPosition(enemy->entity.sprite);
-    my_printf("%f %f\n", pos.x, pos.y);
+    sfTime elapse = sfClock_getElapsedTime(game->clock->clock);
+    game->clock->seconds = elapse.microseconds / 1000000.0;
+    rect_animation_idle_enemy(game, &enemy->entity);
+    //TODO move_enemy
+    /* if (move) {
+        if (move == RIGHT) {
+            rect_animation_movement_enemy(game, &enemy->entity, RIGHT);
+        } else
+            rect_animation_movement_enemy(game, &enemy->entity, LEFT);
+    } else
+        rect_animation_idle_enemy(game, &enemy->entity);
+    */
 }

@@ -15,7 +15,6 @@ static void debug_draw(game_t *game, object_t *self)
 
 void draw_enemy(game_t *game, object_t *self)
 {
-    sfRenderWindow_drawSprite(game->window, SPRITE_ENEMY, NULL);
     if (game->debug_mode) {
         debug_draw(game, self);
         return;
