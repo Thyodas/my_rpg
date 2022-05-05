@@ -61,8 +61,8 @@
     } stats_t;
 
     typedef struct {
-        sfVector2i self_pos;
-        sfVector2i *pos;
+        sfVector2f self_pos;
+        sfVector2f *pos;
         int where_to_go;
         entity_t entity;
         stats_t *stats;

@@ -32,3 +32,13 @@ void rect_animation_idle_enemy(game_t *game, entity_t *entity)
         sfSprite_setScale(entity->sprite, scale);
     }
 }
+
+void enemy_handler(game_t *game, object_t *self)
+{
+    enemy_t *enemy = (enemy_t *)self->data;
+
+    /*sfSprite_move(enemy->entity.sprite, get_vector(enemy->self_pos,
+                            enemy->pos, enemy->where_to_go));*/
+    sfVector2f pos = sfSprite_getPosition(enemy->entity.sprite);
+    my_printf("%f %f\n", pos.x, pos.y);
+}
