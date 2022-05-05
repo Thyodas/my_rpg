@@ -8,7 +8,7 @@
 #include "rpg.h"
 #include "my.h"
 
-void draw_object(game_t *game);
+void draw_scene(game_t *game);
 void handle_object(game_t *game);
 void events_handler_pause_scene(game_t *game);
 void draw_cursor(sfRenderWindow *window, cursor_t *cursor);
@@ -31,7 +31,7 @@ void pause_menu(game_t *game)
     if (game->current_scene != PAUSE_SCENE)
         return;
     draw_background(game);
-    draw_object(game);
+    draw_scene(game);
     draw_cursor(game->window, game->cursor);
     sfRenderWindow_display(game->window);
 }

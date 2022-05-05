@@ -20,13 +20,16 @@ void parse_smoke(game_t *game, region_t *region, char **args);
 void parse_wave(game_t *game, region_t *region, char **args);
 void parse_border_wave(game_t *game, region_t *region, char **args);
 
-void (* const PARSE_OBJECT[])(game_t *, region_t *, char **) = {
+void (* const PARSE_OBJECT[OBJECT_NB])(game_t *, region_t *, char **) = {
     &parse_teleporter,
     &parse_dialogue_box,
     &parse_smoke,
     &parse_wave,
     NULL,
-    &parse_border_wave
+    &parse_border_wave,
+    NULL,
+    NULL,
+    NULL,
 };
 
 static void execute_create_function(game_t *game, region_t *region,
@@ -53,7 +56,8 @@ int parse_region(game_t *game, region_t *region)
         if (args == NULL || args[0] == NULL || !my_str_isnum(args[0]))
             continue;
         object_id = my_getnbr(args[0]);
-        if (object_id < 0 || object_id >= OBJECT_NB)
+        if (object_id < 0 || object_id >= OBJECT_NB
+            || PARSE_OBJECT[object_id] == NULL)
             continue;
         execute_create_function(game, region, object_id, args);
     }

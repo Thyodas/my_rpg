@@ -8,6 +8,9 @@
 #include "game.h"
 #include "region.h"
 
+void init_game(game_t *game);
+void init_scene_objects(game_t *game);
+
 void set_game_scene(game_t *game)
 {
     game->previous_scene = game->current_scene;

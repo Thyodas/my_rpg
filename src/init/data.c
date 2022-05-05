@@ -30,6 +30,7 @@ void init_data(game_t *game)
     game->window = init_window();
     game->cursor = init_cursor(game->window);
     game->debug_mode = false;
+    game->play = NULL;
     init_all_data_structure(game);
     init_settings(game);
 }
