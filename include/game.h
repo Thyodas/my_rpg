@@ -17,11 +17,16 @@
     #include "map.h"
     #include "object.h"
     #include "settings.h"
+    #include "scene.h"
     #include <SFML/Graphics.h>
     #include <SFML/System.h>
     #include <SFML/Window.h>
     #include <SFML/Audio.h>
     #include <stdbool.h>
+
+    typedef struct {
+        sfFont *retro_font;
+    } all_data_t;
 
     typedef struct play_s {
         object_t *player;
@@ -38,12 +43,13 @@
         sfRenderWindow *window;
         my_time_t *clock;
         cursor_t *cursor;
-        start_menu_t *start_menu;
-        settings_scene_t *settings_menu;
-        settings_t *settings;
+        scene_t *scene[NB_SCENE];
+        int previous_scene;
+        settings_t settings;
         play_t *play;
         sfEvent event;
         bool debug_mode;
+        all_data_t data;
     } game_t;
 
     #define SET_SPRITE_IMG(sprite, img, area) (sfSprite_setTexture(sprite, \

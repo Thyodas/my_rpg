@@ -18,18 +18,26 @@ void settings_menu(game_t *game);
 void init_settings_menu(game_t *game);
 void set_menu_scene(game_t *game);
 void set_game_scene(game_t *game);
+void init_pause_menu(game_t *game);
+void pause_menu(game_t *game);
+void init_help_menu(game_t *game);
+void help_menu(game_t *game);
 
 void (* const scene[])(game_t *game) = {
         &start_menu,
         &game,
-        &settings_menu
+        &settings_menu,
+        &pause_menu,
+        &help_menu
 };
 
 static void start_game(game_t *game)
 {
     init_start_menu(game);
+    init_pause_menu(game);
     init_game(game);
     init_settings_menu(game);
+    init_help_menu(game);
     set_menu_scene(game);
     while (sfRenderWindow_isOpen(game->window)) {
         scene[game->current_scene](game);
@@ -50,7 +58,7 @@ static void error_handler(int argc, char **argv)
 //       |  T'es cringe    |                |
 //       |<----------------|                |
 //       |                 |                |
-//       |       tg        |                |
+//       |       tg        |                | choqué je suis pas dedans :(
 //       |---------------->|                |
 //       |                 |                |
 //       |                 | Oui papa sucre |

@@ -1,4 +1,12 @@
-1 5 assets/images/continue.png 800 350 4
-1 6 assets/images/continue.png 800 450 5
-1 7 assets/images/continue.png 800 550 6
-1 8 assets/images/continue.png 800 650 7
+//Volume music +
+0 8 1000 350 5
+//Volume music -
+0 9 800 350 10
+//Volume general +
+0 8 1000 450 4
+//Volume general -
+0 9 800 450 9
+//Reset settings
+0 5 840 550 6
+//Return
+0 6 840 650 7

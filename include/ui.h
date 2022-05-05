@@ -14,18 +14,19 @@
     #include "particles.h"
 
     #define CAST_BUTTON(arg) ((button_t *)(arg))
-    #define NB_ARGS_BUTTON 6
+    #define NB_ARGS_BUTTON 5
+    #define NB_PTR_ID 11
 
-    enum buttons_start {
-        BTN_NEW,
+    enum buttons {
+        BTN_NEW_GAME,
+        BTN_SETTINGS,
         BTN_EXIT,
         BTN_HELP,
-        BTN_CONTINUE,
-        NB_BUTTONS_START,
         BTN_VOLUME_MUSIC,
         BTN_VOLUME_GENERAL,
-        BTN_RESET,
+        BTN_RESET_SETTINGS,
         BTN_RETURN,
+        BTN_CONTINUE,
         NB_BUTTONS
     };
 
@@ -49,10 +50,5 @@
         int state;
         void (*on_click)();
     } button_t;
-
-    typedef struct start_menu_s {
-        linked_list_t *objects;
-        particles_emitter_t *emitter;
-    } start_menu_t;
 
 #endif /* !UI_H_ */

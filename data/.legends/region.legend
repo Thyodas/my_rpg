@@ -1,0 +1,10 @@
+OBJ_ID arg1 arg2 ... argN
+
+Teleporter:
+0 destination_region_id posx posy width height
+Dialogue
+1 pos_x pos_y string delay
+Smoke
+2 pos_x pos_y
+Waves
+3 pos_x pos_y

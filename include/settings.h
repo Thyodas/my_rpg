@@ -9,15 +9,16 @@
     #define SETTINGS_H
 
     #include "particles.h"
+    #include <SFML/Graphics.h>
+    #include <SFML/System.h>
+    #include <SFML/Window.h>
+    #include <SFML/Audio.h>
 
     typedef struct settings {
         int volume_music;
         int general_volume;
+        sfText *music_text;
+        sfText *general_text;
     } settings_t;
-
-    typedef struct settings_scene {
-        linked_list_t *obj;
-        particles_emitter_t *emitter;
-    } settings_scene_t;
 
 #endif
