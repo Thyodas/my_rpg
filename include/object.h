@@ -14,6 +14,7 @@
     #define NB_ARGS_SMOKE 3
     #define CAST_SMOKE(arg) ((smoke_t *)(arg))
     #define NB_ARGS_WAVES 3
+    #define NB_ARGS_BORDER_WAVES 5
 
     enum id_object_type {
         TELEPORTER_OBJ,
@@ -21,6 +22,7 @@
         SMOKE_OBJ,
         WAVES_OBJ,
         ENEMY_OBJ,
+        WAVES_BORDER_OBJ,
         OBJECT_NB,
     };
 
@@ -47,6 +49,15 @@
         int offset_x;
         sfVector2f pos;
     } waves_t;
+
+    typedef struct waves_border {
+        sfSprite *sprite;
+        int offset_x;
+        int offset_y;
+        sfVector2f pos;
+        int direction;
+        long last_clock;
+    } waves_border_t;
 
     typedef struct {
         entity_t entity;

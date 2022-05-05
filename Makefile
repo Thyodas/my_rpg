@@ -81,6 +81,10 @@ FILE_NAME	:=	main 													\
 			objects/waves/draw 											\
 			objects/waves/handler 										\
 			objects/waves/parser 										\
+			objects/waves_border/create 								\
+			objects/waves_border/draw 									\
+			objects/waves_border/handler 								\
+			objects/waves_border/parser 								\
 			settings/reset_settings 									\
 			settings/set_general_volume 								\
 			settings/set_music_volume									\
