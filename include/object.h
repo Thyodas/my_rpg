@@ -15,6 +15,7 @@
     #define CAST_SMOKE(arg) ((smoke_t *)(arg))
     #define NB_ARGS_WAVES 3
     #define NB_ARGS_BORDER_WAVES 5
+    #define INVENTORY_SIZE 10
 
     enum id_object_type {
         TELEPORTER_OBJ,
@@ -80,7 +81,7 @@
     } object_t;
 
     typedef struct {
-        object_t **items;
+        object_t *items[INVENTORY_SIZE];
         int selected_item;
         int nb_items;
     } inventory_t;

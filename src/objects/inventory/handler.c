@@ -41,8 +41,8 @@ void init_inventory(game_t *game)
             180.0,
             "Sword"
     };
-
-    ((player_t *)(game->play->player->data))->inventory.items = create_inventory_object();
+    for (int i = 0; i < INVENTORY_SIZE; i++)
+        ((player_t *)(game->play->player->data))->inventory.items[i] = NULL;
     ((player_t *)(game->play->player->data))->inventory.nb_items = 0;
     ((player_t *)(game->play->player->data))->inventory.selected_item = 0;
     append_inventory_data(game, create_items_object(option_two, 0));
