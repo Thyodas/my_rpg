@@ -26,7 +26,7 @@ sfText *init_clock_text(void)
 void handle_clock_text(game_t *game, my_time_t *clock)
 {
     sfText_setString(clock->clock_txt, my_int_to_strnum((int)clock->seconds));
-    sfRenderWindow_DrawText(game->window, clock->clock_txt, NULL);
+    sfRenderWindow_drawText(game->window, clock->clock_txt, NULL);
 }
 
 int restart_clock(my_time_t *clock)

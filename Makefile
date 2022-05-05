@@ -71,7 +71,6 @@ FILE_NAME	:=	main 													\
 			objects/buttons/create 										\
 			objects/buttons/draw_start 									\
 			objects/buttons/handler_start 								\
-			objects/buttons/parser										\
 			clock/handle_clock											\
 			objects/smoke/create 										\
 			objects/smoke/draw 											\
