@@ -6,16 +6,12 @@
 */
 
 #include "rpg.h"
-#include "stdio.h"
 
 void draw_cursor(sfRenderWindow *window, cursor_t *cursor);
-void start_menu_events_handler(game_t *game, sfEvent event);
-void start_menu_animate_sprites(game_t *game);
 void play_events_handler(game_t *game, sfEvent event);
 void init_all_maps(game_t *game);
 void handle_region(game_t *game);
 object_t *create_player_object(option_t option);
-object_t **create_inventory_object(void);
 void init_inventory(game_t *game);
 void player_idle_animation(game_t *game);
 

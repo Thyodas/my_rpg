@@ -5,9 +5,7 @@
 ** create_player
 */
 
-#include "rpg.h"
 #include "object.h"
-#include "my.h"
 
 object_t **create_inventory_object(void)
 {
