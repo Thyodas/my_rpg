@@ -36,7 +36,6 @@ static void start_game(game_t *game)
 {
     init_start_menu(game);
     init_pause_menu(game);
-    init_game(game);
     init_settings_menu(game);
     init_help_menu(game);
     init_clock_text(game);

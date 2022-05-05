@@ -24,6 +24,7 @@ void draw_clock_text(game_t *game, object_t *self)
 void handler_clock_text(game_t *game, object_t *self)
 {
     sfText *clock_txt = self->data;
+    sfText_setPosition(clock_txt, (sfVector2f){10, 282});
     sfText_setString(clock_txt, my_int_to_strnum((int)game->clock->seconds));
 }
 
@@ -33,7 +34,7 @@ object_t *init_clock_text(game_t *game)
     object_t *object = NULL;
 
     sfText_setFont(clock_txt, game->data.retro_font);
-    sfText_setPosition(clock_txt, (sfVector2f){100, 100});
+    sfText_setPosition(clock_txt, (sfVector2f){10, 282});
     sfText_setScale(clock_txt, (sfVector2f){0.5, 0.5});
     sfText_setColor(clock_txt, sfRed);
     sfText_setString(clock_txt, "60");

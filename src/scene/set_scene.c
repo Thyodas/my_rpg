@@ -8,8 +8,12 @@
 #include "game.h"
 #include "region.h"
 
+void init_game(game_t *game);
+void init_scene_objects(game_t *game);
+
 void set_game_scene(game_t *game)
 {
+    init_game(game);
     game->previous_scene = game->current_scene;
     game->current_scene = GAME_SCENE;
     if (game->play->view == NULL)
@@ -17,6 +21,7 @@ void set_game_scene(game_t *game)
             * game->play->current_region_pos.x, REGION_SIZE_Y
             * game->play->current_region_pos.y, REGION_SIZE_X, REGION_SIZE_Y});
     sfRenderWindow_setView(game->window, game->play->view);
+    init_scene_objects(game);
 }
 
 void set_menu_scene(game_t *game)
