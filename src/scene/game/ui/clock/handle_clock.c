@@ -32,7 +32,6 @@ void draw_clock_object_text(game_t *game, object_t *self)
 
 void handler_clock_object_text(game_t *game, object_t *self)
 {
-    
     clock_object_t *clock = self->data;
     long current_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
     double diff = (current_us - clock->last_clock) / 1000000.0;
@@ -55,6 +54,7 @@ object_t *init_clock_object_text(game_t *game)
     clock_object_t *clock = malloc(sizeof(clock_object_t));
     clock->text = sfText_create();
     object_t *object = NULL;
+    clock->last_clock = 0;
 
     sfText_setFont(clock->text, game->data.retro_font);
     sfText_setScale(clock->text, (sfVector2f){1, 1});
