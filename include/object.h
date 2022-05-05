@@ -14,6 +14,7 @@
     #define NB_ARGS_SMOKE 3
     #define CAST_SMOKE(arg) ((smoke_t *)(arg))
     #define NB_ARGS_WAVES 3
+    #define SPRITE_ENEMY ((enemy_t *)(self->data))->entity.sprite
 
     enum id_object_type {
         TELEPORTER_OBJ,
