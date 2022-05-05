@@ -12,6 +12,6 @@ my_time_t *init_clock(void)
     my_time_t *clock = malloc(sizeof(my_time_t));
 
     clock->clock = sfClock_create();
-    clock->prev_time = 0;
+    clock->seconds = 0;
     return (clock);
 }

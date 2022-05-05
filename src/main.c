@@ -9,7 +9,7 @@
 #include "rpg.h"
 #include "settings.h"
 
-sfText *init_clock_text(game_t *game);
+sfText *init_clock_object_text(game_t *game);
 void init_data(game_t *data);
 void init_game(game_t *game);
 void init_start_menu(game_t *game);
@@ -38,7 +38,8 @@ static void start_game(game_t *game)
     init_pause_menu(game);
     init_settings_menu(game);
     init_help_menu(game);
-    init_clock_text(game);
+    init_clock_object_text(game);
+    init_game(game);
     set_menu_scene(game);
     while (sfRenderWindow_isOpen(game->window)) {
         scene[game->current_scene](game);

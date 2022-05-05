@@ -43,6 +43,9 @@ FILE_NAME	:=	main 													\
 			scene/game/display 											\
 			scene/game/events_handler 									\
 			scene/game/init 											\
+			scene/game/ui/clock/handle_clock							\
+			scene/game/ui/background/handle_background					\
+			scene/game/ui/hearts/handle_hearts							\
 			scene/settings/display 										\
 			scene/settings/events_handler 								\
 			scene/settings/init 										\
@@ -55,7 +58,7 @@ FILE_NAME	:=	main 													\
 			scene/help/display 											\
 			scene/help/events_handler 									\
 			scene/help/init 											\
-			scene/draw_object 											\
+			scene/draw_scene 											\
 			scene/handle_object 										\
 			scene/parse_object											\
 			scene/return_to_previous_scene 								\
@@ -72,7 +75,6 @@ FILE_NAME	:=	main 													\
 			objects/buttons/draw_start 									\
 			objects/buttons/handler_start 								\
 			objects/buttons/parser										\
-			clock/handle_clock											\
 			objects/smoke/create 										\
 			objects/smoke/draw 											\
 			objects/smoke/handler 										\

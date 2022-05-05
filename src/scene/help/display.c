@@ -8,7 +8,7 @@
 #include "rpg.h"
 #include "my.h"
 
-void draw_object(game_t *game);
+void draw_scene(game_t *game);
 void handle_object(game_t *game);
 void events_handler_help_scene(game_t *game);
 void draw_cursor(sfRenderWindow *window, cursor_t *cursor);
@@ -35,7 +35,7 @@ void help_menu(game_t *game)
     game->scene[HELP_SCENE]
     ->emitter->ptr_part(game->scene[HELP_SCENE]->emitter, SNOW,
                         (sfVector2f){0.0, 0.0}, game->window);
-    draw_object(game);
+    draw_scene(game);
     draw_help(game);
     draw_cursor(game->window, game->cursor);
     sfRenderWindow_display(game->window);

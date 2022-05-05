@@ -22,6 +22,8 @@
         WAVES_OBJ,
         ENEMY_OBJ,
         CLOCK_OBJ,
+        BACKGROUND_UI_OBJ,
+        HEARTS_UI_OBJ,
         OBJECT_NB,
     };
 
@@ -67,6 +69,11 @@
         entity_t entity;
         stats_t *stats;
     } enemy_t;
+
+    typedef struct {
+        sfText *text;
+        long last_clock;
+    } clock_object_t;
 
     typedef struct object_s {
         enum id_object_type id;
