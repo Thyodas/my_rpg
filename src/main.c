@@ -43,7 +43,6 @@ static void start_game(game_t *game)
     init_inventory_menu(game);
     init_settings_menu(game);
     init_help_menu(game);
-    init_clock_object_text(game);
     init_game(game);
     set_menu_scene(game);
     while (sfRenderWindow_isOpen(game->window)) {

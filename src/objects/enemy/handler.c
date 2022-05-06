@@ -45,8 +45,6 @@ static void animation_enemy_breathing(game_t *game, enemy_t *enemy)
 void enemy_handler(game_t *game, object_t *self)
 {
     enemy_t *enemy = (enemy_t *)self->data;
-    sfTime elapse = sfClock_getElapsedTime(game->clock->clock);
-    game->clock->seconds = elapse.microseconds / 1000000.0;
     animation_enemy_breathing(game, enemy);
     move[enemy->id](game, enemy);
 }
