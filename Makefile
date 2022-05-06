@@ -116,6 +116,7 @@ FILE_NAME	:=	main 													\
 			objects/enemy/animation/reset_jump_state 					\
 			objects/enemy/blob/move_blob 								\
 			objects/enemy/skeleton/move_skeleton 						\
+			objects/enemy/skeleton/init_bounce 							\
 			objects/enemy/slime/move_slime 								\
 			objects/enemy/slime/slime_jump 								\
 			objects/enemy/utils/change_direction 						\
