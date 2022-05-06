@@ -38,10 +38,16 @@ static void draw_items(game_t *game)
     object_t *object = NULL;
     item_t *item = NULL;
 
+    sfVector2u u = sfRenderWindow_getSize(game->window);
+    sfVector2f pos = {u.x / 2, u.y / 2};
+
     for (int i = 0; i < INVENTORY_SIZE; i++) {
-        object = ((player_t *)(game->play->player->data))->inventory.items[i];
-        // if (object != NULL)
-        //     printf("ID: %d\n", i);
+        item = CAST_PLAYER(game->play->player->data)->inventory.items[i]->data;
+        if (item != NULL) {
+            sfSprite_setScale(item->entity->sprite, (sfVector2f){5.0, 5.0});
+            sfSprite_setPosition(item->entity->sprite, pos);
+            draw_entity(game, item->entity);
+        }
     }
 }
 
@@ -54,7 +60,7 @@ void inventory_menu(game_t *game)
         return;
     draw_background(game);
     draw_scene(game);
-    // draw_items(game);
+    draw_items(game);
     draw_stats(game);
     draw_cursor(game->window, game->cursor);
     sfRenderWindow_display(game->window);

@@ -128,7 +128,7 @@ OBJECTS    	:=    	$(addprefix $(BUILD_DIR), $(SRC:$(SRC_DIR)%.c=%.o))
 
 NAME 		:=     	my_rpg
 
-CFLAGS 		:= 		$(LIB) -ggdb3 -O1 -g # -Wno-invalid-pp-token -Wno-invalid-pp-token -Wno-deprecated-declarations -Wno-deprecated-declarations -Wno-unused-command-line-argument
+CFLAGS 		:= 		$(LIB) -ggdb3 -O1 -g -Wno-invalid-pp-token -Wno-invalid-pp-token -Wno-deprecated-declarations -Wno-deprecated-declarations -Wno-unused-command-line-argument
 
 all: $(NAME)
 
