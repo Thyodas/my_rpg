@@ -51,6 +51,19 @@ void set_pause_scene(game_t *game)
         sfRenderWindow_getDefaultView(game->window));
 }
 
+void set_inventory_scene(game_t *game)
+{
+    game->previous_scene = game->current_scene;
+    if (game->previous_scene == GAME_SCENE) {
+        sfTexture *texture = sfTexture_create(1920, 1080);
+        sfTexture_updateFromRenderWindow(texture, game->window, 0, 0);
+        game->scene[INVENTORY_SCENE]->texture_background_saved = texture;
+    }
+    game->current_scene = INVENTORY_SCENE;
+    sfRenderWindow_setView(game->window,
+        sfRenderWindow_getDefaultView(game->window));
+}
+
 void set_help_scene(game_t *game)
 {
     game->previous_scene = game->current_scene;

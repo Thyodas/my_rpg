@@ -52,6 +52,9 @@ FILE_NAME	:=	main 													\
 			scene/start_menu/display 									\
 			scene/start_menu/event_handler 								\
 			scene/start_menu/init 										\
+			scene/inventory/display 										\
+			scene/inventory/events_handler 									\
+			scene/inventory/init 											\
 			scene/pause/display 										\
 			scene/pause/events_handler 									\
 			scene/pause/init 											\

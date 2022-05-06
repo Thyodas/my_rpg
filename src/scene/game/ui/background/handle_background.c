@@ -28,6 +28,7 @@ void handler_background_ui_object(game_t *game, object_t *self)
 object_t *init_background_ui_object(game_t *game)
 {
     sfSprite *sprite = sfSprite_create();
+
     sfSprite_setTexture(sprite,
         sfTexture_createFromFile("assets/images/game_ui.png", NULL), sfFalse);
     return create_object(BACKGROUND_UI_OBJ, sprite,

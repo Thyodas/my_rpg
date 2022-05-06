@@ -20,6 +20,8 @@ void init_settings_menu(game_t *game);
 void set_menu_scene(game_t *game);
 void set_game_scene(game_t *game);
 void init_pause_menu(game_t *game);
+void init_inventory_menu(game_t *game);
+void inventory_menu(game_t *game);
 void pause_menu(game_t *game);
 void init_help_menu(game_t *game);
 void help_menu(game_t *game);
@@ -30,13 +32,15 @@ void (* const scene[])(game_t *game) = {
         &game,
         &settings_menu,
         &pause_menu,
-        &help_menu
+        &help_menu,
+        &inventory_menu,
 };
 
 static void start_game(game_t *game)
 {
     init_start_menu(game);
     init_pause_menu(game);
+    init_inventory_menu(game);
     init_settings_menu(game);
     init_help_menu(game);
     init_clock_object_text(game);
