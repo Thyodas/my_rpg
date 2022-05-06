@@ -10,3 +10,5 @@ Waves
 3 pos_x pos_y
 Waves border
 5 id_border pos_x pos_y id_rotate
+NPC
+9 npc_id posx posy

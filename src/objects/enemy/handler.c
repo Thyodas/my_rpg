@@ -9,7 +9,8 @@
 #include "object.h"
 #include <stdio.h>
 
-void rect_animation_movement_enemy(game_t *game, entity_t *entity, direction_e dir)
+void rect_animation_movement_enemy(game_t *game, entity_t *entity,
+direction_e dir)
 {
     if (entity->spritesheet_rect_x == 0) {
         sfSprite_setTextureRect(entity->sprite, entity->rect);

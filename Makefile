@@ -22,6 +22,7 @@ FILE_NAME	:=	main 													\
 			utils/coords 												\
 			utils/extend_str 											\
 			utils/random 												\
+			utils/calc_dist												\
 			utils/lists/my_put_in_list 									\
 			utils/lists/my_list_size 									\
 			utils/atof													\
@@ -101,6 +102,7 @@ FILE_NAME	:=	main 													\
 			objects/enemy/parser 										\
 			objects/enemy/draw											\
 			objects/npc/parser											\
+			objects/npc/dialogue_file_parser							\
 			objects/npc/start_ghost/create								\
 			objects/npc/start_ghost/draw								\
 			objects/npc/start_ghost/handler								\

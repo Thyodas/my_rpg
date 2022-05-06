@@ -27,6 +27,7 @@
         sfVector2f pos;
         int index; // index of \0 for text animation
         int max_index;
+        bool finished;
         float delay;
     } dialogue_box_t;
 

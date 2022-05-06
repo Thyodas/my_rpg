@@ -14,6 +14,7 @@
 dialogue_box_t *create_dialogue_data(game_t *game);
 void draw_npc_start_ghost(game_t *game, object_t *self);
 void npc_start_ghost_handler(game_t *game, object_t *self);
+int parse_dialogue_file(game_t *game, npc_t *npc);
 
 static void init_npc_start_ghost_entity(npc_t *npc, entity_t *entity)
 {
@@ -36,10 +37,14 @@ static void init_npc_start_ghost_dialogue(npc_t *npc, dialogue_box_t *dialogue)
 {
     dialogue->pos.x = npc->start_pos.x;
     dialogue->pos.y = npc->start_pos.y - npc->entity.spritesheet_rect_y;
-    dialogue->content = "Hello world!.... bzzz \n... Hey";
+    dialogue->content = "IL MANQUE LE FICHIER DE DIALOGUE";
     dialogue->content_stripped = my_strdup(dialogue->content);
     dialogue->max_index = my_strlen(dialogue->content);
-    dialogue->delay = 0.2;
+    dialogue->delay = 0.03;
+    npc->dialogue_index = 0;
+    npc->dialogue_line = 0;
+    npc->dialogue_nb = 0;
+    npc->is_talking = false;
 }
 
 void create_npc_start_ghost(game_t *game, object_t *self)
@@ -48,7 +53,7 @@ void create_npc_start_ghost(game_t *game, object_t *self)
     npc->dialogue = create_dialogue_data(game);
     init_npc_start_ghost_entity(npc, &npc->entity);
     init_npc_start_ghost_dialogue(npc, npc->dialogue);
+    parse_dialogue_file(game, npc);
     self->draw = &draw_npc_start_ghost;
     self->handler = &npc_start_ghost_handler;
-    return;
 }

@@ -10,6 +10,7 @@
 
     #include "dialogue.h"
     #include "entity.h"
+    #include <stdbool.h>
 
     enum npc_id {
         START_NPC,
@@ -17,7 +18,7 @@
     };
 
     static const char *NPC_DLG_PATH[NPC_NB] = {
-        "data/dialogues/start_npc.dialogue"
+        "data/dialogues/start_ghost.dialogue"
     };
 
     typedef struct {
@@ -25,9 +26,11 @@
         dialogue_box_t *dialogue;
         entity_t entity;
         int dialogue_index;
+        int dialogue_line;
         int dialogue_nb;
-        char **dialogue_list;
+        char ***dialogue_list;
         sfVector2f start_pos;
+        bool is_talking;
     } npc_t;
 
     #define CAST_NPC(arg) ((npc_t *)(arg))
