@@ -8,6 +8,7 @@
 #ifndef NPC_H_
     #define NPC_H_
 
+    #include "rpg.h"
     #include "dialogue.h"
     #include "entity.h"
     #include <stdbool.h>
