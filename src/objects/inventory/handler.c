@@ -7,6 +7,8 @@
 
 #include "rpg.h"
 
+void init_texts(game_t *game);
+
 void set_inventory_data(game_t *game, void *data, int n)
 {
     player_t *player = ((player_t *)(game->play->player->data));
@@ -17,6 +19,7 @@ void set_inventory_data(game_t *game, void *data, int n)
 void append_inventory_data(game_t *game, void *data)
 {
     player_t *player = ((player_t *)(game->play->player->data));
+
     set_inventory_data(game, data, player->inventory.nb_items++);
 }
 
@@ -41,9 +44,10 @@ void init_inventory(game_t *game)
             180.0,
             "Sword"
     };
+    init_texts(game);
     for (int i = 0; i < INVENTORY_SIZE; i++)
         ((player_t *)(game->play->player->data))->inventory.items[i] = NULL;
     ((player_t *)(game->play->player->data))->inventory.nb_items = 0;
     ((player_t *)(game->play->player->data))->inventory.selected_item = 0;
-    append_inventory_data(game, create_items_object(option_two, 0));
+    // append_inventory_data(game, create_items_object(option_two, 0));
 }

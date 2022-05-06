@@ -92,12 +92,15 @@
         object_t *items[INVENTORY_SIZE];
         int selected_item;
         int nb_items;
+        sfText *health_text;
+        sfText *attack_text;
     } inventory_t;
 
     typedef struct {
         inventory_t inventory;
         entity_t entity;
         int speed;
+        int attack;
         int health;
     } player_t;
 
