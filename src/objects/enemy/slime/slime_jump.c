@@ -40,7 +40,6 @@ static sfVector2f get_destination_3d(game_t *game, enemy_t *slime)
 
 void slime_jump(game_t *game, enemy_t *slime)
 {
-    printf("Valeur de direction 3d x y : %f %f\n", slime->direction_3d.x, slime->direction_3d.y);
     if (slime->animation_data.distance_jumped <
                                         slime->animation_data.jump_height / 2)
         slime->coords_3d.z++;
@@ -48,10 +47,6 @@ void slime_jump(game_t *game, enemy_t *slime)
         slime->coords_3d.z--;
     slime->self_pos = project_iso_point(slime->coords_3d, slime->translation);
     slime->direction_3d = get_destination_3d(game, slime);
-    // if (slime->direction.y >= 0.96)
-    //     slime->direction.y += 7;
-    // if (slime->direction.y <= -0.96)
-    //     slime->direction.y -= 3;
     if (check_collision(game, slime->entity, slime->direction) ||
         slime->bouncing) {
         slime->direction.x *= -1;
