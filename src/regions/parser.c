@@ -18,6 +18,7 @@ void parse_teleporter(game_t *game, region_t *region, char **args);
 void parse_dialogue_box(game_t *game, region_t *region, char **argv);
 void parse_smoke(game_t *game, region_t *region, char **args);
 void parse_wave(game_t *game, region_t *region, char **args);
+void parse_enemy(game_t *game, region_t *region, char **argv);
 void parse_border_wave(game_t *game, region_t *region, char **args);
 
 void (* const PARSE_OBJECT[OBJECT_NB])(game_t *, region_t *, char **) = {
@@ -25,7 +26,7 @@ void (* const PARSE_OBJECT[OBJECT_NB])(game_t *, region_t *, char **) = {
     &parse_dialogue_box,
     &parse_smoke,
     &parse_wave,
-    NULL,
+    &parse_enemy,
     &parse_border_wave,
     NULL,
     NULL,

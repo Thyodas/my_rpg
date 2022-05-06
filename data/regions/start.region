@@ -1,6 +1,6 @@
 //teleporter_to_first_house
 0 2 216 423 1 1
-//1 216 423 "Hello world! Je suis content|On peut faire plusieurs lignes en plus hehe!" 0.05
+//1 240 423 "Hello world! Je suis content|On peut faire plusieurs lignes|en plus hehe!" 0.05
 //Smoke house
 2 227 330
 //Wave 1
@@ -9,6 +9,10 @@
 3 450 488
 //Wave 3
 3 365 510
+//enemy
+//4 0 180 423 900 900
+4 1 50 423 200 423
+//4 2 100 350 125 423
 //Border water
 5 0 255 520 0
 5 1 271 520 0

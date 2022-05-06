@@ -9,26 +9,44 @@
 #include "object.h"
 #include <stdio.h>
 
-void rect_animation_movement_enemy(game_t *game, entity_t *entity, direction_e dir)
+void move_skeleton(game_t *game, enemy_t *enemy);
+void move_slime(game_t *game, enemy_t *slime);
+void move_blob(game_t *game, enemy_t *blob);
+void move_ghost(game_t *game, enemy_t *ghost);
+
+static void (*move[4])(game_t *, enemy_t *) = {
+    &move_blob,
+    &move_slime,
+    &move_skeleton
+};
+
+static void animation_enemy_breathing(game_t *game, enemy_t *enemy)
 {
-    if (entity->spritesheet_rect_x == 0) {
-        sfSprite_setTextureRect(entity->sprite, entity->rect);
-        return;
+    long current_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
+    static int multiplier = 1;
+    sfVector2f scale = sfSprite_getScale(enemy->entity.sprite);
+    animation_data_t data = enemy->animation_data;
+
+    if ((current_us - data.last_breathing_animation) / 1000000.0 >= 0.3) {
+        scale.x += 0.03 * data.breath_state;
+        scale.y += 0.01 * data.breath_state;
+        sfSprite_setScale(enemy->entity.sprite, scale);
+        data.last_breathing_animation =
+            sfClock_getElapsedTime(game->clock->clock).microseconds;
     }
-    if (entity->rect.top != entity->spritesheet_rect_y * dir)
-        entity->rect.top = entity->spritesheet_rect_y * dir;
-    entity->rect.left += entity->spritesheet_rect_x;
-    if (entity->rect.left >= entity->spritesheet_width)
-        entity->rect.left = 0;
-    sfSprite_setTextureRect(entity->sprite, entity->rect);
+    if ((current_us - data.last_breath_out_animation) / 1000000.0 >= 1) {
+        data.breath_state = data.breath_state == 1 ? -1 : 1;
+        data.last_breath_out_animation =
+            sfClock_getElapsedTime(game->clock->clock).microseconds;
+    }
+    enemy->animation_data = data;
 }
 
-void rect_animation_idle_enemy(game_t *game, entity_t *entity)
+void enemy_handler(game_t *game, object_t *self)
 {
-    if ((int)game->clock->seconds % 1 == 0) {
-        sfVector2f scale = sfSprite_getScale(entity->sprite);
-        scale.x += ((int)game->clock->seconds % 2) / 100;
-        scale.y += ((int)game->clock->seconds % 2) / 100;
-        sfSprite_setScale(entity->sprite, scale);
-    }
+    enemy_t *enemy = (enemy_t *)self->data;
+    sfTime elapse = sfClock_getElapsedTime(game->clock->clock);
+    game->clock->seconds = elapse.microseconds / 1000000.0;
+    animation_enemy_breathing(game, enemy);
+    move[enemy->id](game, enemy);
 }

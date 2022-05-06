@@ -67,18 +67,20 @@ bool check_region_bound(game_t *game, sfFloatRect *player_bounds)
         && game->play->current_region->right == NULL));
 }
 
-bool check_entity_region_collision(game_t *game, float shift_x, float shift_y, entity_t entity)
+bool check_entity_region_collision(game_t *game, sfVector2f shift,
+                                    entity_t entity, int is_player)
 {
-    sfFloatRect player_bounds = sfSprite_getGlobalBounds(entity.sprite);
-    player_bounds.left += shift_x;
-    player_bounds.top += shift_y;
+    sfFloatRect entity_bounds = sfSprite_getGlobalBounds(entity.sprite);
+    entity_bounds.left += shift.x;
+    entity_bounds.top += shift.y;
 
-    if (check_region_bound(game, &player_bounds))
+    if (check_region_bound(game, &entity_bounds))
         return true;
-    for (int y = player_bounds.top; y < player_bounds.height
-        + player_bounds.top; ++y)
-        if (is_pixel_colliding(game, &player_bounds, y))
+    for (int y = entity_bounds.top; y < entity_bounds.height
+        + entity_bounds.top; ++y)
+        if (is_pixel_colliding(game, &entity_bounds, y))
             return true;
-    move_to_region(game, &player_bounds);
+    if (is_player)
+        move_to_region(game, &entity_bounds);
     return false;
 }

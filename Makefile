@@ -15,6 +15,7 @@ FILE_NAME	:=	main 													\
 			init/emitter 												\
 			init/data 													\
 			interactions/entity_region_collision 						\
+			interactions/check_collision 								\
 			utils/free 													\
 			utils/help 													\
 			utils/arr_copy 												\
@@ -25,6 +26,9 @@ FILE_NAME	:=	main 													\
 			utils/lists/my_put_in_list 									\
 			utils/lists/my_list_size 									\
 			utils/atof													\
+			utils/normalize												\
+			utils/calc_dist 											\
+			utils/calc_vector 											\
 			events/mouse_events 										\
 			events/exit 												\
 			events/play_events 											\
@@ -69,6 +73,7 @@ FILE_NAME	:=	main 													\
 			objects/player/create 										\
 			objects/player/handler 										\
 			objects/player/draw 										\
+			objects/player/utils/get_pos_player 						\
 			objects/items/create 										\
 			objects/items/handler 										\
 			objects/inventory/create 									\
@@ -107,6 +112,18 @@ FILE_NAME	:=	main 													\
 			objects/enemy/create   										\
 			objects/enemy/parser 										\
 			objects/enemy/draw											\
+			objects/enemy/animation/handle_jump 						\
+			objects/enemy/animation/reset_jump_state 					\
+			objects/enemy/blob/move_blob 								\
+			objects/enemy/skeleton/move_skeleton 						\
+			objects/enemy/slime/move_slime 								\
+			objects/enemy/slime/slime_jump 								\
+			objects/enemy/utils/change_direction 						\
+			objects/enemy/utils/in_range_player 						\
+			objects/enemy/utils/isometry/create_translation 			\
+			objects/enemy/utils/isometry/get_destination_3d 			\
+			objects/enemy/utils/isometry/get_pos_player_projected 		\
+			objects/enemy/utils/isometry/project_iso_point 				\
 
 
 BUILD_DIR 	:=		build/

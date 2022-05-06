@@ -27,6 +27,7 @@ static entity_t create_player_entity(option_t option)
     entity.spritesheet_rect_x = 16;
     entity.spritesheet_rect_y = 16;
     entity.animation_state = IDLE_STATE;
+    sfSprite_setOrigin(entity.sprite, (sfVector2f){8, 8});
     return entity;
 }
 

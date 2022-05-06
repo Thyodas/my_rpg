@@ -18,11 +18,6 @@
         INTERACTION_STATE,
     };
 
-    typedef enum direction {
-        LEFT,
-        RIGHT
-    } direction_e;
-
     typedef struct entity_s {
         sfSprite *sprite;
         sfTexture *texture;
