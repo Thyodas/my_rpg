@@ -8,14 +8,16 @@
 #include "rpg.h"
 #include <stdio.h>
 
-bool check_entity_region_collision(game_t *game, float shift_x, float shift_y, entity_t entity);
+bool check_entity_region_collision(game_t *game, sfVector2f shift,
+                                    entity_t entity, int is_player);
 void player_movement_animation(game_t *game);
 void player_idle_animation(game_t *game);
 
 void move_player(game_t *game, player_t *player, float shift_x, float shift_y)
 {
-    if (check_entity_region_collision(game, shift_x, shift_y,
-                            ((player_t *)(game->play->player->data))->entity))
+    if (check_entity_region_collision(game, (sfVector2f){shift_x, shift_y},
+                            ((player_t *)(game->play->player->data))->entity,
+                            1))
         return;
     sfSprite_move(player->entity.sprite, (sfVector2f){shift_x, shift_y});
     player_movement_animation(game);
