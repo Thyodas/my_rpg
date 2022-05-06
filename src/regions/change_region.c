@@ -33,8 +33,8 @@ void animate_region_change(game_t *game)
 
     if (diff > 0.01) {
         sfView_move(game->play->view, (sfVector2f){
-            game->play->region_animation.direction.x * 10,
-            game->play->region_animation.direction.y * 10});
+            game->play->region_animation.direction.x * 15,
+            game->play->region_animation.direction.y * 15});
         sfVector2f pos = sfView_getCenter(game->play->view);
         if (view_reached_destination(&game->play->region_animation.direction,
             &pos, &game->play->region_animation.end)) {
