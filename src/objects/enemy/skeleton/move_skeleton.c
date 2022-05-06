@@ -17,6 +17,7 @@ void handle_jump(game_t *game, enemy_t *enemy);
 sfVector2f get_destination_3d(game_t *game, enemy_t *enemy);
 sfVector2f get_pos_player(game_t *game);
 sfVector2i create_translation(sfVector2f pos);
+void init_bounce(enemy_t *skeleton, game_t *game);
 
 static void handle_idle_state(game_t *game, enemy_t *skeleton)
 {
@@ -95,16 +96,8 @@ void move_skeleton(game_t *game, enemy_t *skeleton)
         if (!skeleton->bouncing)
             handle_movement_animation(game, skeleton);
         if (check_collision(game, skeleton->entity, skeleton->direction) &&
-            !skeleton->bouncing) {
-            skeleton->translation = create_translation(skeleton->self_pos);
-            skeleton->direction_3d = get_destination_3d(game, skeleton);
-            skeleton->bouncing = 1;
-            skeleton->coords_3d.x = skeleton->self_pos.x;
-            skeleton->coords_3d.y = skeleton->self_pos.y;
-            skeleton->coords_3d.z = 0;
-            skeleton->direction_3d.x *= -1;
-            skeleton->direction_3d.y *= -1;
-        }
+            !skeleton->bouncing)
+            init_bounce(skeleton, game);
         if (!skeleton->bouncing) {
             handle_direction(game, skeleton);
             sfSprite_move(skeleton->entity.sprite,
