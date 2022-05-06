@@ -100,6 +100,10 @@ FILE_NAME	:=	main 													\
 			objects/enemy/create   										\
 			objects/enemy/parser 										\
 			objects/enemy/draw											\
+			objects/npc/parser											\
+			objects/npc/start_ghost/create								\
+			objects/npc/start_ghost/draw								\
+			objects/npc/start_ghost/handler								\
 
 
 BUILD_DIR 	:=		build/

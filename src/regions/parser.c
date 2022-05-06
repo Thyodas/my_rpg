@@ -19,6 +19,7 @@ void parse_dialogue_box(game_t *game, region_t *region, char **argv);
 void parse_smoke(game_t *game, region_t *region, char **args);
 void parse_wave(game_t *game, region_t *region, char **args);
 void parse_border_wave(game_t *game, region_t *region, char **args);
+void parse_npc(game_t *game, region_t *region, char **argv);
 
 void (* const PARSE_OBJECT[OBJECT_NB])(game_t *, region_t *, char **) = {
     &parse_teleporter,
@@ -30,6 +31,7 @@ void (* const PARSE_OBJECT[OBJECT_NB])(game_t *, region_t *, char **) = {
     NULL,
     NULL,
     NULL,
+    &parse_npc,
 };
 
 static void execute_create_function(game_t *game, region_t *region,

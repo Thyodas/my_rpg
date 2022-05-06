@@ -10,9 +10,8 @@
 #include "dialogue.h"
 #include "my.h"
 
-void dialogue_handler(game_t *game, struct object_s *self)
+void dialogue_box_handler(game_t *game, dialogue_box_t *dialogue)
 {
-    dialogue_box_t *dialogue = self->data;
     if (dialogue->index >= dialogue->max_index)
         return;
     static long last_clock_us = 0;
@@ -27,4 +26,9 @@ void dialogue_handler(game_t *game, struct object_s *self)
         sfText_setString(dialogue->text, dialogue->content_stripped);
         last_clock_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
     }
+}
+
+void dialogue_handler(game_t *game, struct object_s *self)
+{
+    dialogue_box_handler(game, self->data);
 }
