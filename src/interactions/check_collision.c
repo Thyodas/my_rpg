@@ -17,8 +17,6 @@ int check_player_collision(game_t *game, sfVector2f shift, entity_t entity)
                                                         (game->play->player->
                                                         data)->entity.sprite);
     sfFloatRect entity_bound = sfSprite_getGlobalBounds(entity.sprite);
-    entity_bound.left += shift.x;
-    entity_bound.top += shift.y;
     if (sfFloatRect_intersects(&player_bound, &entity_bound, NULL) == sfTrue) {
         CAST_PLAYER(game->play->player->data)->health -= 1;
         return 1;
