@@ -14,7 +14,7 @@ int my_put_in_list(struct linked_list **list, void *data);
 object_t *create_object(enum id_object_type id, void *data, void (*handler)(),
 void (*draw)());
 
-int restart_clock(game_t *game, clock_object_t *clock)
+void restart_clock(game_t *game, clock_object_t *clock)
 {
     clock->last_clock = sfClock_getElapsedTime(game->clock->clock).microseconds;
     game->clock->seconds = 60;
