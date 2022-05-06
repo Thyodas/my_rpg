@@ -33,6 +33,25 @@ static void handle_idle_state(game_t *game, enemy_t *slime)
     }
 }
 
+static void handle_direction(game_t *game, enemy_t *slime)
+{
+    if (in_range_player(game, slime)) {
+        sfVector2f pos_player = get_pos_player(game);
+        slime->trigerred = 1;
+        change_direction(slime, pos_player);
+        return;
+    }
+    float distance = calc_distance(slime->self_pos,
+                    slime->pos[slime->where_to_go]);
+    if (slime->trigerred) {
+        change_direction(slime, slime->pos[slime->where_to_go]);
+        slime->trigerred = 0;
+    } else if (distance <= 10) {
+        slime->where_to_go = (slime->where_to_go == 0) ? 1 : 0;
+        change_direction(slime, slime->pos[slime->where_to_go]);
+    }
+}
+
 static void handle_movement_animation(game_t *game, enemy_t *slime)
 {
     if (slime->animation_data.animation_state == JUMPING)
@@ -50,25 +69,6 @@ static void handle_movement_animation(game_t *game, enemy_t *slime)
             slime->entity.spritesheet_rect_x,
             slime->entity.spritesheet_rect_y});
         slime->animation_data.last_move_animation = current_us;
-    }
-}
-
-static void handle_direction(game_t *game, enemy_t *slime)
-{
-    if (in_range_player(game, slime)) {
-        sfVector2f pos_player = get_pos_player(game);
-        slime->trigerred = 1;
-        change_direction(slime, pos_player);
-        return;
-    }
-    float distance = calc_distance(slime->self_pos,
-                    slime->pos[slime->where_to_go]);
-    if (slime->trigerred) {
-        change_direction(slime, slime->pos[slime->where_to_go]);
-        slime->trigerred = 0;
-    } else if (distance <= 10) {
-        slime->where_to_go = (slime->where_to_go == 0) ? 1 : 0;
-        change_direction(slime, slime->pos[slime->where_to_go]);
     }
 }
 
