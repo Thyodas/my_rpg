@@ -84,7 +84,6 @@ static void handle_jump_slime(game_t *game, enemy_t *slime)
 
 void move_slime(game_t *game, enemy_t *slime)
 {
-    printf("Direction x y : %f %f\n", slime->direction.x, slime->direction.y);
     if (slime->animation_data.animation_state == STATIC) {
         handle_idle_state(game, slime);
         handle_direction(game, slime);
