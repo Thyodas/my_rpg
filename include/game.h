@@ -35,11 +35,19 @@
         sfFont *retro_font;
     } all_data_t;
 
+    typedef struct {
+        bool changing;
+        sfVector2f direction;
+        sfVector2f start;
+        sfVector2f end;
+    } region_animation_t;
+
     typedef struct play_s {
         object_t *player;
         region_t *region_list[REGION_NB];
         region_t *start_region;
         region_t *current_region;
+        region_animation_t region_animation;
         map_t *map_list[MAP_NB];
         sfVector2i current_region_pos;
         sfView *view;

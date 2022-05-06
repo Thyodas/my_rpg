@@ -58,4 +58,5 @@ void init_all_regions(game_t *game)
     game->play->current_region = game->play->region_list[START_REGION];
     game->play->current_region_pos = (sfVector2i){0, 1};
     link_regions(game);
+    game->play->region_animation.changing = false;
 }

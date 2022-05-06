@@ -45,4 +45,5 @@ void init_game(game_t *game)
     game->scene[GAME_SCENE]->emitter = init_emitter();
     game->scene[GAME_SCENE]->texture_background_saved = NULL;
     init_game_scene_objects(game);
+    game->play->region_animation.changing = false;
 }
