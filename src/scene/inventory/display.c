@@ -39,14 +39,19 @@ static void draw_items(game_t *game)
     item_t *item = NULL;
 
     sfVector2u u = sfRenderWindow_getSize(game->window);
-    sfVector2f pos = {u.x / 2, u.y / 2};
+    sfVector2f pos = {700, 680};
 
     for (int i = 0; i < INVENTORY_SIZE; i++) {
         item = CAST_PLAYER(game->play->player->data)->inventory.items[i]->data;
         if (item != NULL) {
-            sfSprite_setScale(item->entity->sprite, (sfVector2f){5.0, 5.0});
+            sfSprite_setScale(item->entity->sprite, (sfVector2f){3.0, 3.0});
             sfSprite_setPosition(item->entity->sprite, pos);
             draw_entity(game, item->entity);
+            pos.x += 38.0 * 3.0 + 22.5;
+        }
+        if (i == INVENTORY_SIZE / 2 - 1) {
+            pos.y += 45.0 * 3.0 + 10.0;
+            pos.x = 700;
         }
     }
 }
