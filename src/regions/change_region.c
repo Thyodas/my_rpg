@@ -30,19 +30,18 @@ void animate_region_change(game_t *game)
     static long last_clock = 0;
     long current_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
     double diff = (current_us - last_clock) / 1000000.0;
-    sfVector2f pos = sfView_getCenter(game->play->view);
-    if (diff >= 0.001) {
+
+    if (diff > 0.01) {
+        sfView_move(game->play->view, (sfVector2f){
+            game->play->region_animation.direction.x * 10,
+            game->play->region_animation.direction.y * 10});
+        sfVector2f pos = sfView_getCenter(game->play->view);
         if (view_reached_destination(&game->play->region_animation.direction,
             &pos, &game->play->region_animation.end)) {
             game->play->region_animation.changing = false;
             sfView_setCenter(game->play->view,
                 game->play->region_animation.end);
-            sfRenderWindow_setView(game->window, game->play->view);
-            return;
         }
-        sfView_move(game->play->view, (sfVector2f){
-            game->play->region_animation.direction.x * 6,
-            game->play->region_animation.direction.y * 6});
         sfRenderWindow_setView(game->window, game->play->view);
         last_clock = sfClock_getElapsedTime(game->clock->clock).microseconds;
     }
