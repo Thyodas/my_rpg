@@ -18,7 +18,8 @@
         SETTINGS_SCENE,
         PAUSE_SCENE,
         HELP_SCENE,
-        NB_SCENE
+        INVENTORY_SCENE,
+        NB_SCENE,
     };
 
     typedef struct scene {

@@ -17,8 +17,7 @@ void teleporter_handler(game_t *game, struct object_s *self)
     teleporter_t *teleporter = self->data;
     sfFloatRect rect = sfSprite_getGlobalBounds(
         ((player_t *)(game->play->player->data))->entity.sprite);
-    if (sfFloatRect_intersects(&rect, &teleporter->area, NULL)) {
+
+    if (sfFloatRect_intersects(&rect, &teleporter->area, NULL))
         change_region(game, teleporter->dest_region, 0, 0);
-    }
-    return;
 }

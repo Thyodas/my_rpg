@@ -18,6 +18,8 @@
     #define NB_ARGS_ENEMY 5
     #define M_PI 3.14159265358979323846
     #define DEG_TO_RAD(x) ((x) * M_PI / 180)
+    #define NB_ARGS_BORDER_WAVES 5
+    #define INVENTORY_SIZE 10
 
     enum id_object_type {
         TELEPORTER_OBJ,
@@ -25,6 +27,10 @@
         SMOKE_OBJ,
         WAVES_OBJ,
         ENEMY_OBJ,
+        WAVES_BORDER_OBJ,
+        CLOCK_OBJ,
+        BACKGROUND_UI_OBJ,
+        HEARTS_UI_OBJ,
         OBJECT_NB,
     };
 
@@ -66,11 +72,14 @@
         sfVector2f pos;
     } waves_t;
 
-    typedef struct {
-        entity_t entity;
-        int speed;
-        int health;
-    } player_t;
+    typedef struct waves_border {
+        sfSprite *sprite;
+        int offset_x;
+        int offset_y;
+        sfVector2f pos;
+        int direction;
+        long last_clock;
+    } waves_border_t;
 
     typedef struct stats_s {
         int damage;
@@ -109,12 +118,33 @@
         int offset_y;
     } enemy_t;
 
+    typedef struct {
+        sfText *text;
+        long last_clock;
+    } clock_object_t;
+
     typedef struct object_s {
         enum id_object_type id;
         void *data;
         void (*handler)();
         void (*draw)();
     } object_t;
+
+    typedef struct {
+        object_t *items[INVENTORY_SIZE];
+        int selected_item;
+        int nb_items;
+        sfText *health_text;
+        sfText *attack_text;
+    } inventory_t;
+
+    typedef struct {
+        inventory_t inventory;
+        entity_t entity;
+        int speed;
+        int attack;
+        int health;
+    } player_t;
 
     #define CAST_PLAYER(arg) ((player_t *)(arg))
 

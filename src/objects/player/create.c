@@ -36,7 +36,8 @@ object_t *create_player_object(option_t option)
     player_t *player = malloc(sizeof(player_t));
     object_t *object = malloc(sizeof(object_t));
     player->speed = 150;
-    player->health = 20;
+    player->health = 3;
+    player->attack = 1;
     player->entity = create_player_entity(option);
     object->data = player;
     object->handler = &handler_player;

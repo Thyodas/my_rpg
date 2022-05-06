@@ -10,3 +10,5 @@ Waves
 3 pos_x pos_y
 Enemy
 4 pos_x_init pos_y_init pos_x_end pos_y_end
+Waves border
+5 id_border pos_x pos_y id_rotate

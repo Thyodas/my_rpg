@@ -19,6 +19,8 @@
         int rect_y;
         int spritesheet_width;
         int spritesheet_height;
+        float rotation;
+        char *name;
     } option_t;
 
 #endif /* !OPTION_H_ */

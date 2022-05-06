@@ -47,19 +47,25 @@ FILE_NAME	:=	main 													\
 			scene/game/display 											\
 			scene/game/events_handler 									\
 			scene/game/init 											\
+			scene/game/ui/clock/handle_clock							\
+			scene/game/ui/background/handle_background					\
+			scene/game/ui/hearts/handle_hearts							\
 			scene/settings/display 										\
 			scene/settings/events_handler 								\
 			scene/settings/init 										\
 			scene/start_menu/display 									\
 			scene/start_menu/event_handler 								\
 			scene/start_menu/init 										\
+			scene/inventory/display 									\
+			scene/inventory/events_handler 								\
+			scene/inventory/init 										\
 			scene/pause/display 										\
 			scene/pause/events_handler 									\
 			scene/pause/init 											\
 			scene/help/display 											\
 			scene/help/events_handler 									\
 			scene/help/init 											\
-			scene/draw_object 											\
+			scene/draw_scene 											\
 			scene/handle_object 										\
 			scene/parse_object											\
 			scene/return_to_previous_scene 								\
@@ -68,6 +74,10 @@ FILE_NAME	:=	main 													\
 			objects/player/handler 										\
 			objects/player/draw 										\
 			objects/player/utils/get_pos_player 						\
+			objects/items/create 										\
+			objects/items/handler 										\
+			objects/inventory/create 									\
+			objects/inventory/handler 									\
 			objects/create_object 										\
 			objects/teleporter/draw 									\
 			objects/teleporter/create 									\
@@ -77,7 +87,6 @@ FILE_NAME	:=	main 													\
 			objects/buttons/draw_start 									\
 			objects/buttons/handler_start 								\
 			objects/buttons/parser										\
-			clock/handle_clock											\
 			objects/smoke/create 										\
 			objects/smoke/draw 											\
 			objects/smoke/handler 										\
@@ -86,6 +95,10 @@ FILE_NAME	:=	main 													\
 			objects/waves/draw 											\
 			objects/waves/handler 										\
 			objects/waves/parser 										\
+			objects/waves_border/create 								\
+			objects/waves_border/draw 									\
+			objects/waves_border/handler 								\
+			objects/waves_border/parser 								\
 			settings/reset_settings 									\
 			settings/set_general_volume 								\
 			settings/set_music_volume									\
@@ -132,8 +145,7 @@ OBJECTS    	:=    	$(addprefix $(BUILD_DIR), $(SRC:$(SRC_DIR)%.c=%.o))
 
 NAME 		:=     	my_rpg
 
-CFLAGS 		:= 		$(LIB) -ggdb3 -O1 -g
-
+CFLAGS 		:= 		$(LIB) -ggdb3 -O1 -g # -Wno-invalid-pp-token -Wno-invalid-pp-token -Wno-deprecated-declarations -Wno-deprecated-declarations -Wno-unused-command-line-argument
 
 all: $(NAME)
 

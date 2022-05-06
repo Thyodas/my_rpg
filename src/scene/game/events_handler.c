@@ -8,6 +8,7 @@
 #include "rpg.h"
 
 void set_pause_scene(game_t *game);
+void set_inventory_scene(game_t *game);
 
 void game_events_handler(game_t *game)
 {
@@ -17,4 +18,7 @@ void game_events_handler(game_t *game)
     if (game->event.type == sfEvtKeyReleased &&
         game->event.key.code == sfKeyEscape)
         set_pause_scene(game);
+    if (game->event.type == sfEvtKeyReleased &&
+        game->event.key.code == sfKeyI)
+        set_inventory_scene(game);
 }

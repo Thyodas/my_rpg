@@ -13,6 +13,7 @@ void handle_particles(particles_emitter_t *emitter, int type, sfVector2f pos,
 particles_emitter_t *init_emitter(void)
 {
     particles_emitter_t *emitter = malloc(sizeof(particles_emitter_t));
+
     emitter->is_gen = 0;
     emitter->nb_particles = 0;
     emitter->ptr_part = &handle_particles;

@@ -15,6 +15,7 @@
     enum object_animation_state {
         IDLE_STATE,
         MOVEMENT_STATE,
+        INTERACTION_STATE,
     };
 
     typedef struct entity_s {

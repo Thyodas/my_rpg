@@ -11,6 +11,7 @@
 void handle_region(game_t *game);
 void draw_region(game_t *game, region_t *region);
 void game_events_handler(game_t *game);
+void animate_region_change(game_t *game);
 
 void game(game_t *game)
 {
@@ -21,5 +22,7 @@ void game(game_t *game)
     sfRenderWindow_clear(game->window, sfBlack);
     handle_region(game);
     draw_region(game, game->play->current_region);
+    if (game->play->region_animation.changing)
+        animate_region_change(game);
     sfRenderWindow_display(game->window);
 }
