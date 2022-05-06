@@ -13,14 +13,17 @@ void update_texts(game_t *game)
     sfText_setString(
         CAST_PLAYER(game->play->player->data)->inventory.health_text,
         my_int_to_strnum(CAST_PLAYER(game->play->player->data)->health));
+    sfText_setString(
+        CAST_PLAYER(game->play->player->data)->inventory.attack_text,
+        my_int_to_strnum(CAST_PLAYER(game->play->player->data)->attack));
 }
 
 void init_texts(game_t *game)
 {
     inventory_t *inventory = &CAST_PLAYER(game->play->player->data)->inventory;
 
-    sfVector2f pos = {1170.0, 400.0};
-    sfVector2f pos_two = {675.0, 400.0};
+    sfVector2f pos = {1185.0, 400.0};
+    sfVector2f pos_two = {690.0, 400.0};
 
     inventory->attack_text = sfText_create();
     sfText_setFont(inventory->attack_text, game->data.retro_font);
