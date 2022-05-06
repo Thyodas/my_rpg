@@ -13,6 +13,8 @@ stats_t blob_stats(void)
 
     stats.damage = 1;
     stats.life_points = 3;
+    stats.range_aggro = 10;
+    stats.speed = 1;
     return stats;
 }
 
@@ -22,6 +24,8 @@ stats_t slime_stats(void)
 
     stats.damage = 1;
     stats.life_points = 1;
+    stats.range_aggro = 50;
+    stats.speed = 1;
     return stats;
 }
 
@@ -31,6 +35,8 @@ stats_t ghost_stats(void)
 
     stats.damage = 2;
     stats.life_points = 1;
+    stats.range_aggro = 10;
+    stats.speed = 1;
     return stats;
 }
 
@@ -40,5 +46,7 @@ stats_t skeleton_stats(void)
 
     stats.damage = 3;
     stats.life_points = 3;
+    stats.range_aggro = 50;
+    stats.speed = 1;
     return stats;
 }

@@ -15,7 +15,9 @@
     #define CAST_SMOKE(arg) ((smoke_t *)(arg))
     #define NB_ARGS_WAVES 3
     #define SPRITE_ENEMY ((enemy_t *)(self->data))->entity.sprite
-    #define ENEMY_NB 4
+    #define NB_ARGS_ENEMY 5
+    #define M_PI 3.14159265358979323846
+    #define DEG_TO_RAD(x) ((x) * M_PI / 180)
 
     enum id_object_type {
         TELEPORTER_OBJ,
@@ -24,6 +26,19 @@
         WAVES_OBJ,
         ENEMY_OBJ,
         OBJECT_NB,
+    };
+
+    enum id_enemies {
+        SLIME,
+        BLOB,
+        SKELETON,
+        NB_ENEMIES
+    };
+
+    enum jump_state {
+        STATIC,
+        MOVING,
+        JUMPING
     };
 
     #define SLIME_PATH "assets/spritesheets/slime.png"
@@ -60,18 +75,38 @@
     typedef struct stats_s {
         int damage;
         int life_points;
+        int range_aggro;
+        int speed;
     } stats_t;
 
-    typedef struct {
+    typedef struct animation_data {
+        long last_breathing_animation;
+        long last_breath_out_animation;
+        long last_move_animation;
+        long last_movement;
+        long last_idle_state;
+        int animation_state;
+        int breath_state;
+        int distance_jumped;
+        int jump_height;
+    } animation_data_t;
+
+    typedef struct enemy {
+        int id;
+        int trigerred;
+        int bouncing;
         sfVector2f self_pos;
+        sfVector3f coords_3d;
+        sfVector2i translation;
         sfVector2f *pos;
         int where_to_go;
         entity_t entity;
         stats_t stats;
-        long last_breathing_animation;
-        long last_breath_out_animation;
-        long last_move_animation;
-        int breath_state;
+        sfVector2f direction;
+        sfVector2f direction_3d;
+        animation_data_t animation_data;
+        int offset_x;
+        int offset_y;
     } enemy_t;
 
     typedef struct object_s {

@@ -26,10 +26,10 @@ option_t ghost_option(void);
 option_t skeleton_option(void);
 void enemy_handler(game_t *game, object_t *self);
 
-static stats_t (*stats_enemy[4])(void) = {&blob_stats, &slime_stats,
-                                            &ghost_stats, &skeleton_stats};
-static option_t (*option_enemy[4])(void) = {&blob_option, &slime_option,
-                                            &ghost_option, &skeleton_option};
+static stats_t (*stats_enemy[3])(void) = {&blob_stats, &slime_stats,
+                                            &skeleton_stats};
+static option_t (*option_enemy[3])(void) = {&blob_option, &slime_option,
+                                            &skeleton_option};
 
 static sfVector2f *get_pos(char **arg)
 {
@@ -40,26 +40,20 @@ static sfVector2f *get_pos(char **arg)
     return pos;
 }
 
-sfVector2f get_vector(sfVector2f self_pos, sfVector2f *pos, int where_to_go)
-{
-    return (sfVector2f){pos[where_to_go].x - self_pos.x,
-                            pos[where_to_go].y - self_pos.y};
-}
-
-//[ID], [POSX1], [POSY1], [POSX2], [POSY2]
 void parse_enemy(game_t *game, region_t *region, char **argv)
 {
     int argc = 0;
     for (; argv[argc] != NULL; ++argc);
-    if (argc != 5)
+    if (argc != NB_ARGS_ENEMY)
         return;
     int id = my_getnbr(argv[0]);
-    if (id < 0 || id >= 4)
+    if (id < 0 || id >= NB_ENEMIES)
         return;
     if (game->debug_mode)
         my_printf("\tParsing enemy ID '%d'\n", id);
     enemy_t *enemy = create_enemy(get_pos(argv), option_enemy[id](),
-                                                        stats_enemy[id]());
+                                                stats_enemy[id]());
+    enemy->id = id;
     object_t *object = create_object(ENEMY_OBJ, enemy,
                                                 &enemy_handler, &draw_enemy);
     my_put_in_list(&region->objects, object);
