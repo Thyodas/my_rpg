@@ -15,11 +15,13 @@
 
     enum {
         MAIN_MUSIC,
+        DUNGEON_MUSIC,
         MUSIC_NB,
     };
 
     static const char *MUSIC_PATH[MUSIC_NB] = {
-        "assets/audio/main_music.wav"
+        "assets/audio/main_music.wav",
+        "assets/audio/dungeon_music.wav",
     };
 
     typedef struct {

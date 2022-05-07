@@ -13,9 +13,13 @@
 
 static bool is_same_music(region_t *region1, region_t *region2)
 {
-    if (region1 == NULL || region2 == NULL)
+    if (region1 == NULL)
+        return false;
+    if (region2 == NULL)
         return true;
-    if (region1->music_path == NULL || region2->music_path == NULL)
+    if (region2->music_path == NULL)
+        return true;
+    if (region1->music_path == NULL)
         return false;
     if (my_strcmp(region1->music_path, region2->music_path) == 0)
         return true;
@@ -30,6 +34,5 @@ void load_music(game_t *game, region_t *new_region)
     game->audio.music = sfMusic_createFromFile(new_region->music_path);
     if (game->audio.music == NULL)
         return;
-    my_printf("azda");
     sfMusic_play(game->audio.music);
 }
