@@ -46,6 +46,7 @@ static void draw_items(game_t *game)
         if (item != NULL) {
             sfSprite_setScale(item->entity->sprite, (sfVector2f){3.0, 3.0});
             sfSprite_setPosition(item->entity->sprite, pos);
+            sfSprite_setRotation(item->entity->sprite, 180.0);
             draw_entity(game, item->entity);
             pos.x += 38.0 * 3.0 + 22.5;
         }
