@@ -37,6 +37,7 @@ void load_map(game_t *game, map_t *map)
         extend_string(path, "background.png"), NULL);
     SET_SPRITE_IMG(map->foreground,
         extend_string(path, "foreground.png"), NULL);
+    sfSprite_setColor(map->foreground, (sfColor){255, 255, 255, 200});
     map->is_loaded = true;
 }
 

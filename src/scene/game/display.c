@@ -19,7 +19,7 @@ void game(game_t *game)
         game_events_handler(game);
     if (game->current_scene != GAME_SCENE)
         return;
-    sfRenderWindow_clear(game->window, sfBlack);
+    sfRenderWindow_clear(game->window, (sfColor){28, 28, 28, 255});
     handle_region(game);
     draw_region(game, game->play->current_region);
     if (game->play->region_animation.changing)
