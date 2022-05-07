@@ -144,6 +144,7 @@
         int speed;
         int attack;
         int health;
+        int is_hit;
     } player_t;
 
     #define CAST_PLAYER(arg) ((player_t *)(arg))
