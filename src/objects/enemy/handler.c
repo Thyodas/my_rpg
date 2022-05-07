@@ -20,6 +20,23 @@ static void (*move[4])(game_t *, enemy_t *) = {
     &move_skeleton
 };
 
+static void handle_enemy_combat(game_t *game, enemy_t *enemy)
+{
+    long current_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
+    double diff = (current_us - enemy->invincibility) / 1000000.0;
+    if (enemy->is_hit) {
+        if (diff >= 0.5) {
+            enemy->is_hit = 0;
+            sfSprite_setColor(enemy->entity.sprite, sfWhite);
+            enemy->invincibility = 0;
+        } else {
+            sfColor color_hit = {250, 100, 100, 255};
+            sfSprite_setColor(enemy->entity.sprite, color_hit);
+        }
+    } else
+        enemy->invincibility = current_us;
+}
+
 static void animation_enemy_breathing(game_t *game, enemy_t *enemy)
 {
     long current_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
@@ -46,5 +63,6 @@ void enemy_handler(game_t *game, object_t *self)
 {
     enemy_t *enemy = (enemy_t *)self->data;
     animation_enemy_breathing(game, enemy);
+    handle_enemy_combat(game, enemy);
     move[enemy->id](game, enemy);
 }

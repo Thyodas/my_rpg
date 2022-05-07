@@ -74,8 +74,10 @@ FILE_NAME	:=	main 													\
 			objects/player/handler 										\
 			objects/player/draw 										\
 			objects/player/utils/get_pos_player 						\
+			objects/player/utils/player_hit 							\
 			objects/player/animation/interaction 						\
 			objects/player/animation/move 								\
+			objects/player/animation/attack								\
 			objects/player/move 										\
 			objects/items/create 										\
 			objects/items/handler 										\
@@ -133,6 +135,7 @@ FILE_NAME	:=	main 													\
 			objects/enemy/utils/isometry/get_destination_3d 			\
 			objects/enemy/utils/isometry/get_pos_player_projected 		\
 			objects/enemy/utils/isometry/project_iso_point 				\
+			objects/enemy/utils/hit_enemy
 
 
 BUILD_DIR 	:=		build/

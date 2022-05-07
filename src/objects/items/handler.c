@@ -7,25 +7,25 @@
 
 #include "rpg.h"
 
-sfVector2f getPositionInteraction(player_t *player, int status)
+sfVector2f get_position_interaction(player_t *player, int status)
 {
     sfVector2f pos = sfSprite_getPosition(player->entity.sprite);
 
-    if (status == 0) {
-        pos.x += 17.0;
-        pos.y -= 1.5;
+    if (status == RIGHT) {
+        pos.x += 19.0;
+        pos.y -= 2.5;
     }
-    if (status == 1) {
-        pos.x -= 17.5;
-        pos.y += 7.0;
+    if (status == LEFT) {
+        pos.x -= 19.5;
+        pos.y += 8.0;
     }
-    if (status == 2) {
+    if (status == DOWN) {
         pos.x += 10.0;
-        pos.y += 15.0;
+        pos.y += 17.0;
     }
-    if (status == 3) {
+    if (status == UP) {
         pos.x += 2.0;
-        pos.y -= 12.0;
+        pos.y -= 14.0;
     }
     return pos;
 }
