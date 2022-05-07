@@ -44,6 +44,7 @@ FILE_NAME	:=	main 													\
 			regions/change_region 										\
 			regions/parser 												\
 			scene/set_scene 											\
+			scene/set_in_game_scenes 									\
 			scene/game/display 											\
 			scene/game/events_handler 									\
 			scene/game/init 											\
@@ -65,6 +66,9 @@ FILE_NAME	:=	main 													\
 			scene/help/display 											\
 			scene/help/events_handler 									\
 			scene/help/init 											\
+			scene/death/display 										\
+			scene/death/events_handler 									\
+			scene/death/init 											\
 			scene/draw_scene 											\
 			scene/handle_object 										\
 			scene/parse_object											\

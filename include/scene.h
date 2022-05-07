@@ -19,6 +19,7 @@
         PAUSE_SCENE,
         HELP_SCENE,
         INVENTORY_SCENE,
+        DEATH_SCENE,
         NB_SCENE,
     };
 

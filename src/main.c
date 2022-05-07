@@ -26,6 +26,8 @@ void pause_menu(game_t *game);
 void init_help_menu(game_t *game);
 void help_menu(game_t *game);
 void print_help(void);
+void death_scene(game_t *game);
+void init_death_menu(game_t *game);
 
 void (* const scene[])(game_t *game) = {
         &start_menu,
@@ -34,6 +36,7 @@ void (* const scene[])(game_t *game) = {
         &pause_menu,
         &help_menu,
         &inventory_menu,
+        &death_scene
 };
 
 static void start_game(game_t *game)
@@ -42,6 +45,7 @@ static void start_game(game_t *game)
     init_pause_menu(game);
     init_inventory_menu(game);
     init_settings_menu(game);
+    init_death_menu(game);
     init_help_menu(game);
     init_game(game);
     set_menu_scene(game);

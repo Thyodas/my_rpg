@@ -12,6 +12,7 @@ void handle_region(game_t *game);
 void draw_region(game_t *game, region_t *region);
 void game_events_handler(game_t *game);
 void animate_region_change(game_t *game);
+void set_death_scene(game_t *game);
 
 static void animate_intro_zoom(game_t *game)
 {
@@ -41,8 +42,6 @@ void game(game_t *game)
 {
     while (sfRenderWindow_pollEvent(game->window, &game->event))
         game_events_handler(game);
-    if (game->current_scene != GAME_SCENE)
-        return;
     sfRenderWindow_clear(game->window, (sfColor){28, 28, 28, 255});
     handle_region(game);
     draw_region(game, game->play->current_region);
@@ -51,4 +50,6 @@ void game(game_t *game)
     if (game->play->intro_animation.zooming)
         animate_intro_zoom(game);
     sfRenderWindow_display(game->window);
+    if (CAST_PLAYER(game->play->player->data)->health <= 0)
+        set_death_scene(game);
 }

@@ -38,7 +38,8 @@ static sfIntRect (rect_sprite[]) = {
     {60, 25, 60, 25}, //back 6
     {0, 50, 20, 25}, //? 7
     {20, 50, 20, 25}, //+ 8
-    {40, 50, 20, 25} //- 9
+    {40, 50, 20, 25}, //- 9
+    {0, 0, 86, 25} //retry 10
 };
 
 static void (*ptr_btn[])(game_t *) = {
@@ -52,10 +53,13 @@ static void (*ptr_btn[])(game_t *) = {
     &return_to_previous_scene, //7
     &set_menu_scene, //8
     &decrease_general_volume, //9
-    &decrease_music_volume //10
+    &decrease_music_volume, //10
+    &set_menu_scene //11
 };
 
 static void (*ptr_handler[])(game_t *, object_t *) = {
+    &handle_button_event_start,
+    &handle_button_event_start,
     &handle_button_event_start,
     &handle_button_event_start,
     &handle_button_event_start,
@@ -64,6 +68,8 @@ static void (*ptr_handler[])(game_t *, object_t *) = {
 };
 
 static void (*ptr_draw[])(game_t *, object_t *) = {
+    &draw_buttons_start,
+    &draw_buttons_start,
     &draw_buttons_start,
     &draw_buttons_start,
     &draw_buttons_start,
