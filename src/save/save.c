@@ -56,7 +56,6 @@ void save_score(game_t *game)
         str = my_strcat(str, "\n");
         fwrite(str, sizeof(char), my_strlen(str), f_file);
     }
-    printf("out of if\n");
     fclose(f_file);
     free(str);
 }
