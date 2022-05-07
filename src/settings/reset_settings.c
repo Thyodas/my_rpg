@@ -7,12 +7,6 @@
 
 #include "rpg.h"
 
-void reset_settings(game_t *game)
-{
-    game->settings.general_volume = 100;
-    game->settings.volume_music = 100;
-}
-
 void refresh_music_volume(game_t *game)
 {
     float calc = game->settings.volume_music
@@ -20,4 +14,11 @@ void refresh_music_volume(game_t *game)
     if (game->audio.music == NULL || calc < 0 || calc > 100)
         return;
     sfMusic_setVolume(game->audio.music, calc);
+}
+
+void reset_settings(game_t *game)
+{
+    game->settings.general_volume = 100;
+    game->settings.volume_music = 100;
+    refresh_music_volume(game);
 }
