@@ -149,6 +149,7 @@
         int health;
         int is_hit;
         linked_list_t *emitters;
+        int orientation;
     } player_t;
 
     #define CAST_PLAYER(arg) ((player_t *)(arg))

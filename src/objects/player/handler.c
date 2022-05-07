@@ -75,3 +75,21 @@ void handler_player(game_t *game)
         player_idle_animation(game);
     last_clock_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
 }
+
+void set_player_animation_settings(game_t *game, int status)
+{
+    player_t *player = CAST_PLAYER(game->play->player->data);
+    inventory_t *inventory = &player->inventory;
+    item_t *item = inventory->items[inventory->selected_item]->data;
+    sfSprite *sprite = item->entity->sprite;
+
+    player->orientation = status;
+    if (status == 0)
+        sfSprite_setRotation(sprite, 90.0);
+    if (status == 1)
+        sfSprite_setRotation(sprite, 270.0);
+    if (status == 2)
+        sfSprite_setRotation(sprite, 180.0);
+    if (status == 3)
+        sfSprite_setRotation(sprite, 0.0);
+}
