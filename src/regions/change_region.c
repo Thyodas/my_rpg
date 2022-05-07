@@ -61,4 +61,5 @@ void change_region(game_t *game, region_t *new_region, int dir_x, int dir_y)
         + game->play->region_animation.start.y};
     game->play->current_region_pos.x += dir_x;
     game->play->current_region_pos.y += dir_y;
+    CAST_PLAYER(game->play->player->data)->emitters = NULL;
 }
