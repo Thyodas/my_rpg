@@ -41,8 +41,8 @@ void draw_debug_mode(game_t *game, region_t *region)
 void draw_region(game_t *game, region_t *region)
 {
     sfRenderWindow_drawSprite(game->window, region->map->background, NULL);
-    draw_region_objects(game, region);
     game->play->player->draw(game, game->play->player);
+    draw_region_objects(game, region);
     sfRenderWindow_drawSprite(game->window, region->map->foreground, NULL);
     draw_debug_mode(game, region);
     draw_scene(game);

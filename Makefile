@@ -23,11 +23,11 @@ FILE_NAME	:=	main 													\
 			utils/coords 												\
 			utils/extend_str 											\
 			utils/random 												\
+			utils/calc_dist												\
 			utils/lists/my_put_in_list 									\
 			utils/lists/my_list_size 									\
 			utils/atof													\
 			utils/normalize												\
-			utils/calc_dist 											\
 			utils/calc_vector 											\
 			events/mouse_events 										\
 			events/exit 												\
@@ -112,6 +112,11 @@ FILE_NAME	:=	main 													\
 			objects/enemy/create   										\
 			objects/enemy/parser 										\
 			objects/enemy/draw											\
+			objects/npc/parser											\
+			objects/npc/dialogue_file_parser							\
+			objects/npc/start_ghost/create								\
+			objects/npc/start_ghost/draw								\
+			objects/npc/start_ghost/handler								\
 			objects/enemy/animation/handle_jump 						\
 			objects/enemy/animation/reset_jump_state 					\
 			objects/enemy/blob/move_blob 								\

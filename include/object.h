@@ -31,6 +31,7 @@
         CLOCK_OBJ,
         BACKGROUND_UI_OBJ,
         HEARTS_UI_OBJ,
+        NPC_OBJ,
         OBJECT_NB,
     };
 
@@ -48,6 +49,7 @@
     };
 
     #define SLIME_PATH "assets/spritesheets/slime.png"
+    #define GHOST_PATH "assets/spritesheets/ghost.png"
     #define SKELETON_PATH "assets/spritesheets/skeleton.png"
     #define BLOB_PATH "assets/spritesheets/blob.png"
     #define GHOST_PATH "assets/spritesheets/ghost.png"
