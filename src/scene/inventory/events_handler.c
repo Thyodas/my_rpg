@@ -20,7 +20,8 @@ void events_handler_inventory_scene(game_t *game)
             sfRenderWindow_close(game->window);
         check_mouse_movement(game);
         if (game->event.type == sfEvtKeyReleased &&
-            game->event.key.code == sfKeyI)
+            (game->event.key.code == sfKeyI ||
+                game->event.key.code == sfKeyEscape))
             set_game_scene(game);
     }
 }
