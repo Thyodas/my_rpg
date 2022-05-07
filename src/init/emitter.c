@@ -16,6 +16,7 @@ particles_emitter_t *init_emitter(void)
 
     emitter->is_gen = 0;
     emitter->nb_particles = 0;
+    emitter->last_updated = 0;
     emitter->ptr_part = &handle_particles;
     return emitter;
 }

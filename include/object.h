@@ -10,6 +10,7 @@
 
     #include "region.h"
     #include "entity.h"
+    #include "particles.h"
 
     #define NB_ARGS_SMOKE 3
     #define CAST_SMOKE(arg) ((smoke_t *)(arg))
@@ -146,6 +147,8 @@
         int speed;
         int attack;
         int health;
+        int is_hit;
+        linked_list_t *emitters;
     } player_t;
 
     #define CAST_PLAYER(arg) ((player_t *)(arg))

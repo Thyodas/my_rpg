@@ -74,6 +74,9 @@ FILE_NAME	:=	main 													\
 			objects/player/handler 										\
 			objects/player/draw 										\
 			objects/player/utils/get_pos_player 						\
+			objects/player/animation/interaction 						\
+			objects/player/animation/move 								\
+			objects/player/move 										\
 			objects/items/create 										\
 			objects/items/handler 										\
 			objects/inventory/create 									\
