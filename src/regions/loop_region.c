@@ -12,6 +12,7 @@
 
 void draw_scene(game_t *game);
 void handle_object(game_t *game);
+item_t *get_selected_item(player_t *player);
 
 static void handle_emitters(player_t *player, game_t *game)
 {
@@ -55,6 +56,8 @@ void draw_region(game_t *game, region_t *region)
     handle_emitters(CAST_PLAYER(game->play->player->data), game);
     draw_region_objects(game, region);
     game->play->player->draw(game, game->play->player);
+    item_t *held = get_selected_item(CAST_PLAYER(game->play->player->data));
+    held->handle_hit(game, held);
     sfRenderWindow_drawSprite(game->window, region->map->foreground, NULL);
     draw_debug_mode(game, region);
     draw_scene(game);

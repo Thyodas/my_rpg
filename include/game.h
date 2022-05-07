@@ -24,11 +24,20 @@
     #include <SFML/Audio.h>
     #include <stdbool.h>
 
+    enum items {
+        SWORD,
+        NB_ITEMS
+    };
+
     typedef struct {
+        int id;
         char *name;
         entity_t *entity;
         int nb_usage;
         int unlocked;
+        int hit_effect;
+        void (*handle_hit)();
+        sfSprite *sprite_effect;
     } item_t;
 
     typedef struct {

@@ -81,8 +81,11 @@ FILE_NAME	:=	main 													\
 			objects/player/move 										\
 			objects/items/create 										\
 			objects/items/handler 										\
+			objects/items/sword/hit_effects 							\
+			objects/items/sword/set_pos_hit 							\
 			objects/inventory/create 									\
 			objects/inventory/handler 									\
+			objects/inventory/utils/getter_selected_item 				\
 			objects/create_object 										\
 			objects/teleporter/draw 									\
 			objects/teleporter/create 									\
