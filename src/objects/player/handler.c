@@ -107,10 +107,28 @@ void handler_player(game_t *game)
     last_clock_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
 }
 
+void set_player_animation_settings(game_t *game, int status) {
+    player_t *player = CAST_PLAYER(game->play->player->data);
+    inventory_t *inventory = &player->inventory;
+    item_t *item = inventory->items[inventory->selected_item]->data;
+    sfSprite *sprite = item->entity->sprite;
+
+    player->orientation = status;
+    if (status == 0)
+        sfSprite_setRotation(sprite, 90.0);
+    if (status == 1)
+        sfSprite_setRotation(sprite, 270.0);
+    if (status == 2)
+        sfSprite_setRotation(sprite, 180.0);
+    if (status == 3)
+        sfSprite_setRotation(sprite, 0.0);
+}
+
 void rect_set_y(game_t *game, int status)
 {
     entity_t *entity = &CAST_PLAYER(game->play->player->data)->entity;
 
+    set_player_animation_settings(game, status);
     if (entity->spritesheet_rect_y != 0)
         entity->rect.top = entity->spritesheet_rect_y * status;
     if (entity->rect.top >= entity->spritesheet_height)
