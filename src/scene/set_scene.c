@@ -19,7 +19,15 @@ void set_game_scene(game_t *game)
         game->play->view = sfView_createFromRect((sfFloatRect){REGION_SIZE_X
             * game->play->current_region_pos.x, REGION_SIZE_Y
             * game->play->current_region_pos.y, REGION_SIZE_X, REGION_SIZE_Y});
-    sfRenderWindow_setView(game->window, game->play->view);
+    if (game->previous_scene == START_SCENE) {
+        game->play->intro_animation.zooming = true;
+        game->play->intro_animation.zoom_factor = 0.3;
+        game->play->intro_animation.start_view = game->play->view;
+        game->play->intro_animation.previous_copy = NULL;
+    } else {
+        game->play->intro_animation.zooming = false;
+        sfRenderWindow_setView(game->window, game->play->view);
+    }
 }
 
 void set_menu_scene(game_t *game)
