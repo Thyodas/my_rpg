@@ -34,5 +34,7 @@ void load_music(game_t *game, region_t *new_region)
     game->audio.music = sfMusic_createFromFile(new_region->music_path);
     if (game->audio.music == NULL)
         return;
+    sfMusic_setVolume(game->audio.music, game->settings.volume_music);
+    sfMusic_setLoop(game->audio.music, sfTrue);
     sfMusic_play(game->audio.music);
 }
