@@ -73,9 +73,9 @@ void drag_drop_deplacement(game_t *game, inventory_t *inventory)
             break;
         }
     }
-    printf("HIT: %d\n", i);
+    if (i == game->cursor->item_selected_index)
+        return;
     if (item == NULL) {
-        printf("HIT: %d\n", i);
         inventory->items[i]->data = inventory->items[game->cursor->item_selected_index]->data;
         inventory->items[game->cursor->item_selected_index]->data = NULL;
     } else {
