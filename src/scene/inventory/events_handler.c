@@ -12,6 +12,8 @@ void check_mouse_movement(game_t *game);
 void set_game_scene(game_t *game);
 object_t *create_object(enum id_object_type id, void *data, void (*handler)(),
 void (*draw)());
+void drag_drop_intention(game_t *game, inventory_t *inventory);
+void drag_drop_deplacement(game_t *game, inventory_t *inventory);
 
 void events_handler_inventory_scene(game_t *game)
 {
@@ -23,6 +25,14 @@ void events_handler_inventory_scene(game_t *game)
             (game->event.key.code == sfKeyI ||
                 game->event.key.code == sfKeyEscape))
             set_game_scene(game);
+        if (game->event.type == sfEvtMouseButtonPressed &&
+            game->event.mouseButton.button == sfMouseLeft)
+            drag_drop_intention(game,
+                &CAST_PLAYER(game->play->player->data)->inventory);
+        if (game->event.type == sfEvtMouseButtonReleased &&
+            game->event.mouseButton.button == sfMouseLeft)
+            drag_drop_deplacement(game,
+                &CAST_PLAYER(game->play->player->data)->inventory);
     }
 }
 

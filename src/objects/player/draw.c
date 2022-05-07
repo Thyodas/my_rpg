@@ -15,6 +15,8 @@ void draw_interaction(game_t *game)
     inventory_t *inventory = &player->inventory;
     item_t *item = inventory->items[inventory->nb_items]->data;
 
+    if (item == NULL)
+        return;
     sfSprite_setPosition(item->entity->sprite,
                 getPositionInteraction(player, player->orientation));
     sfSprite_setScale(item->entity->sprite, (sfVector2f){0.8, 0.8});
