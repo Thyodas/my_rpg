@@ -17,6 +17,7 @@
     #define NB_ARGS_WAVES 3
     #define SPRITE_ENEMY ((enemy_t *)(self->data))->entity.sprite
     #define NB_ARGS_ENEMY 5
+    #define CAST_ENEMY(arg) ((enemy_t *)(arg))
     #define M_PI 3.14159265358979323846
     #define DEG_TO_RAD(x) ((x) * M_PI / 180)
     #define NB_ARGS_BORDER_WAVES 5
@@ -35,6 +36,13 @@
         NPC_OBJ,
         MUSIC_OBJ,
         OBJECT_NB,
+    };
+
+    enum orientation {
+        RIGHT,
+        LEFT,
+        DOWN,
+        UP
     };
 
     enum id_enemies {
@@ -120,6 +128,9 @@
         animation_data_t animation_data;
         int offset_x;
         int offset_y;
+        int is_hit;
+        long invincibility;
+        linked_list_t *emitters;
     } enemy_t;
 
     typedef struct {
@@ -151,6 +162,7 @@
         int is_hit;
         linked_list_t *emitters;
         int orientation;
+        long hit_delay;
     } player_t;
 
     #define CAST_PLAYER(arg) ((player_t *)(arg))

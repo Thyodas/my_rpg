@@ -7,7 +7,7 @@
 
 #include "rpg.h"
 
-sfVector2f getPositionInteraction(player_t *player, int status);
+sfVector2f get_position_interaction(player_t *player, int status);
 
 void draw_interaction(game_t *game, int status)
 {
@@ -16,7 +16,8 @@ void draw_interaction(game_t *game, int status)
     item_t *item = inventory->items[inventory->nb_items]->data;
 
     sfSprite_setPosition(item->entity->sprite,
-                         getPositionInteraction(player, player->orientation));
+                         get_position_interaction(player,
+                                                    player->orientation));
     sfSprite_setScale(item->entity->sprite, (sfVector2f){0.8, 0.8});
     draw_entity(game, item->entity);
 }

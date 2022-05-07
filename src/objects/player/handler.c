@@ -12,33 +12,44 @@ void player_idle_animation(game_t *game);
 void move_player(game_t *game, player_t *player, float shift_x, float shift_y);
 void interact_player(game_t *game);
 void rect_set_y(game_t *game, int status);
+void player_attack(game_t *game, player_t *player);
 
 void handle_movement(game_t *game, player_t *player, float new_speed)
 {
     CAST_PLAYER(game->play->player->data)->entity.animation_state
         = IDLE_STATE;
     if (sfKeyboard_isKeyPressed(sfKeyQ)) {
-        rect_set_y(game, 1);
+        rect_set_y(game, LEFT);
         move_player(game, game->play->player->data, -new_speed, 0);
     }
     if (sfKeyboard_isKeyPressed(sfKeyZ)) {
-        rect_set_y(game, 3);
+        rect_set_y(game, UP);
         move_player(game, game->play->player->data, 0, -new_speed);
     }
     if (sfKeyboard_isKeyPressed(sfKeyD)) {
-        rect_set_y(game, 0);
+        rect_set_y(game, RIGHT);
         move_player(game, game->play->player->data, new_speed, 0);
     }
     if (sfKeyboard_isKeyPressed(sfKeyS)) {
-        rect_set_y(game, 2);
+        rect_set_y(game, DOWN);
         move_player(game, game->play->player->data, 0, new_speed);
     }
 }
 
 void handle_interaction(game_t *game, player_t *player)
 {
-    if (sfKeyboard_isKeyPressed(sfKeyE))
-        interact_player(game);
+    long static last_attack = 0;
+    if (player->hit_delay) {
+        long current_us =
+            sfClock_getElapsedTime(game->clock->clock).microseconds;
+        double diff = (current_us - last_attack) / 1000000.0;
+        if (diff >= 0.2) {
+            player->hit_delay = 0;
+            last_attack =
+                sfClock_getElapsedTime(game->clock->clock).microseconds;
+        }
+    }
+    player_attack(game, player);
 }
 
 void handle_combat(game_t *game, player_t *player)
@@ -67,11 +78,12 @@ void handler_player(game_t *game)
     player_t *player = ((player_t *)(game->play->player->data));
     double new_speed = ((player_t *)(game->play->player->data))->speed
         * diff;
-    handle_movement(game, player, new_speed);
+    if (!player->hit_delay)
+        handle_movement(game, player, new_speed);
     handle_interaction(game, player);
     handle_combat(game, player);
     if (CAST_PLAYER(game->play->player->data)->entity.animation_state
-        == IDLE_STATE)
+        == IDLE_STATE && !player->hit_delay)
         player_idle_animation(game);
     last_clock_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
 }

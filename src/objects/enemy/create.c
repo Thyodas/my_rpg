@@ -68,6 +68,9 @@ enemy_t *create_enemy(sfVector2f *pos, option_t option, stats_t stats)
     enemy->offset_x = 0;
     enemy->offset_y = 0;
     enemy->trigerred = 0;
+    enemy->invincibility = 0;
+    enemy->emitters = NULL;
+    enemy->is_hit = 0;
     enemy->translation = create_translation(pos[0]);
     return enemy;
 }

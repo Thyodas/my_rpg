@@ -39,6 +39,7 @@ object_t *create_player_object(option_t option)
     player->speed = 150;
     player->health = 3;
     player->attack = 1;
+    player->hit_delay = 0;
     player->orientation = 0;
     player->is_hit = 0;
     player->emitters = NULL;
