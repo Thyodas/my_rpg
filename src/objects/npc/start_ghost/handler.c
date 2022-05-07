@@ -79,7 +79,7 @@ void npc_start_ghost_handler(game_t *game, object_t *self)
     animate_ghost(game, npc);
     if (npc->dialogue_nb == 0)
         return;
-    if (calc_distance_sprite(player->entity.sprite, npc->entity.sprite) > 100) {
+    if (calc_distance_sprite(player->entity.sprite, npc->entity.sprite) > 70) {
         npc->dialogue_index = 0;
         npc->is_talking = false;
         return;

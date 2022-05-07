@@ -57,13 +57,16 @@ sfFloatRect *rect)
 void draw_dialogue_box(game_t *game, dialogue_box_t *dlg)
 {
     sfFloatRect rect = sfText_getGlobalBounds(dlg->text);
+    rect.width = rect.width > 10 ? rect.width : 10;
     sfText_setPosition(dlg->text, (sfVector2f){dlg->pos.x - rect.width / 2,
         dlg->pos.y - rect.height - 6});
     rect = sfText_getGlobalBounds(dlg->text);
+    rect.width = rect.width > 10 ? rect.width : 10;
     draw_top_and_right(game, dlg, &rect);
     draw_bottom_and_left(game, dlg, &rect);
     sfRenderWindow_drawSprite(game->window, modify_part(
-        dlg->box_parts[DLG_BOX_INDICATOR], dlg->pos, (sfVector2f){1, 1}, 0),
+        dlg->box_parts[DLG_BOX_INDICATOR], (sfVector2f){dlg->pos.x,
+        rect.top + rect.height + 4}, (sfVector2f){1, 1}, 0),
         NULL);
     sfRenderWindow_drawSprite(game->window, modify_part(
         dlg->box_parts[DLG_BOX_BACKGROUND], (sfVector2f){rect.left, rect.top},
