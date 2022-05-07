@@ -35,6 +35,7 @@ void load_region(game_t *game, region_t *region)
             REGION_PATH[region->id]);
     load_map(game, region->map);
     parse_region(game, region);
+    sfMusic_play(game->audio.music);
     region->is_loaded = true;
 }
 

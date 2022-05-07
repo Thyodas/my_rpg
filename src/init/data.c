@@ -23,6 +23,17 @@ static void init_settings(game_t *game)
     game->settings.general_text = NULL;
 }
 
+static void init_audio(game_t *game)
+{
+    game->audio.music = sfMusic_createFromFile("assets/audio/main_music.wav");
+    game->audio.jump = sfSound_create();
+    game->audio.player_death = sfSound_create();
+    sfSound_setBuffer(game->audio.jump,
+        sfSoundBuffer_createFromFile("assets/audio/jump.wav"));
+    sfSound_setBuffer(game->audio.player_death,
+        sfSoundBuffer_createFromFile("assets/audio/player_death.wav"));
+}
+
 void init_data(game_t *game)
 {
     game->current_scene = 0;
@@ -33,4 +44,5 @@ void init_data(game_t *game)
     game->play = NULL;
     init_all_data_structure(game);
     init_settings(game);
+    init_audio(game);
 }

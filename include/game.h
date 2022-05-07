@@ -53,6 +53,8 @@
         sfView *view;
     } play_t;
 
+    #include "audio.h"
+
     typedef struct game_s {
         int current_scene;
         sfRenderWindow *window;
@@ -65,6 +67,7 @@
         sfEvent event;
         bool debug_mode;
         all_data_t data;
+        audio_t audio;
     } game_t;
 
     #define SET_SPRITE_IMG(sprite, img, area) (sfSprite_setTexture(sprite, \
