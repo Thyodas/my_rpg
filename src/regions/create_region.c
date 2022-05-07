@@ -11,6 +11,7 @@
 
 int parse_region(game_t *game, region_t *region);
 void load_map(game_t *game, map_t *map);
+void load_music(game_t *game, region_t *new_region);
 
 region_t *create_region(game_t *game, int id)
 {
@@ -22,20 +23,23 @@ region_t *create_region(game_t *game, int id)
     region->left = NULL;
     region->bottom = NULL;
     region->objects = NULL;
+    region->music_path = NULL;
     region->map = game->play->map_list[REGION_MAP_JMP_TABLE[id]];
     return (region);
 }
 
 void load_region(game_t *game, region_t *region)
 {
-    if (region->is_loaded)
+    if (region->is_loaded) {
+        load_music(game, region);
         return;
+    }
     if (game->debug_mode)
         my_fprintf(2, "\nLoading region ID '%d' '%s'\n", region->id,
             REGION_PATH[region->id]);
     load_map(game, region->map);
     parse_region(game, region);
-    sfMusic_play(game->audio.music);
+    load_music(game, region);
     region->is_loaded = true;
 }
 
@@ -55,6 +59,7 @@ void init_all_regions(game_t *game)
 {
     for (int id = 0; id < REGION_NB; ++id)
         game->play->region_list[id] = create_region(game, id);
+    game->play->current_region = NULL;
     load_region(game, game->play->region_list[START_HOUSE_INTERIOR]);
     game->play->current_region = game->play->region_list[START_HOUSE_INTERIOR];
     game->play->current_region_pos = (sfVector2i){0, 1};

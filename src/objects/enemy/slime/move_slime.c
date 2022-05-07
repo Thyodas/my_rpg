@@ -63,8 +63,10 @@ static void handle_movement_animation(game_t *game, enemy_t *slime)
     if (diff >= 1) {
         slime->offset_x += slime->entity.spritesheet_rect_x;
         if (slime->offset_x >= slime->entity.spritesheet_width -
-                                slime->entity.spritesheet_rect_x)
+                                slime->entity.spritesheet_rect_x) {
             slime->animation_data.animation_state = JUMPING;
+            play_sound(game, game->audio.jump);
+        }
         sfSprite_setTextureRect(slime->entity.sprite,
             (sfIntRect){slime->offset_x, slime->offset_y,
             slime->entity.spritesheet_rect_x,
@@ -79,7 +81,6 @@ static void handle_jump_slime(game_t *game, enemy_t *slime)
     if (slime->animation_data.distance_jumped >=
         slime->animation_data.jump_height) {
         reset_jump_state(game, slime);
-        play_sound(game, game->audio.jump);
     } else
         slime_jump(game, slime);
 }

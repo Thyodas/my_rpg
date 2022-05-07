@@ -6,18 +6,30 @@
 */
 
 #include "game.h"
-#include "object.h"
+#include "audio.h"
+#include "region.h"
+#include "my.h"
 #include <stdio.h>
 
-void change_region(game_t *game, region_t *current_region,
-int dir_x, int dir_y);
-
-void teleporter_handler(game_t *game, struct object_s *self)
+static bool is_same_music(region_t *region1, region_t *region2)
 {
-    teleporter_t *teleporter = self->data;
-    sfFloatRect rect = sfSprite_getGlobalBounds(
-        ((player_t *)(game->play->player->data))->entity.sprite);
+    if (region1 == NULL || region2 == NULL)
+        return true;
+    if (region1->music_path == NULL || region2->music_path == NULL)
+        return false;
+    if (my_strcmp(region1->music_path, region2->music_path) == 0)
+        return true;
+}
 
-    if (sfFloatRect_intersects(&rect, &teleporter->area, NULL))
-        change_region(game, teleporter->dest_region, 0, 0);
+void load_music(game_t *game, region_t *new_region)
+{
+    if (is_same_music(game->play->current_region, new_region))
+        return;
+    if (game->audio.music != NULL)
+        sfMusic_destroy(game->audio.music);
+    game->audio.music = sfMusic_createFromFile(new_region->music_path);
+    if (game->audio.music == NULL)
+        return;
+    my_printf("azda");
+    sfMusic_play(game->audio.music);
 }
