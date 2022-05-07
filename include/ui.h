@@ -42,6 +42,7 @@
         sfIntRect rect;
         sfVector2f pos;
         int mouse_pressed;
+        int item_selected_index;
     } cursor_t;
 
     typedef struct button {

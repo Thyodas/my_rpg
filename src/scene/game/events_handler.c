@@ -6,9 +6,11 @@
 */
 
 #include "rpg.h"
+#include <stdio.h>
 
 void set_pause_scene(game_t *game);
 void set_inventory_scene(game_t *game);
+void interact_player(game_t *game);
 
 void game_events_handler(game_t *game)
 {

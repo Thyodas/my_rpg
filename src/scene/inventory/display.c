@@ -37,8 +37,6 @@ static void draw_items(game_t *game)
 {
     object_t *object = NULL;
     item_t *item = NULL;
-
-    sfVector2u u = sfRenderWindow_getSize(game->window);
     sfVector2f pos = {700, 680};
 
     for (int i = 0; i < INVENTORY_SIZE; i++) {
@@ -48,13 +46,24 @@ static void draw_items(game_t *game)
             sfSprite_setPosition(item->entity->sprite, pos);
             sfSprite_setRotation(item->entity->sprite, 180.0);
             draw_entity(game, item->entity);
-            pos.x += 38.0 * 3.0 + 22.5;
         }
+        pos.x += 38.0 * 3.0 + 22.5;
         if (i == INVENTORY_SIZE / 2 - 1) {
             pos.y += 45.0 * 3.0 + 10.0;
             pos.x = 700;
         }
     }
+}
+
+void draw_following_item(game_t *game)
+{
+    cursor_t *cursor = game->cursor;
+    if (cursor->item_selected_index == -1)
+        return;
+    sfVector2f pos = cursor->pos;
+    item_t *item = CAST_PLAYER(game->play->player->data)->inventory.items[cursor->item_selected_index]->data;
+    sfSprite_setPosition(item->entity->sprite, pos);
+    draw_entity(game, item->entity);
 }
 
 void inventory_menu(game_t *game)
@@ -69,5 +78,6 @@ void inventory_menu(game_t *game)
     draw_items(game);
     draw_stats(game);
     draw_cursor(game->window, game->cursor);
+    draw_following_item(game);
     sfRenderWindow_display(game->window);
 }

@@ -93,8 +93,10 @@ void set_player_animation_settings(game_t *game, int status)
     player_t *player = CAST_PLAYER(game->play->player->data);
     inventory_t *inventory = &player->inventory;
     item_t *item = inventory->items[inventory->selected_item]->data;
-    sfSprite *sprite = item->entity->sprite;
 
+    if (item == NULL)
+        return;
+    sfSprite *sprite = item->entity->sprite;
     player->orientation = status;
     if (status == 0)
         sfSprite_setRotation(sprite, 90.0);

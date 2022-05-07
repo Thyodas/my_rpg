@@ -20,6 +20,8 @@ static void handle_items_collisions(game_t *game, player_t *player)
                         (item_t *)(player->inventory.items[player->
                         inventory.selected_item]->data);
 
+    if (item_entity == NULL)
+        return;
     while (tmp != NULL) {
         obj = tmp->data;
         if (handle_enemies_collisions(obj, item_entity->entity, game) &&

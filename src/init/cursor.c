@@ -19,5 +19,6 @@ cursor_t *init_cursor(sfRenderWindow *window)
     cursor->pos.x = pos.x;
     cursor->pos.y = pos.y;
     cursor->mouse_pressed = 0;
+    cursor->item_selected_index = -1;
     return (cursor);
 }
