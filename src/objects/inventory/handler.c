@@ -43,7 +43,7 @@ void init_inventory(game_t *game)
             17.6666666667,
             47,
             53,
-            180.0,
+            90.0,
             "Sword"
     };
     init_texts(game);

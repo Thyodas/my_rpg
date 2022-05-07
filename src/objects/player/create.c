@@ -40,6 +40,7 @@ object_t *create_player_object(option_t option)
     player->health = 3;
     player->attack = 1;
     player->orientation = 0;
+    player->interaction = 0;
     player->is_hit = 0;
     player->emitters = NULL;
     player->entity = create_player_entity(option);

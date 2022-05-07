@@ -37,8 +37,6 @@ static void draw_items(game_t *game)
 {
     object_t *object = NULL;
     item_t *item = NULL;
-
-    sfVector2u u = sfRenderWindow_getSize(game->window);
     sfVector2f pos = {700, 680};
 
     for (int i = 0; i < INVENTORY_SIZE; i++) {
