@@ -38,6 +38,15 @@ static void animate_intro_zoom(game_t *game)
     }
 }
 
+static void start_death_scene(game_t *game)
+{
+    player_t *player = CAST_PLAYER(game->play->player->data);
+    sfSprite_setTextureRect(player->entity.sprite, (sfIntRect){0, 64, 16, 16});
+    sfSprite_setColor(player->entity.sprite, sfWhite);
+    sfRenderWindow_drawSprite(game->window, player->entity.sprite, NULL);
+    set_death_scene(game);
+}
+
 void game(game_t *game)
 {
     while (sfRenderWindow_pollEvent(game->window, &game->event))
@@ -51,5 +60,5 @@ void game(game_t *game)
         animate_intro_zoom(game);
     sfRenderWindow_display(game->window);
     if (CAST_PLAYER(game->play->player->data)->health <= 0)
-        set_death_scene(game);
+        start_death_scene(game);
 }

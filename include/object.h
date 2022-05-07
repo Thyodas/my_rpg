@@ -42,7 +42,8 @@
         RIGHT,
         LEFT,
         DOWN,
-        UP
+        UP,
+        DEAD
     };
 
     enum id_enemies {
