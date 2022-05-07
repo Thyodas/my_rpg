@@ -1,20 +1,28 @@
 /*
-** EPITECH PROJECT, 2021
-** my_strcat
+** EPITECH PROJECT, 2022
+** MY_STRCAT
 ** File description:
-** my_strcat
+** Concatenates two strings.
 */
 
-int my_char_isprintable(char const str);
-int my_strlen(char const * str);
+#include <stdlib.h>
 
-char *my_strcat(char *dest, char const *src)
+char *my_strcat(char *src1, char *src2)
 {
-    int i = my_strlen(dest);
-    int index = 0;
+    if (src1 == NULL)
+        return src2;
+    if (src2 == NULL)
+        return src1;
+    int src1_len = my_strlen(src1);
+    int src2_len = my_strlen(src2);
+    char *dest = malloc(sizeof(char) * (src1_len + src2_len + 1));
 
-    while (index < my_strlen(src))
-        dest[i++] = src[index++];
-    dest[i] = '\0';
+    for (int i = 0; i < src1_len + src2_len; ++i) {
+        if (i < src1_len)
+            dest[i] = src1[i];
+        else
+            dest[i] = src2[i - src1_len];
+    }
+    dest[src1_len + src2_len] = '\0';
     return (dest);
 }
