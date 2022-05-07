@@ -133,6 +133,9 @@ FILE_NAME	:=	main 													\
 			objects/enemy/utils/isometry/get_destination_3d 			\
 			objects/enemy/utils/isometry/get_pos_player_projected 		\
 			objects/enemy/utils/isometry/project_iso_point 				\
+			objects/music/handler										\
+			objects/music/parser										\
+			audio/sound													\
 
 
 BUILD_DIR 	:=		build/

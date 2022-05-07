@@ -31,6 +31,7 @@
         struct regions_s *bottom;
         map_t *map;
         bool is_loaded;
+        const char *music_path;
     } region_t;
 
     const static char *REGION_PATH[] = {

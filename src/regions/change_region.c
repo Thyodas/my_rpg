@@ -49,8 +49,8 @@ void animate_region_change(game_t *game)
 
 void change_region(game_t *game, region_t *new_region, int dir_x, int dir_y)
 {
-    game->play->current_region = new_region;
     load_region(game, new_region);
+    game->play->current_region = new_region;
     game->play->region_animation.changing = true;
     game->play->region_animation.direction = (sfVector2f){dir_x, dir_y};
     game->play->region_animation.start = (sfVector2f){

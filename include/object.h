@@ -33,6 +33,7 @@
         BACKGROUND_UI_OBJ,
         HEARTS_UI_OBJ,
         NPC_OBJ,
+        MUSIC_OBJ,
         OBJECT_NB,
     };
 

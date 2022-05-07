@@ -38,6 +38,7 @@ static void init_game_scene_objects(game_t *game)
 void init_game(game_t *game)
 {
     game->play = malloc(sizeof(play_t));
+    game->play->current_region == NULL;
     game->play->view = NULL;
     init_all_maps(game);
     init_all_regions(game);

@@ -14,6 +14,7 @@ float calc_distance(sfVector2f point1, sfVector2f point2);
 void slime_jump(game_t *game, enemy_t *slime);
 sfVector2f get_pos_player(game_t *game);
 void reset_jump_state(game_t *game, enemy_t *enemy);
+void play_sound(game_t *game, sfSound *sound);
 
 static void handle_idle_state(game_t *game, enemy_t *slime)
 {
@@ -62,8 +63,10 @@ static void handle_movement_animation(game_t *game, enemy_t *slime)
     if (diff >= 1) {
         slime->offset_x += slime->entity.spritesheet_rect_x;
         if (slime->offset_x >= slime->entity.spritesheet_width -
-                                slime->entity.spritesheet_rect_x)
+                                slime->entity.spritesheet_rect_x) {
             slime->animation_data.animation_state = JUMPING;
+            play_sound(game, game->audio.jump);
+        }
         sfSprite_setTextureRect(slime->entity.sprite,
             (sfIntRect){slime->offset_x, slime->offset_y,
             slime->entity.spritesheet_rect_x,
@@ -76,9 +79,9 @@ static void handle_jump_slime(game_t *game, enemy_t *slime)
 {
     slime->animation_data.distance_jumped += 1;
     if (slime->animation_data.distance_jumped >=
-        slime->animation_data.jump_height)
+        slime->animation_data.jump_height) {
         reset_jump_state(game, slime);
-    else
+    } else
         slime_jump(game, slime);
 }
 
