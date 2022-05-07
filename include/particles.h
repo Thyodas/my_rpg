@@ -26,7 +26,9 @@
 
     typedef struct particles_emitter {
         particles_t *particles;
-        sfClock *particles_clock;
+        int updates;
+        long last_updated;
+        sfVector2f pos;
         int is_gen;
         int nb_particles;
         void (*ptr_part)(struct particles_emitter *, int, sfVector2f,

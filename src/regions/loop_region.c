@@ -13,6 +13,17 @@
 void draw_scene(game_t *game);
 void handle_object(game_t *game);
 
+static void handle_emitters(player_t *player, game_t *game)
+{
+    linked_list_t *tmp = player->emitters;
+
+    while (tmp != NULL) {
+        particles_emitter_t *emitter = tmp->data;
+        emitter->ptr_part(emitter, BLOOD, emitter->pos, game->window);
+        tmp = tmp->next;
+    }
+}
+
 void draw_region_objects(game_t *game, region_t *region)
 {
     object_t *obj;
@@ -41,6 +52,7 @@ void draw_debug_mode(game_t *game, region_t *region)
 void draw_region(game_t *game, region_t *region)
 {
     sfRenderWindow_drawSprite(game->window, region->map->background, NULL);
+    handle_emitters(CAST_PLAYER(game->play->player->data), game);
     draw_region_objects(game, region);
     game->play->player->draw(game, game->play->player);
     sfRenderWindow_drawSprite(game->window, region->map->foreground, NULL);

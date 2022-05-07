@@ -17,16 +17,16 @@ static void kill_particles(particles_t *particles, int nb_particles)
     }
 }
 
-void update_blood(particles_t *particles, int nb_particles)
+void update_blood(particles_t *particles, int nb_particles, int updates)
 {
-    for (int i = 1; i < nb_particles; ++i) {
+    for (int i = 0; i < nb_particles; ++i) {
         if (particles[i].is_alive) {
             particles[i].vertex.position.x += particles[i].direction.x;
             particles[i].vertex.position.y += particles[i].direction.y;
             particles[i].updated++;
         } else
             break;
-        if (particles[i].updated > 5) {
+        if (particles[i].updated > updates) {
             kill_particles(particles, nb_particles);
             break;
         }
