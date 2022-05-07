@@ -12,6 +12,7 @@ bool check_entity_region_collision(game_t *game, sfVector2f shift,
                                     entity_t entity, int is_player);
 particles_emitter_t *init_emitter(void);
 sfVector2f get_pos_player(game_t *game);
+void player_hit(game_t *game, player_t *player);;
 
 int check_player_collision(game_t *game, sfVector2f shift, entity_t entity)
 {
@@ -20,14 +21,8 @@ int check_player_collision(game_t *game, sfVector2f shift, entity_t entity)
                                                         data)->entity.sprite);
     sfFloatRect entity_bound = sfSprite_getGlobalBounds(entity.sprite);
     if (sfFloatRect_intersects(&player_bound, &entity_bound, NULL) == sfTrue) {
-        if (!CAST_PLAYER(game->play->player->data)->is_hit) {
-            particles_emitter_t *emitter = init_emitter();
-            emitter->pos = get_pos_player(game);
-            my_put_in_list(&CAST_PLAYER(game->play->player->data)->emitters,
-                            emitter);
-            CAST_PLAYER(game->play->player->data)->health -= 1;
-            CAST_PLAYER(game->play->player->data)->is_hit = 1;
-        }
+        if (!CAST_PLAYER(game->play->player->data)->is_hit)
+            player_hit(game, CAST_PLAYER(game->play->player->data));
         return 1;
     }
     return 0;
