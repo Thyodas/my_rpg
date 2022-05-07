@@ -39,7 +39,6 @@ ssize_t get_score(void)
 
 void save_score(game_t *game)
 {
-    printf("saving_score\n");
     inventory_t inventory = CAST_PLAYER(game->play->player->data)->inventory;
     FILE *f_file = fopen("save.rpg", "w");
     char *str = NULL;
