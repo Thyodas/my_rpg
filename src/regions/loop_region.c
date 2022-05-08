@@ -41,7 +41,9 @@ void draw_debug_mode(game_t *game, region_t *region)
     if (!game->debug_mode)
         return;
     static sfSprite *collision = NULL;
-    if (collision == NULL) {
+    static region_t *region_old = NULL;
+    if (collision == NULL || region_old != region) {
+        region_old = region;
         collision = sfSprite_create();
         sfSprite_setTexture(collision, sfTexture_createFromImage(
             region->map->collision, NULL), false);
