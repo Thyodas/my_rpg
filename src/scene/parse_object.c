@@ -31,7 +31,7 @@ void parse_objects_scene(game_t *game, int scene, char *path)
         if (args == NULL || args[0] == NULL || !my_str_isnum(args[0]))
             continue;
         object_id = my_getnbr(args[0]);
-        if (object_id < 0 || object_id >= OBJECT_NB)
+        if (object_id != 0)
             continue;
         PARSE_OBJ_SCENE[object_id](game, args, object_id, scene);
     }

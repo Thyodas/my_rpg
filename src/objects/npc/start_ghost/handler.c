@@ -13,6 +13,7 @@
 void dialogue_box_handler(game_t *game, dialogue_box_t *dialogue);
 float calc_distance(sfVector2f point1, sfVector2f point2);
 void dialogue_box_set_text(dialogue_box_t *dialogue, char *text);
+void handle_quest(game_t *game, npc_t *npc);
 
 static void animate_ghost(game_t *game, npc_t *ghost)
 {
@@ -86,6 +87,7 @@ void npc_start_ghost_handler(game_t *game, object_t *self)
     }
     if (!npc->is_talking) {
         npc->is_talking = true;
+        handle_quest(game, npc);
         dialogue_box_set_text(npc->dialogue,
             npc->dialogue_list[npc->dialogue_line][npc->dialogue_index]);
     }

@@ -28,6 +28,15 @@ static void find_and_restard_clock(game_t *game)
     }
 }
 
+static void reset_values(game_t *game)
+{
+    CAST_PLAYER(game->play->player->data)->emitters = NULL;
+    CAST_PLAYER(game->play->player->data)->health = 3;
+    game->play->stats.nb_killed_slimes = 0;
+    game->play->current_region_pos.x = START_REGION_X;
+    game->play->current_region_pos.y = START_REGION_Y;
+}
+
 void reset_game(game_t *game)
 {
     find_and_restard_clock(game);
@@ -35,10 +44,7 @@ void reset_game(game_t *game)
         game->play->region_list[i]->is_loaded = 0;
         game->play->region_list[i]->objects = NULL;
     }
-    CAST_PLAYER(game->play->player->data)->emitters = NULL;
-    CAST_PLAYER(game->play->player->data)->health = 3;
-    game->play->current_region_pos.x = START_REGION_X;
-    game->play->current_region_pos.y = START_REGION_Y;
+    reset_values(game);
     sfSprite_setPosition(CAST_PLAYER(game->play->player->data)->entity.sprite,
         (sfVector2f){REGION_SIZE_X * game->play->current_region_pos.x +
         240, REGION_SIZE_Y * game->play->current_region_pos.y + 130});

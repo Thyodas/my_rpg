@@ -1,4 +1,3 @@
-
 /*
 ** EPITECH PROJECT, 2021
 ** my_str_to_word_array.c

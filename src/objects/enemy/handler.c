@@ -102,6 +102,8 @@ static void init_death_state(enemy_t *enemy, game_t *game)
             sfSprite_setScale(enemy->entity.sprite, (sfVector2f){2.0, 2.0});
     else
         sfSprite_setScale(enemy->entity.sprite, (sfVector2f){0.65, 0.65});
+    if (enemy->id == SLIME)
+        game->play->stats.nb_killed_slimes++;
     sfSprite_setColor(enemy->entity.sprite, sfWhite);
 }
 

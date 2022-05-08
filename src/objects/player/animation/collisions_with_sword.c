@@ -40,4 +40,3 @@ void collisions_with_sword(game_t *game, object_t *obj, item_t *sword)
         sword->entity, game, (sfVector2f){0, 0}))
             ((grass_t *)obj->data)->is_hit = 1;
 }
-

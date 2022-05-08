@@ -37,7 +37,7 @@ static void init_npc_start_dog_dialogue(npc_t *npc, dialogue_box_t *dialogue)
 {
     dialogue->pos.x = npc->start_pos.x;
     dialogue->pos.y = npc->start_pos.y - npc->entity.spritesheet_rect_y;
-    dialogue->content = "IL MANQUE LE FICHIER DE DIALOGUE"; // TODO
+    dialogue->content = "IL MANQUE LE FICHIER DE DIALOGUE";
     dialogue->content_stripped = my_strdup(dialogue->content);
     dialogue->max_index = my_strlen(dialogue->content);
     dialogue->delay = 0.03;

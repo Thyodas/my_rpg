@@ -40,4 +40,3 @@ void rect_animation_idle(entity_t *entity)
         entity->rect.left = 0;
     sfSprite_setTextureRect(entity->sprite, entity->rect);
 }
-

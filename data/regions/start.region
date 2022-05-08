@@ -1,5 +1,5 @@
 //teleporter_to_first_house
-0 2 1176 967 1 1
+0 2 1176 967 1 1 0
 //1 240 423 "Hello world! Je suis content|On peut faire plusieurs lignes|en plus hehe!" 0.05
 //Smoke house
 2 1187 874
@@ -36,7 +36,4 @@
 // music
 10 0
 // items-sword
-11 1 1 1200 1000
-11 0 1 1200 1010
-//grass
-12 1210 1010
+11 0 1 1320 920

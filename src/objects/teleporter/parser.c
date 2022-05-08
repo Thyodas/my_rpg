@@ -18,11 +18,13 @@ void (*draw)());
 void teleporter_handler(game_t *game, struct object_s *self);
 void draw_teleporter(game_t *game, struct object_s *self);
 
+void dungeon_teleporter_handler(game_t *game, struct object_s *self);
+
 void parse_teleporter(game_t *game, region_t *region, char **argv)
 {
     int argc = 0;
     for (; argv[argc] != NULL; ++argc);
-    if (argc != 5)
+    if (argc != 6)
         return;
     int region_id = my_getnbr(argv[0]);
     if (region_id < 0 || region_id >= REGION_NB)
@@ -32,6 +34,7 @@ void parse_teleporter(game_t *game, region_t *region, char **argv)
             my_getnbr(argv[2]), my_getnbr(argv[3]), my_getnbr(argv[4])
         });
     object_t *object = create_object(TELEPORTER_OBJ, teleporter,
-        &teleporter_handler, &draw_teleporter);
+        my_getnbr(argv[5]) ? &dungeon_teleporter_handler : &teleporter_handler,
+        &draw_teleporter);
     my_put_in_list(&region->objects, object);
 }
