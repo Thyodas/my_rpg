@@ -31,9 +31,6 @@ void init_inventory_menu(game_t *game)
     game->scene[INVENTORY_SCENE]->emitter = init_emitter();
     game->scene[INVENTORY_SCENE]->nb_buttons = 0;
     game->scene[INVENTORY_SCENE]->texture_background_saved = NULL;
-    parse_objects_scene(game, INVENTORY_SCENE, "data/scene/inventory.scene");
-    my_put_in_list(&game->scene[INVENTORY_SCENE]->obj,
-        init_inventory_ui_object(game));
 }
 
 void drag_drop_intention(game_t *game, inventory_t *inventory)
@@ -68,6 +65,8 @@ void drag_drop_deplacement(game_t *game, inventory_t *inventory)
                     game->cursor->pos.x <= rect[i].left + rect[i].width;
         int check_two = game->cursor->pos.y >= rect[i].top &&
                         game->cursor->pos.y <= rect[i].top + rect[i].height;
+        if (check && check_two && inventory->items[i] == NULL)
+            return;
         if (check && check_two) {
             item = inventory->items[i]->data;
             break;

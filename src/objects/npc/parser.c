@@ -38,7 +38,8 @@ void parse_npc(game_t *game, region_t *region, char **argv)
     int npc_id = my_getnbr(argv[0]);
     if (npc_id < 0 || npc_id >= NPC_NB)
         return;
-    my_put_in_list(&region->objects,
-        create_npc_object(game, npc_id, (sfVector2f){my_getnbr(argv[1]),
-        my_getnbr(argv[2])}));
+    object_t *obj = create_npc_object(game, npc_id,
+                        (sfVector2f){my_getnbr(argv[1]), my_getnbr(argv[2])});
+    obj->id = NPC_OBJ;
+    my_put_in_list(&region->objects, obj);
 }

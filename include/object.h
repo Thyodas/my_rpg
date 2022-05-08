@@ -21,6 +21,7 @@
     #define M_PI 3.14159265358979323846
     #define DEG_TO_RAD(x) ((x) * M_PI / 180)
     #define NB_ARGS_BORDER_WAVES 5
+    #define NB_ARGS_ITEM 5
     #define INVENTORY_SIZE 10
     #define ITEM_REGISTER 1
 
@@ -36,6 +37,7 @@
         HEARTS_UI_OBJ,
         NPC_OBJ,
         MUSIC_OBJ,
+        ITEMS_OBJ,
         OBJECT_NB,
     };
 
@@ -152,7 +154,6 @@
 
     typedef struct {
         object_t *items[INVENTORY_SIZE];
-        int selected_item;
         int nb_items;
         sfText *health_text;
         sfText *attack_text;

@@ -85,12 +85,11 @@ FILE_NAME	:=	main 													\
 			objects/player/animation/attack								\
 			objects/player/move 										\
 			objects/items/create 										\
+			objects/items/draw 											\
+			objects/items/parser 										\
 			objects/items/handler 										\
 			objects/items/sword/hit_effects 							\
 			objects/items/sword/set_pos_hit 							\
-			objects/inventory/create 									\
-			objects/inventory/handler 									\
-			objects/inventory/utils/getter_selected_item 				\
 			objects/create_object 										\
 			objects/teleporter/draw 									\
 			objects/teleporter/create 									\
@@ -149,6 +148,9 @@ FILE_NAME	:=	main 													\
 			objects/music/parser										\
 			audio/sound													\
 			save/save													\
+			inventory/add_item	 										\
+			inventory/getter 											\
+			inventory/init
 
 
 BUILD_DIR 	:=		build/

@@ -11,9 +11,26 @@ void set_game_scene(game_t *game);
 void load_region(game_t *game, region_t *region);
 void change_region(game_t *game, region_t *current_region,
 int dir_x, int dir_y);
+void restart_clock(game_t *game, clock_object_t *clock);
+
+static void find_and_restard_clock(game_t *game)
+{
+    linked_list_t *tmp = game->scene[GAME_SCENE]->obj;
+    object_t *obj;
+
+    while (tmp != NULL) {
+        obj = tmp->data;
+        if (obj->id == CLOCK_OBJ) {
+            restart_clock(game, (clock_object_t *)obj->data);
+            return;
+        }
+        tmp = tmp->next;
+    }
+}
 
 void reset_game(game_t *game)
 {
+    find_and_restard_clock(game);
     for (int i = 0; i < REGION_NB; ++i) {
         game->play->region_list[i]->is_loaded = 0;
         game->play->region_list[i]->objects = NULL;
