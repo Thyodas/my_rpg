@@ -8,6 +8,7 @@
 #include "rpg.h"
 
 void set_death_scene(game_t *game);
+void play_sound(game_t *game, sfSound *sound);
 
 void set_game_scene(game_t *game)
 {
@@ -60,6 +61,8 @@ void set_inventory_scene(game_t *game)
 
 void set_death_scene(game_t *game)
 {
+    sfMusic_stop(game->audio.music);
+    play_sound(game, game->audio.player_death);
     game->previous_scene = game->current_scene;
     sfTexture *texture = sfTexture_create(1920, 1080);
     sfTexture_updateFromRenderWindow(texture, game->window, 0, 0);

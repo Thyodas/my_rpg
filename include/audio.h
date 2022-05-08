@@ -28,6 +28,8 @@
         sfMusic *music;
         sfSound *jump;
         sfSound *player_death;
+        sfSound *skeleton_death;
+        sfSound *slime_death;
     } audio_t;
 
 #endif /* !AUDIO_H_ */

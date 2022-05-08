@@ -16,6 +16,7 @@ void player_hit(game_t *game, player_t *player)
     emitter->pos = get_pos_player(game);
     my_put_in_list(&CAST_PLAYER(game->play->player->data)->emitters,
                     emitter);
-    CAST_PLAYER(game->play->player->data)->health -= 1;
+    if (!game->debug_mode)
+        CAST_PLAYER(game->play->player->data)->health -= 1;
     CAST_PLAYER(game->play->player->data)->is_hit = 1;
 }

@@ -30,6 +30,8 @@ void load_music(game_t *game, region_t *new_region)
 {
     if (is_same_music(game->play->current_region, new_region))
         return;
+    if (new_region->music_path == NULL)
+        return;
     if (game->audio.music != NULL)
         sfMusic_destroy(game->audio.music);
     game->audio.music = sfMusic_createFromFile(new_region->music_path);
