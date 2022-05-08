@@ -1,8 +1,8 @@
 /*
-** EPITECH PROJECT, 2021
-** my_strcat
+** EPITECH PROJECT, 2022
+** MY_STRCAT
 ** File description:
-** my_strcat
+** Concatenates two strings.
 */
 
 int my_char_isprintable(char const str);

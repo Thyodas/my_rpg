@@ -23,6 +23,7 @@ static bool is_same_music(region_t *region1, region_t *region2)
         return false;
     if (my_strcmp(region1->music_path, region2->music_path) == 0)
         return true;
+    return false;
 }
 
 void load_music(game_t *game, region_t *new_region)

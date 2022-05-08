@@ -139,6 +139,7 @@ FILE_NAME	:=	main 													\
 			objects/music/handler										\
 			objects/music/parser										\
 			audio/sound													\
+			save/save													\
 
 
 BUILD_DIR 	:=		build/

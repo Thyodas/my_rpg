@@ -10,21 +10,22 @@
 #include "settings.h"
 
 sfText *init_clock_object_text(game_t *game);
-void init_data(game_t *data);
-void init_game(game_t *game);
-void init_start_menu(game_t *game);
-void start_menu(game_t *game);
-void game(game_t *game);
-void settings_menu(game_t *game);
+void init_inventory_menu(game_t *game);
 void init_settings_menu(game_t *game);
+void init_pause_menu(game_t *game);
+void init_start_menu(game_t *game);
 void set_menu_scene(game_t *game);
 void set_game_scene(game_t *game);
-void init_pause_menu(game_t *game);
-void init_inventory_menu(game_t *game);
 void inventory_menu(game_t *game);
-void pause_menu(game_t *game);
 void init_help_menu(game_t *game);
+void settings_menu(game_t *game);
+void start_menu(game_t *game);
+void pause_menu(game_t *game);
+void save_score(game_t *game);
+void init_game(game_t *game);
 void help_menu(game_t *game);
+void init_data(game_t *data);
+void game(game_t *game);
 void print_help(void);
 
 void (* const scene[])(game_t *game) = {
@@ -92,5 +93,6 @@ int main(int argc, char **argv)
     init_data(&game);
     arg_handler(argc, argv, &game);
     start_game(&game);
+    save_score(&game);
     return (0);
 }
