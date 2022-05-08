@@ -13,6 +13,8 @@ bool check_entity_region_collision(game_t *game, sfVector2f shift,
 particles_emitter_t *init_emitter(void);
 sfVector2f get_pos_player(game_t *game);
 void player_hit(game_t *game, player_t *player);
+int handle_grass_collisions(object_t *obj, entity_t *entity, game_t *game,
+                            sfVector2f shift);
 
 int handle_enemies_collisions(object_t *obj, entity_t *entity, game_t *game)
 {
@@ -42,6 +44,8 @@ static int handle_collisions(game_t *game, player_t *player, sfVector2f shift)
             player_hit(game, player);
             return 1;
         }
+        if (handle_grass_collisions(obj, &player->entity, game, shift))
+            return 1;
         tmp = tmp->next;
     }
     return 0;
