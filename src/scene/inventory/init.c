@@ -72,8 +72,10 @@ void drag_drop_deplacement(game_t *game, inventory_t *inventory)
             break;
         }
     }
-    if (i == game->cursor->item_selected_index || tmp != 0)
+    if (i == game->cursor->item_selected_index || tmp == 0) {
+        game->cursor->item_selected_index = -1;
         return;
+    }
     if (object == NULL) {
         inventory->items[i] = inventory->items[game->cursor->item_selected_index];
         inventory->items[game->cursor->item_selected_index] = NULL;
