@@ -28,7 +28,7 @@ static void init_npc_start_dog_entity(npc_t *npc, entity_t *entity)
         entity->rect.height / 2});
     entity->animation_state = IDLE_STATE;
     entity->spritesheet_rect_x = 0;
-    entity->spritesheet_rect_y = 0;
+    entity->spritesheet_rect_y = 16;
     entity->spritesheet_width = 16;
     entity->spritesheet_height = 16;
 }

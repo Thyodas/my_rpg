@@ -43,6 +43,7 @@
         "data/regions/mine_interior_left.region",
         "data/regions/slime.region",
         "data/regions/path_to_boss.region",
+        "data/regions/mine_house_interior.region",
     };
 
     enum region_ids {
@@ -54,6 +55,7 @@
         MINE_INTERIOR_LEFT,
         SLIME_REGION,
         PATH_TO_BOSS_REGION,
+        MINE_HOUSE_INTERIOR_REGION,
         REGION_NB
     };
 
@@ -66,6 +68,7 @@
         MINE_INTERIOR_MAP,
         BASE_MAP,
         BASE_MAP,
+        MINE_HOUSE_INTERIOR_MAP,
     };
 
     const static enum region_ids REGION_LINKS[REGION_NB][4] = {
@@ -77,6 +80,7 @@
         {-1, MINE_INTERIOR_BOTTOM, -1, MINE_INTERIOR_TOP},
         {-1, -1, -1, START_REGION},
         {-1, MINE_REGION, -1, -1}, //path to boss region
+        {-1, -1, -1, -1},
     }; //0 : Up, 1 : Down, 2 : Left, 3 : Right
 
 #endif /* !REGION_H_ */
