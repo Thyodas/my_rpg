@@ -11,7 +11,6 @@
 
 sfVector2f calc_new_vector(sfVector2f point1, sfVector2f point2);
 sfVector2f normalize_vector(sfVector2f vector);
-int check_collision(game_t *game, entity_t entity, sfVector2f shift);
 sfVector2f project_iso_point(sfVector3f coords_3d, sfVector2i translate);
 
 void handle_jump(game_t *game, enemy_t *enemy)

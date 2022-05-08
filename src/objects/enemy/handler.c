@@ -59,10 +59,57 @@ static void animation_enemy_breathing(game_t *game, enemy_t *enemy)
     enemy->animation_data = data;
 }
 
+static void handle_death_animation(game_t *game, enemy_t *enemy)
+{
+    long current_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
+    if (!enemy->animation_data.animate_death) {
+        printf("On rentre\n");
+        enemy->animation_data.last_death_animation = current_us;
+        return;
+    }
+    double diff = (current_us - enemy->animation_data.last_death_animation) /
+                    1000000.0;
+    if (diff >= 0.1) {
+        enemy->entity.spritesheet_rect_x += 29;
+        if (enemy->entity.spritesheet_rect_x >= 145) {
+            enemy->dead = 1;
+            return;
+        }
+        sfSprite_setTextureRect(enemy->entity.sprite,
+                    (sfIntRect){enemy->entity.spritesheet_rect_x, 0, 29, 18});
+        enemy->animation_data.last_death_animation = current_us;
+    }
+}
+
+static void init_death_state(enemy_t *enemy)
+{
+    enemy->entity.spritesheet_rect_x = 0;
+    enemy->entity.spritesheet_rect_y = 0;
+    enemy->entity.spritesheet_width = 29;
+    enemy->entity.spritesheet_height = 18;
+    enemy->animation_data.animate_death = 1;
+    sfTexture *texture = NULL;
+    if (texture == NULL)
+        texture =
+            sfTexture_createFromFile("assets/spritesheets/explosion.png",
+            NULL);
+    sfSprite_setTexture(enemy->entity.sprite, texture, sfFalse);
+    sfSprite_setTextureRect(enemy->entity.sprite, (sfIntRect){0, 0, 29, 18});
+    sfSprite_setScale(enemy->entity.sprite, (sfVector2f){0.6, 0.6});
+    sfSprite_setColor(enemy->entity.sprite, sfWhite);
+}
+
 void enemy_handler(game_t *game, object_t *self)
 {
     enemy_t *enemy = (enemy_t *)self->data;
-    animation_enemy_breathing(game, enemy);
-    handle_enemy_combat(game, enemy);
-    move[enemy->id](game, enemy);
+    if (enemy->dead)
+        return;
+    if (!enemy->animation_data.animate_death) {
+        animation_enemy_breathing(game, enemy);
+        handle_enemy_combat(game, enemy);
+        move[enemy->id](game, enemy);
+    }
+    handle_death_animation(game, enemy);
+    if (enemy->stats.life_points <= 0 && !enemy->animation_data.animate_death)
+        init_death_state(enemy);
 }

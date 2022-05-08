@@ -11,7 +11,7 @@
 
 sfVector2f normalize_vector(sfVector2f vector);
 sfVector2f calc_new_vector(sfVector2f point1, sfVector2f point2);
-int check_collision(game_t *game, entity_t entity, sfVector2f shift);
+int check_collision(game_t *game, entity_t entity, sfVector2f shift, int dead);
 sfVector2f get_pos_player(game_t *game);
 sfVector2f get_pos_player_projected(game_t *game);
 sfVector2f project_iso_point(sfVector3f coords_3d, sfVector2i translate);
@@ -47,8 +47,8 @@ void slime_jump(game_t *game, enemy_t *slime)
         slime->coords_3d.z--;
     slime->self_pos = project_iso_point(slime->coords_3d, slime->translation);
     slime->direction_3d = get_destination_3d(game, slime);
-    if (check_collision(game, slime->entity, slime->direction) ||
-        slime->bouncing) {
+    if (check_collision(game, slime->entity, slime->direction,
+        slime->animation_data.animate_death) || slime->bouncing) {
         slime->direction.x *= -1;
         slime->direction.y *= -1;
         slime->bouncing = 1;

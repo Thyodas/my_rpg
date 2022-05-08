@@ -111,6 +111,8 @@
         int breath_state;
         int distance_jumped;
         int jump_height;
+        int animate_death;
+        long last_death_animation;
     } animation_data_t;
 
     typedef struct enemy {
@@ -131,6 +133,7 @@
         int offset_y;
         int is_hit;
         long invincibility;
+        int dead;
         linked_list_t *emitters;
     } enemy_t;
 

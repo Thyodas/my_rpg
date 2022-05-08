@@ -28,6 +28,8 @@ void draw_enemy(game_t *game, object_t *self)
 {
     enemy_t *enemy = self->data;
     draw_enemy_emitters(enemy, game);
+    if (enemy->dead)
+        return;
     sfRenderWindow_drawSprite(game->window, enemy->entity.sprite, NULL);
     if (game->debug_mode) {
         debug_draw(game, self);
