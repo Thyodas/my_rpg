@@ -37,7 +37,7 @@ void handler_clock_object_text(game_t *game, object_t *self)
     long current_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
     double diff = (current_us - clock->last_clock) / 1000000.0;
 
-    if (diff >= 1) {
+    if (diff >= 1 && !game->debug_mode) {
         game->clock->seconds -= 1;
         if (game->clock->seconds < 0) {
             restart_clock(game, clock);

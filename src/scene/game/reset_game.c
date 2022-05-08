@@ -43,12 +43,13 @@ void reset_game(game_t *game)
     for (int i = 0; i < REGION_NB; ++i) {
         game->play->region_list[i]->is_loaded = 0;
         game->play->region_list[i]->objects = NULL;
+        game->play->region_list[i]->music_path = NULL;
     }
     reset_values(game);
     sfSprite_setPosition(CAST_PLAYER(game->play->player->data)->entity.sprite,
         (sfVector2f){REGION_SIZE_X * game->play->current_region_pos.x +
         240, REGION_SIZE_Y * game->play->current_region_pos.y + 130});
-    load_region(game, game->play->current_region);
+    game->play->current_region = NULL;
     change_region(game, game->play->start_region, 0, 0);
     sfView_setCenter(game->play->view, (sfVector2f){START_REGION_X *
         REGION_SIZE_X + REGION_SIZE_X / 2,
