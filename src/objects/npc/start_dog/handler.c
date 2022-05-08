@@ -6,7 +6,6 @@
 */
 
 #include "rpg.h"
-#include <stdio.h>
 #include "npc.h"
 #include "dialogue.h"
 
