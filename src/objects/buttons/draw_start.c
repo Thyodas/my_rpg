@@ -8,8 +8,8 @@
 #include "rpg.h"
 #include "object.h"
 
-static float offset[NB_BUTTONS] = {
-    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
+static float offset[] = {
+    0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0
 };
 
 static void draw_hovering(float translate, object_t *obj, game_t *game)

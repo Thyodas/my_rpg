@@ -45,8 +45,10 @@ void init_inventory(game_t *game)
 {
     init_texts(game);
     for (int i = 0; i < INVENTORY_SIZE; i++) {
-        ((player_t *)(game->play->player->data))->inventory.items[i] = malloc(sizeof(object_t));
-        ((player_t *)(game->play->player->data))->inventory.items[i]->data = NULL;
+        ((player_t *)(game->play->player->data))->inventory.items[i] =
+                    malloc(sizeof(object_t));
+        ((player_t *)(game->play->player->data))->inventory.items[i]->data =
+                        NULL;
     }
     ((player_t *)(game->play->player->data))->inventory.nb_items = 0;
     ((player_t *)(game->play->player->data))->inventory.selected_item = 0;

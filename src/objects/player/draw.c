@@ -23,12 +23,11 @@ void draw_interaction(game_t *game)
     draw_entity(game, item->entity);
 }
 
-void draw_player(game_t *game)
+static void draw_debug(game_t *game, entity_t *player)
 {
-    player_t *player = ((player_t *)(game->play->player->data));
-    if (player->entity.animation_state == INTERACTION_STATE)
+    if (player->animation_state == INTERACTION_STATE)
         draw_interaction(game);
-    sfRenderWindow_drawSprite(game->window, player->entity.sprite, NULL);
+    sfRenderWindow_drawSprite(game->window, player->sprite, NULL);
     if (!game->debug_mode)
         return;
     static sfRectangleShape *shape = NULL;
@@ -37,10 +36,23 @@ void draw_player(game_t *game)
         sfRectangleShape_setFillColor(shape, (sfColor){61, 70, 242, 100});
         sfRectangleShape_setOutlineColor(shape, (sfColor){61, 70, 242, 200});
     }
-    sfFloatRect rect = sfSprite_getGlobalBounds(player->entity.sprite);
+    sfFloatRect rect = sfSprite_getGlobalBounds(player->sprite);
     sfRectangleShape_setSize(shape, (sfVector2f){rect.width,
         rect.height});
     sfRectangleShape_setPosition(shape, (sfVector2f){rect.left,
         rect.top});
     sfRenderWindow_drawRectangleShape(game->window, shape, NULL);
+}
+
+void draw_player(game_t *game)
+{
+    if (CAST_PLAYER(game->play->player->data)->health <= 0)
+        return;
+    entity_t *player = &((player_t *)(game->play->player->data))->entity;
+    if (player->animation_state == INTERACTION_STATE)
+        draw_interaction(game);
+    sfRenderWindow_drawSprite(game->window, player->sprite, NULL);
+    if (game->debug_mode)
+        draw_debug(game, player);
+
 }

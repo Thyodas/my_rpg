@@ -11,7 +11,7 @@
 float calc_distance(sfVector2f point1, sfVector2f point2);
 void change_direction(enemy_t *enemy, sfVector2f new_destination);
 int in_range_player(game_t *game, enemy_t *enemy);
-int check_collision(game_t *game, entity_t entity, sfVector2f shift);
+int check_collision(game_t *game, entity_t entity, sfVector2f shift, int dead);
 void reset_jump_state(game_t *game, enemy_t *enemy);
 void handle_jump(game_t *game, enemy_t *enemy);
 sfVector2f get_destination_3d(game_t *game, enemy_t *enemy);
@@ -95,8 +95,8 @@ void move_skeleton(game_t *game, enemy_t *skeleton)
     else {
         if (!skeleton->bouncing)
             handle_movement_animation(game, skeleton);
-        if (check_collision(game, skeleton->entity, skeleton->direction) &&
-            !skeleton->bouncing)
+        if (check_collision(game, skeleton->entity, skeleton->direction,
+            skeleton->animation_data.animate_death) && !skeleton->bouncing)
             init_bounce(skeleton, game);
         if (!skeleton->bouncing) {
             handle_direction(game, skeleton);

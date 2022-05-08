@@ -24,11 +24,20 @@
     #include <SFML/Audio.h>
     #include <stdbool.h>
 
+    enum items {
+        SWORD,
+        NB_ITEMS
+    };
+
     typedef struct {
+        int id;
         char *name;
         entity_t *entity;
         int nb_usage;
         int unlocked;
+        int hit_effect;
+        void (*handle_hit)();
+        sfSprite *sprite_effect;
     } item_t;
 
     typedef struct {
@@ -47,7 +56,7 @@
         sfView *start_view;
         sfView *previous_copy;
         float zoom_factor;
-    } intro_animation_t;
+    } zoom_animation_t;
 
     typedef struct play_s {
         object_t *player;
@@ -55,7 +64,8 @@
         region_t *start_region;
         region_t *current_region;
         region_animation_t region_animation;
-        intro_animation_t intro_animation;
+        zoom_animation_t intro_animation;
+        zoom_animation_t zoom_death_animation;
         map_t *map_list[MAP_NB];
         sfVector2i current_region_pos;
         sfView *view;

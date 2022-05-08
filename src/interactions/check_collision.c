@@ -28,11 +28,11 @@ int check_player_collision(game_t *game, sfVector2f shift, entity_t entity)
     return 0;
 }
 
-int check_collision(game_t *game, entity_t entity, sfVector2f shift)
+int check_collision(game_t *game, entity_t entity, sfVector2f shift, int dead)
 {
     if (check_entity_region_collision(game, shift, entity, 0) == true)
         return 1;
-    if (check_player_collision(game, shift, entity))
+    if (!dead && check_player_collision(game, shift, entity))
         return 1;
     return 0;
 }

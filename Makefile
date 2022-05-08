@@ -44,12 +44,14 @@ FILE_NAME	:=	main 													\
 			regions/change_region 										\
 			regions/parser 												\
 			scene/set_scene 											\
+			scene/set_in_game_scenes 									\
 			scene/game/display 											\
 			scene/game/events_handler 									\
 			scene/game/init 											\
 			scene/game/ui/clock/handle_clock							\
 			scene/game/ui/background/handle_background					\
 			scene/game/ui/hearts/handle_hearts							\
+			scene/game/reset_game 										\
 			scene/settings/display 										\
 			scene/settings/events_handler 								\
 			scene/settings/init 										\
@@ -65,6 +67,9 @@ FILE_NAME	:=	main 													\
 			scene/help/display 											\
 			scene/help/events_handler 									\
 			scene/help/init 											\
+			scene/death/display 										\
+			scene/death/events_handler 									\
+			scene/death/init 											\
 			scene/draw_scene 											\
 			scene/handle_object 										\
 			scene/parse_object											\
@@ -81,8 +86,11 @@ FILE_NAME	:=	main 													\
 			objects/player/move 										\
 			objects/items/create 										\
 			objects/items/handler 										\
+			objects/items/sword/hit_effects 							\
+			objects/items/sword/set_pos_hit 							\
 			objects/inventory/create 									\
 			objects/inventory/handler 									\
+			objects/inventory/utils/getter_selected_item 				\
 			objects/create_object 										\
 			objects/teleporter/draw 									\
 			objects/teleporter/create 									\
@@ -125,6 +133,7 @@ FILE_NAME	:=	main 													\
 			objects/enemy/animation/handle_jump 						\
 			objects/enemy/animation/reset_jump_state 					\
 			objects/enemy/blob/move_blob 								\
+			objects/enemy/blob/blob_jump 								\
 			objects/enemy/skeleton/move_skeleton 						\
 			objects/enemy/skeleton/init_bounce 							\
 			objects/enemy/slime/move_slime 								\
@@ -161,7 +170,7 @@ OBJECTS    	:=    	$(addprefix $(BUILD_DIR), $(SRC:$(SRC_DIR)%.c=%.o))
 
 NAME 		:=     	my_rpg
 
-CFLAGS 		:= 		$(LIB) -ggdb3 -O1 -g -Wno-invalid-pp-token -Wno-invalid-pp-token -Wno-deprecated-declarations -Wno-deprecated-declarations -Wno-unused-command-line-argument
+CFLAGS 		:= 		$(LIB) -ggdb3 -O1 -g
 
 all: $(NAME)
 

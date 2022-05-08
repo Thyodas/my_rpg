@@ -19,6 +19,8 @@ int handle_enemies_collisions(object_t *obj, entity_t *entity, game_t *game)
     sfFloatRect rect_entity = sfSprite_getGlobalBounds(entity->sprite);
     if (obj->id == ENEMY_OBJ) {
         enemy_t *enemy = obj->data;
+        if (enemy->animation_data.animate_death)
+            return 0;
         sfFloatRect rect_enemy =
             sfSprite_getGlobalBounds(enemy->entity.sprite);
         if (sfFloatRect_intersects(&rect_entity, &rect_enemy, NULL))

@@ -26,6 +26,7 @@ void init_texts(game_t *game)
     sfVector2f pos_two = {690.0, 400.0};
 
     inventory->attack_text = sfText_create();
+    inventory->selected_item = 0;
     sfText_setFont(inventory->attack_text, game->data.retro_font);
     sfText_setScale(inventory->attack_text, (sfVector2f){1.2, 1.2});
     sfText_setFillColor(inventory->attack_text, sfWhite);

@@ -19,7 +19,7 @@ static void draw_background(game_t *game)
 
     sfSprite_setTexture(sprite_background,
                         game->scene[PAUSE_SCENE]->texture_background_saved,
-                        sfFalse);;
+                        sfFalse);
     sfRenderWindow_drawSprite(game->window, sprite_background, NULL);
 }
 

@@ -25,7 +25,7 @@ void reset_jump_state(game_t *game, enemy_t *enemy)
         (sfIntRect){enemy->offset_x, enemy->offset_y,
         enemy->entity.spritesheet_rect_x,
         enemy->entity.spritesheet_rect_y});
-    if (in_range_player(game, enemy)) {
+    if (in_range_player(game, enemy) || enemy->id == BLOB) {
         sfVector2f pos_player = get_pos_player(game);
         enemy->animation_data.animation_state = MOVING;
         enemy->trigerred = 1;

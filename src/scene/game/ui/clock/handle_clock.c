@@ -40,6 +40,7 @@ void handler_clock_object_text(game_t *game, object_t *self)
         game->clock->seconds -= 1;
         if (game->clock->seconds < 0) {
             restart_clock(game, clock);
+            CAST_PLAYER(game->play->player->data)->health = 0;
             return;
         }
         sfText_setString(clock->text,

@@ -42,6 +42,9 @@ static void init_animation(enemy_t *enemy)
     enemy->animation_data.distance_jumped = 0;
     enemy->animation_data.animation_state = STATIC;
     enemy->bouncing = 0;
+    enemy->animation_data.animate_death = 0;
+    enemy->animation_data.last_death_animation = 0;
+    enemy->dead = 0;
 }
 
 static void init_coords(sfVector2f *pos, enemy_t *enemy)

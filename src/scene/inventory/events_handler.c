@@ -12,6 +12,7 @@ void check_mouse_movement(game_t *game);
 void set_game_scene(game_t *game);
 object_t *create_object(enum id_object_type id, void *data, void (*handler)(),
 void (*draw)());
+void exit_game(game_t *game);
 void drag_drop_intention(game_t *game, inventory_t *inventory);
 void drag_drop_deplacement(game_t *game, inventory_t *inventory);
 
@@ -19,7 +20,7 @@ void events_handler_inventory_scene(game_t *game)
 {
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {
         if (game->event.type == sfEvtClosed)
-            sfRenderWindow_close(game->window);
+            exit_game(game);
         check_mouse_movement(game);
         if (game->event.type == sfEvtKeyReleased &&
             (game->event.key.code == sfKeyI ||
