@@ -60,7 +60,7 @@ void get_save(game_t *game)
         free(content);
 }
 
-char *get_write_content(object_t *obj, i)
+char *get_write_content(object_t *obj, int i)
 {
     item_t *item = obj->data;
     char *line = malloc(sizeof(char) * (1000));

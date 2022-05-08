@@ -94,6 +94,6 @@ void inventory_menu(game_t *game)
     draw_items(game);
     draw_stats(game);
     draw_cursor(game->window, game->cursor);
-    //draw_following_item(game);
+    draw_following_item(game);
     sfRenderWindow_display(game->window);
 }
