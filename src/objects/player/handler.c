@@ -13,6 +13,7 @@ void move_player(game_t *game, player_t *player, float shift_x, float shift_y);
 void interact_player(game_t *game);
 void rect_set_y(game_t *game, int status);
 void player_attack(game_t *game, player_t *player);
+item_t *get_selected_item(game_t *game);
 
 void handle_movement(game_t *game, player_t *player, float new_speed)
 {
@@ -92,7 +93,7 @@ void set_player_animation_settings(game_t *game, int status)
 {
     player_t *player = CAST_PLAYER(game->play->player->data);
     inventory_t *inventory = &player->inventory;
-    item_t *item = inventory->items[inventory->selected_item]->data;
+    item_t *item = get_selected_item(game);
 
     if (item == NULL)
         return;

@@ -30,9 +30,10 @@ static void init_game_scene_objects(game_t *game)
     game->play->player = create_player_object(option);
     init_inventory(game);
     my_put_in_list(&game->scene[GAME_SCENE]->obj, init_hearts_ui_object(game));
-    my_put_in_list(&game->scene[GAME_SCENE]->obj, init_clock_object_text(game));
     my_put_in_list(&game->scene[GAME_SCENE]->obj,
-        init_background_ui_object(game));
+                    init_clock_object_text(game));
+    my_put_in_list(&game->scene[GAME_SCENE]->obj,
+                    init_background_ui_object(game));
 }
 
 void init_game(game_t *game)
