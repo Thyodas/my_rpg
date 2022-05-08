@@ -41,7 +41,7 @@ void handle_item(game_t *game, object_t *self)
 
     if (!item->on_the_ground)
         return;
-    if (sfKeyboard_isKeyPressed(sfKeyE) &&
+    if (sfKeyboard_isKeyPressed(sfKeySpace) &&
         sfFloatRect_contains(&rect_item,
         pos_player.x, pos_player.y) == sfTrue) {
             add_item(game, self);
