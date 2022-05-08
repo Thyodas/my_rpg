@@ -51,6 +51,7 @@ FILE_NAME	:=	main 													\
 			scene/game/ui/clock/handle_clock							\
 			scene/game/ui/background/handle_background					\
 			scene/game/ui/hearts/handle_hearts							\
+			scene/game/reset_game 										\
 			scene/settings/display 										\
 			scene/settings/events_handler 								\
 			scene/settings/init 										\
