@@ -70,5 +70,4 @@ void npc_start_dog_handler(game_t *game, object_t *self)
     }
     change_dialogue_index_animation(game, npc);
     dialogue_box_handler(game, npc->dialogue);
-    return;
 }
