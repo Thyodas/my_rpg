@@ -14,3 +14,5 @@ Waves border
 5 id_border pos_x pos_y id_rotate
 NPC
 9 npc_id posx posy
+Item
+11 id_item on_the_ground pos_x pos_y

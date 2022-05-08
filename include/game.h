@@ -24,7 +24,7 @@
     #include <SFML/Audio.h>
     #include <stdbool.h>
 
-    enum items {
+    enum ITEMS_ID {
         SWORD,
         NB_ITEMS
     };
@@ -33,10 +33,11 @@
         int id;
         char *name;
         entity_t *entity;
-        int nb_usage;
         int unlocked;
+        int on_the_ground;
         int hit_effect;
         void (*handle_hit)();
+        sfVector2f pos;
         sfSprite *sprite_effect;
     } item_t;
 

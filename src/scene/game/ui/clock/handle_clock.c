@@ -16,7 +16,8 @@ void (*draw)());
 
 void restart_clock(game_t *game, clock_object_t *clock)
 {
-    clock->last_clock = sfClock_getElapsedTime(game->clock->clock).microseconds;
+    clock->last_clock =
+        sfClock_getElapsedTime(game->clock->clock).microseconds;
     game->clock->seconds = 60;
     sfText_setString(clock->text, "60");
 }
@@ -64,5 +65,6 @@ object_t *init_clock_object_text(game_t *game)
     game->clock->seconds = 60;
     object = create_object(CLOCK_OBJ, clock,
                         &handler_clock_object_text, &draw_clock_object_text);
+    object->id = CLOCK_OBJ;
     return object;
 }

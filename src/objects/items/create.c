@@ -14,14 +14,16 @@ static void (*ptr_hit_effect[]) = {
     &sword_hit_effect
 };
 
-item_t *create_items_object(option_t option, int unlocked, int id)
+item_t *create_items(option_t option, int id, sfVector2f pos,
+                    int on_the_ground)
 {
     item_t *item = malloc(sizeof(item_t));
 
+    option.pos = pos;
     item->entity = init_entity(option);
     item->name = option.name ? option.name : NULL;
-    item->nb_usage = 0;
-    item->unlocked = unlocked;
+    item->on_the_ground = on_the_ground;
+    item->unlocked = 0;
     item->hit_effect = 0;
     item->sprite_effect = sfSprite_create();
     item->id = id;

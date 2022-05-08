@@ -7,11 +7,11 @@
 
 #include "rpg.h"
 
-item_t *get_selected_item(player_t *player);
+item_t *get_selected_item(game_t *game);
 
-void set_pos_hit(player_t *player, sfVector2f pos)
+void set_pos_hit(game_t *game, sfVector2f pos)
 {
-    item_t *item = get_selected_item(player);
+    item_t *item = get_selected_item(game);
     pos.x -= 5;
     pos.y -= 5;
     sfSprite_setPosition(item->sprite_effect, pos);

@@ -8,12 +8,13 @@
 #include "rpg.h"
 
 sfVector2f get_position_interaction(player_t *player, int status);
+item_t *get_selected_item(game_t *game);
 
 void draw_interaction(game_t *game)
 {
     player_t *player = CAST_PLAYER(game->play->player->data);
     inventory_t *inventory = &player->inventory;
-    item_t *item = inventory->items[0]->data;
+    item_t *item = get_selected_item(game);
 
     if (item == NULL)
         return;

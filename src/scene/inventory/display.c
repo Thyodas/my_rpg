@@ -12,16 +12,31 @@ void draw_scene(game_t *game);
 void handle_object(game_t *game);
 void draw_cursor(sfRenderWindow *window, cursor_t *cursor);
 void events_handler_inventory_scene(game_t *game);
-void update_texts(game_t *game);
+
+static void update_texts(game_t *game)
+{
+    sfText_setString(
+        CAST_PLAYER(game->play->player->data)->inventory.health_text,
+        my_int_to_strnum(CAST_PLAYER(game->play->player->data)->health));
+    sfText_setString(
+        CAST_PLAYER(game->play->player->data)->inventory.attack_text,
+        my_int_to_strnum(CAST_PLAYER(game->play->player->data)->attack));
+}
 
 static void draw_background(game_t *game)
 {
     sfSprite *sprite_background = sfSprite_create();
-
+    sfSprite *sprite_background_ui = sfSprite_create();
+    static sfTexture *texture = NULL;
+    if (texture == NULL)
+        texture =
+            sfTexture_createFromFile("assets/images/inventory_ui.png", NULL);
+    sfSprite_setTexture(sprite_background_ui, texture, sfFalse);
     sfSprite_setTexture(sprite_background,
                         game->scene[INVENTORY_SCENE]->texture_background_saved,
                         sfFalse);
     sfRenderWindow_drawSprite(game->window, sprite_background, NULL);
+    sfRenderWindow_drawSprite(game->window, sprite_background_ui, NULL);
 }
 
 static void draw_stats(game_t *game)
@@ -38,11 +53,12 @@ static void draw_items(game_t *game)
 {
     object_t *object = NULL;
     item_t *item = NULL;
+    inventory_t inventory = CAST_PLAYER(game->play->player->data)->inventory;
     sfVector2f pos = {700, 680};
-
     for (int i = 0; i < INVENTORY_SIZE; i++) {
-        item = CAST_PLAYER(game->play->player->data)->inventory.items[i]->data;
-        if (item != NULL) {
+        object = inventory.items[i];
+        if (object != NULL && object->data != NULL) {
+            item = object->data;
             sfSprite_setScale(item->entity->sprite, (sfVector2f){3.0, 3.0});
             sfSprite_setPosition(item->entity->sprite, pos);
             sfSprite_setRotation(item->entity->sprite, 180.0);
@@ -72,14 +88,12 @@ void inventory_menu(game_t *game)
 {
     sfRenderWindow_clear(game->window, sfBlack);
     events_handler_inventory_scene(game);
-    handle_object(game);
     if (game->current_scene != INVENTORY_SCENE)
         return;
     draw_background(game);
-    draw_scene(game);
     draw_items(game);
     draw_stats(game);
     draw_cursor(game->window, game->cursor);
-    draw_following_item(game);
+    //draw_following_item(game);
     sfRenderWindow_display(game->window);
 }
