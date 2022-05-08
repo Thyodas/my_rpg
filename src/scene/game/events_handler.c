@@ -16,9 +16,11 @@ void game_events_handler(game_t *game)
     if (game->event.type == sfEvtClosed)
         sfRenderWindow_close(game->window);
     if (game->event.type == sfEvtKeyReleased &&
-        game->event.key.code == sfKeyEscape)
+        game->event.key.code == sfKeyEscape &&
+        !game->play->intro_animation.zooming)
         set_pause_scene(game);
     if (game->event.type == sfEvtKeyReleased &&
-        game->event.key.code == sfKeyI)
+        game->event.key.code == sfKeyI &&
+        !game->play->intro_animation.zooming)
         set_inventory_scene(game);
 }
