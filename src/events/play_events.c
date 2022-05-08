@@ -22,7 +22,8 @@ void player_idle_animation(game_t *game)
         = IDLE_STATE;
     if (diff >= 0.5) {
         rect_animation_idle(&(CAST_PLAYER(game->play->player->data)->entity));
-        last_clock_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
+        last_clock_us =
+                sfClock_getElapsedTime(game->clock->clock).microseconds;
     }
 }
 
@@ -37,6 +38,7 @@ void player_movement_animation(game_t *game)
     if (diff >= 0.2) {
         rect_animation_movement(&((player_t *)
                                 (game->play->player->data))->entity);
-        last_clock_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
+        last_clock_us =
+                sfClock_getElapsedTime(game->clock->clock).microseconds;
     }
 }
