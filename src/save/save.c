@@ -39,9 +39,8 @@ void get_save(game_t *game)
         item->unlocked = my_getnbr(item_data[3]);
         set_inventory_data(game, item, my_getnbr(item_data[0]));
     }
-    if (!content)
-        return;
-    free(content);
+    if (content)
+        free(content);
 }
 
 void save_score(game_t *game)

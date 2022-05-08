@@ -12,7 +12,6 @@
 #include "mylist.h"
 #include "audio.h"
 
-
 void parse_music(game_t *game, region_t *region, char **argv)
 {
     int argc = 0;

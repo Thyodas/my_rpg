@@ -13,7 +13,8 @@ void handle_button_event_start(game_t *game, object_t *button)
     sfVector2i mouse_pos = sfMouse_getPositionRenderWindow(game->window);
     sfFloatRect rect_text =
         sfSprite_getGlobalBounds(CAST_BUTTON(button->data)->sprite);
-    sfBool contained = sfFloatRect_contains(&rect_text, mouse_pos.x, mouse_pos.y);
+    sfBool contained = sfFloatRect_contains(&rect_text, mouse_pos.x,
+                                            mouse_pos.y);
 
     if (contained == sfTrue && sfMouse_isButtonPressed(sfMouseLeft))
         sfSprite_setColor(CAST_BUTTON(button->data)->sprite,

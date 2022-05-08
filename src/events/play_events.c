@@ -35,7 +35,8 @@ void player_movement_animation(game_t *game)
     CAST_PLAYER(game->play->player->data)->entity.animation_state
         = MOVEMENT_STATE;
     if (diff >= 0.2) {
-        rect_animation_movement(&((player_t *)(game->play->player->data))->entity);
+        rect_animation_movement(&((player_t *)
+                                (game->play->player->data))->entity);
         last_clock_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
     }
 }

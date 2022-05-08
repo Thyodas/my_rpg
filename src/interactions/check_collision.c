@@ -12,7 +12,7 @@ bool check_entity_region_collision(game_t *game, sfVector2f shift,
                                     entity_t entity, int is_player);
 particles_emitter_t *init_emitter(void);
 sfVector2f get_pos_player(game_t *game);
-void player_hit(game_t *game, player_t *player);;
+void player_hit(game_t *game, player_t *player);
 
 int check_player_collision(game_t *game, sfVector2f shift, entity_t entity)
 {

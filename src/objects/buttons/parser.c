@@ -84,7 +84,7 @@ void parse_button(game_t *game, char **args, int id, int scene)
     int btn_id = -1;
     int ptr = -1;
 
-    for(; args[argc] != NULL; ++argc);
+    for (; args[argc] != NULL; ++argc);
     if (argc != NB_ARGS_BUTTON)
         return;
     btn_id = my_getnbr(args[1]);

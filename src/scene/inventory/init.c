@@ -8,7 +8,7 @@
 #include "rpg.h"
 
 particles_emitter_t *init_emitter(void);
-void parse_objects_scene(game_t *game, int scene, char *path);;
+void parse_objects_scene(game_t *game, int scene, char *path);
 object_t *init_inventory_ui_object(game_t *game);
 
 const static sfIntRect rect[INVENTORY_SIZE] = {
