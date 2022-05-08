@@ -26,8 +26,7 @@ void draw_background(game_t *game)
     sfSprite *sprite_background = sfSprite_create();
     sfSprite *sprite_background_ui = sfSprite_create();
     sfTexture *texture = NULL;
-    if (texture == NULL)
-        texture =
+    texture =
             sfTexture_createFromFile("assets/images/inventory_ui.png", NULL);
     sfSprite_setTexture(sprite_background_ui, texture, sfFalse);
     sfSprite_setTexture(sprite_background,
