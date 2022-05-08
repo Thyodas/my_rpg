@@ -80,7 +80,7 @@ static void handle_death_animation(game_t *game, enemy_t *enemy)
     }
 }
 
-static void init_death_state(enemy_t *enemy)
+static void init_death_state(enemy_t *enemy, game_t *game)
 {
     enemy->entity.spritesheet_rect_x = 0;
     enemy->entity.spritesheet_rect_y = 0;
@@ -98,6 +98,8 @@ static void init_death_state(enemy_t *enemy)
             sfSprite_setScale(enemy->entity.sprite, (sfVector2f){2.0, 2.0});
     else
         sfSprite_setScale(enemy->entity.sprite, (sfVector2f){0.65, 0.65});
+    if (enemy->id == SLIME)
+        game->play->stats.nb_killed_slimes++;
     sfSprite_setColor(enemy->entity.sprite, sfWhite);
 }
 
@@ -113,5 +115,5 @@ void enemy_handler(game_t *game, object_t *self)
     }
     handle_death_animation(game, enemy);
     if (enemy->stats.life_points <= 0 && !enemy->animation_data.animate_death)
-        init_death_state(enemy);
+        init_death_state(enemy, game);
 }

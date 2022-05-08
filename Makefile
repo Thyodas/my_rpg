@@ -130,6 +130,7 @@ FILE_NAME	:=	main 													\
 			objects/npc/start_ghost/create								\
 			objects/npc/start_ghost/draw								\
 			objects/npc/start_ghost/handler								\
+			objects/npc/start_ghost/quest								\
 			objects/npc/start_dog/create								\
 			objects/npc/start_dog/draw									\
 			objects/npc/start_dog/handler								\

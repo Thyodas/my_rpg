@@ -61,6 +61,10 @@
         float zoom_factor;
     } zoom_animation_t;
 
+    typedef struct {
+        int nb_killed_slimes;
+    } statistics_t;
+
     typedef struct play_s {
         object_t *player;
         region_t *region_list[REGION_NB];
@@ -72,6 +76,7 @@
         map_t *map_list[MAP_NB];
         sfVector2i current_region_pos;
         sfView *view;
+        statistics_t stats;
     } play_t;
 
     #include "audio.h"

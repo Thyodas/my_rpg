@@ -37,6 +37,7 @@ void reset_game(game_t *game)
     }
     CAST_PLAYER(game->play->player->data)->emitters = NULL;
     CAST_PLAYER(game->play->player->data)->health = 3;
+    game->play->stats.nb_killed_slimes = 0;
     game->play->current_region_pos.x = START_REGION_X;
     game->play->current_region_pos.y = START_REGION_Y;
     sfSprite_setPosition(CAST_PLAYER(game->play->player->data)->entity.sprite,
