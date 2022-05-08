@@ -11,7 +11,9 @@
 int get_random_seed(void);
 explosion_t init_explo(int x, int y, sfTexture *texture, long current_us);
 int draw_background_end_blob(game_t *game);
-void set_menu_scene(game_t *game);
+void set_game_scene(game_t *game);
+void change_region(game_t *game, region_t *new_region, int dir_x, int dir_y);
+void go_to_house_start(game_t *game);
 
 static explosion_t explosions[40];
 
@@ -92,8 +94,10 @@ void end_blob(game_t *game)
     handle_explosions(game);
     if (game->current_scene != END_SCENE_BLOB)
         return;
-    if (!draw_background_end_blob(game))
-        set_menu_scene(game);
+    if (!draw_background_end_blob(game)) {
+        go_to_house_start(game);
+        return;
+    }
     draw_explosions(game);
     sfRenderWindow_display(game->window);
 }

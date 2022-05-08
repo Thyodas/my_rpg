@@ -75,5 +75,6 @@ void handle_region(game_t *game)
         obj = head->data;
         obj->handler(game, obj);
     }
-    game->play->player->handler(game, game->play->player);
+    if (!game->game_end)
+        game->play->player->handler(game, game->play->player);
 }

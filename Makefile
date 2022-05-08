@@ -76,6 +76,7 @@ FILE_NAME	:=	main 													\
 			scene/end_blob/init 										\
 			scene/end_blob/helper_explosions 							\
 			scene/end_blob/draw_background 								\
+			scene/end_blob/go_to_start_house 							\
 			scene/draw_scene 											\
 			scene/handle_object 										\
 			scene/parse_object											\
