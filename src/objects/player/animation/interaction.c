@@ -30,6 +30,7 @@ void interact_player(game_t *game)
     if (diff >= 0.2) {
         rect_animation_interaction(game,
                     &((player_t *)(game->play->player->data))->entity);
-        last_clock_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
+        last_clock_us = sfClock_getElapsedTime(
+            game->clock->clock).microseconds;
     }
 }

@@ -39,7 +39,8 @@ void dialogue_box_handler(game_t *game, dialogue_box_t *dialogue)
         ++dialogue->index;
         dialogue->content_stripped[dialogue->index] = '\0';
         sfText_setString(dialogue->text, dialogue->content_stripped);
-        last_clock_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
+        last_clock_us = sfClock_getElapsedTime(
+            game->clock->clock).microseconds;
     }
 }
 
