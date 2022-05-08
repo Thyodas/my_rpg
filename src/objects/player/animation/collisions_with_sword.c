@@ -8,6 +8,8 @@
 #include "rpg.h"
 
 int handle_enemies_collisions(object_t *obj, entity_t *entity, game_t *game);
+void set_pos_hit(game_t *game, sfVector2f pos);
+void hit_enemy(enemy_t *enemy, int attack, game_t *game);
 
 void collisions_with_sword(game_t *game, object_t *obj, item_t *sword)
 {
@@ -15,7 +17,7 @@ void collisions_with_sword(game_t *game, object_t *obj, item_t *sword)
     if (obj->id == ENEMY_OBJ && handle_enemies_collisions(obj, sword->entity,
             game) && !CAST_ENEMY(obj->data)->is_hit) {
             hit_enemy(CAST_ENEMY(obj->data), player->attack, game);
-            set_pos_hit(player, CAST_ENEMY(obj->data)->self_pos);
+            set_pos_hit(game, CAST_ENEMY(obj->data)->self_pos);
             sword->hit_effect = 1;
     }
     if (obj->id == GRASS_OBJ && handle_enemies_collisions(obj,
