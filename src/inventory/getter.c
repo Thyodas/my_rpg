@@ -8,10 +8,12 @@
 #include "rpg.h"
 #include "my.h"
 
-const static option_t option[ITEM_REGISTER] = {
+const static option_t option[NB_ITEMS] = {
     { "./assets/spritesheets/items.png", (sfVector2f) {2, 2},
     (sfVector2f) {69.5, 488.0}, (sfIntRect) {2, 16, 10, 16}, 15.6666666667,
     17.6666666667, 47, 53, 90.0, "Sword" },
+    {"./assets/spritesheets/items.png", (sfVector2f) {1, 1},
+    (sfVector2f){-1, -1}, (sfIntRect){0, 0, 10, 12},  0, 0, 0, 0, 0, "Key"},
 };
 
 option_t get_option_by_id(int id)

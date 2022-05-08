@@ -55,5 +55,4 @@ void draw_player(game_t *game)
     sfRenderWindow_drawSprite(game->window, player->sprite, NULL);
     if (game->debug_mode)
         draw_debug(game, player);
-
 }

@@ -80,6 +80,7 @@ char *get_write_content(object_t *obj, int i)
     my_strcat(line, my_int_to_strnum((int)pos.x));
     my_strcat(line, "#");
     my_strcat(line, my_int_to_strnum((int)pos.y));
+    my_strcat(line, "\n");
     return line;
 }
 

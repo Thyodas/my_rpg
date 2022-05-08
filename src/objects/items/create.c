@@ -10,8 +10,13 @@
 
 void sword_hit_effect(game_t *game, item_t *sword);
 
+static int (attack_values[]) = {
+    3, 0
+};
+
 static void (*ptr_hit_effect[]) = {
-    &sword_hit_effect
+    &sword_hit_effect,
+    NULL,
 };
 
 item_t *create_items(option_t option, int id, sfVector2f pos,
@@ -28,5 +33,6 @@ item_t *create_items(option_t option, int id, sfVector2f pos,
     item->sprite_effect = sfSprite_create();
     item->id = id;
     item->handle_hit = ptr_hit_effect[id];
+    item->attack_value = attack_values[id];
     return item;
 }

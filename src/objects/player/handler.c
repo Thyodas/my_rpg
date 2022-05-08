@@ -79,6 +79,11 @@ void handler_player(game_t *game)
     player_t *player = ((player_t *)(game->play->player->data));
     double new_speed = ((player_t *)(game->play->player->data))->speed
         * diff;
+    item_t *held = get_selected_item(game);
+    if (held != NULL)
+        player->attack = held->attack_value;
+    else
+        player->attack = 1;
     if (!player->hit_delay)
         handle_movement(game, player, new_speed);
     handle_interaction(game, player);

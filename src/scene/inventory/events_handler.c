@@ -15,6 +15,16 @@ void (*draw)());
 void exit_game(game_t *game);
 void drag_drop_intention(game_t *game, inventory_t *inventory);
 void drag_drop_deplacement(game_t *game, inventory_t *inventory);
+item_t *get_selected_item(game_t *game);
+
+static void update_status(game_t *game)
+{
+    item_t *held = get_selected_item(game);
+    if (held != NULL)
+        CAST_PLAYER(game->play->player->data)->attack = held->attack_value;
+    else
+        CAST_PLAYER(game->play->player->data)->attack = 1;
+}
 
 void events_handler_inventory_scene(game_t *game)
 {
@@ -35,4 +45,5 @@ void events_handler_inventory_scene(game_t *game)
             drag_drop_deplacement(game,
                 &CAST_PLAYER(game->play->player->data)->inventory);
     }
+    update_status(game);
 }

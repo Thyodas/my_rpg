@@ -18,6 +18,7 @@ void draw_item(game_t *game, object_t *self);
 
 void parse_item(game_t *game, region_t *region, char **args)
 {
+    printf("On rentre\n");
     int i = 0;
 
     for (; args[i] != 0; ++i)

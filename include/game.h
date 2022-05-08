@@ -26,6 +26,7 @@
 
     enum ITEMS_ID {
         SWORD,
+        KEY,
         NB_ITEMS
     };
 
@@ -37,6 +38,7 @@
         int on_the_ground;
         int hit_effect;
         void (*handle_hit)();
+        int attack_value;
         sfVector2f pos;
         sfSprite *sprite_effect;
     } item_t;

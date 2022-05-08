@@ -59,7 +59,7 @@ void draw_region(game_t *game, region_t *region)
     draw_region_objects(game, region);
     game->play->player->draw(game, game->play->player);
     item_t *held = get_selected_item(game);
-    if (held != NULL)
+    if (held != NULL && held->handle_hit != NULL)
         held->handle_hit(game, held);
     sfRenderWindow_drawSprite(game->window, region->map->foreground, NULL);
     draw_debug_mode(game, region);

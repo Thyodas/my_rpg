@@ -56,6 +56,7 @@ void drag_drop_intention(game_t *game, inventory_t *inventory)
 void drag_drop_deplacement(game_t *game, inventory_t *inventory)
 {
     object_t *object = NULL;
+    int tmp = 0;
     int i = 0;
 
     if (game->cursor->item_selected_index == -1)
@@ -67,10 +68,11 @@ void drag_drop_deplacement(game_t *game, inventory_t *inventory)
                         game->cursor->pos.y <= rect[i].top + rect[i].height;
         if (check && check_two) {
             object = inventory->items[i];
+            tmp++;
             break;
         }
     }
-    if (i == game->cursor->item_selected_index)
+    if (i == game->cursor->item_selected_index || tmp != 0)
         return;
     if (object == NULL) {
         inventory->items[i] = inventory->items[game->cursor->item_selected_index];
