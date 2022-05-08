@@ -10,12 +10,13 @@
 
 void check_mouse_movement(game_t *game);
 void set_game_scene(game_t *game);
+void exit_game(game_t *game);
 
 void events_handler_pause_scene(game_t *game)
 {
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {
         if (game->event.type == sfEvtClosed)
-            sfRenderWindow_close(game->window);
+            exit_game(game);
         check_mouse_movement(game);
         if (game->event.type == sfEvtKeyReleased &&
             game->event.key.code == sfKeyEscape)

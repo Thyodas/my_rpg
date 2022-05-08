@@ -7,8 +7,14 @@
 
 #include "rpg.h"
 
+void set_death_scene(game_t *game);
+
 void set_game_scene(game_t *game)
 {
+    if (CAST_PLAYER(game->play->player->data)->health <= 0) {
+        set_death_scene(game);
+        return;
+    }
     game->previous_scene = game->current_scene;
     game->current_scene = GAME_SCENE;
     if (game->play->view == NULL)
