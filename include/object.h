@@ -22,6 +22,7 @@
     #define DEG_TO_RAD(x) ((x) * M_PI / 180)
     #define NB_ARGS_BORDER_WAVES 5
     #define INVENTORY_SIZE 10
+    #define ITEM_REGISTER 1
 
     enum id_object_type {
         TELEPORTER_OBJ,

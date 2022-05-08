@@ -5,68 +5,63 @@
 ** saving_inventory
 */
 
-#include <stdlib.h>
-#include <fcntl.h>
 #include <stdio.h>
-#include <unistd.h>
+#include <stdlib.h>
 #include <string.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include "rpg.h"
 #include "game.h"
 #include "object.h"
+#include "my.h"
 
-char *my_strcat(char *src1, char *src2);
 char **cut_str(char *str, char *delim);
-int my_strlen(char const * str);
-unsigned my_atoi( char *str );
-char *my_itoa(int nb);
+option_t get_option_by_name(char *name);
 
-ssize_t get_score(void)
+void get_save(game_t *game)
 {
-    int fd = open("save.rpg", O_RDONLY);
-    inventory_t inventory;
-    char *tmp = "\0";
-    char **item_data = NULL;
+    FILE* input_file = fopen("data/save.rpg", "r");
+    if (!input_file)
+        return;
+    char *content = NULL;
     size_t size = 0;
-    ssize_t nbr = 0;
-
-    inventory.nb_items = 0;
-    inventory.selected_item = 0;
-    if (fd == -1)
-        return (0);
-    close(fd);
-    while (getline(&tmp, &size, fopen("save.rpg", "r"))) {
-        //TODO parser;
-        item_data = cut_str(tmp, '#');
-        item_t item;
-        item.name = item_data[0];
-        item.nb_usage = item_data[1];
-        item.unlocked = item_data[2];
-        inventory.items[1] = item;
+    while (getline(&content, &size, input_file) != -1) {
+        char **item_data = cut_str(content, "#");
+        if (my_arr_size(item_data) < 4) {
+            free(item_data);
+            continue;
+        }
+        item_t *item = create_items_object(get_option_by_name(item_data[1]), 0);
+        item->name = item_data[1];
+        item->nb_usage = my_getnbr(item_data[2]);
+        item->unlocked = my_getnbr(item_data[3]);
+        set_inventory_data(game, item, my_getnbr(item_data[0]));
     }
-    if (!tmp)
-        return (0);
-    nbr = my_atoi(tmp);
-    free(tmp);
-    return nbr;
+    if (!content)
+        return;
+    free(content);
 }
 
 void save_score(game_t *game)
 {
     inventory_t inventory = CAST_PLAYER(game->play->player->data)->inventory;
-    FILE *f_file = fopen("save.rpg", "w");
-    char *str = "\0";
-
-    if (!f_file)
+    FILE *f_file = fopen("data/save.rpg", "w");
+    char *str = malloc(sizeof(char) * 100);
+    str[0] = '\0';
+    if (!f_file) {
+        free(str);
         return;
-    for (int i = 0; i < 1; i++) {
+    }
+    for (int i = 0; i < INVENTORY_SIZE; i++) {
         item_t *item = ((item_t *)(inventory.items[i]->data));
-        str = my_strcat(str, item->name);
-        str = my_strcat(str, "#");
-        str = my_strcat(str, my_itoa(item->nb_usage));
-        str = my_strcat(str, "#");
-        str = my_strcat(str, my_itoa(item->unlocked));
-        str = my_strcat(str, "\n");
+        if (item == NULL)
+            continue;
+        str = my_strcat(my_strcat(str, my_int_to_strnum(i)), "#");
+        str = my_strcat(my_strcat(str, item->name), "#");
+        str = my_strcat(my_strcat(str, my_int_to_strnum(item->nb_usage)), "#");
+        str = my_strcat(my_strcat(str,
+            my_int_to_strnum(item->unlocked)), "\n");
         fwrite(str, sizeof(char), my_strlen(str), f_file);
     }
     fclose(f_file);
-    free(str);
 }

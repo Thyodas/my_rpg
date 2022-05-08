@@ -6,21 +6,30 @@
 */
 
 #include "rpg.h"
+#include "my.h"
 
 void init_texts(game_t *game);
+void get_save(game_t *game);
+
+const static option_t option[ITEM_REGISTER] = {
+    { "./assets/spritesheets/items.png", (sfVector2f) {1.2, 1.2},
+    (sfVector2f) {69.5, 488.0}, (sfIntRect) {2, 16, 10, 16}, 15.6666666667,
+    17.6666666667, 47, 53, 90.0, "Sword" },
+};
+
+option_t get_option_by_name(char *name)
+{
+    for (int i = 0; i < ITEM_REGISTER; i++)
+        if (!my_strcmp(option[i].name, name))
+            return option[i];
+    return option[0];
+}
 
 void set_inventory_data(game_t *game, void *data, int n)
 {
     player_t *player = ((player_t *)(game->play->player->data));
 
     player->inventory.items[n]->data = data;
-}
-
-void append_inventory_data(game_t *game, void *data)
-{
-    player_t *player = ((player_t *)(game->play->player->data));
-
-    set_inventory_data(game, data, player->inventory.nb_items++);
 }
 
 item_t *get_inventory_data(game_t *game, int n)
@@ -34,18 +43,6 @@ item_t *get_inventory_data(game_t *game, int n)
 
 void init_inventory(game_t *game)
 {
-    option_t option = {
-            "./assets/spritesheets/items.png",
-            (sfVector2f) {1.2, 1.2},
-            (sfVector2f){69.5, 488.0},
-            (sfIntRect) {2, 16, 10, 16},
-            15.6666666667,
-            17.6666666667,
-            47,
-            53,
-            90.0,
-            "Sword"
-    };
     init_texts(game);
     for (int i = 0; i < INVENTORY_SIZE; i++) {
         ((player_t *)(game->play->player->data))->inventory.items[i] = malloc(sizeof(object_t));
@@ -53,5 +50,5 @@ void init_inventory(game_t *game)
     }
     ((player_t *)(game->play->player->data))->inventory.nb_items = 0;
     ((player_t *)(game->play->player->data))->inventory.selected_item = 0;
-    set_inventory_data(game, create_items_object(option, 0), 0);
+    get_save(game);
 }

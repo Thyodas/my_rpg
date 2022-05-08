@@ -55,7 +55,6 @@
 
     // Inventory
     void set_inventory_data(game_t *game, void *data, int n);
-    void append_inventory_data(game_t *game, void *data);
     item_t *get_inventory_data(game_t *game, int n);
     item_t *create_items_object(option_t option, int unlocked);
 

@@ -13,7 +13,7 @@ void draw_interaction(game_t *game)
 {
     player_t *player = CAST_PLAYER(game->play->player->data);
     inventory_t *inventory = &player->inventory;
-    item_t *item = inventory->items[inventory->nb_items]->data;
+    item_t *item = inventory->items[0]->data;
 
     if (item == NULL)
         return;
