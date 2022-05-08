@@ -47,8 +47,8 @@
     };
 
     enum id_enemies {
-        SLIME,
         BLOB,
+        SLIME,
         SKELETON,
         NB_ENEMIES
     };

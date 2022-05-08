@@ -54,6 +54,8 @@ void parse_enemy(game_t *game, region_t *region, char **argv)
     enemy_t *enemy = create_enemy(get_pos(argv), option_enemy[id](),
                                                 stats_enemy[id]());
     enemy->id = id;
+    if (enemy->id == BLOB)
+        sfSprite_setScale(enemy->entity.sprite, (sfVector2f){3.0, 3.0});
     object_t *object = create_object(ENEMY_OBJ, enemy,
                                                 &enemy_handler, &draw_enemy);
     my_put_in_list(&region->objects, object);

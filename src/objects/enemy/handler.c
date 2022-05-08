@@ -94,7 +94,10 @@ static void init_death_state(enemy_t *enemy)
             NULL);
     sfSprite_setTexture(enemy->entity.sprite, texture, sfFalse);
     sfSprite_setTextureRect(enemy->entity.sprite, (sfIntRect){0, 0, 29, 18});
-    sfSprite_setScale(enemy->entity.sprite, (sfVector2f){0.65, 0.65});
+    if (enemy->id == BLOB)
+            sfSprite_setScale(enemy->entity.sprite, (sfVector2f){2.0, 2.0});
+    else
+        sfSprite_setScale(enemy->entity.sprite, (sfVector2f){0.65, 0.65});
     sfSprite_setColor(enemy->entity.sprite, sfWhite);
 }
 
