@@ -24,6 +24,7 @@
     #define NB_ARGS_ITEM 5
     #define INVENTORY_SIZE 10
     #define ITEM_REGISTER 1
+    #define NB_ARGS_GRASS 2
 
     enum id_object_type {
         TELEPORTER_OBJ,
@@ -38,6 +39,7 @@
         NPC_OBJ,
         MUSIC_OBJ,
         ITEMS_OBJ,
+        GRASS_OBJ,
         OBJECT_NB,
     };
 
@@ -96,6 +98,15 @@
         int direction;
         long last_clock;
     } waves_border_t;
+
+    typedef struct grass {
+        sfSprite *sprite;
+        int offset_x;
+        sfVector2f pos;
+        int destroyed;
+        long last_animation;
+        int is_hit;
+    } grass_t;
 
     typedef struct stats_s {
         int damage;
