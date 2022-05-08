@@ -42,7 +42,7 @@
         "data/regions/mine_interior_bottom.region"
     };
 
-    enum {
+    enum region_ids {
         START_REGION,
         MINE_REGION,
         START_HOUSE_INTERIOR,
@@ -58,5 +58,13 @@
         MINE_INTERIOR_MAP,
         MINE_INTERIOR_MAP
     };
+
+    const static enum region_ids REGION_LINKS[REGION_NB][4] = {
+        {MINE_REGION, -1, -1, -1},
+        {-1, START_REGION, -1, -1},
+        {-1, -1, -1, -1},
+        {-1, MINE_INTERIOR_BOTTOM, -1, -1},
+        {MINE_INTERIOR_TOP, -1, -1, -1}
+    }; //0 : Up, 1 : Down, 2 : Left, 3 : Right
 
 #endif /* !REGION_H_ */

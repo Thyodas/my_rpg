@@ -43,16 +43,23 @@ void load_region(game_t *game, region_t *region)
     region->is_loaded = true;
 }
 
+static region_t *get_link(game_t *game, enum region_ids id, int direction)
+{
+    enum region_ids link_id = REGION_LINKS[id][direction];
+    if (link_id == -1)
+        return NULL;
+    else
+        return game->play->region_list[link_id];
+}
+
 void link_regions(game_t *game)
 {
-    game->play->region_list[START_REGION]->top =
-        game->play->region_list[MINE_REGION];
-    game->play->region_list[MINE_REGION]->bottom =
-        game->play->region_list[START_REGION];
-    game->play->region_list[MINE_INTERIOR_TOP]->bottom =
-        game->play->region_list[MINE_INTERIOR_BOTTOM];
-    game->play->region_list[MINE_INTERIOR_BOTTOM]->top =
-        game->play->region_list[MINE_INTERIOR_TOP];
+    for (int i = 0; i < REGION_NB; ++i) {
+        game->play->region_list[i]->top = get_link(game, i, 0);
+        game->play->region_list[i]->bottom = get_link(game, i, 1);
+        game->play->region_list[i]->left = get_link(game, i, 2);
+        game->play->region_list[i]->right = get_link(game, i, 3);
+    }
 }
 
 void init_all_regions(game_t *game)
@@ -65,4 +72,5 @@ void init_all_regions(game_t *game)
     game->play->current_region_pos = (sfVector2i){0, 1};
     link_regions(game);
     game->play->region_animation.changing = false;
+    game->play->start_region = game->play->region_list[START_HOUSE_INTERIOR];
 }
