@@ -14,7 +14,10 @@ void dialogue_box_set_text(dialogue_box_t *dialogue, char *text);
 void handle_quest(game_t *game, npc_t *npc)
 {
     static bool slime_killed = false;
-
+    if (game->game_end && npc->dialogue_nb >= 5) {
+        npc->dialogue_line = 4;
+        return;
+    }
     if (is_equipped(game, KEY) && npc->dialogue_nb >= 4) {
         npc->dialogue_line = 3;
         return;

@@ -83,6 +83,7 @@
 
     typedef struct game_s {
         int current_scene;
+        int game_end;
         sfRenderWindow *window;
         my_time_t *clock;
         cursor_t *cursor;

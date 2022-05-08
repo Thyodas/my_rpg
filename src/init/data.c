@@ -37,6 +37,7 @@ static void init_audio(game_t *game)
 void init_data(game_t *game)
 {
     game->current_scene = 0;
+    game->game_end = 0;
     game->previous_scene = 0;
     game->window = init_window();
     game->cursor = init_cursor(game->window);
