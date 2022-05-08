@@ -158,6 +158,9 @@
         sfText *attack_text;
     } inventory_t;
 
+    #define START_REGION_X 2
+    #define START_REGION_Y 3
+
     typedef struct {
         inventory_t inventory;
         entity_t entity;

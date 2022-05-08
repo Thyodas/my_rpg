@@ -69,7 +69,8 @@ void init_all_regions(game_t *game)
     game->play->current_region = NULL;
     load_region(game, game->play->region_list[START_HOUSE_INTERIOR]);
     game->play->current_region = game->play->region_list[START_HOUSE_INTERIOR];
-    game->play->current_region_pos = (sfVector2i){0, 1};
+    game->play->current_region_pos = (sfVector2i){START_REGION_X,
+        START_REGION_Y};
     link_regions(game);
     game->play->region_animation.changing = false;
     game->play->start_region = game->play->region_list[START_HOUSE_INTERIOR];
