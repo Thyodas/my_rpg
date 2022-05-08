@@ -33,4 +33,3 @@ void dungeon_teleporter_handler(game_t *game, struct object_s *self)
         && is_equipped(game, KEY))
         change_region(game, teleporter->dest_region, 0, 0);
 }
-

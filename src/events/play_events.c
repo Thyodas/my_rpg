@@ -40,4 +40,3 @@ void player_movement_animation(game_t *game)
         last_clock_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
     }
 }
-

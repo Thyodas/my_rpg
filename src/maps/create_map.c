@@ -46,4 +46,3 @@ void init_all_maps(game_t *game)
     for (int id = 0; id < MAP_NB; ++id)
         game->play->map_list[id] = create_map(id);
 }
-

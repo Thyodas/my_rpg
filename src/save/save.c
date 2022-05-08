@@ -84,7 +84,6 @@ char *get_write_content(object_t *obj, int i)
     return line;
 }
 
-
 void save_score(game_t *game)
 {
     inventory_t inventory = CAST_PLAYER(game->play->player->data)->inventory;
