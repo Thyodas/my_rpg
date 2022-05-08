@@ -83,6 +83,7 @@ FILE_NAME	:=	main 													\
 			objects/player/animation/interaction 						\
 			objects/player/animation/move 								\
 			objects/player/animation/attack								\
+			objects/player/animation/collisions_with_sword 				\
 			objects/player/move 										\
 			objects/items/create 										\
 			objects/items/handler 										\
@@ -150,6 +151,10 @@ FILE_NAME	:=	main 													\
 			objects/enemy/utils/hit_enemy								\
 			objects/music/handler										\
 			objects/music/parser										\
+			objects/grass/create 										\
+			objects/grass/draw 											\
+			objects/grass/handler 										\
+			objects/grass/parser 										\
 			audio/sound													\
 			save/save													\
 

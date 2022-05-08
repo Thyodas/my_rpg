@@ -22,6 +22,7 @@ void parse_enemy(game_t *game, region_t *region, char **argv);
 void parse_border_wave(game_t *game, region_t *region, char **args);
 void parse_npc(game_t *game, region_t *region, char **argv);
 void parse_music(game_t *game, region_t *region, char **argv);
+void parse_grass(game_t *game, region_t *region, char **args);
 
 void (* const PARSE_OBJECT[OBJECT_NB])(game_t *, region_t *, char **) = {
     &parse_teleporter,
@@ -35,6 +36,7 @@ void (* const PARSE_OBJECT[OBJECT_NB])(game_t *, region_t *, char **) = {
     NULL,
     &parse_npc,
     &parse_music,
+    &parse_grass
 };
 
 static void execute_create_function(game_t *game, region_t *region,
