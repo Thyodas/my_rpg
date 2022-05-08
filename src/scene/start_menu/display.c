@@ -17,7 +17,8 @@ static void draw_start_menu_background(game_t *game)
 {
     static sfTexture *texture = NULL;
     if (texture == NULL)
-        texture = sfFont_createFromFile("assets/images/title_screen.png");
+        texture = sfTexture_createFromFile("assets/images/title_screen.png",
+                sfFalse);
     sfSprite *sprite = sfSprite_create();
     sfSprite_setTexture(sprite, texture, sfFalse);
     sfRenderWindow_drawSprite(game->window, sprite, NULL);
