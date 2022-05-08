@@ -40,7 +40,6 @@
         "data/regions/start_house_interior.region",
         "data/regions/mine_interior_top.region",
         "data/regions/mine_interior_bottom.region",
-        "data/regions/forest.region",
         "data/regions/slime.region",
         "data/regions/path_to_boss.region",
     };
