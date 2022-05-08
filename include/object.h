@@ -64,7 +64,7 @@
     #define GHOST_PATH "assets/spritesheets/ghost.png"
     #define SKELETON_PATH "assets/spritesheets/skeleton.png"
     #define BLOB_PATH "assets/spritesheets/blob.png"
-    #define GHOST_PATH "assets/spritesheets/ghost.png"
+    #define DOG_PATH "assets/images/dog.png"
 
     typedef struct {
         sfFloatRect area;

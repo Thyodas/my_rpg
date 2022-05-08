@@ -13,9 +13,11 @@
 object_t *create_object(enum id_object_type id, void *data, void (*handler)(),
 void (*draw)());
 void create_npc_start_ghost(game_t *game, object_t *self);
+void create_npc_dog(game_t *game, object_t *self);
 
 void (* const CREATE_NPC[NPC_NB])(game_t *game, object_t *self) = {
     &create_npc_start_ghost,
+    &create_npc_dog
 };
 
 object_t *create_npc_object(game_t *game, enum npc_id npc_id, sfVector2f pos)

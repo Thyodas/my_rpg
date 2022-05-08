@@ -15,11 +15,13 @@
 
     enum npc_id {
         START_NPC,
+        DOG_NPC,
         NPC_NB
     };
 
     static const char *NPC_DLG_PATH[NPC_NB] = {
-        "data/dialogues/start_ghost.dialogue"
+        "data/dialogues/start_ghost.dialogue",
+        "data/dialogues/dog.dialogue"
     };
 
     typedef struct {
