@@ -9,7 +9,8 @@
 
 void rect_animation_interaction(game_t *game, entity_t *entity)
 {
-    if (entity->rect.left >= entity->spritesheet_width - entity->spritesheet_rect_x) {
+    if (entity->rect.left >= entity->spritesheet_width -
+        entity->spritesheet_rect_x) {
         entity->rect.left = 0;
         CAST_PLAYER(game->play->player->data)->entity.animation_state
             = IDLE_STATE;

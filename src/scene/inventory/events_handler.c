@@ -52,7 +52,8 @@ object_t *init_inventory_ui_object(game_t *game)
 {
     sfSprite *sprite = sfSprite_create();
     sfSprite_setTexture(sprite,
-        sfTexture_createFromFile("assets/images/inventory_ui.png", NULL), sfFalse);
+        sfTexture_createFromFile("assets/images/inventory_ui.png", NULL),
+        sfFalse);
     return create_object(BACKGROUND_UI_OBJ, sprite,
                     &handler_inventory_ui_object, &draw_inventory_ui_object);
 }

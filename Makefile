@@ -32,13 +32,13 @@ FILE_NAME	:=	main 													\
 			events/mouse_events 										\
 			events/exit 												\
 			events/play_events 											\
-			particles-engine/snow/gen_snow 								\
-			particles-engine/snow/update_snow 							\
-			particles-engine/utils_particles/utils_particles 			\
-			particles-engine/draw_particles 							\
-			particles-engine/particles_engine 							\
-			particles-engine/blood/update_blood 						\
-			particles-engine/blood/gen_blood 							\
+			particles_engine/snow/gen_snow 								\
+			particles_engine/snow/update_snow 							\
+			particles_engine/utils_particles/utils_particles 			\
+			particles_engine/draw_particles 							\
+			particles_engine/particles_engine 							\
+			particles_engine/blood/update_blood 						\
+			particles_engine/blood/gen_blood 							\
 			regions/create_region 										\
 			regions/loop_region 										\
 			regions/change_region 										\

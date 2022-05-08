@@ -26,7 +26,8 @@ static void draw_background(game_t *game)
 
 static void draw_stats(game_t *game)
 {
-    inventory_t *inventory = &((player_t *)(game->play->player->data))->inventory;
+    inventory_t *inventory =
+        &((player_t *)(game->play->player->data))->inventory;
 
     update_texts(game);
     sfRenderWindow_drawText(game->window, inventory->attack_text, NULL);
@@ -61,7 +62,8 @@ void draw_following_item(game_t *game)
     if (cursor->item_selected_index == -1)
         return;
     sfVector2f pos = cursor->pos;
-    item_t *item = CAST_PLAYER(game->play->player->data)->inventory.items[cursor->item_selected_index]->data;
+    item_t *item = CAST_PLAYER(game->play->player->data)->inventory.items
+        [cursor->item_selected_index]->data;
     sfSprite_setPosition(item->entity->sprite, pos);
     draw_entity(game, item->entity);
 }

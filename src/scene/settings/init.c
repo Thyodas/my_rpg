@@ -11,7 +11,7 @@
 #include "my.h"
 
 particles_emitter_t *init_emitter(void);
-void parse_objects_scene(game_t *game, int scene, char *path);;
+void parse_objects_scene(game_t *game, int scene, char *path);
 
 void init_settings_menu(game_t *game)
 {

@@ -13,7 +13,8 @@ float calc_distance(sfVector2f point1, sfVector2f point2);
 int in_range_player(game_t *game, enemy_t *enemy)
 {
     sfVector2f pos_player =
-        sfSprite_getPosition(CAST_PLAYER(game->play->player->data)->entity.sprite);
+        sfSprite_getPosition
+        (CAST_PLAYER(game->play->player->data)->entity.sprite);
     float distance = calc_distance(pos_player, enemy->self_pos);
     if (enemy->trigerred)
         distance /= 3;

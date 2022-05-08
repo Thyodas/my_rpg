@@ -32,8 +32,7 @@ int parse_dialogue_file(game_t *game, npc_t *npc)
 {
     npc->dialogue_list = malloc(sizeof(char **));
     npc->dialogue_list[0] = NULL;
-    char *line = NULL;
-    char **args = NULL;
+    char *line = NULL, **args = NULL;
     size_t size = 0;
     FILE *file = fopen(NPC_DLG_PATH[npc->id], "r");
     if (file == NULL)
