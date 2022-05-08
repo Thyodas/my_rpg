@@ -63,7 +63,6 @@ static void handle_death_animation(game_t *game, enemy_t *enemy)
 {
     long current_us = sfClock_getElapsedTime(game->clock->clock).microseconds;
     if (!enemy->animation_data.animate_death) {
-        printf("On rentre\n");
         enemy->animation_data.last_death_animation = current_us;
         return;
     }
