@@ -24,7 +24,7 @@
     #include <SFML/Audio.h>
     #include <stdbool.h>
 
-    enum items {
+    enum ITEMS_ID {
         SWORD,
         NB_ITEMS
     };

@@ -8,10 +8,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include "rpg.h"
 #include "game.h"
 #include "object.h"
 #include "my.h"
@@ -56,30 +52,52 @@ void get_save(game_t *game)
             continue;
         }
         item_t *item_saved = init_saved_item(item_data);
-        object_t *obj = create_object(ITEMS_OBJ, item_saved, &handle_item, 
+        object_t *obj = create_object(ITEMS_OBJ, item_saved, &handle_item,
         &draw_item);
-        printf("On passe tout\n");
         add_item_on_id(game, obj, my_getnbr(item_data[0]));
     }
     if (content)
         free(content);
 }
 
+char *get_write_content(object_t *obj, i)
+{
+    item_t *item = obj->data;
+    char *line = malloc(sizeof(char) * (1000));
+
+    line[0] = '\0';
+    my_strcat(line, my_int_to_strnum(i));
+    my_strcat(line, "#");
+    my_strcat(line, my_int_to_strnum(item->id));
+    my_strcat(line, "#");
+    my_strcat(line, item->name);
+    my_strcat(line, "#");
+    my_strcat(line, my_int_to_strnum(item->unlocked));
+    my_strcat(line, "#");
+    my_strcat(line, my_int_to_strnum(item->on_the_ground));
+    my_strcat(line, "#");
+    my_strcat(line, my_int_to_strnum((int)item->pos.x));
+    my_strcat(line, "#");
+    my_strcat(line, my_int_to_strnum((int)item->pos.y));
+    return line;
+}
+
+
 void save_score(game_t *game)
 {
     inventory_t inventory = CAST_PLAYER(game->play->player->data)->inventory;
+    FILE* file = fopen("data/save.rpg", "w");
+    char *line = NULL;
 
-    int fd = open("data/save.rpg", O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU
-        | S_IRWXG | S_IRWXO);
-    if (fd == -1)
+    if (!file)
         return;
     for (int i = 0; i < INVENTORY_SIZE; i++) {
         object_t *obj = inventory.items[i];
         if (obj == NULL)
             continue;
-        item_t *item = obj->data;
-        my_fprintf(fd, "%d#%d#%s#%d#%d#%d#%d\n", i, item->id, item->name,
-                item->unlocked, item->on_the_ground, (int)item->pos.x, (int)item->pos.y);
+        line = get_write_content(obj, i);
+        fwrite(line, sizeof(char), my_strlen(line), file);
+        free(line);
     }
-    close(fd);
+    fclose(file);
 }

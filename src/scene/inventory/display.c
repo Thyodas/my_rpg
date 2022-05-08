@@ -57,7 +57,7 @@ static void draw_items(game_t *game)
     sfVector2f pos = {700, 680};
     for (int i = 0; i < INVENTORY_SIZE; i++) {
         object = inventory.items[i];
-        if (object != NULL) {
+        if (object != NULL && object->data != NULL) {
             item = object->data;
             sfSprite_setScale(item->entity->sprite, (sfVector2f){3.0, 3.0});
             sfSprite_setPosition(item->entity->sprite, pos);
