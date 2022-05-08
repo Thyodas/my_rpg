@@ -13,6 +13,7 @@ void move_skeleton(game_t *game, enemy_t *enemy);
 void move_slime(game_t *game, enemy_t *slime);
 void move_blob(game_t *game, enemy_t *blob);
 void move_ghost(game_t *game, enemy_t *ghost);
+void set_end_blob_scene(game_t *game);
 
 static void (*move[4])(game_t *, enemy_t *) = {
     &move_blob,
@@ -80,8 +81,12 @@ static void handle_death_animation(game_t *game, enemy_t *enemy)
     }
 }
 
-static void init_death_state(enemy_t *enemy)
+static void init_death_state(enemy_t *enemy, game_t *game)
 {
+    if (enemy->id == BLOB) {
+        set_end_blob_scene(game);
+        return;
+    }
     enemy->entity.spritesheet_rect_x = 0;
     enemy->entity.spritesheet_rect_y = 0;
     enemy->entity.spritesheet_width = 29;
@@ -89,9 +94,8 @@ static void init_death_state(enemy_t *enemy)
     enemy->animation_data.animate_death = 1;
     sfTexture *texture = NULL;
     if (texture == NULL)
-        texture =
-            sfTexture_createFromFile("assets/spritesheets/explosion.png",
-            NULL);
+        texture = sfTexture_createFromFile("assets/spritesheets/explosion.png",
+        NULL);
     sfSprite_setTexture(enemy->entity.sprite, texture, sfFalse);
     sfSprite_setTextureRect(enemy->entity.sprite, (sfIntRect){0, 0, 29, 18});
     if (enemy->id == BLOB)
@@ -113,5 +117,5 @@ void enemy_handler(game_t *game, object_t *self)
     }
     handle_death_animation(game, enemy);
     if (enemy->stats.life_points <= 0 && !enemy->animation_data.animate_death)
-        init_death_state(enemy);
+        init_death_state(enemy, game);
 }

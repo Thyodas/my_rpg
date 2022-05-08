@@ -45,6 +45,7 @@ FILE_NAME	:=	main 													\
 			regions/parser 												\
 			scene/set_scene 											\
 			scene/set_in_game_scenes 									\
+			scene/set_end_scene 										\
 			scene/game/display 											\
 			scene/game/events_handler 									\
 			scene/game/init 											\
@@ -70,6 +71,11 @@ FILE_NAME	:=	main 													\
 			scene/death/display 										\
 			scene/death/events_handler 									\
 			scene/death/init 											\
+			scene/end_blob/display 										\
+			scene/end_blob/event_handler 								\
+			scene/end_blob/init 										\
+			scene/end_blob/helper_explosions 							\
+			scene/end_blob/draw_background 								\
 			scene/draw_scene 											\
 			scene/handle_object 										\
 			scene/parse_object											\

@@ -29,6 +29,8 @@ void game(game_t *game);
 void print_help(void);
 void death_scene(game_t *game);
 void init_death_menu(game_t *game);
+void init_end_blob(game_t *game);
+void end_blob(game_t *game);
 
 void (* const scene[])(game_t *game) = {
         &start_menu,
@@ -37,7 +39,8 @@ void (* const scene[])(game_t *game) = {
         &pause_menu,
         &help_menu,
         &inventory_menu,
-        &death_scene
+        &death_scene,
+        &end_blob
 };
 
 static void start_game(game_t *game)
@@ -49,6 +52,7 @@ static void start_game(game_t *game)
     init_death_menu(game);
     init_help_menu(game);
     init_game(game);
+    init_end_blob(game);
     set_menu_scene(game);
     while (sfRenderWindow_isOpen(game->window)) {
         scene[game->current_scene](game);

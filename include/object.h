@@ -170,6 +170,15 @@
         sfText *attack_text;
     } inventory_t;
 
+    typedef struct explosion {
+        sfSprite *sprite;
+        int activated;
+        long last_animation;
+        int offset_x;
+        int done;
+        int loaded;
+    } explosion_t;
+
     #define START_REGION_X 2
     #define START_REGION_Y 3
 

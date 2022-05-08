@@ -20,6 +20,7 @@
         HELP_SCENE,
         INVENTORY_SCENE,
         DEATH_SCENE,
+        END_SCENE_BLOB,
         NB_SCENE,
     };
 
