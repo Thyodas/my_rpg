@@ -28,6 +28,5 @@ item_t *create_items(option_t option, int id, sfVector2f pos,
     item->sprite_effect = sfSprite_create();
     item->id = id;
     item->handle_hit = ptr_hit_effect[id];
-    item->pos = pos;
     return item;
 }

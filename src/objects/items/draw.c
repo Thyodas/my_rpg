@@ -14,6 +14,5 @@ void draw_item(game_t *game, object_t *self)
     item_t *item = self->data;
     if (!item->on_the_ground || is_equipped(game, item->id))
         return;
-    sfSprite_setPosition(item->entity->sprite, item->pos);
     sfRenderWindow_drawSprite(game->window, item->entity->sprite, NULL);
 }

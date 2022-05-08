@@ -64,6 +64,7 @@ char *get_write_content(object_t *obj, i)
 {
     item_t *item = obj->data;
     char *line = malloc(sizeof(char) * (1000));
+    sfVector2f pos = sfSprite_getPosition(item->entity->sprite);
 
     line[0] = '\0';
     my_strcat(line, my_int_to_strnum(i));
@@ -76,9 +77,9 @@ char *get_write_content(object_t *obj, i)
     my_strcat(line, "#");
     my_strcat(line, my_int_to_strnum(item->on_the_ground));
     my_strcat(line, "#");
-    my_strcat(line, my_int_to_strnum((int)item->pos.x));
+    my_strcat(line, my_int_to_strnum((int)pos.x));
     my_strcat(line, "#");
-    my_strcat(line, my_int_to_strnum((int)item->pos.y));
+    my_strcat(line, my_int_to_strnum((int)pos.y));
     return line;
 }
 
