@@ -35,7 +35,7 @@ void init_inventory_menu(game_t *game)
 
 void drag_drop_intention(game_t *game, inventory_t *inventory)
 {
-    item_t *item = NULL;
+    object_t *object = NULL;
     int i = 0;
 
     for (; i < INVENTORY_SIZE; i++) {
@@ -43,19 +43,19 @@ void drag_drop_intention(game_t *game, inventory_t *inventory)
                     game->cursor->pos.x <= rect[i].left + rect[i].width;
         int check_two = game->cursor->pos.y >= rect[i].top &&
                         game->cursor->pos.y <= rect[i].top + rect[i].height;
-        if (check && check_two && inventory->items[i]->data != NULL) {
-            item = inventory->items[i]->data;
+        if (check && check_two) {
+            object = inventory->items[i];
             break;
         }
     }
-    if (item == NULL)
+    if (object == NULL)
         return;
     game->cursor->item_selected_index = i;
 }
 
 void drag_drop_deplacement(game_t *game, inventory_t *inventory)
 {
-    item_t *item = NULL;
+    object_t *object = NULL;
     int i = 0;
 
     if (game->cursor->item_selected_index == -1)
@@ -65,22 +65,20 @@ void drag_drop_deplacement(game_t *game, inventory_t *inventory)
                     game->cursor->pos.x <= rect[i].left + rect[i].width;
         int check_two = game->cursor->pos.y >= rect[i].top &&
                         game->cursor->pos.y <= rect[i].top + rect[i].height;
-        if (check && check_two && inventory->items[i] == NULL)
-            return;
         if (check && check_two) {
-            item = inventory->items[i]->data;
+            object = inventory->items[i];
             break;
         }
     }
     if (i == game->cursor->item_selected_index)
         return;
-    if (item == NULL) {
-        inventory->items[i]->data = inventory->items[game->cursor->item_selected_index]->data;
-        inventory->items[game->cursor->item_selected_index]->data = NULL;
+    if (object == NULL) {
+        inventory->items[i] = inventory->items[game->cursor->item_selected_index];
+        inventory->items[game->cursor->item_selected_index] = NULL;
     } else {
-        item_t *item_temp = inventory->items[game->cursor->item_selected_index]->data;
-        inventory->items[game->cursor->item_selected_index]->data = inventory->items[i]->data;
-        inventory->items[i]->data = item_temp;
+        object_t *item_temp = inventory->items[game->cursor->item_selected_index];
+        inventory->items[game->cursor->item_selected_index] = inventory->items[i];
+        inventory->items[i] = item_temp;
     }
     game->cursor->item_selected_index = -1;
 }
