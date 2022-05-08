@@ -48,7 +48,8 @@ void save_score(game_t *game)
 {
     inventory_t inventory = CAST_PLAYER(game->play->player->data)->inventory;
 
-    int fd = open("data/save.rpg", O_WRONLY);
+    int fd = open("data/save.rpg", O_WRONLY | O_CREAT | O_TRUNC, S_IRWXU
+        | S_IRWXG | S_IRWXO);
     if (fd == -1)
         return;
     for (int i = 0; i < INVENTORY_SIZE; i++) {
